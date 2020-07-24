@@ -1,8 +1,0 @@
-{
-    "name": "Unity.Cloud.UserReporting.Editor",
-    "references": [],
-    "includePlatforms": [
-        "Editor"
-    ],
-    "excludePlatforms": []
-}
