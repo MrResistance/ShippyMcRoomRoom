@@ -6,6 +6,8 @@ public class PlayerWeapon : MonoBehaviour
 {
     public Transform firePoint;
     public GameObject projectilePrefab;
+    public float fireRate = 0.5f;
+    private float nextFire = 0.0f;
     void Start()
     {
         
@@ -14,13 +16,14 @@ public class PlayerWeapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetAxis("ControllerTriggers") > 0 && Time.time > nextFire)
         {
             FireWeapon();
         }
     }
     void FireWeapon()
     {
+        nextFire = Time.time + fireRate;
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
         Rigidbody2D rbproj = projectile.GetComponent<Rigidbody2D>();
         rbproj.AddForce(firePoint.right * 20f, ForceMode2D.Impulse);
