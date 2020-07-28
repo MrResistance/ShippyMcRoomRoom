@@ -49,6 +49,7 @@ public class PlayerTopDownController : MonoBehaviour
         axisV = Input.GetAxis("Vertical2");
         axisH = Input.GetAxis("Horizontal2");
         float controllerangle = Mathf.Atan2(axisV, axisH) * Mathf.Rad2Deg - 90f;
+        if ((axisV != 0)&&(axisH != 0))
         rb.rotation = controllerangle; //for controller
     }
     void Move()
