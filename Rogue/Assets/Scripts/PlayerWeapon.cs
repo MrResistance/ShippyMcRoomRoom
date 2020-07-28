@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerWeapon : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public Transform firePoint;
+    public GameObject projectilePrefab;
     void Start()
     {
         
@@ -13,6 +14,15 @@ public class PlayerWeapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetButtonDown("Fire1"))
+        {
+            FireWeapon();
+        }
+    }
+    void FireWeapon()
+    {
+        GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
+        Rigidbody2D rbproj = projectile.GetComponent<Rigidbody2D>();
+        rbproj.AddForce(firePoint.right * 20f, ForceMode2D.Impulse);
     }
 }
