@@ -222,7 +222,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 414512572}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -294,6 +294,7 @@ MonoBehaviour:
   firePoint: {fileID: 414512572}
   projectilePrefab: {fileID: 992922246480892268, guid: ddfd9038b8f0e8a40a14b97fe7177ae1,
     type: 3}
+  fireRate: 0.25
 --- !u!1 &909216386
 GameObject:
   m_ObjectHideFlags: 0
@@ -416,6 +417,41 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1725060066019509424, guid: 208cadb01a18d8d4792f9cad61630164,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1725060066287029804, guid: 208cadb01a18d8d4792f9cad61630164,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1725060066833872084, guid: 208cadb01a18d8d4792f9cad61630164,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1725060066868152365, guid: 208cadb01a18d8d4792f9cad61630164,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1725060066910778996, guid: 208cadb01a18d8d4792f9cad61630164,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1725060067145875213, guid: 208cadb01a18d8d4792f9cad61630164,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1725060067281763046, guid: 208cadb01a18d8d4792f9cad61630164,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1725060067460742849, guid: 208cadb01a18d8d4792f9cad61630164,
         type: 3}
       propertyPath: m_Enabled
@@ -495,6 +531,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1725060067460742854, guid: 208cadb01a18d8d4792f9cad61630164,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1725060068097425325, guid: 208cadb01a18d8d4792f9cad61630164,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 208cadb01a18d8d4792f9cad61630164, type: 3}

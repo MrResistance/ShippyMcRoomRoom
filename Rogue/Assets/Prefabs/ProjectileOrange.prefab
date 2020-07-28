@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 8787492111194265383}
   - component: {fileID: 1607039692888688308}
   - component: {fileID: 8072819103278279226}
-  m_Layer: 0
+  - component: {fileID: -3323134159479438883}
+  m_Layer: 10
   m_Name: ProjectileOrange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,3 +131,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.4408481, y: 0.57464755}
   m_EdgeRadius: 0
+--- !u!114 &-3323134159479438883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 992922246480892268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a32db32aad618547afb77310efcfa9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
