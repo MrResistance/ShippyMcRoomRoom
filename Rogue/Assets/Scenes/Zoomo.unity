@@ -271,6 +271,8 @@ MonoBehaviour:
   v: 0
   movementspeed: 10
   movementspeedbonus: 0
+  axisV: 0
+  axisH: 0
 --- !u!4 &736251804 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1725060067460742852, guid: 208cadb01a18d8d4792f9cad61630164,
@@ -423,6 +425,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LinearDrag
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1725060067460742850, guid: 208cadb01a18d8d4792f9cad61630164,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1725060067460742852, guid: 208cadb01a18d8d4792f9cad61630164,
         type: 3}
