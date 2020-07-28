@@ -17,6 +17,9 @@ public class PlayerTopDownController : MonoBehaviour
 
     public float movementspeed;
     public float movementspeedbonus;
+
+    //Controller stuff?
+    public float axisV, axisH;
     void Start()
     {
         movementspeedbonus = 100; //Default start
@@ -37,10 +40,16 @@ public class PlayerTopDownController : MonoBehaviour
 
     void Look()
     {
+        //Mouse
         mouseposition = camera.ScreenToWorldPoint(Input.mousePosition);
         lookdir = mouseposition - rb.position;
         angle = Mathf.Atan2(lookdir.y, lookdir.x) * Mathf.Rad2Deg - 90f;
-        rb.rotation = angle;
+        //rb.rotation = angle; //for mouse
+        //Controller
+        axisV = Input.GetAxis("Vertical2");
+        axisH = Input.GetAxis("Horizontal2");
+        float controllerangle = Mathf.Atan2(axisV, axisH) * Mathf.Rad2Deg - 90f;
+        rb.rotation = controllerangle; //for controller
     }
     void Move()
     {
