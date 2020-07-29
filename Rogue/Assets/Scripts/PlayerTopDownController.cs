@@ -7,6 +7,7 @@ public class PlayerTopDownController : MonoBehaviour
     // Start is called before the first frame update
 
     public bool isDirectionalMovement; //If true, player moves based on where they look; else, upie downlie lefty rightie
+    public bool isControllerEnabled;
 
     public Rigidbody2D rb;
     public Camera camera;
@@ -41,17 +42,24 @@ public class PlayerTopDownController : MonoBehaviour
     void Look()
     {
         //Mouse
-        mouseposition = camera.ScreenToWorldPoint(Input.mousePosition);
-        lookdir = mouseposition - rb.position;
-        angle = Mathf.Atan2(lookdir.y, lookdir.x) * Mathf.Rad2Deg - 90f;
-        //rb.rotation = angle; //for mouse
-        //Controller
-        axisV = Input.GetAxis("Vertical2");
-        axisH = Input.GetAxis("Horizontal2");
-        float controllerangle = Mathf.Atan2(axisV, axisH) * Mathf.Rad2Deg - 90f;
+        
+        if (!isControllerEnabled)
+        {
+            mouseposition = camera.ScreenToWorldPoint(Input.mousePosition);
+            lookdir = mouseposition - rb.position;
+            angle = Mathf.Atan2(lookdir.y, lookdir.x) * Mathf.Rad2Deg - 90f;
+            rb.rotation = angle; //for mouse
+        }
+        else
+        { 
+            //Controller
+            axisV = Input.GetAxis("Vertical2");
+            axisH = Input.GetAxis("Horizontal2");
+            float controllerangle = Mathf.Atan2(axisV, axisH) * Mathf.Rad2Deg - 90f;
 
-        if ((axisV != 0)||(axisH != 0))
-            rb.rotation = controllerangle; //for controller
+            if ((axisV != 0)||(axisH != 0))
+                rb.rotation = controllerangle; //for controller
+        }
     }
     void Move()
     {
