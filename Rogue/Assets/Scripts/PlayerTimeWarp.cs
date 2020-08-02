@@ -7,7 +7,7 @@ public class PlayerTimeWarp : MonoBehaviour
     public AnimationCurve curveX, curveY;
     public Keyframe[] keyframesX;
     public Keyframe[] keyframesY;
-    int curveTime;
+    public int curveTime;
     public Transform transform;
     
     void Start()
@@ -32,14 +32,14 @@ public class PlayerTimeWarp : MonoBehaviour
 
     public void Timewarp() //Main method - Time warps player
     {
-        int ReturnNumber = GetReturnTime();
+        int ReturnNumber = GetReturnTime(3);
         transform.position = new Vector3(keyframesX[ReturnNumber].value, keyframesY[ReturnNumber].value, 0);
 
     }
     void StartCurve() //For creating curve
     {
-        Debug.Log("Key count:" + curveX.keys.Length);
-        for (int i = 1; i < 11; i++)
+        
+        for (int i = 0; i < 10; i++)
         {
             curveX.AddKey(i, transform.position.x);
             curveY.AddKey(i, transform.position.x);
@@ -60,7 +60,7 @@ public class PlayerTimeWarp : MonoBehaviour
             }
             else
             {
-                curveTime = 1;
+                curveTime = 0;
             }
             
             keyframesX[curveTime].value = (int)transform.position.x;
@@ -73,10 +73,19 @@ public class PlayerTimeWarp : MonoBehaviour
 
         }
     }
-    int GetReturnTime()
+    int GetReturnTime(int HowFarGoBack)
     {
+        Debug.Log("How far go back:" + HowFarGoBack.ToString() + ",curveTime" + curveTime.ToString());
         int number = 1;
-
+        if (HowFarGoBack > curveTime)
+        {
+            number = (curveTime - HowFarGoBack) + 10;
+        }
+        else
+        {
+            number = curveTime - HowFarGoBack;
+        }
+        Debug.Log("Return number:" + number.ToString());
         return number;
     }
 }
