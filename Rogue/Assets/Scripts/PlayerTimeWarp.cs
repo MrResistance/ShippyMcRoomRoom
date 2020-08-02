@@ -20,9 +20,8 @@ public class PlayerTimeWarp : MonoBehaviour
         curveTime = 0;
         StartCoroutine(ChangeKey());
     }
-
-    // Update is called once per frame
-    void Update()
+    
+    void Update() //For player input
     {
         if (Input.GetKeyDown("space"))
         {
@@ -32,7 +31,7 @@ public class PlayerTimeWarp : MonoBehaviour
 
     public void Timewarp() //Main method - Time warps player
     {
-        int ReturnNumber = GetReturnTime(3);
+        int ReturnNumber = GetReturnTime(2);
         transform.position = new Vector3(keyframesX[ReturnNumber].value, keyframesY[ReturnNumber].value, 0);
 
     }
