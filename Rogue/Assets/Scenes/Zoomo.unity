@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 249020418}
   - component: {fileID: 249020417}
   m_Layer: 0
-  m_Name: New Sprite
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -202,230 +202,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &414512571
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 414512572}
-  m_Layer: 8
-  m_Name: FirePoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &414512572
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 414512571}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 1.548, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 736251804}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
---- !u!1 &736251798 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1725060067460742854, guid: 208cadb01a18d8d4792f9cad61630164,
-    type: 3}
-  m_PrefabInstance: {fileID: 1193275783}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &736251799
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 736251798}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41a0d6ee50824d44681616269a48955e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isDirectionalMovement: 0
-  isControllerEnabled: 1
-  rb: {fileID: 0}
-  camera: {fileID: 0}
-  mouseposition: {x: 0, y: 0}
-  lookdir: {x: 0, y: 0}
-  angle: 0
-  h: 0
-  v: 0
-  movementspeed: 10
-  movementspeedbonus: 0
-  axisV: 0
-  axisH: 0
---- !u!4 &736251804 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1725060067460742852, guid: 208cadb01a18d8d4792f9cad61630164,
-    type: 3}
-  m_PrefabInstance: {fileID: 1193275783}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &736251805
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 736251798}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0097c54570297148836320d58b2d0b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  firePoint: {fileID: 414512572}
-  projectilePrefab: {fileID: 992922246480892268, guid: ddfd9038b8f0e8a40a14b97fe7177ae1,
-    type: 3}
-  fireRate: 0.25
---- !u!114 &736251806
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 736251798}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b58ae5499deb0148bed5715a92ddfcc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  curveX:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 1
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 10
-      value: 10
-      inSlope: 1
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  curveY:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  curveTime: 0
-  transform: {fileID: 0}
---- !u!96 &736251807
-TrailRenderer:
-  serializedVersion: 2
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 736251798}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 0
-  m_LightProbeUsage: 0
-  m_ReflectionProbeUsage: 0
-  m_RayTracingMode: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Time: 3
-  m_Parameters:
-    serializedVersion: 3
-    widthMultiplier: 1
-    widthCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    colorGradient:
-      serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 1}
-      key2: {r: 0, g: 0, b: 0, a: 0}
-      key3: {r: 0, g: 0, b: 0, a: 0}
-      key4: {r: 0, g: 0, b: 0, a: 0}
-      key5: {r: 0, g: 0, b: 0, a: 0}
-      key6: {r: 0, g: 0, b: 0, a: 0}
-      key7: {r: 0, g: 0, b: 0, a: 0}
-      ctime0: 0
-      ctime1: 65535
-      ctime2: 0
-      ctime3: 0
-      ctime4: 0
-      ctime5: 0
-      ctime6: 0
-      ctime7: 0
-      atime0: 0
-      atime1: 65535
-      atime2: 0
-      atime3: 0
-      atime4: 0
-      atime5: 0
-      atime6: 0
-      atime7: 0
-      m_Mode: 0
-      m_NumColorKeys: 2
-      m_NumAlphaKeys: 2
-    numCornerVertices: 0
-    numCapVertices: 0
-    alignment: 0
-    textureMode: 0
-    shadowBias: 0.5
-    generateLightingData: 0
-  m_MinVertexDistance: 0.1
-  m_Autodestruct: 0
-  m_Emitting: 1
 --- !u!1 &909216386
 GameObject:
   m_ObjectHideFlags: 0
@@ -623,7 +399,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1130119897}
   - component: {fileID: 1130119898}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BRIGHT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -677,56 +453,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1725060066019509424, guid: 208cadb01a18d8d4792f9cad61630164,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1725060066287029804, guid: 208cadb01a18d8d4792f9cad61630164,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1725060066833872084, guid: 208cadb01a18d8d4792f9cad61630164,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1725060066868152365, guid: 208cadb01a18d8d4792f9cad61630164,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1725060066910778996, guid: 208cadb01a18d8d4792f9cad61630164,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1725060067145875213, guid: 208cadb01a18d8d4792f9cad61630164,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1725060067281763046, guid: 208cadb01a18d8d4792f9cad61630164,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1725060067460742849, guid: 208cadb01a18d8d4792f9cad61630164,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1725060067460742850, guid: 208cadb01a18d8d4792f9cad61630164,
-        type: 3}
-      propertyPath: m_LinearDrag
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1725060067460742850, guid: 208cadb01a18d8d4792f9cad61630164,
-        type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 1725060067460742852, guid: 208cadb01a18d8d4792f9cad61630164,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -787,21 +513,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 1725060067460742854, guid: 208cadb01a18d8d4792f9cad61630164,
-        type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 1725060067460742854, guid: 208cadb01a18d8d4792f9cad61630164,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1725060068097425325, guid: 208cadb01a18d8d4792f9cad61630164,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 208cadb01a18d8d4792f9cad61630164, type: 3}
 --- !u!1 &1195089203
@@ -814,7 +525,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1195089204}
   - component: {fileID: 1195089205}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BBOT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -870,7 +581,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1262494068}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BoundaryParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -905,7 +616,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1447988039}
   - component: {fileID: 1447988038}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BTOP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -962,7 +673,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1461771304}
   - component: {fileID: 1461771305}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BLEFT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
