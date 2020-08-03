@@ -453,6 +453,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 736251807, guid: 208cadb01a18d8d4792f9cad61630164, type: 3}
+      propertyPath: m_Autodestruct
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 736251807, guid: 208cadb01a18d8d4792f9cad61630164, type: 3}
+      propertyPath: m_Parameters.textureMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 736251807, guid: 208cadb01a18d8d4792f9cad61630164, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1725060067460742852, guid: 208cadb01a18d8d4792f9cad61630164,
         type: 3}
       propertyPath: m_LocalPosition.x
