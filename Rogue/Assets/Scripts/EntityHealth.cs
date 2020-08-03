@@ -14,9 +14,12 @@ public class EntityHealth : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
+
+    //Have its own colission detection
+        //If is player
+            //If has been hit by non-player projectile
+            //Did it damage me lol
+                //Take from health
+                    //Did it damage me enough for me to kill me
 }
