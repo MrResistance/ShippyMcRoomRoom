@@ -263,6 +263,19 @@ MonoBehaviour:
   movementspeedbonus: 0
   axisV: 0
   axisH: 0
+--- !u!114 &736251800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736251798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 332d481b51b73a84fa7e5623b03353fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
 --- !u!4 &736251804 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1725060067460742852, guid: 208cadb01a18d8d4792f9cad61630164,
