@@ -220,8 +220,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 332d481b51b73a84fa7e5623b03353fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isEnemy: 0
-  isPlayer: 0
   health: 100
 --- !u!1 &909216386
 GameObject:
@@ -422,7 +420,7 @@ GameObject:
   - component: {fileID: 1130119898}
   m_Layer: 12
   m_Name: BRIGHT
-  m_TagString: Untagged
+  m_TagString: Boundary
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -565,7 +563,7 @@ GameObject:
   - component: {fileID: 1195089205}
   m_Layer: 12
   m_Name: BBOT
-  m_TagString: Untagged
+  m_TagString: Boundary
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -621,7 +619,7 @@ GameObject:
   - component: {fileID: 1262494068}
   m_Layer: 12
   m_Name: BoundaryParent
-  m_TagString: Untagged
+  m_TagString: Boundary
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -656,7 +654,7 @@ GameObject:
   - component: {fileID: 1447988038}
   m_Layer: 12
   m_Name: BTOP
-  m_TagString: Untagged
+  m_TagString: Boundary
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -713,7 +711,7 @@ GameObject:
   - component: {fileID: 1461771305}
   m_Layer: 12
   m_Name: BLEFT
-  m_TagString: Untagged
+  m_TagString: Boundary
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

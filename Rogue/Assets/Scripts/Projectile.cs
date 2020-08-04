@@ -13,7 +13,11 @@ public class Projectile : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.otherCollider.tag.Contains("Projectile"))
+        if (collision.gameObject.tag.Contains("Boundary"))
+        {
+            Destroy(this.gameObject);
+        }
+        if (collision.gameObject.tag.Contains("Player") || collision.gameObject.tag.Contains("Enemy"))
         {
             collision.gameObject.GetComponent<EntityHealth>().TakeDamage(damage);
         }
