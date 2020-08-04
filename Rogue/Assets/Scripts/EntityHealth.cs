@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class EntityHealth : MonoBehaviour
 {
-    //What is this
+    //What is this?
     //This script is for entity health. This also includes the player.
-    private bool isEnemy, isPlayer;
+    public bool isEnemy, isPlayer;
     //Variables
     public float health; //VERY BASIC FOR NOW - Later versions will have different stuff
     void Start()
@@ -21,33 +21,16 @@ public class EntityHealth : MonoBehaviour
         }
     }
 
-    void TakeDamage(float damage)
+    public void TakeDamage(float damage)
     {
         health -= damage;
+        CheckIfDead();
     }
-
-    private void Update()
-    {
-        
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (isEnemy && collision.otherCollider.tag.Contains("Player Projectile"))
-        {
-            //TakeDamage(collision.otherCollider.Projectile.damage);
-            CheckIfDead();
-        }
-        else if (isPlayer && collision.otherCollider.tag.Contains("Enemy Projectile"))
-        {
-            //TakeDamage(collision.otherCollider.Projectile.damage);
-            CheckIfDead();
-        }
-    }
-    void CheckIfDead()
+    public void CheckIfDead()
     {
         if (health <= 0)
         {
+            Destroy(this.gameObject);
             //Die
             //If player
                 //Check if has any lives left
@@ -57,8 +40,6 @@ public class EntityHealth : MonoBehaviour
                 //Guess we respawn them
                 //And deduct a life
         }
-
-
     }
     //Have its own collision detection
     //If is player
