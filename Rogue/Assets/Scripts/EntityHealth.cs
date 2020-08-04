@@ -6,21 +6,8 @@ public class EntityHealth : MonoBehaviour
 {
     //What is this?
     //This script is for entity health. This also includes the player.
-    public bool isEnemy, isPlayer;
     //Variables
     public float health; //VERY BASIC FOR NOW - Later versions will have different stuff
-    void Start()
-    {
-        if (this.gameObject.tag.Contains("Player"))
-        {
-            isPlayer = true;
-        }
-        else if (this.gameObject.tag.Contains("Enemy"))
-        {
-            isEnemy = true;
-        }
-    }
-
     public void TakeDamage(float damage)
     {
         health -= damage;
