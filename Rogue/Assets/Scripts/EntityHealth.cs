@@ -28,10 +28,7 @@ public class EntityHealth : MonoBehaviour
 
     private void Update()
     {
-        if (health <= 0)
-        {
-            //End game
-        }
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -39,13 +36,30 @@ public class EntityHealth : MonoBehaviour
         if (isEnemy && collision.otherCollider.tag.Contains("Player Projectile"))
         {
             //TakeDamage(collision.otherCollider.Projectile.damage);
+            CheckIfDead();
         }
         else if (isPlayer && collision.otherCollider.tag.Contains("Enemy Projectile"))
         {
             //TakeDamage(collision.otherCollider.Projectile.damage);
+            CheckIfDead();
         }
     }
+    void CheckIfDead()
+    {
+        if (health <= 0)
+        {
+            //Die
+            //If player
+                //Check if has any lives left
+            //If no lives
+                //GG - end game
+            //Else
+                //Guess we respawn them
+                //And deduct a life
+        }
 
+
+    }
     //Have its own collision detection
     //If is player
     //If has been hit by non-player projectile
