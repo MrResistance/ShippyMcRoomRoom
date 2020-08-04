@@ -477,6 +477,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2715077195191800749, guid: 50a77513dfc6c1c48891777dcea4cebb,
         type: 3}
+    - target: {fileID: 736251805, guid: 208cadb01a18d8d4792f9cad61630164, type: 3}
+      propertyPath: projectileSpeed
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 736251807, guid: 208cadb01a18d8d4792f9cad61630164, type: 3}
       propertyPath: m_Autodestruct
       value: 0
@@ -487,6 +491,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 736251807, guid: 208cadb01a18d8d4792f9cad61630164, type: 3}
       propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1725060067460742850, guid: 208cadb01a18d8d4792f9cad61630164,
+        type: 3}
+      propertyPath: m_BodyType
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1725060067460742852, guid: 208cadb01a18d8d4792f9cad61630164,
@@ -848,6 +857,26 @@ PrefabInstance:
     - target: {fileID: 7756189105331174573, guid: 044d1be3c6986cd4684889b2d9d6680e,
         type: 3}
       propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7756189105331174573, guid: 044d1be3c6986cd4684889b2d9d6680e,
+        type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7756189105331174573, guid: 044d1be3c6986cd4684889b2d9d6680e,
+        type: 3}
+      propertyPath: m_LinearDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7756189105331174573, guid: 044d1be3c6986cd4684889b2d9d6680e,
+        type: 3}
+      propertyPath: m_AngularDrag
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 7756189105331174573, guid: 044d1be3c6986cd4684889b2d9d6680e,
+        type: 3}
+      propertyPath: m_UseAutoMass
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7756189105331174576, guid: 044d1be3c6986cd4684889b2d9d6680e,

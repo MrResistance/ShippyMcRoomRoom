@@ -6,7 +6,7 @@ public class PlayerWeapon : MonoBehaviour
 {
     public Transform firePoint;
     public GameObject projectilePrefab;
-    public float fireRate = 0.5f;
+    public float fireRate = 0.5f, projectileSpeed = 1f;
     private float nextFire = 0.0f;
     void Start()
     {
@@ -26,6 +26,6 @@ public class PlayerWeapon : MonoBehaviour
         nextFire = Time.time + fireRate;
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
         Rigidbody2D rbproj = projectile.GetComponent<Rigidbody2D>();
-        rbproj.AddForce(firePoint.right * 20f, ForceMode2D.Impulse);
+        rbproj.AddForce(firePoint.right * projectileSpeed, ForceMode2D.Impulse);
     }
 }

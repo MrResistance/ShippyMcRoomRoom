@@ -22,6 +22,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player Projectile
       objectReference: {fileID: 0}
+    - target: {fileID: 1607039692888688308, guid: ddfd9038b8f0e8a40a14b97fe7177ae1,
+        type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6481444536685529769, guid: ddfd9038b8f0e8a40a14b97fe7177ae1,
         type: 3}
       propertyPath: m_LocalPosition.x
