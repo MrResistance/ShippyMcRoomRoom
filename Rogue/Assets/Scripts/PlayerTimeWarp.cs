@@ -41,7 +41,7 @@ public class PlayerTimeWarp : MonoBehaviour
         for (int i = 0; i < 10; i++)
         {
             curveX.AddKey(i, transform.position.x);
-            curveY.AddKey(i, transform.position.x);
+            curveY.AddKey(i, transform.position.y);
             Debug.Log("Key count:" + curveX.keys.Length);
 
         }
