@@ -6,9 +6,36 @@ public class NPCMoverScript1 : MonoBehaviour
 {
     // Start is called before the first frame update
     public AnimationCurve curveX, curveY;
+    public Keyframe[] keyframesX;
+    public Keyframe[] keyframesY;
     float timeElapsed;
     bool isMoving;
+    public GameObject player;
+    Rigidbody2D rb;
     // Update is called once per frame
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        curveX = new AnimationCurve();
+        curveY = new AnimationCurve();
+        curveX.AddKey(0, transform.position.x);
+        curveY.AddKey(0, transform.position.x);
+        curveX.AddKey(4, 25);
+        curveY.AddKey(4, -25);
+        curveX.AddKey(8, -25);
+        curveY.AddKey(8, -25);
+        curveX.AddKey(12, -25);
+        curveY.AddKey(12, 25);
+        curveX.AddKey(16, 25);
+        curveY.AddKey(16, 25);
+
+        Debug.Log("Key count:" + curveX.keys.Length);
+
+       
+        keyframesX = curveX.keys;
+        keyframesY = curveY.keys;
+    }
+
     void Update()
     {
         if (!isMoving)
@@ -18,15 +45,20 @@ public class NPCMoverScript1 : MonoBehaviour
         }
         else
         {
-            if (timeElapsed > curveX.length)
+            if (timeElapsed > curveX[curveX.length-1].time)
             {
                 isMoving = false;
             }
             else
             {
                 timeElapsed += Time.deltaTime;
+                Debug.Log(timeElapsed+","+ curveX[curveX.length - 1].time); //Time elapsed and the maximum time
                 transform.position = new Vector2(curveX.Evaluate(timeElapsed), curveY.Evaluate(timeElapsed));
-                transform.rotation = Quaternion.Euler(0, 0, 360 * curveX.Evaluate(timeElapsed));
+                //transform.rotation = Quaternion.Euler(0, 0, 360 * curveX.Evaluate(timeElapsed));
+                Vector2 direction = player.transform.position - transform.position;
+                float angle = Mathf.Atan2(direction.y, direction.x) *Mathf.Rad2Deg - 90f;
+                rb.rotation = angle;
+                //Debug.Log(direction.SqrMagnitude());
             }
         }
 
