@@ -21,7 +21,7 @@ public class Projectile : MonoBehaviour
         if (collision.gameObject.tag.Contains("Player") && (this.gameObject.tag.Contains("Enemy Projectile")))
         {
             collision.gameObject.GetComponent<EntityHealth>().TakeDamage(damage);
-            Destroy(this.gameObject, 3);
+            Destroy(this.gameObject);
         }
         if (collision.gameObject.tag.Contains("Enemy") && (this.gameObject.tag.Contains("Player Projectile")))
         {
