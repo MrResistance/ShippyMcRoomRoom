@@ -991,6 +991,22 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 658235755}
+    - target: {fileID: 1189608472004825278, guid: 044d1be3c6986cd4684889b2d9d6680e,
+        type: 3}
+      propertyPath: projectilePrefab
+      value: 
+      objectReference: {fileID: 7307298747946747930, guid: 6cd14bf44657f6d479f0e4cc098ca4ce,
+        type: 3}
+    - target: {fileID: 1189608472004825278, guid: 044d1be3c6986cd4684889b2d9d6680e,
+        type: 3}
+      propertyPath: cooldownShooting
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1189608472004825278, guid: 044d1be3c6986cd4684889b2d9d6680e,
+        type: 3}
+      propertyPath: minimumShootingDistance
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 7756189105331174572, guid: 044d1be3c6986cd4684889b2d9d6680e,
         type: 3}
       propertyPath: m_Name
