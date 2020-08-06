@@ -42,7 +42,7 @@ public class PlayerTimeWarp : MonoBehaviour
         {
             curveX.AddKey(i, transform.position.x);
             curveY.AddKey(i, transform.position.y);
-            Debug.Log("Key count:" + curveX.keys.Length);
+            //Debug.Log("Key count:" + curveX.keys.Length);
 
         }
         keyframesX = curveX.keys;
