@@ -485,7 +485,7 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 736251805, guid: 208cadb01a18d8d4792f9cad61630164, type: 3}
       propertyPath: projectileSpeed
-      value: 20
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 736251807, guid: 208cadb01a18d8d4792f9cad61630164, type: 3}
       propertyPath: m_Autodestruct

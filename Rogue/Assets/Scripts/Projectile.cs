@@ -18,7 +18,7 @@ public class Projectile : MonoBehaviour
             Destroy(this.gameObject);
         }
         //Check if player
-        if (collision.gameObject.tag.Contains("Player") && (this.gameObject.tag.Contains("Enemy Projectile")))
+        /*if (collision.gameObject.tag.Contains("Player") && (this.gameObject.tag.Contains("Enemy Projectile")))
         {
             collision.gameObject.GetComponent<EntityHealth>().TakeDamage(damage);
             Destroy(this.gameObject);
@@ -27,14 +27,20 @@ public class Projectile : MonoBehaviour
         {
             collision.gameObject.GetComponent<EntityHealth>().TakeDamage(damage);
             Destroy(this.gameObject, 3);
-        }
+        }*/
 
+        //Check if hitting another projectile
+        if (collision.gameObject.tag.Contains("Projectile"))
+        {
+            Destroy(collision.gameObject);
+            Destroy(this.gameObject);
+        }
         //Check if enemy
-        if (collision.gameObject.tag.Contains("Player") || collision.gameObject.tag.Contains("Enemy"))
+        else if (collision.gameObject.tag.Contains("Player") || collision.gameObject.tag.Contains("Enemy"))
         {
             collision.gameObject.GetComponent<EntityHealth>().TakeDamage(damage);
         }
-        //sr.enabled = false;
-        //Destroy(this.gameObject, 3);
+        sr.enabled = false;
+        Destroy(this.gameObject, 3);
     }
 }
