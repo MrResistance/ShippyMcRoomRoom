@@ -15,6 +15,7 @@ public class NPCMoverScript1 : MonoBehaviour
     public float distanceToPlayerfloat;
 
     Rigidbody2D rb;
+    public Transform firePoint; //For firing from
     public float cooldownShooting;
     public float minimumShootingDistance; 
     public float projectileSpeed = 1f;
@@ -23,6 +24,7 @@ public class NPCMoverScript1 : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        firePoint = transform.GetChild(0);
         curveX = new AnimationCurve();
         curveY = new AnimationCurve();
         curveX.AddKey(0, transform.position.x);
@@ -83,6 +85,7 @@ public class NPCMoverScript1 : MonoBehaviour
     {
         while (true)
         {
+            if (player != null)
             if (distanceToPlayerfloat < minimumShootingDistance)
             {
                 ShootPlayer();
@@ -93,9 +96,9 @@ public class NPCMoverScript1 : MonoBehaviour
     void ShootPlayer()
     {
         Debug.Log("Firing at player");
-        GameObject projectile = Instantiate(projectilePrefab, transform.position, transform.rotation);
+        GameObject projectile = Instantiate(projectilePrefab, firePoint.transform.position, firePoint.transform.rotation);
         Rigidbody2D rbproj = projectile.GetComponent<Rigidbody2D>();
-        rbproj.AddForce(transform.forward * projectileSpeed, ForceMode2D.Impulse);
+        rbproj.AddForce(firePoint.right * projectileSpeed, ForceMode2D.Impulse);
     }
     void GetDistanceToPlayer()
     {
