@@ -5,10 +5,10 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     public float damage, destroyTimer = 10f;
-    private SpriteRenderer sr;
+    public SpriteRenderer sr;
     private void Start()
     {
-        sr = this.gameObject.GetComponent<SpriteRenderer>();
+        sr = GetComponent<SpriteRenderer>();
         Destroy(this.gameObject, destroyTimer);
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -17,11 +17,24 @@ public class Projectile : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+        //Check if player
+        if (collision.gameObject.tag.Contains("Player") && (this.gameObject.tag.Contains("Enemy Projectile")))
+        {
+            collision.gameObject.GetComponent<EntityHealth>().TakeDamage(damage);
+            Destroy(this.gameObject, 3);
+        }
+        if (collision.gameObject.tag.Contains("Enemy") && (this.gameObject.tag.Contains("Player Projectile")))
+        {
+            collision.gameObject.GetComponent<EntityHealth>().TakeDamage(damage);
+            Destroy(this.gameObject, 3);
+        }
+
+        //Check if enemy
         if (collision.gameObject.tag.Contains("Player") || collision.gameObject.tag.Contains("Enemy"))
         {
             collision.gameObject.GetComponent<EntityHealth>().TakeDamage(damage);
         }
-        sr.enabled = false;
-        Destroy(this.gameObject, 3);
+        //sr.enabled = false;
+        //Destroy(this.gameObject, 3);
     }
 }
