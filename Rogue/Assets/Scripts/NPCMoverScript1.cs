@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class NPCMoverScript1 : MonoBehaviour
 {
@@ -20,6 +22,9 @@ public class NPCMoverScript1 : MonoBehaviour
     public float maximumShootingDistance; 
     public float projectileSpeed = 1f;
     public GameObject projectilePrefab;
+
+    public GameObject tHealth;
+
     // Update is called once per frame
     private void Start()
     {
@@ -43,6 +48,8 @@ public class NPCMoverScript1 : MonoBehaviour
        
         keyframesX = curveX.keys;
         keyframesY = curveY.keys;
+
+        tHealth = transform.GetChild(1).GetChild(0).gameObject;
         StartCoroutine(TargetPlayer());
     }
 
@@ -50,6 +57,7 @@ public class NPCMoverScript1 : MonoBehaviour
     {
         //Move();
         Rotate();
+        tHealth.GetComponent<TextMeshProUGUI>().text = GetComponent<EntityHealth>().health.ToString();
     }
 
     IEnumerator TargetPlayer()
