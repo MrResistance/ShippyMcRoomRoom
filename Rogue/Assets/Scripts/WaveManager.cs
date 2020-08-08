@@ -49,11 +49,12 @@ public class WaveManager : MonoBehaviour
     void SpawnEnemies()
     {
         Transform EnemySpawn = EnemiesGO.transform;
-        
+
+
         for (int e = 0; e < WaveNumber;e++)
         {
-            EnemySpawn.position = new Vector3(-40f+(e*10), 25f,0f);
-            GameObject Enemy = Instantiate(EnemyPrefab, EnemySpawn.position, EnemySpawn.rotation);
+            Vector3 esp = new Vector3(-40f+(e*10), 25f,0f);
+            GameObject Enemy = Instantiate(EnemyPrefab, esp, EnemySpawn.rotation);
             Enemy.transform.parent = EnemiesGO.transform;
             listEnemies.Add(Enemy);
         }
