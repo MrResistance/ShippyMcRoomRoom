@@ -28,6 +28,8 @@ public class PlayerTopDownController : MonoBehaviour
         movementspeedbonus = 100; //Default start
         rb = GetComponent<Rigidbody2D>();
         camera = Camera.main;
+
+        pm = transform.parent.GetComponent<PlayerManager>(); //For now, unused
     }
 
     // Update is called once per frame
