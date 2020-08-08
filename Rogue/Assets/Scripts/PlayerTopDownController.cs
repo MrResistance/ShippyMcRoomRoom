@@ -19,6 +19,8 @@ public class PlayerTopDownController : MonoBehaviour
     public float movementspeed;
     public float movementspeedbonus;
 
+    public PlayerManager pm;
+
     //Controller stuff?
     public float axisV, axisH;
     void Start()
