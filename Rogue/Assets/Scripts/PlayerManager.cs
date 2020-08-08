@@ -4,15 +4,33 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public GameObject PlayerPrefab;
+    public GameObject PlayerGameObject;
+    Transform spawn; //For initialising new player
+    public int remainingLives;
     void Start()
     {
-        
+        PlayerGameObject = transform.GetChild(0).gameObject;
+
+        spawn = transform;
     }
 
     // Update is called once per frame
-    void Update()
+    public void RespawnPlayer()
     {
-        
+        Debug.Log("Respawning player.");
+        GameObject PLAYER = Instantiate(PlayerPrefab, spawn.position, spawn.rotation);
+        PLAYER.name = "Player";
+        PLAYER.transform.parent = transform;
+        PlayerGameObject = PLAYER;
     }
+    public void PlayerHasDied()
+    {
+        if (remainingLives > 0)
+        {
+            remainingLives--;
+            RespawnPlayer();
+        }
+    }
+
 }
