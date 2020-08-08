@@ -10,9 +10,12 @@ public class GameUIManager : MonoBehaviour
     public TextMeshProUGUI t_wavenumber;
     void Start()
     {
-        
+        InvokeRepeating("Pond", 2f, 3f);
     }
-
+    void Pond()
+    {
+        Debug.Log("Honlo, time is: " + Time.time);
+    }
     // Update is called once per frame
     void Update()
     {
