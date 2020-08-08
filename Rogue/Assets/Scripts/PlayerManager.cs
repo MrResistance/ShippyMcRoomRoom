@@ -8,10 +8,12 @@ public class PlayerManager : MonoBehaviour
     public GameObject PlayerGameObject;
     Transform spawn; //For initialising new player
     public int remainingLives;
-    void Start()
+    private void Awake()
     {
         PlayerGameObject = transform.GetChild(0).gameObject;
-
+    }
+    void Start()
+    {
         spawn = transform;
     }
 

@@ -23,12 +23,14 @@ public class PlayerTopDownController : MonoBehaviour
 
     //Controller stuff?
     public float axisV, axisH;
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        camera = Camera.main;
+    }
     void Start()
     {
         movementspeedbonus = 100; //Default start
-        rb = GetComponent<Rigidbody2D>();
-        camera = Camera.main;
-
         pm = transform.parent.GetComponent<PlayerManager>(); //For now, unused
     }
 

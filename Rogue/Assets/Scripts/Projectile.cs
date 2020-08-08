@@ -6,9 +6,12 @@ public class Projectile : MonoBehaviour
 {
     public float damage, destroyTimer = 10f;
     public SpriteRenderer sr;
-    private void Start()
+    private void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
+    }
+    private void Start()
+    {
         Destroy(this.gameObject, destroyTimer);
     }
     private void OnCollisionEnter2D(Collision2D collision)
