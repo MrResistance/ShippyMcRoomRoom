@@ -48,8 +48,8 @@ public class NPCMoverScript1 : MonoBehaviour
 
     void Update()
     {
-        Move();
-
+        //Move();
+        Rotate();
     }
 
     IEnumerator TargetPlayer()
@@ -105,18 +105,22 @@ public class NPCMoverScript1 : MonoBehaviour
                 //Debug.Log(timeElapsed+","+ curveX[curveX.length - 1].time); //Time elapsed and the maximum time
                 transform.position = new Vector2(curveX.Evaluate(timeElapsed), curveY.Evaluate(timeElapsed));
                 //transform.rotation = Quaternion.Euler(0, 0, 360 * curveX.Evaluate(timeElapsed));
-                GetDistanceToPlayer();
-                if (player != null)
-                {
-                    float angle = Mathf.Atan2(distanceToPlayer.y, distanceToPlayer.x) * Mathf.Rad2Deg - 90f;
-                    rb.rotation = angle;
-                }
-                else
-                {
-                    rb.rotation = 0;
-                }
+                
                 //Debug.Log(direction.SqrMagnitude());
             }
+        }
+    }
+    void Rotate()
+    {
+        GetDistanceToPlayer();
+        if (player != null)
+        {
+            float angle = Mathf.Atan2(distanceToPlayer.y, distanceToPlayer.x) * Mathf.Rad2Deg - 90f;
+            rb.rotation = angle;
+        }
+        else
+        {
+            rb.rotation = 0;
         }
     }
 }
