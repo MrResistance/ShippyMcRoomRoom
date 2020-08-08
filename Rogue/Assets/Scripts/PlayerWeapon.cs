@@ -8,10 +8,12 @@ public class PlayerWeapon : MonoBehaviour
     public GameObject projectilePrefab;
     public float fireRate = 0.5f, projectileSpeed = 1f;
     private float nextFire = 0.0f;
+    public AudioSource audioSource;
     public SFX_Player sFX_Player;
     private void Awake()
     {
-        sFX_Player = GameObject.Find("SFX_Player").GetComponent<SFX_Player>();
+        //sFX_Player = GameObject.Find("SFX_Player").GetComponent<SFX_Player>();
+        audioSource = gameObject.GetComponent<AudioSource>();
     }
     // Update is called once per frame
     void Update()
@@ -24,6 +26,7 @@ public class PlayerWeapon : MonoBehaviour
     void FireWeapon()
     {
         //sFX_Player.PlayRandomSound();
+        audioSource.PlayOneShot(audioSource.clip);
         nextFire = Time.time + fireRate;
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
         Rigidbody2D rbproj = projectile.GetComponent<Rigidbody2D>();
