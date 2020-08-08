@@ -597,8 +597,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 332d481b51b73a84fa7e5623b03353fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isEnemy: 0
-  isPlayer: 1
   health: 100
 --- !u!114 &736251799
 MonoBehaviour:
@@ -638,9 +636,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 414512572}
-  projectilePrefab: {fileID: 992922246480892268, guid: ddfd9038b8f0e8a40a14b97fe7177ae1,
+  projectilePrefab: {fileID: 2715077195191800749, guid: 50a77513dfc6c1c48891777dcea4cebb,
     type: 3}
   fireRate: 0.25
+  projectileSpeed: 50
 --- !u!114 &736251806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -815,7 +814,7 @@ TrailRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1725060067460742854}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 0
