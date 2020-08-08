@@ -48,36 +48,7 @@ public class NPCMoverScript1 : MonoBehaviour
 
     void Update()
     {
-        if (!isMoving)
-        {
-            isMoving = true;
-            timeElapsed = 0f;
-        }
-        else
-        {
-            if (timeElapsed > curveX[curveX.length-1].time)
-            {
-                isMoving = false;
-            }
-            else
-            {
-                timeElapsed += Time.deltaTime;
-                //Debug.Log(timeElapsed+","+ curveX[curveX.length - 1].time); //Time elapsed and the maximum time
-                transform.position = new Vector2(curveX.Evaluate(timeElapsed), curveY.Evaluate(timeElapsed));
-                //transform.rotation = Quaternion.Euler(0, 0, 360 * curveX.Evaluate(timeElapsed));
-                GetDistanceToPlayer();
-                if (player != null)
-                { 
-                    float angle = Mathf.Atan2(distanceToPlayer.y, distanceToPlayer.x) *Mathf.Rad2Deg - 90f;
-                rb.rotation = angle;
-                }
-                else
-                {
-                    rb.rotation = 0;
-                }
-                //Debug.Log(direction.SqrMagnitude());
-            }
-        }
+        Move();
 
     }
 
@@ -113,6 +84,39 @@ public class NPCMoverScript1 : MonoBehaviour
             distanceToPlayer = player.transform.position - transform.position;
             distanceToPlayerfloat = Vector2.Distance(player.transform.position, transform.position);
             //Debug.Log(distanceToPlayerfloat);
+        }
+    }
+    void Move()
+    {
+        if (!isMoving)
+        {
+            isMoving = true;
+            timeElapsed = 0f;
+        }
+        else
+        {
+            if (timeElapsed > curveX[curveX.length - 1].time)
+            {
+                isMoving = false;
+            }
+            else
+            {
+                timeElapsed += Time.deltaTime;
+                //Debug.Log(timeElapsed+","+ curveX[curveX.length - 1].time); //Time elapsed and the maximum time
+                transform.position = new Vector2(curveX.Evaluate(timeElapsed), curveY.Evaluate(timeElapsed));
+                //transform.rotation = Quaternion.Euler(0, 0, 360 * curveX.Evaluate(timeElapsed));
+                GetDistanceToPlayer();
+                if (player != null)
+                {
+                    float angle = Mathf.Atan2(distanceToPlayer.y, distanceToPlayer.x) * Mathf.Rad2Deg - 90f;
+                    rb.rotation = angle;
+                }
+                else
+                {
+                    rb.rotation = 0;
+                }
+                //Debug.Log(direction.SqrMagnitude());
+            }
         }
     }
 }
