@@ -17,12 +17,17 @@ public class EntityHealth : MonoBehaviour
     {
         if (health <= 0)
         {
+            //If player
+            if (gameObject.tag.Contains("Player"))
+            { 
+                transform.parent.gameObject.GetComponent<PlayerManager>().PlayerHasDied();
+            }
+            //Finally
             Destroy(this.gameObject);
             //Die
-            //If player
-                //Check if has any lives left
-            //If no lives
-                //GG - end game
+            
+                
+            
             //Else
                 //Guess we respawn them
                 //And deduct a life
