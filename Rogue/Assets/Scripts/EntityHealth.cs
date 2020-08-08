@@ -8,9 +8,16 @@ public class EntityHealth : MonoBehaviour
     //This script is for entity health. This also includes the player.
     //Variables
     public float health; //VERY BASIC FOR NOW - Later versions will have different stuff
+    public bool isInvunerable = true;
+
+    void Start()
+    {
+        Invoke("DisableInvunerability", 1.5f);
+    }
     public void TakeDamage(float damage)
     {
-        health -= damage;
+        if (isInvunerable != true)
+            health -= damage;
         CheckIfDead();
     }
     public void CheckIfDead()
@@ -32,6 +39,10 @@ public class EntityHealth : MonoBehaviour
                 //Guess we respawn them
                 //And deduct a life
         }
+    }
+    void DisableInvunerability()
+    {
+        isInvunerable = false;
     }
     //Have its own collision detection
     //If is player
