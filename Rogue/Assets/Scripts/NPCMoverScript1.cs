@@ -17,7 +17,7 @@ public class NPCMoverScript1 : MonoBehaviour
     Rigidbody2D rb;
     public Transform firePoint; //For firing from
     public float cooldownShooting;
-    public float minimumShootingDistance; 
+    public float maximumShootingDistance; 
     public float projectileSpeed = 1f;
     public GameObject projectilePrefab;
     // Update is called once per frame
@@ -86,16 +86,22 @@ public class NPCMoverScript1 : MonoBehaviour
         while (true)
         {
             if (player != null)
-            if (distanceToPlayerfloat < minimumShootingDistance)
+            { 
+                if (distanceToPlayerfloat < maximumShootingDistance)
+                {
+                    ShootPlayer();
+                }
+            }
+            else
             {
-                ShootPlayer();
+                player = GameObject.Find("Player");
             }
             yield return new WaitForSeconds(cooldownShooting);
         }
     }
     void ShootPlayer()
     {
-        Debug.Log("Firing at player");
+        //Debug.Log("Firing at player");
         GameObject projectile = Instantiate(projectilePrefab, firePoint.transform.position, firePoint.transform.rotation);
         Rigidbody2D rbproj = projectile.GetComponent<Rigidbody2D>();
         rbproj.AddForce(firePoint.right * projectileSpeed, ForceMode2D.Impulse);
