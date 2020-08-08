@@ -18,17 +18,18 @@ public class NPCMoverScript1 : MonoBehaviour
 
     Rigidbody2D rb;
     public Transform firePoint; //For firing from
-    public float cooldownShooting;
-    public float maximumShootingDistance; 
-    public float projectileSpeed = 1f;
-    public GameObject projectilePrefab;
-
-    public GameObject tHealth;
+    public float cooldownShooting, maximumShootingDistance, projectileSpeed = 1f;
+    public GameObject projectilePrefab, tHealth;
+    public AudioSource audioSource;
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        audioSource = gameObject.GetComponent<AudioSource>();
+    }
 
     // Update is called once per frame
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
         firePoint = transform.GetChild(0);
         curveX = new AnimationCurve();
         curveY = new AnimationCurve();
@@ -81,6 +82,7 @@ public class NPCMoverScript1 : MonoBehaviour
     void ShootPlayer()
     {
         //Debug.Log("Firing at player");
+        audioSource.PlayOneShot(audioSource.clip);
         GameObject projectile = Instantiate(projectilePrefab, firePoint.transform.position, firePoint.transform.rotation);
         Rigidbody2D rbproj = projectile.GetComponent<Rigidbody2D>();
         rbproj.AddForce(firePoint.right * projectileSpeed, ForceMode2D.Impulse);
