@@ -48,7 +48,7 @@ public class WaveManager : MonoBehaviour
     }
     void SpawnEnemies()
     {
-        Transform EnemySpawn = transform;
+        Transform EnemySpawn = EnemiesGO.transform;
         
         for (int e = 0; e < WaveNumber;e++)
         {
