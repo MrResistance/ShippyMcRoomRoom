@@ -145,3 +145,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   destroyTimer: 10
+  sr: {fileID: 0}
