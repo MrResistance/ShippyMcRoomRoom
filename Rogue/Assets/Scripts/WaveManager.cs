@@ -56,14 +56,14 @@ public class WaveManager : MonoBehaviour
         {
             Vector3 esp = new Vector3(-40f+(e*10), 25f,0f);
             GameObject Enemy = Instantiate(EnemyPrefab, esp, EnemySpawn.rotation);
-            Enemy.GetComponent<NPCMoverScript1>().cooldownShooting -= (WaveNumber / 10);
+            //Enemy.GetComponent<NPCMoverScript1>().cooldownShooting -= (WaveNumber / 10);
             Enemy.transform.parent = EnemiesGO.transform;
             listEnemies.Add(Enemy);
         }
         foreach (GameObject enemy in listEnemies)
         {
             float cds = (float)WaveNumber / 10;
-            enemy.GetComponent<NPCMoverScript1>().cooldownShooting -= cds;
+            enemy.GetComponent<NPCMoverScript1>().cooldownShooting -= Random.Range(cds/10, cds);
             Debug.Log(enemy.GetComponent<NPCMoverScript1>().cooldownShooting.ToString());
         }
     }
