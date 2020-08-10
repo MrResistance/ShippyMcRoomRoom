@@ -31,12 +31,13 @@ public class Projectile : MonoBehaviour
             //Destroy(this.gameObject);
         }
         //Check if enemy
-        else if (collision.gameObject.tag == ("Player") || collision.gameObject.tag == ("Enemy"))
+        if (collision.gameObject.tag == ("Player") || collision.gameObject.tag == ("Enemy"))
         {
             collision.gameObject.GetComponent<EntityHealth>().TakeDamage(damage);
+            sr.enabled = false;
             Destroy(this.gameObject, 3);
         }
-        sr.enabled = false;
+        //sr.enabled = false;
         //Destroy(this.gameObject, 3);
     }
 }

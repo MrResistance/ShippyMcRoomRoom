@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 332d481b51b73a84fa7e5623b03353fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
+  health: 5
   isInvunerable: 0
 --- !u!1001 &7543297359096469878
 PrefabInstance:
@@ -26,6 +26,11 @@ PrefabInstance:
       propertyPath: sr
       value: 
       objectReference: {fileID: 1250977597590752849}
+    - target: {fileID: -3323134159479438883, guid: ddfd9038b8f0e8a40a14b97fe7177ae1,
+        type: 3}
+      propertyPath: damage
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 992922246480892268, guid: ddfd9038b8f0e8a40a14b97fe7177ae1,
         type: 3}
       propertyPath: m_Name
