@@ -20,7 +20,6 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     public void RespawnPlayer()
     {
-
         Debug.Log("Respawning player.");
         GameObject PLAYER = Instantiate(PlayerPrefab, spawn.position, spawn.rotation);
         PLAYER.name = "Player";
@@ -34,6 +33,10 @@ public class PlayerManager : MonoBehaviour
             remainingLives--;
             Invoke("RespawnPlayer",3f);
         }
+    }
+    public void RemoveTempBuffsFromPlayer()
+    {
+        PlayerGameObject.GetComponent<PlayerTopDownController>().RemoveTempBuffs();
     }
 
 }
