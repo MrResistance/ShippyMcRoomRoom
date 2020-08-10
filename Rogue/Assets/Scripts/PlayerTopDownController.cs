@@ -7,11 +7,12 @@ public class PlayerTopDownController : MonoBehaviour
     // Start is called before the first frame update
 
     public bool isDirectionalMovement; //If true, player moves based on where they look; else, upie downlie lefty rightie
-    public bool isControllerEnabled;
+    public bool isControllerEnabled; //If true, player uses controller
 
     public Rigidbody2D rb;
     public Camera camera;
-
+    // Movement
+    //Mouse and keyboard
     public Vector2 mouseposition;
     public Vector2 lookdir;
     public float angle,h,v;
@@ -23,6 +24,8 @@ public class PlayerTopDownController : MonoBehaviour
 
     //Controller stuff?
     public float axisV, axisH;
+
+    //Temp buff variables - so they can be wiped when round is over
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -82,5 +85,9 @@ public class PlayerTopDownController : MonoBehaviour
             rb.AddForce(Vector2.right * h * speed());
         }
 
+    }
+    public void RemoveTempBuffs() //To be called by the WaveManager at the end of every wave
+    {
+        //Set all buffs to ZERO
     }
 }
