@@ -26,6 +26,7 @@ public class Projectile : MonoBehaviour
         {
             //this.gameObject.GetComponent<EntityHealth>().TakeDamage(damage);
             collision.gameObject.GetComponent<EntityHealth>().TakeDamage(damage);
+            Debug.Log("Giving " + damage.ToString() + " to " + collision.gameObject.name);
             //Destroy(collision.gameObject);
             //Destroy(this.gameObject);
         }
@@ -33,8 +34,9 @@ public class Projectile : MonoBehaviour
         else if (collision.gameObject.tag == ("Player") || collision.gameObject.tag == ("Enemy"))
         {
             collision.gameObject.GetComponent<EntityHealth>().TakeDamage(damage);
+            Destroy(this.gameObject, 3);
         }
         sr.enabled = false;
-        Destroy(this.gameObject, 3);
+        //Destroy(this.gameObject, 3);
     }
 }
