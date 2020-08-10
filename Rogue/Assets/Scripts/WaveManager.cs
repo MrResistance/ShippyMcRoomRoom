@@ -32,13 +32,19 @@ public class WaveManager : MonoBehaviour
             if (remainingEnemies == 0 && isWaveChanging == false)
             {
                 isWaveChanging = true;
-                NextWave();
+                EndWave();
+                
             }
             yield return new WaitForSeconds(0.5f);
         }
     }
-
-    public void NextWave()
+    void EndWave()
+    {
+        //Stuff here to give them upgrades and logic to be implemented so NextWave only happens when player has chosen said upgrades
+        this.gameObject.GetComponent<PlayerManager>().RemoveTempBuffsFromPlayer();
+        NextWave();
+    }
+    public void NextWave() //Starts the next wave
     {
         Debug.Log("Next wave!");
         WaveNumber++;
