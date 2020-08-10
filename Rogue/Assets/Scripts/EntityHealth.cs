@@ -25,7 +25,7 @@ public class EntityHealth : MonoBehaviour
         if (health <= 0)
         {
             //If player
-            if (gameObject.tag.Contains("Player"))
+            if (gameObject.tag == ("Player"))
             { 
                 transform.parent.gameObject.GetComponent<PlayerManager>().PlayerHasDied();
             }
