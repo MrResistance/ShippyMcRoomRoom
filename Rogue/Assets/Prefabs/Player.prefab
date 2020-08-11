@@ -621,7 +621,7 @@ MonoBehaviour:
   angle: 0
   h: 0
   v: 0
-  movementspeed: 10
+  movementspeed: 3
   movementspeedbonus: 0
   pm: {fileID: 0}
   axisV: 0
