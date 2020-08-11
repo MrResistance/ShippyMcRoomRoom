@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 332d481b51b73a84fa7e5623b03353fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
+  health: 20
   isInvunerable: 0
 --- !u!1001 &2912269676706284225
 PrefabInstance:
