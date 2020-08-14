@@ -14,7 +14,7 @@ public class WaveManager : MonoBehaviour
     public List<GameObject> listEnemies;
     void Start()
     {
-        NextWave();
+        //NextWave();
         StartCoroutine(WaveUpdate());
     }
 
@@ -42,11 +42,16 @@ public class WaveManager : MonoBehaviour
     {
         //Stuff here to give them upgrades and logic to be implemented so NextWave only happens when player has chosen said upgrades
         this.gameObject.GetComponent<PlayerManager>().RemoveTempBuffsFromPlayer();
-        NextWave();
+        //If not final wave (which rn we don't necessarily have implemented
+        //Hide game HUD
+        //Show Reward Menu
+        this.gameObject.GetComponent<GameUIManager>().SwapPanel();
+        //NextWave();
     }
     public void NextWave() //Starts the next wave
     {
         Debug.Log("Next wave!");
+        this.gameObject.GetComponent<GameUIManager>().SwapPanel();
         WaveNumber++;
         listEnemies.Clear();
         this.gameObject.GetComponent<GameUIManager>().ChangeWaveNumber(WaveNumber);
@@ -70,7 +75,7 @@ public class WaveManager : MonoBehaviour
         {
             float cds = (float)WaveNumber / 10;
             enemy.GetComponent<NPCMoverScript1>().cooldownShooting -= Random.Range(cds/10, cds);
-            Debug.Log(enemy.GetComponent<NPCMoverScript1>().cooldownShooting.ToString());
+            //Debug.Log(enemy.GetComponent<NPCMoverScript1>().cooldownShooting.ToString());
         }
     }
     void CountEnemies()
