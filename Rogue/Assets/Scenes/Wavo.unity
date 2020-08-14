@@ -1903,6 +1903,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1327011397}
     m_Modifications:
+    - target: {fileID: 736251805, guid: 208cadb01a18d8d4792f9cad61630164, type: 3}
+      propertyPath: attackspeed
+      value: 1.25
+      objectReference: {fileID: 0}
     - target: {fileID: 1725060067460742852, guid: 208cadb01a18d8d4792f9cad61630164,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2381,6 +2385,7 @@ MonoBehaviour:
   remainingLives: 3
   perm_movementspeed: 0
   perm_attackspeed: 0
+  perm_damage: 0
 --- !u!114 &1327011396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2430,6 +2435,8 @@ MonoBehaviour:
   t_wavenumber: {fileID: 2035783780}
   UI: {fileID: 210020410}
   ItemNumberChosen: 0
+  upgrades: []
+  upgradeamount: 
 --- !u!1 &1447988037
 GameObject:
   m_ObjectHideFlags: 0
