@@ -84,4 +84,9 @@ public class WaveManager : MonoBehaviour
         remainingEnemies = EnemiesGO.transform.childCount;
         //Debug.Log("Enemy count is: " + remainingEnemies.ToString());
     }
+    public void Reset() //When player dies (ono), this will reset the game
+    {
+        WaveNumber = 0;
+        this.gameObject.GetComponent<PlayerManager>().RemovePermBuffs();
+    }
 }
