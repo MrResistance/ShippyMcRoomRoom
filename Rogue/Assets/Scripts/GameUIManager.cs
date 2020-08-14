@@ -16,6 +16,8 @@ public class GameUIManager : MonoBehaviour
 
     void Start()
     {
+        upgrades = new string[] { "movement", "attackspeed", "damage" };
+        upgradeamount = new int[] { 5, 5, 5 };
         //InvokeRepeating("Pond", 2f, 3f);
     }
     void Pond()
@@ -71,16 +73,16 @@ public class GameUIManager : MonoBehaviour
     {
         ItemNumberChosen = number;
     }
-    string GetChosenItemString()
+    string GetChosenItemString() //Gets the item string from the array depending on the number chosen
     {
         string ci;
-        ci = upgrades[ItemNumberChosen];
+        ci = upgrades[ItemNumberChosen-1]; //minus 1 because buttons start at 1 and array starts at 0
         return ci;
     }
     int GetChosenItemAmount()
     {
         int ca;
-        ca = upgradeamount[ItemNumberChosen];
+        ca = upgradeamount[ItemNumberChosen-1]; //minus 1 because buttons start at 1 and array starts at 0
         return ca;
             
     }
