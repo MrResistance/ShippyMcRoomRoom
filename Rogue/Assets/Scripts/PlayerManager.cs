@@ -57,6 +57,7 @@ public class PlayerManager : MonoBehaviour
     }
     public void AddPermBuffToPlayer(string bonusType,int bonusAmount) //To be called if either the player needs to be respawned - only adds to Player
     {
+        Debug.Log("bonustype:" + bonusType + ",bonus amount:" + bonusAmount.ToString());
         switch (bonusType)
         {
             //Movement speed
@@ -77,7 +78,7 @@ public class PlayerManager : MonoBehaviour
     }
     public void AddToPermBuffAndPlayer(string bonusType, int bonusAmount) //Used when player has chosen a reward - adds to PM and to Player
     {
-        
+        Debug.Log("bonustype:" + bonusType + ",bonus amount:" + bonusAmount.ToString());
         switch (bonusType)
         {
             //Movement speed
