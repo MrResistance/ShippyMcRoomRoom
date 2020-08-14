@@ -8,6 +8,7 @@ public class GameUIManager : MonoBehaviour
 {
     // Start is called before the first frame update
     public TextMeshProUGUI t_wavenumber;
+    public GameObject UI;
     void Start()
     {
         //InvokeRepeating("Pond", 2f, 3f);
@@ -30,5 +31,24 @@ public class GameUIManager : MonoBehaviour
         else
             t_wavenumber.text = "Boss Level";
 
+    }
+    public void ConfirmRewardNextWave()
+    {
+        this.gameObject.GetComponent<WaveManager>().NextWave();
+    }
+    public void SwapPanel()
+    {
+        if (UI.transform.GetChild(0).gameObject.activeInHierarchy) //If Game HUD is enabled, swap for reward
+        {
+            UI.transform.GetChild(0).gameObject.SetActive(false);
+            UI.transform.GetChild(1).gameObject.SetActive(true);
+            Debug.Log("Swapping to Rewards Panel");
+        }
+        else
+        {
+            UI.transform.GetChild(0).gameObject.SetActive(true);
+            UI.transform.GetChild(1).gameObject.SetActive(false);
+            Debug.Log("Swapping to Game Panel");
+        }
     }
 }
