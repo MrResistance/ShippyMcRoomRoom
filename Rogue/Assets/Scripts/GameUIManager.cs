@@ -9,6 +9,11 @@ public class GameUIManager : MonoBehaviour
     // Start is called before the first frame update
     public TextMeshProUGUI t_wavenumber;
     public GameObject UI;
+    public int ItemNumberChosen; //1, 2, or 3
+    public string[] upgrades;
+    public int[] upgradeamount;
+
+
     void Start()
     {
         //InvokeRepeating("Pond", 2f, 3f);
@@ -34,7 +39,18 @@ public class GameUIManager : MonoBehaviour
     }
     public void ConfirmRewardNextWave()
     {
-        this.gameObject.GetComponent<WaveManager>().NextWave();
+        if (ItemNumberChosen != 0)
+        {
+            //Give player reward
+            this.gameObject.GetComponent<PlayerManager>().AddToPermBuffAndPlayer(GetChosenItemString(), GetChosenItemAmount())
+            //Add reward to PM
+
+            //Reset ItemNumberChosen to 0 for future use
+            ItemNumberChosen = 0;
+
+            //Start next round
+            this.gameObject.GetComponent<WaveManager>().NextWave();
+        }
     }
     public void SwapPanel()
     {
@@ -50,5 +66,22 @@ public class GameUIManager : MonoBehaviour
             UI.transform.GetChild(1).gameObject.SetActive(false);
             Debug.Log("Swapping to Game Panel");
         }
+    }
+    public void ChangeItemNumberChosen(int number)
+    {
+        ItemNumberChosen = number;
+    }
+    string GetChosenItemString()
+    {
+        string ci;
+        ci = upgrades[ItemNumberChosen];
+        return ci;
+    }
+    int GetChosenItemAmount()
+    {
+        int ca;
+        ca = upgradeamount[ItemNumberChosen];
+        return ca;
+            
     }
 }
