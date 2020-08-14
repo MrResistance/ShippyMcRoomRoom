@@ -524,7 +524,7 @@ GameObject:
   - component: {fileID: 116404868}
   - component: {fileID: 116404867}
   m_Layer: 5
-  m_Name: Button
+  m_Name: b_Item2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -592,7 +592,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 116404868}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1327011398}
+        m_MethodName: ChangeItemNumberChosen
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &116404868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1129,7 +1140,7 @@ GameObject:
   - component: {fileID: 805769773}
   - component: {fileID: 805769772}
   m_Layer: 5
-  m_Name: Button
+  m_Name: b_Item3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1197,7 +1208,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 805769773}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1327011398}
+        m_MethodName: ChangeItemNumberChosen
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &805769773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1557,7 +1579,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X
+  m_text: '
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1628,7 +1652,7 @@ MonoBehaviour:
     textComponent: {fileID: 1118737738}
     characterCount: 1
     spriteCount: 0
-    spaceCount: 0
+    spaceCount: 1
     wordCount: 1
     linkCount: 0
     lineCount: 1
@@ -2088,7 +2112,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X
+  m_text: '
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2159,7 +2185,7 @@ MonoBehaviour:
     textComponent: {fileID: 1291883986}
     characterCount: 1
     spriteCount: 0
-    spaceCount: 0
+    spaceCount: 1
     wordCount: 1
     linkCount: 0
     lineCount: 1
@@ -2201,7 +2227,7 @@ GameObject:
   - component: {fileID: 1294296460}
   - component: {fileID: 1294296459}
   m_Layer: 5
-  m_Name: Button
+  m_Name: b_ConfirmNextWave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2403,6 +2429,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   t_wavenumber: {fileID: 2035783780}
   UI: {fileID: 210020410}
+  ItemNumberChosen: 0
 --- !u!1 &1447988037
 GameObject:
   m_ObjectHideFlags: 0
@@ -2842,7 +2869,7 @@ GameObject:
   - component: {fileID: 1594164327}
   - component: {fileID: 1594164326}
   m_Layer: 5
-  m_Name: Button
+  m_Name: b_Item1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2910,7 +2937,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1594164327}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1327011398}
+        m_MethodName: ChangeItemNumberChosen
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1594164327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3106,7 +3144,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X
+  m_text: '
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3177,7 +3217,7 @@ MonoBehaviour:
     textComponent: {fileID: 2025290269}
     characterCount: 1
     spriteCount: 0
-    spaceCount: 0
+    spaceCount: 1
     wordCount: 1
     linkCount: 0
     lineCount: 1
