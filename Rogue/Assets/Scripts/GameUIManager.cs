@@ -42,7 +42,7 @@ public class GameUIManager : MonoBehaviour
         if (ItemNumberChosen != 0)
         {
             //Give player reward
-            this.gameObject.GetComponent<PlayerManager>().AddToPermBuffAndPlayer(GetChosenItemString(), GetChosenItemAmount())
+            this.gameObject.GetComponent<PlayerManager>().AddToPermBuffAndPlayer(GetChosenItemString(), GetChosenItemAmount());
             //Add reward to PM
 
             //Reset ItemNumberChosen to 0 for future use
