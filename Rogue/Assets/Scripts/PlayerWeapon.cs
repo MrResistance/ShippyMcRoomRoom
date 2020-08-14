@@ -35,7 +35,7 @@ public class PlayerWeapon : MonoBehaviour
     float CalculateAttackSpeed()
     {
         float number;
-        number = attackspeed - permattackspeedbonus;
+        number = attackspeed - (permattackspeedbonus / 100);
         Debug.Log("Attack speed = " + number.ToString());
         return number;
     }
