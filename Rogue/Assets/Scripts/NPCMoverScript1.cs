@@ -17,6 +17,7 @@ public class NPCMoverScript1 : MonoBehaviour
     public float distanceToPlayerfloat;
 
     Rigidbody2D rb;
+    public float rotationspeed;
     public Transform firePoint; //For firing from
     public float cooldownShooting, maximumShootingDistance, projectileSpeed = 1f;
     public GameObject projectilePrefab, tHealth;
@@ -128,12 +129,18 @@ public class NPCMoverScript1 : MonoBehaviour
         GetDistanceToPlayer();
         if (player != null)
         {
+            ////Old
             float angle = Mathf.Atan2(distanceToPlayer.y, distanceToPlayer.x) * Mathf.Rad2Deg - 90f;
-            rb.rotation = angle;
+            //rb.rotation = angle;
+
+            //New
+            Quaternion rot = Quaternion.AngleAxis(angle, Vector3.forward);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rot, Time.deltaTime * rotationspeed);
         }
         else
         {
-            rb.rotation = 0;
+            //Can just do nothing I guess
+            //rb.rotation = 0;
         }
     }
 }

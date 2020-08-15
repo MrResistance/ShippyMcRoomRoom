@@ -197,6 +197,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   player: {fileID: 0}
   distanceToPlayerfloat: 0
+  rotationspeed: 3
   firePoint: {fileID: 0}
   cooldownShooting: 1.5
   maximumShootingDistance: 100
@@ -205,6 +206,7 @@ MonoBehaviour:
     type: 3}
   tHealth: {fileID: 0}
   audioSource: {fileID: 0}
+  ProjectilesGO: {fileID: 0}
 --- !u!114 &1363479066365114527
 MonoBehaviour:
   m_ObjectHideFlags: 0
