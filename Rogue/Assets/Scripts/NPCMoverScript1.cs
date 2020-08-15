@@ -21,6 +21,8 @@ public class NPCMoverScript1 : MonoBehaviour
     public float cooldownShooting, maximumShootingDistance, projectileSpeed = 1f;
     public GameObject projectilePrefab, tHealth;
     public AudioSource audioSource;
+
+    public GameObject ProjectilesGO;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -86,6 +88,7 @@ public class NPCMoverScript1 : MonoBehaviour
         GameObject projectile = Instantiate(projectilePrefab, firePoint.transform.position, firePoint.transform.rotation);
         Rigidbody2D rbproj = projectile.GetComponent<Rigidbody2D>();
         rbproj.AddForce(firePoint.right * projectileSpeed, ForceMode2D.Impulse);
+        projectile.transform.parent = ProjectilesGO.transform;
     }
     void GetDistanceToPlayer()
     {
