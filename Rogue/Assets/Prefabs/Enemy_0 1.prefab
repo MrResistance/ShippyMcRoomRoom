@@ -198,7 +198,7 @@ MonoBehaviour:
   player: {fileID: 0}
   distanceToPlayerfloat: 0
   firePoint: {fileID: 0}
-  cooldownShooting: 1
+  cooldownShooting: 1.5
   maximumShootingDistance: 100
   projectileSpeed: 15
   projectilePrefab: {fileID: 7307298747946747930, guid: 6cd14bf44657f6d479f0e4cc098ca4ce,
