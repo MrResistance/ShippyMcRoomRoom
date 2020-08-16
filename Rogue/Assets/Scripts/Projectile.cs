@@ -7,8 +7,10 @@ public class Projectile : MonoBehaviour
     public float damage, destroyTimer = 10f;
     public float permdamange;
     public SpriteRenderer sr;
+    private BoxCollider2D bc;
     private void Awake()
     {
+        bc = GetComponent<BoxCollider2D>();
         sr = GetComponent<SpriteRenderer>();
     }
     private void Start()
@@ -36,6 +38,7 @@ public class Projectile : MonoBehaviour
         {
             collision.gameObject.GetComponent<EntityHealth>().TakeDamage(CalculateDamange());
             sr.enabled = false;
+            bc.enabled = false;
             Destroy(this.gameObject, 3);
         }
         //sr.enabled = false;
