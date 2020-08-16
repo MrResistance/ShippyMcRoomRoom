@@ -69,6 +69,21 @@ public class GameUIManager : MonoBehaviour
             Debug.Log("Swapping to Game Panel");
         }
     }
+    public void SwapPanel(int panel)
+    {
+        switch(panel)
+        {
+            case 1:
+                UI.transform.GetChild(0).gameObject.SetActive(false);
+                UI.transform.GetChild(1).gameObject.SetActive(true);
+                break;
+            case 2:
+                UI.transform.GetChild(0).gameObject.SetActive(true);
+                UI.transform.GetChild(1).gameObject.SetActive(false);
+                break;
+
+        }
+    }
     public void ChangeItemNumberChosen(int number)
     {
         ItemNumberChosen = number;
