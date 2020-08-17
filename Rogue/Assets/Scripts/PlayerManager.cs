@@ -16,7 +16,7 @@ public class PlayerManager : MonoBehaviour
 
     private void Awake()
     {
-        PlayerGameObject = transform.GetChild(0).gameObject;
+        //PlayerGameObject = transform.GetChild(0).gameObject;
     }
     void Start()
     {
@@ -34,8 +34,7 @@ public class PlayerManager : MonoBehaviour
         //Apply all perm buffs that player has collected to the player
         AddPermBuffToPlayer("movement", perm_movementspeed);
         AddPermBuffToPlayer("attackspeed", perm_attackspeed);
-
-        PlayerGameObject = PLAYER;
+        //PlayerGameObject = PLAYER;
     }
     public void PlayerHasDied()
     {
@@ -47,7 +46,10 @@ public class PlayerManager : MonoBehaviour
     }
     public void RemoveTempBuffsFromPlayer()
     {
-        PlayerGameObject.GetComponent<PlayerTopDownController>().RemoveTempBuffs();
+        if (PlayerGameObject != null)
+        {
+            PlayerGameObject.GetComponent<PlayerTopDownController>().RemoveTempBuffs();
+        }
     }
 
     public void RemovePermBuffs() //Removes the players collected buffs, usually when game is reset.
@@ -57,23 +59,25 @@ public class PlayerManager : MonoBehaviour
     }
     public void AddPermBuffToPlayer(string bonusType,int bonusAmount) //To be called if either the player needs to be respawned - only adds to Player
     {
-        Debug.Log("bonustype:" + bonusType + ",bonus amount:" + bonusAmount.ToString());
-        switch (bonusType)
+        if (PlayerGameObject != null)
         {
-            //Movement speed
-            case "movement":
+            Debug.Log("bonustype:" + bonusType + ",bonus amount:" + bonusAmount.ToString());
+            switch (bonusType)
+            {
+                //Movement speed
+                case "movement":
+                    PlayerGameObject.GetComponent<PlayerTopDownController>().movementspeedbonus += bonusAmount;
+                    break;
+                case "attackspeed":
+                    PlayerGameObject.GetComponent<PlayerWeapon>().permattackspeedbonus += bonusAmount;
 
-                PlayerGameObject.GetComponent<PlayerTopDownController>().movementspeedbonus += bonusAmount;
-                break;
-            case "attackspeed":
-                PlayerGameObject.GetComponent<PlayerWeapon>().permattackspeedbonus += bonusAmount;
+                    break;
+                case "damage":
+                    PlayerGameObject.GetComponent<PlayerWeapon>().projectilePrefab.GetComponent<Projectile>().permdamange += bonusAmount;
+                    perm_damage += bonusAmount;
+                    break;
 
-                break;
-            case "damage":
-                PlayerGameObject.GetComponent<PlayerWeapon>().projectilePrefab.GetComponent<Projectile>().permdamange += bonusAmount;
-                perm_damage += bonusAmount;
-                break;
-
+            }
         }
     }
     public void AddToPermBuffAndPlayer(string bonusType, int bonusAmount) //Used when player has chosen a reward - adds to PM and to Player

@@ -21,6 +21,7 @@ public class PlayerTopDownController : MonoBehaviour
     public float movementspeedbonus;
 
     public PlayerManager pm;
+    public GameUIManager gm;
 
     //Controller stuff?
     public float axisV, axisH;
@@ -28,20 +29,31 @@ public class PlayerTopDownController : MonoBehaviour
     //Temp buff variables - so they can be wiped when round is over
     private void Awake()
     {
+        gm = GameObject.Find("GameManager").GetComponent<GameUIManager>();
         rb = GetComponent<Rigidbody2D>();
         camera = Camera.main;
+        
     }
     void Start()
     {
         movementspeedbonus = 100; //Default start
         pm = transform.parent.GetComponent<PlayerManager>(); //For now, unused
+        pm.PlayerGameObject = this.gameObject;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Look();
-        Move();
+
+        if (!gm.ShowingRewards)
+        {
+            Look();
+            Move();
+        }
+        else
+        {
+            this.transform.position = new Vector2(0, 0);
+        }
     }
     private float speed()
     {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class GameUIManager : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class GameUIManager : MonoBehaviour
     public int ItemNumberChosen; //1, 2, or 3
     public string[] upgrades;
     public int[] upgradeamount;
+    public bool ShowingRewards = false;
+    public Button item1;
+    public TextMeshProUGUI item1txt, item2txt, item3txt;
 
 
     void Start()
@@ -34,9 +38,14 @@ public class GameUIManager : MonoBehaviour
         if (number != 0)
         {
             t_wavenumber.text = "Wave " + number.ToString();
+            upgradeamount = new int[] { 5 * number, 5 * number, 5 * number };
+            item1txt.text = ("Movement Speed +" + upgradeamount[0]);
+            item2txt.text = ("Attack Speed +" + upgradeamount[1]);
+            item3txt.text = ("Attack Damage +" + upgradeamount[2]);
         }
         else
             t_wavenumber.text = "Boss Level";
+            upgradeamount = new int[] { 5 * number, 5 * number, 5 * number };
 
     }
     public void ConfirmRewardNextWave()
@@ -76,10 +85,12 @@ public class GameUIManager : MonoBehaviour
             case 1: //Reward panel
                 UI.transform.GetChild(0).gameObject.SetActive(false);
                 UI.transform.GetChild(1).gameObject.SetActive(true);
+                ShowingRewards = true;
                 break;
             case 2: //Game UI - health, wave stuff
                 UI.transform.GetChild(0).gameObject.SetActive(true);
                 UI.transform.GetChild(1).gameObject.SetActive(false);
+                ShowingRewards = false;
                 break;
             
 
