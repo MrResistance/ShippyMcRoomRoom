@@ -73,7 +73,7 @@ public class PlayerManager : MonoBehaviour
 
                     break;
                 case "damage":
-                    PlayerGameObject.GetComponent<PlayerWeapon>().projectilePrefab.GetComponent<Projectile>().permdamange += bonusAmount;
+                    PlayerGameObject.GetComponent<PlayerWeapon>().projectilePrefab.GetComponent<Projectile>().permdamage += bonusAmount;
                     perm_damage += bonusAmount;
                     break;
 
@@ -82,22 +82,24 @@ public class PlayerManager : MonoBehaviour
     }
     public void AddToPermBuffAndPlayer(string bonusType, int bonusAmount) //Used when player has chosen a reward - adds to PM and to Player
     {
-        Debug.Log("bonustype:" + bonusType + ",bonus amount:" + bonusAmount.ToString());
-        switch (bonusType)
+        if (PlayerGameObject != null)
         {
-            //Movement speed
-            case "movement":
-                PlayerGameObject.GetComponent<PlayerTopDownController>().movementspeedbonus += bonusAmount;
-                perm_movementspeed += bonusAmount;
-                break;
-            case "attackspeed":
-                PlayerGameObject.GetComponent<PlayerWeapon>().permattackspeedbonus += bonusAmount;
-                perm_attackspeed += bonusAmount;
-                break;
-            case "damage":
-                PlayerGameObject.GetComponent<PlayerWeapon>().projectilePrefab.GetComponent<Projectile>().permdamange += bonusAmount;
-                break;
-
+            Debug.Log("bonus type: " + bonusType + ", bonus amount: " + bonusAmount.ToString());
+            switch (bonusType)
+            {
+                //Movement speed
+                case "movement":
+                    PlayerGameObject.GetComponent<PlayerTopDownController>().movementspeedbonus += bonusAmount;
+                    perm_movementspeed += bonusAmount;
+                    break;
+                case "attackspeed":
+                    PlayerGameObject.GetComponent<PlayerWeapon>().permattackspeedbonus += bonusAmount;
+                    perm_attackspeed += bonusAmount;
+                    break;
+                case "damage":
+                    PlayerGameObject.GetComponent<PlayerWeapon>().projectilePrefab.GetComponent<Projectile>().permdamage += bonusAmount;
+                    break;
+            }
         }
     }
 

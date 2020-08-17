@@ -7,6 +7,7 @@ public class PlayerWeapon : MonoBehaviour
     public Transform firePoint;
     public GameObject projectilePrefab;
     public float attackspeed = 0.5f, projectileSpeed = 1f, permattackspeedbonus;
+    public float damage, permdamagebonus;
     private float nextFire = 0.0f;
     public AudioSource audioSource;
     public SFX_Player sFX_Player;
@@ -34,6 +35,7 @@ public class PlayerWeapon : MonoBehaviour
         audioSource.PlayOneShot(audioSource.clip);
         nextFire = Time.time + CalculateAttackSpeed();
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
+        //projectile.gameObject.GetComponent<Projectile>().damage = damage + permdamagebonus;
         Rigidbody2D rbproj = projectile.GetComponent<Rigidbody2D>();
         rbproj.AddForce(firePoint.right * projectileSpeed, ForceMode2D.Impulse);
     }
@@ -41,7 +43,7 @@ public class PlayerWeapon : MonoBehaviour
     {
         float number;
         number = attackspeed - (permattackspeedbonus / 100);
-        Debug.Log("Attack speed = " + number.ToString());
+        //Debug.Log("Attack speed = " + number.ToString());
         return number;
     }
 }

@@ -17,8 +17,7 @@ public class PlayerTopDownController : MonoBehaviour
     public Vector2 lookdir;
     public float angle,h,v;
 
-    public float movementspeed;
-    public float movementspeedbonus;
+    public float movementspeed, movementspeedbonus;
 
     public PlayerManager pm;
     public GameUIManager gm;
