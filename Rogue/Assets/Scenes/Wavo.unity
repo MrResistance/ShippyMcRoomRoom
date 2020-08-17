@@ -369,8 +369,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: -1
-    m_SelectOnUp: {fileID: 1294296459}
+    m_Mode: 4
+    m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 668658319}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
@@ -864,9 +864,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: -1
+    m_Mode: 4
     m_SelectOnUp: {fileID: 668658319}
-    m_SelectOnDown: {fileID: 216745756}
+    m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 2
@@ -1174,7 +1174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: -1
+    m_Mode: 4
     m_SelectOnUp: {fileID: 61514056}
     m_SelectOnDown: {fileID: 216745756}
     m_SelectOnLeft: {fileID: 0}
@@ -2096,6 +2096,7 @@ MonoBehaviour:
   upgrades: []
   upgradeamount: 
   ShowingRewards: 0
+  item1: {fileID: 61514056}
 --- !u!1 &1447988037
 GameObject:
   m_ObjectHideFlags: 0

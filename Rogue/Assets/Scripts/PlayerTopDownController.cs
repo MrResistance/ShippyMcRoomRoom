@@ -42,10 +42,15 @@ public class PlayerTopDownController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (!gm.ShowingRewards)
         {
             Look();
             Move();
+        }
+        else
+        {
+            this.transform.position = new Vector2(0, 0);
         }
     }
     private float speed()

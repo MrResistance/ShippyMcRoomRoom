@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class GameUIManager : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class GameUIManager : MonoBehaviour
     public string[] upgrades;
     public int[] upgradeamount;
     public bool ShowingRewards = false;
+    public Button item1;
 
 
     void Start()
