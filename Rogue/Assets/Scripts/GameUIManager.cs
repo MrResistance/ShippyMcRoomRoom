@@ -12,6 +12,7 @@ public class GameUIManager : MonoBehaviour
     public int ItemNumberChosen; //1, 2, or 3
     public string[] upgrades;
     public int[] upgradeamount;
+    public bool ShowingRewards = false;
 
 
     void Start()
@@ -76,10 +77,12 @@ public class GameUIManager : MonoBehaviour
             case 1:
                 UI.transform.GetChild(0).gameObject.SetActive(false);
                 UI.transform.GetChild(1).gameObject.SetActive(true);
+                ShowingRewards = true;
                 break;
             case 2:
                 UI.transform.GetChild(0).gameObject.SetActive(true);
                 UI.transform.GetChild(1).gameObject.SetActive(false);
+                ShowingRewards = false;
                 break;
 
         }

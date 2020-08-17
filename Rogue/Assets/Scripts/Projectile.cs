@@ -17,7 +17,7 @@ public class Projectile : MonoBehaviour
     {
         Destroy(this.gameObject, destroyTimer);
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag.Contains("Boundary"))
         {
@@ -43,6 +43,10 @@ public class Projectile : MonoBehaviour
         }
         //sr.enabled = false;
         //Destroy(this.gameObject, 3);
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        
     }
     public float CalculateDamange()
     {

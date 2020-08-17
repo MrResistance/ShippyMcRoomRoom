@@ -10,17 +10,22 @@ public class PlayerWeapon : MonoBehaviour
     private float nextFire = 0.0f;
     public AudioSource audioSource;
     public SFX_Player sFX_Player;
+    public GameUIManager gm;
     private void Awake()
     {
         //sFX_Player = GameObject.Find("SFX_Player").GetComponent<SFX_Player>();
+        gm = GameObject.Find("GameManager").GetComponent<GameUIManager>();
         audioSource = gameObject.GetComponent<AudioSource>();
     }
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetAxis("ControllerTriggers") > 0 && Time.time > nextFire)
+        if (!gm.ShowingRewards)
         {
-            FireWeapon();
+            if (Input.GetAxis("ControllerTriggers") > 0 && Time.time > nextFire)
+            {
+                FireWeapon();
+            }
         }
     }
     void FireWeapon()
