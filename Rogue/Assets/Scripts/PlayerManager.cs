@@ -70,11 +70,10 @@ public class PlayerManager : MonoBehaviour
                     break;
                 case "attackspeed":
                     PlayerGameObject.GetComponent<PlayerWeapon>().permattackspeedbonus += bonusAmount;
-
                     break;
                 case "damage":
                     PlayerGameObject.GetComponent<PlayerWeapon>().permdamagebonus += bonusAmount;
-                    perm_damage += bonusAmount;
+                    
                     break;
 
             }
@@ -90,14 +89,15 @@ public class PlayerManager : MonoBehaviour
                 //Movement speed
                 case "movement":
                     PlayerGameObject.GetComponent<PlayerTopDownController>().movementspeedbonus += bonusAmount;
-                    perm_movementspeed += bonusAmount;
+                    perm_movementspeed += bonusAmount; //Saves new movement speed bonus to PM
                     break;
                 case "attackspeed":
                     PlayerGameObject.GetComponent<PlayerWeapon>().permattackspeedbonus += bonusAmount;
-                    perm_attackspeed += bonusAmount;
+                    perm_attackspeed += bonusAmount; //Saves new attack speed to PM
                     break;
                 case "damage":
-                    PlayerGameObject.GetComponent<PlayerWeapon>().projectilePrefab.GetComponent<Projectile>().permdamage += bonusAmount;
+                    PlayerGameObject.GetComponent<PlayerWeapon>().permdamagebonus += bonusAmount;
+                    perm_damage += bonusAmount; //Saves new bonus damage to PM
                     break;
             }
         }
