@@ -32,11 +32,13 @@ public class PlayerTopDownController : MonoBehaviour
         gm = GameObject.Find("GameManager").GetComponent<GameUIManager>();
         rb = GetComponent<Rigidbody2D>();
         camera = Camera.main;
+        
     }
     void Start()
     {
         movementspeedbonus = 100; //Default start
         pm = transform.parent.GetComponent<PlayerManager>(); //For now, unused
+        pm.PlayerGameObject = this.gameObject;
     }
 
     // Update is called once per frame
