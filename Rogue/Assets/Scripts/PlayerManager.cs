@@ -73,7 +73,7 @@ public class PlayerManager : MonoBehaviour
 
                     break;
                 case "damage":
-                    PlayerGameObject.GetComponent<PlayerWeapon>().projectilePrefab.GetComponent<Projectile>().permdamage += bonusAmount;
+                    PlayerGameObject.GetComponent<PlayerWeapon>().permdamagebonus += bonusAmount;
                     perm_damage += bonusAmount;
                     break;
 

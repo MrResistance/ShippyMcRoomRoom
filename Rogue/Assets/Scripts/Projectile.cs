@@ -5,7 +5,6 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     public float damage, destroyTimer = 10f;
-    public float permdamage;
     public SpriteRenderer sr;
     private BoxCollider2D bc;
     private void Awake()
@@ -28,7 +27,7 @@ public class Projectile : MonoBehaviour
         if (collision.gameObject.tag.Contains("Projectile"))
         {
             //this.gameObject.GetComponent<EntityHealth>().TakeDamage(damage);
-            collision.gameObject.GetComponent<EntityHealth>().TakeDamage(CalculateDamage());
+            collision.gameObject.GetComponent<EntityHealth>().TakeDamage(damage);
             //Debug.Log("Giving " + CalculateDamange().ToString() + " to " + collision.gameObject.name);
             //Destroy(collision.gameObject);
             //Destroy(this.gameObject);
@@ -36,7 +35,7 @@ public class Projectile : MonoBehaviour
         //Check if enemy
         if (collision.gameObject.tag == ("Player") || collision.gameObject.tag == ("Enemy"))
         {
-            collision.gameObject.GetComponent<EntityHealth>().TakeDamage(CalculateDamage());
+            collision.gameObject.GetComponent<EntityHealth>().TakeDamage(damage);
             sr.enabled = false;
             bc.enabled = false;
             Destroy(this.gameObject, 3);
@@ -48,10 +47,5 @@ public class Projectile : MonoBehaviour
     {
         
     }
-    public float CalculateDamage()
-    {
-        float number;
-        number = damage + permdamage;
-        return number;
-    }
+
 }
