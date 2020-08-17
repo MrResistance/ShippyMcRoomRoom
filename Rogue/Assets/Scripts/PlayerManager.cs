@@ -34,6 +34,7 @@ public class PlayerManager : MonoBehaviour
         //Apply all perm buffs that player has collected to the player
         AddPermBuffToPlayer("movement", perm_movementspeed);
         AddPermBuffToPlayer("attackspeed", perm_attackspeed);
+        AddPermBuffToPlayer("damage", perm_damage);
         //PlayerGameObject = PLAYER;
     }
     public void PlayerHasDied()
