@@ -2097,6 +2097,9 @@ MonoBehaviour:
   upgradeamount: 
   ShowingRewards: 0
   item1: {fileID: 61514056}
+  item1txt: {fileID: 43714249}
+  item2txt: {fileID: 1532482211}
+  item3txt: {fileID: 1483860725}
 --- !u!1 &1447988037
 GameObject:
   m_ObjectHideFlags: 0
