@@ -54,7 +54,7 @@ public class GameUIManager : MonoBehaviour
             this.gameObject.GetComponent<WaveManager>().NextWave();
         }
     }
-    public void SwapPanel()
+    public void SwapPanel() //Not used now 'cause it just switched between two
     {
         if (UI.transform.GetChild(0).gameObject.activeInHierarchy) //If Game HUD is enabled, swap for reward
         {
@@ -69,18 +69,19 @@ public class GameUIManager : MonoBehaviour
             Debug.Log("Swapping to Game Panel");
         }
     }
-    public void SwapPanel(int panel)
+    public void SwapPanel(int panel) //Superior because you can specify
     {
         switch(panel)
         {
-            case 1:
+            case 1: //Reward panel
                 UI.transform.GetChild(0).gameObject.SetActive(false);
                 UI.transform.GetChild(1).gameObject.SetActive(true);
                 break;
-            case 2:
+            case 2: //Game UI - health, wave stuff
                 UI.transform.GetChild(0).gameObject.SetActive(true);
                 UI.transform.GetChild(1).gameObject.SetActive(false);
                 break;
+            
 
         }
     }
@@ -101,4 +102,5 @@ public class GameUIManager : MonoBehaviour
         return ca;
             
     }
+
 }
