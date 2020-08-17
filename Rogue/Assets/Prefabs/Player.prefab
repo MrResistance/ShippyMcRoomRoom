@@ -642,10 +642,10 @@ MonoBehaviour:
   firePoint: {fileID: 414512572}
   projectilePrefab: {fileID: 2715077195191800749, guid: 50a77513dfc6c1c48891777dcea4cebb,
     type: 3}
-  attackspeed: 1.25
+  attackspeed: 1
   projectileSpeed: 50
   permattackspeedbonus: 0
-  damage: 0
+  damage: 10
   permdamagebonus: 0
   audioSource: {fileID: 0}
   sFX_Player: {fileID: 0}
