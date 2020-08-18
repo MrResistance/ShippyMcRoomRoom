@@ -2079,6 +2079,7 @@ MonoBehaviour:
   EnemiesGO: {fileID: 1731576404}
   EnemyPrefab: {fileID: 1363479066365114498, guid: 3cadf8672b6e811499f4f8b85f958fb2,
     type: 3}
+  Repeater: {fileID: 11400000, guid: 534a6a0fc4db5ad458167502b4525f50, type: 2}
   ProjectilesGO: {fileID: 197161493}
   listEnemies: []
 --- !u!4 &1327011397
