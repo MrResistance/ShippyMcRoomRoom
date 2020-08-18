@@ -6,6 +6,7 @@ using UnityEngine;
 public class WeaponData : ScriptableObject
 {
     public string name; //Weapon name
+    public string description;
     public int damage; //Damage of projectile on-impact
     public float rateoffire;
     public float speed;
