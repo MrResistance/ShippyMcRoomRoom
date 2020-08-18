@@ -12,14 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f89e373badc1fd40aa6cebd87df7aac, type: 3}
   m_Name: Repeater
   m_EditorClassIdentifier: 
-  name: 
-  damage: 0
-  rateoffire: 0
-  speed: 0
+  name: RepeaterCannon
+  description: Bog-standard for starter enemy
+  damage: 5
+  rateoffire: 1
+  speed: 15
   chargetime: 0
-  spread: 0
-  range: 0
-  isUnlimitedAmmo: 0
+  spread: 5
+  range: 50
+  isUnlimitedAmmo: 1
   ammo: 0
   isExplosiveProjectile: 0
   explosionType: 
