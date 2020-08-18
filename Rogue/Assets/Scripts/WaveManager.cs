@@ -10,6 +10,7 @@ public class WaveManager : MonoBehaviour
 
     public GameObject EnemiesGO;
     public GameObject EnemyPrefab;
+    public WeaponData Repeater;
 
     public GameObject ProjectilesGO;
 
@@ -73,6 +74,7 @@ public class WaveManager : MonoBehaviour
             //Enemy.GetComponent<NPCMoverScript1>().cooldownShooting -= (WaveNumber / 10);
             Enemy.transform.parent = EnemiesGO.transform;
             Enemy.GetComponent<NPCMoverScript1>().ProjectilesGO = ProjectilesGO;
+            Enemy.GetComponent<NPCMoverScript1>().weaponData = Repeater;
             listEnemies.Add(Enemy);
         }
         foreach (GameObject enemy in listEnemies)
