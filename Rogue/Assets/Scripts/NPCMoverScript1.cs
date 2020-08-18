@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class NPCMoverScript1 : MonoBehaviour
 {
     // Start is called before the first frame update
+    public WeaponData weaponData;
+    
     public AnimationCurve curveX, curveY;
     public Keyframe[] keyframesX;
     public Keyframe[] keyframesY;
@@ -70,7 +72,7 @@ public class NPCMoverScript1 : MonoBehaviour
         {
             if (player != null)
             { 
-                if (distanceToPlayerfloat < maximumShootingDistance)
+                if (distanceToPlayerfloat < weaponData.range)
                 {
                     ShootPlayer();
                 }
@@ -79,7 +81,7 @@ public class NPCMoverScript1 : MonoBehaviour
             {
                 player = GameObject.Find("Player");
             }
-            yield return new WaitForSeconds(cooldownShooting);
+            yield return new WaitForSeconds(weaponData.rateoffire);
         }
     }
     void ShootPlayer()
@@ -88,7 +90,8 @@ public class NPCMoverScript1 : MonoBehaviour
         audioSource.PlayOneShot(audioSource.clip);
         GameObject projectile = Instantiate(projectilePrefab, firePoint.transform.position, firePoint.transform.rotation);
         Rigidbody2D rbproj = projectile.GetComponent<Rigidbody2D>();
-        rbproj.AddForce(firePoint.right * projectileSpeed, ForceMode2D.Impulse);
+        projectile.GetComponent<Projectile>().damage = weaponData.damage;
+        rbproj.AddForce(firePoint.right * weaponData.speed, ForceMode2D.Impulse);
         projectile.transform.parent = ProjectilesGO.transform;
     }
     void GetDistanceToPlayer()
