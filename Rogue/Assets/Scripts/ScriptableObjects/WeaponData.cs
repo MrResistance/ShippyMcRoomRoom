@@ -2,21 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Weapons : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-}
-public class Weapon
+[CreateAssetMenu(fileName = "WeaponData", menuName = "Scriptables/WeaponData")]
+public class WeaponData : ScriptableObject
 {
     public string name; //Weapon name
     public int damage; //Damage of projectile on-impact
@@ -42,5 +29,5 @@ public class Weapon
     public float scatteredprojectilespeed;
     public float scatteredprojectilerange;
     public int scattedprojectiledamage;
-    
 }
+
