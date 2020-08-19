@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Sirenix.OdinInspector;
 public class WaveManager : MonoBehaviour
 {
     public int WaveNumber;
@@ -15,6 +15,18 @@ public class WaveManager : MonoBehaviour
     public GameObject ProjectilesGO;
 
     public List<GameObject> listEnemies;
+
+    [ShowInInspector, PropertyRange(-50,50)]
+    public int ManualSpawnX { get; set;}
+    [ShowInInspector, PropertyRange(-31, 31)]
+    public int ManualSpawnY { get; set; }
+
+
+    [Button("Spawn Enemy")]
+    private void SpawnEnemyButton()
+    {
+        ManualSpawnEnemy();
+    }
     void Start()
     {
         NextWave();
@@ -84,6 +96,19 @@ public class WaveManager : MonoBehaviour
             //Debug.Log(enemy.GetComponent<NPCMoverScript1>().cooldownShooting.ToString());
         }
     }
+
+    void ManualSpawnEnemy()
+    {
+        Transform EnemySpawn = EnemiesGO.transform;
+        Vector3 esp = new Vector3(ManualSpawnX, ManualSpawnY, 0f);
+        GameObject Enemy = Instantiate(EnemyPrefab, esp, EnemySpawn.rotation);
+        //Enemy.GetComponent<NPCMoverScript1>().cooldownShooting -= (WaveNumber / 10);
+        Enemy.transform.parent = EnemiesGO.transform;
+        Enemy.GetComponent<NPCMoverScript1>().ProjectilesGO = ProjectilesGO;
+        Enemy.GetComponent<NPCMoverScript1>().weaponData = Repeater;
+        listEnemies.Add(Enemy);
+    }
+
     void CountEnemies()
     {
         
