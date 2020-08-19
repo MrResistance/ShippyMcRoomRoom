@@ -2,8 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
+
 public class MainMenuUIManager : MonoBehaviour
 {
+    public GameObject defaultButton;
+    private void Awake()
+    {
+        defaultButton = GameObject.FindGameObjectWithTag("Default Button");
+        
+        //EventSystem.current.SetSelectedGameObject(null);
+        //EventSystem.current.SetSelectedGameObject(defaultButton);
+    }
+    public void HighlightButton()
+    {
+        defaultButton.GetComponent<Button>().Select();
+        defaultButton.GetComponent<Button>().OnSelect(null);
+    }
     public void NextScene()
     {
         int currentScene;

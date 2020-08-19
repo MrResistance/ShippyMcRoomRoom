@@ -8,6 +8,7 @@ TagManager:
   - Enemy Projectile
   - Enemy
   - Boundary
+  - Default Button
   layers:
   - Default
   - TransparentFX
