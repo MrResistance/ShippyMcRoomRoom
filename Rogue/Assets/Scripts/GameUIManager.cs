@@ -4,12 +4,15 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.Playables;
 
 public class GameUIManager : MonoBehaviour
 {
     // Start is called before the first frame update
     public TextMeshProUGUI t_wavenumber;
-    public GameObject UI;
+    public GameObject UI, defaultButton;
+    public PlayableDirector dir;
+    public Sprite buttonDefaultSprite;
     public int ItemNumberChosen; //1, 2, or 3
     public string[] upgrades;
     public int[] upgradeamount;
@@ -17,7 +20,10 @@ public class GameUIManager : MonoBehaviour
     public Button item1;
     public TextMeshProUGUI item1txt, item2txt, item3txt;
 
-
+    private void Awake()
+    {
+        defaultButton = GameObject.FindGameObjectWithTag("Default Button");
+    }
     void Start()
     {
         upgrades = new string[] { "movement", "attackspeed", "damage" };
@@ -32,6 +38,12 @@ public class GameUIManager : MonoBehaviour
     void Update()
     {
         
+    }
+    public void HighlightButton()
+    {
+        defaultButton.GetComponent<Button>().Select();
+        defaultButton.GetComponent<Button>().OnSelect(null);
+        defaultButton.GetComponent<Image>().sprite = buttonDefaultSprite;
     }
     public void ChangeWaveNumber(int number)
     {
@@ -69,6 +81,8 @@ public class GameUIManager : MonoBehaviour
         {
             UI.transform.GetChild(0).gameObject.SetActive(false);
             UI.transform.GetChild(1).gameObject.SetActive(true);
+            dir.Play();
+            //HighlightButton();
             Debug.Log("Swapping to Rewards Panel");
         }
         else

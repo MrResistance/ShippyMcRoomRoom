@@ -142,7 +142,7 @@ public class NPCMoverScript1 : MonoBehaviour
             Quaternion rot = Quaternion.AngleAxis(angle, Vector3.forward);
             Vector3 angle2 = transform.rotation.eulerAngles;
 
-            Debug.Log("Angle =" + angle.ToString() + ",Angle2 = "+ angle2.ToString());
+            //Debug.Log("Angle =" + angle.ToString() + ",Angle2 = "+ angle2.ToString());
             transform.rotation = Quaternion.Slerp(transform.rotation, rot, Time.deltaTime * rotationspeed);
         }
         else
