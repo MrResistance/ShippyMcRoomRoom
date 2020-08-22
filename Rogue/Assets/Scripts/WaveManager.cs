@@ -29,8 +29,14 @@ public class WaveManager : MonoBehaviour
     }
     void Start()
     {
-        NextWave();
+        StartWave();
         StartCoroutine(WaveUpdate());
+    }
+    void StartWave()
+    {
+        //Spawns player
+        this.gameObject.GetComponent<PlayerManager>().RespawnPlayer();
+        NextWave();
     }
 
     // Update is called once per frame
