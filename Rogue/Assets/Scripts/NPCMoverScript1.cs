@@ -29,7 +29,6 @@ public class NPCMoverScript1 : MonoBehaviour
     public GameObject ProjectilesGO;
     private void Awake()
     {
-        GetComponent<AIDestinationSetter>().target = GameObject.Find("Player").transform;
         rb = GetComponent<Rigidbody2D>();
         audioSource = gameObject.GetComponent<AudioSource>();
     }
@@ -81,6 +80,7 @@ public class NPCMoverScript1 : MonoBehaviour
             }
             else
             {
+                GetComponent<AIDestinationSetter>().target = GameObject.Find("Player").transform;
                 player = GameObject.Find("Player");
             }
             yield return new WaitForSeconds(weaponData.rateoffire);
