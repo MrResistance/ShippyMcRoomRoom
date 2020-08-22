@@ -53,8 +53,7 @@ public class GameUIManager : MonoBehaviour
         if (number != 0)
         {
             t_wavenumber.text = "Wave " + number.ToString();
-            upgradeamount = new float[] { 5 * (1 + (number / 10)), 5 * (1 + (number / 10)), 5 * (1 + (number / 10)) };
-            Debug.Log(upgradeamount);
+            upgradeamount = new float[] { 5f * (1f + (number / 10f)), 5f * (1f + (number / 10f)), 5f * (1f + (number / 10f)) };
             item1txt.text = ("Movement Speed +" + upgradeamount[0]);
             item2txt.text = ("Attack Speed +" + upgradeamount[1]);
             item3txt.text = ("Attack Damage +" + upgradeamount[2]);
