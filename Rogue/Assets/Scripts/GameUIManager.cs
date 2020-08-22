@@ -17,7 +17,7 @@ public class GameUIManager : MonoBehaviour
     public float[] upgradeamount;
     public bool ShowingRewards = false;
     public Button item1;
-    public TextMeshProUGUI item1txt, item2txt, item3txt;
+    public TextMeshProUGUI item1txt, item2txt, item3txt, upgradeAmountDebug;
 
     private void Awake()
     {
@@ -27,26 +27,12 @@ public class GameUIManager : MonoBehaviour
     void Start()
     {
         upgrades = new string[] { "movement", "attackspeed", "damage" };
-        upgradeamount = new float[] { 5, 5, 5 };
-        //InvokeRepeating("Pond", 2f, 3f);
-    }
-    void Pond()
-    {
-        //Debug.Log("Honlo, time is: " + Time.time);
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
+        upgradeamount = new float[] { 5f * (1f + (0.1f)), 5f * (1f + (0.1f)), 5f * (1f + (0.1f)) };
     }
     public void HighlightButton()
     {
-        //defaultButton.GetComponent<Button>().Select();
-        //defaultButton.GetComponent<Button>().OnSelect(null);
         eventSystem.SetSelectedGameObject(null);
         eventSystem.SetSelectedGameObject(defaultButton);
-        Debug.Log(eventSystem.lastSelectedGameObject);
-        //defaultButton.GetComponent<Image>().sprite = buttonDefaultSprite;
     }
     public void ChangeWaveNumber(int number)
     {
@@ -54,6 +40,7 @@ public class GameUIManager : MonoBehaviour
         {
             t_wavenumber.text = "Wave " + number.ToString();
             upgradeamount = new float[] { 5f * (1f + (number / 10f)), 5f * (1f + (number / 10f)), 5f * (1f + (number / 10f)) };
+            upgradeAmountDebug.text = ("Upgrade Amount: " + upgradeamount[0]);
             item1txt.text = ("Movement Speed +" + upgradeamount[0]);
             item2txt.text = ("Attack Speed +" + upgradeamount[1]);
             item3txt.text = ("Attack Damage +" + upgradeamount[2]);
@@ -93,8 +80,6 @@ public class GameUIManager : MonoBehaviour
                 UI.transform.GetChild(1).gameObject.SetActive(false);
                 ShowingRewards = false;
                 break;
-            
-
         }
     }
     public void ChangeItemNumberChosen(int number)
