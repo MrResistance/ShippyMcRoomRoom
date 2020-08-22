@@ -43,7 +43,7 @@ public class GameUIManager : MonoBehaviour
     {
         defaultButton.GetComponent<Button>().Select();
         defaultButton.GetComponent<Button>().OnSelect(null);
-        defaultButton.GetComponent<Image>().sprite = buttonDefaultSprite;
+        //defaultButton.GetComponent<Image>().sprite = buttonDefaultSprite;
     }
     public void ChangeWaveNumber(int number)
     {
