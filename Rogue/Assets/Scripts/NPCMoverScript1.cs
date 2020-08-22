@@ -169,7 +169,7 @@ public class NPCMoverScript1 : MonoBehaviour
         Quaternion quat = firePoint.transform.rotation;
         //Somehow add the spread - weaponData.spread
 
-        Debug.Log(quat.ToString());
+        //Debug.Log(quat.ToString());
         return quat;
     }
 }
