@@ -177,7 +177,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Movement Speed + 5
+  m_text: 'Movement Speed +5
 
 '
   m_isRightToLeft: 0
@@ -249,9 +249,9 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 43714249}
-    characterCount: 19
+    characterCount: 18
     spriteCount: 0
-    spaceCount: 4
+    spaceCount: 3
     wordCount: 3
     linkCount: 0
     lineCount: 1
@@ -2511,7 +2511,7 @@ MonoBehaviour:
     type: 3}
   ItemNumberChosen: 0
   upgrades: []
-  upgradeamount: 
+  upgradeamount: []
   ShowingRewards: 0
   item1: {fileID: 61514056}
   item1txt: {fileID: 43714249}
@@ -2687,7 +2687,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Attack Damage + 5
+  m_text: Attack Damage +5
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5e88f6c49543a334fb0392a8c98ad612, type: 2}
   m_sharedMaterial: {fileID: 2894764649858962965, guid: 5e88f6c49543a334fb0392a8c98ad612,
@@ -2757,9 +2757,9 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1483860725}
-    characterCount: 17
+    characterCount: 16
     spriteCount: 0
-    spaceCount: 3
+    spaceCount: 2
     wordCount: 3
     linkCount: 0
     lineCount: 1
@@ -2844,7 +2844,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Attack Speed + 5
+  m_text: Attack Speed +5
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5e88f6c49543a334fb0392a8c98ad612, type: 2}
   m_sharedMaterial: {fileID: 2894764649858962965, guid: 5e88f6c49543a334fb0392a8c98ad612,
@@ -2914,9 +2914,9 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1532482211}
-    characterCount: 16
+    characterCount: 15
     spriteCount: 0
-    spaceCount: 3
+    spaceCount: 2
     wordCount: 3
     linkCount: 0
     lineCount: 1
