@@ -10,8 +10,8 @@ public class WaveManager : MonoBehaviour
 
     public GameObject EnemiesGO;
     public GameObject EnemyPrefab;
-    public WeaponData Repeater;
-
+    public WeaponData Repeater; //Base weapon
+    public List<EnemyData> enemyDataList;
     public GameObject ProjectilesGO;
 
     public List<GameObject> listEnemies;
@@ -88,12 +88,7 @@ public class WaveManager : MonoBehaviour
         for (int e = 0; e < WaveNumber;e++)
         {
             Vector3 esp = new Vector3(-40f+(e*10), 25f,0f);
-            GameObject Enemy = Instantiate(EnemyPrefab, esp, EnemySpawn.rotation);
-            //Enemy.GetComponent<NPCMoverScript1>().cooldownShooting -= (WaveNumber / 10);
-            Enemy.transform.parent = EnemiesGO.transform;
-            Enemy.GetComponent<NPCMoverScript1>().ProjectilesGO = ProjectilesGO;
-            Enemy.GetComponent<NPCMoverScript1>().weaponData = Repeater;
-            listEnemies.Add(Enemy);
+            SpawnEnemy(enemyDataList[0], esp);
         }
         foreach (GameObject enemy in listEnemies)
         {
@@ -117,7 +112,6 @@ public class WaveManager : MonoBehaviour
 
     void CountEnemies()
     {
-        
         remainingEnemies = EnemiesGO.transform.childCount;
         //Debug.Log("Enemy count is: " + remainingEnemies.ToString());
     }
@@ -132,5 +126,16 @@ public class WaveManager : MonoBehaviour
         {
             GameObject.Destroy(child.gameObject);
         }
+    }
+    public void SpawnEnemy(EnemyData ed, Vector3 location)
+    {
+        Transform EnemySpawn = EnemiesGO.transform;
+        GameObject Enemy = Instantiate(EnemyPrefab, location, EnemySpawn.rotation);
+        //Enemy.GetComponent<NPCMoverScript1>().cooldownShooting -= (WaveNumber / 10);
+        Enemy.transform.parent = EnemiesGO.transform;
+        Enemy.GetComponent<NPCMoverScript1>().ProjectilesGO = ProjectilesGO;
+        Enemy.GetComponent<NPCMoverScript1>().enemyData = ed;
+        Enemy.GetComponent<NPCMoverScript1>().weaponData = Repeater;
+        listEnemies.Add(Enemy);
     }
 }
