@@ -72,7 +72,7 @@ public class WaveManager : MonoBehaviour
     }
     public void NextWave() //Starts the next wave
     {
-        Debug.Log("Next wave = " + WaveNumber + "!");
+        Debug.Log("Next wave!");
         this.gameObject.GetComponent<GameUIManager>().SwapPanel(2);
         WaveNumber++;
         listEnemies.Clear();
@@ -83,8 +83,6 @@ public class WaveManager : MonoBehaviour
     void SpawnEnemies()
     {
         Transform EnemySpawn = EnemiesGO.transform;
-
-
         for (int e = 0; e < WaveNumber;e++)
         {
             Vector3 esp = new Vector3(-40f+(e*10), 25f,0f);
