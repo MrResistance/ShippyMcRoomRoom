@@ -10,9 +10,9 @@ public class PlayerManager : MonoBehaviour
     public int remainingLives;
 
     //Perm buffs
-    public int perm_movementspeed;
-    public int perm_attackspeed;
-    public int perm_damage;
+    public float perm_movementspeed;
+    public float perm_attackspeed;
+    public float perm_damage;
 
     public GameObject debugCanvas;
 
@@ -61,7 +61,7 @@ public class PlayerManager : MonoBehaviour
         perm_movementspeed = 0;
         perm_attackspeed = 0;
     }
-    public void AddPermBuffToPlayer(string bonusType,int bonusAmount) //To be called if either the player needs to be respawned - only adds to Player
+    public void AddPermBuffToPlayer(string bonusType,float bonusAmount) //To be called if either the player needs to be respawned - only adds to Player
     {
         if (PlayerGameObject != null)
         {
@@ -83,7 +83,7 @@ public class PlayerManager : MonoBehaviour
             }
         }
     }
-    public void AddToPermBuffAndPlayer(string bonusType, int bonusAmount) //Used when player has chosen a reward - adds to PM and to Player
+    public void AddToPermBuffAndPlayer(string bonusType, float bonusAmount) //Used when player has chosen a reward - adds to PM and to Player
     {
         if (PlayerGameObject != null)
         {
