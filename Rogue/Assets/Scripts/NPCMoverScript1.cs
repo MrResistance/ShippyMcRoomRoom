@@ -72,7 +72,7 @@ public class NPCMoverScript1 : MonoBehaviour
         {
             if (player != null)
             { 
-                if (distanceToPlayerfloat < weaponData.range)
+                if (isCloseEnoughToShoot() && isCurrentlyLookingAtTarget())
                 {
                     ShootPlayer();
                 }
@@ -138,6 +138,9 @@ public class NPCMoverScript1 : MonoBehaviour
 
             //New
             Quaternion rot = Quaternion.AngleAxis(angle, Vector3.forward);
+            Vector3 angle2 = transform.rotation.eulerAngles;
+
+            Debug.Log("Angle =" + angle.ToString() + ",Angle2 = "+ angle2.ToString());
             transform.rotation = Quaternion.Slerp(transform.rotation, rot, Time.deltaTime * rotationspeed);
         }
         else
@@ -145,5 +148,18 @@ public class NPCMoverScript1 : MonoBehaviour
             //Can just do nothing I guess
             //rb.rotation = 0;
         }
+    }
+    bool isCloseEnoughToShoot() //So entity knows it can hit the target
+    {
+        if (distanceToPlayerfloat < weaponData.range)
+        { 
+            return true;
+        }
+        return false;
+
+    }
+    bool isCurrentlyLookingAtTarget() //So the entity is not just shooting aimlessly
+    {
+        return true;
     }
 }
