@@ -1657,7 +1657,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1455635942}
   - component: {fileID: 1455635941}
-  - component: {fileID: 1455635940}
   m_Layer: 0
   m_Name: Timeline
   m_TagString: Untagged
@@ -1665,25 +1664,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!95 &1455635940
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1455635939}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!320 &1455635941
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -1699,8 +1679,6 @@ PlayableDirector:
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
   m_SceneBindings:
-  - key: {fileID: 1825731154562985877, guid: b2d10a77d0e599f41a74623a72b63b4b, type: 2}
-    value: {fileID: 1455635940}
   - key: {fileID: -4630649017617437927, guid: b2d10a77d0e599f41a74623a72b63b4b, type: 2}
     value: {fileID: 569822174}
   - key: {fileID: -1848332302131100940, guid: b2d10a77d0e599f41a74623a72b63b4b, type: 2}

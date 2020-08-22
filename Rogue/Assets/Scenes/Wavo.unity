@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -293,6 +293,7 @@ GameObject:
   - component: {fileID: 61514054}
   - component: {fileID: 61514056}
   - component: {fileID: 61514057}
+  - component: {fileID: 61514058}
   m_Layer: 5
   m_Name: Item1
   m_TagString: Default Button
@@ -442,6 +443,35 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &61514058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 61514052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: 268b36c2384090c4982ad813f8f31be7, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1327011398}
+          m_MethodName: HighlightButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &95519492
 GameObject:
   m_ObjectHideFlags: 0
@@ -1571,8 +1601,8 @@ PlayableDirector:
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
   m_SceneBindings:
-  - key: {fileID: 8725615123219527294, guid: e945f79312174684cad8d1ea8bf9e102, type: 2}
-    value: {fileID: 61514057}
+  - key: {fileID: -476769759874383885, guid: e945f79312174684cad8d1ea8bf9e102, type: 2}
+    value: {fileID: 61514058}
   m_ExposedReferences:
     m_References:
     - 83a6e081ea6bb6642a83933ee2b1c68a: {fileID: 61514052}
