@@ -59,7 +59,8 @@ public class NPCMoverScript1 : MonoBehaviour
         while (true)
         {
             if (player != null)
-            { 
+            {
+                GetComponent<AIDestinationSetter>().target = player.transform;
                 if (isCloseEnoughToShoot() && isCurrentlyLookingAtTarget())
                 {
                     ShootPlayer();
@@ -67,7 +68,7 @@ public class NPCMoverScript1 : MonoBehaviour
             }
             else
             {
-                GetComponent<AIDestinationSetter>().target = GameObject.Find("Player").transform;
+               
                 player = GameObject.Find("Player");
             }
             yield return new WaitForSeconds(weaponData.rateoffire);
