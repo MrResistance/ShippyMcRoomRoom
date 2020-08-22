@@ -623,10 +623,12 @@ MonoBehaviour:
   v: 0
   movementspeed: 3.7
   movementspeedbonus: 0
+  movementspeedMaximum: 9.25
   pm: {fileID: 0}
   gm: {fileID: 0}
   axisV: 0
   axisH: 0
+  debugCanvas: {fileID: 0}
 --- !u!114 &736251805
 MonoBehaviour:
   m_ObjectHideFlags: 0
