@@ -10,6 +10,7 @@
 /Rogue/[Bb]uilds/
 /Rogue/[Ll]ogs/
 /Rogue/[Mm]emoryCaptures/
+/Builds
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
