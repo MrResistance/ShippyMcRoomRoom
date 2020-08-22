@@ -15,7 +15,7 @@ MonoBehaviour:
   name: RepeaterCannon
   description: Bog-standard for starter enemy
   damage: 5
-  rateoffire: 1
+  rateoffire: 1.5
   speed: 15
   chargetime: 0
   spread: 5
