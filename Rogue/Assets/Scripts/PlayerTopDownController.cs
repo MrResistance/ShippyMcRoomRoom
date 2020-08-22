@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerTopDownController : MonoBehaviour
 {
@@ -24,6 +25,8 @@ public class PlayerTopDownController : MonoBehaviour
 
     //Controller stuff?
     public float axisV, axisH;
+
+    public GameObject debugCanvas;
 
     //Temp buff variables - so they can be wiped when round is over
     private void Awake()
@@ -52,6 +55,10 @@ public class PlayerTopDownController : MonoBehaviour
         else
         {
             this.transform.position = new Vector2(0, 0);
+        }
+        if (debugCanvas.activeSelf == true)
+        {
+            UpdateDebugText();
         }
     }
     private float speed()
@@ -101,5 +108,10 @@ public class PlayerTopDownController : MonoBehaviour
     {
 
         //Set all buffs to ZERO
+    }
+    void UpdateDebugText()
+    {
+        //Movement
+        debugCanvas.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = "Movement: D="+movementspeed.ToString()+"/B="+movementspeedbonus.ToString()+"/T="+speed().ToString();
     }
 }
