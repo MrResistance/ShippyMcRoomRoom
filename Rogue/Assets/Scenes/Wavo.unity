@@ -2475,6 +2475,8 @@ MonoBehaviour:
   EnemyPrefab: {fileID: 1363479066365114498, guid: 3cadf8672b6e811499f4f8b85f958fb2,
     type: 3}
   Repeater: {fileID: 11400000, guid: 534a6a0fc4db5ad458167502b4525f50, type: 2}
+  enemyDataList:
+  - {fileID: 11400000, guid: ed0a3b1cffde6d445aa7760a56cd2ce2, type: 2}
   ProjectilesGO: {fileID: 197161493}
   listEnemies:
   - {fileID: 0}
