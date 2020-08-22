@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using Pathfinding;
 
 public class NPCMoverScript1 : MonoBehaviour
 {
@@ -28,6 +29,7 @@ public class NPCMoverScript1 : MonoBehaviour
     public GameObject ProjectilesGO;
     private void Awake()
     {
+        GetComponent<AIDestinationSetter>().target = GameObject.Find("Player").transform;
         rb = GetComponent<Rigidbody2D>();
         audioSource = gameObject.GetComponent<AudioSource>();
     }
