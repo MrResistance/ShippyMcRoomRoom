@@ -11,9 +11,6 @@ public class MainMenuUIManager : MonoBehaviour
     private void Awake()
     {
         defaultButton = GameObject.FindGameObjectWithTag("Default Button");
-        
-        //EventSystem.current.SetSelectedGameObject(null);
-        //EventSystem.current.SetSelectedGameObject(defaultButton);
     }
     public void HighlightButton()
     {
