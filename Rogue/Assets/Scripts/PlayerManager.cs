@@ -14,6 +14,8 @@ public class PlayerManager : MonoBehaviour
     public int perm_attackspeed;
     public int perm_damage;
 
+    public GameObject debugCanvas;
+
     private void Awake()
     {
         //PlayerGameObject = transform.GetChild(0).gameObject;
@@ -35,6 +37,7 @@ public class PlayerManager : MonoBehaviour
         AddPermBuffToPlayer("movement", perm_movementspeed);
         AddPermBuffToPlayer("attackspeed", perm_attackspeed);
         AddPermBuffToPlayer("damage", perm_damage);
+        PLAYER.GetComponent<PlayerTopDownController>().debugCanvas = debugCanvas;
         //PlayerGameObject = PLAYER;
     }
     public void PlayerHasDied()
