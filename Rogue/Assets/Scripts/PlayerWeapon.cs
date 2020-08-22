@@ -44,6 +44,8 @@ public class PlayerWeapon : MonoBehaviour
     {
         float number;
         number = attackspeed - (permattackspeedbonus / 100);
+        if (number >= 100)
+            number = 100f;
         //Debug.Log("Attack speed = " + number.ToString());
         return number;
     }
@@ -51,6 +53,8 @@ public class PlayerWeapon : MonoBehaviour
     {
         float number;
         number = damage + permdamagebonus;
+        if (number >= 100)
+            number = 100f;
         return number;
     }
 }
