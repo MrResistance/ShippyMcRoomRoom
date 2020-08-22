@@ -119,5 +119,8 @@ public class PlayerTopDownController : MonoBehaviour
     {
         //Movement
         debugCanvas.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = "Movement: D="+movementspeed.ToString()+"/B="+movementspeedbonus.ToString()+"/T="+speed().ToString();
+        debugCanvas.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>().text = "Damage: D=" + this.gameObject.GetComponent<PlayerWeapon>().damage + "/B=" + this.gameObject.GetComponent<PlayerWeapon>().permdamagebonus + "/T=" + this.gameObject.GetComponent<PlayerWeapon>().CalculateDamage();
+        debugCanvas.transform.GetChild(2).gameObject.GetComponent<TextMeshProUGUI>().text = "AttackSpeed: D=" + this.gameObject.GetComponent<PlayerWeapon>().attackspeed + "/B=" + this.gameObject.GetComponent<PlayerWeapon>().permattackspeedbonus + "/T=" + this.gameObject.GetComponent<PlayerWeapon>().CalculateAttackSpeed();
+
     }
 }

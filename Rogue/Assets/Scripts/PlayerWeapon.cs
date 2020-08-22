@@ -40,7 +40,7 @@ public class PlayerWeapon : MonoBehaviour
         Rigidbody2D rbproj = projectile.GetComponent<Rigidbody2D>();
         rbproj.AddForce(firePoint.right * projectileSpeed, ForceMode2D.Impulse);
     }
-    float CalculateAttackSpeed()
+    public float CalculateAttackSpeed()
     {
         float number;
         number = attackspeed - (permattackspeedbonus / 100);
