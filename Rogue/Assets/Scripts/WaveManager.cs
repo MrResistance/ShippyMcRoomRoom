@@ -72,7 +72,7 @@ public class WaveManager : MonoBehaviour
     }
     public void NextWave() //Starts the next wave
     {
-        Debug.Log("Next wave!");
+        Debug.Log("Next wave = " + WaveNumber + "!");
         this.gameObject.GetComponent<GameUIManager>().SwapPanel(2);
         WaveNumber++;
         listEnemies.Clear();
