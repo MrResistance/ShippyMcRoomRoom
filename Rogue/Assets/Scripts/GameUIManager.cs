@@ -4,14 +4,13 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using UnityEngine.Playables;
 
 public class GameUIManager : MonoBehaviour
 {
     // Start is called before the first frame update
     public TextMeshProUGUI t_wavenumber;
     public GameObject UI, defaultButton;
-    public PlayableDirector dir;
+    public EventSystem eventSystem;
     public Sprite buttonDefaultSprite;
     public int ItemNumberChosen; //1, 2, or 3
     public string[] upgrades;
@@ -22,6 +21,7 @@ public class GameUIManager : MonoBehaviour
 
     private void Awake()
     {
+        eventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
         defaultButton = GameObject.FindGameObjectWithTag("Default Button");
     }
     void Start()
@@ -41,8 +41,11 @@ public class GameUIManager : MonoBehaviour
     }
     public void HighlightButton()
     {
-        defaultButton.GetComponent<Button>().Select();
-        defaultButton.GetComponent<Button>().OnSelect(null);
+        //defaultButton.GetComponent<Button>().Select();
+        //defaultButton.GetComponent<Button>().OnSelect(null);
+        eventSystem.SetSelectedGameObject(null);
+        eventSystem.SetSelectedGameObject(defaultButton);
+        Debug.Log(eventSystem.lastSelectedGameObject);
         //defaultButton.GetComponent<Image>().sprite = buttonDefaultSprite;
     }
     public void ChangeWaveNumber(int number)
@@ -75,14 +78,12 @@ public class GameUIManager : MonoBehaviour
             this.gameObject.GetComponent<WaveManager>().NextWave();
         }
     }
-    public void SwapPanel() //Not used now 'cause it just switched between two
+    /*public void SwapPanel() //Not used now 'cause it just switched between two
     {
         if (UI.transform.GetChild(0).gameObject.activeInHierarchy) //If Game HUD is enabled, swap for reward
         {
             UI.transform.GetChild(0).gameObject.SetActive(false);
             UI.transform.GetChild(1).gameObject.SetActive(true);
-            dir.Play();
-            //HighlightButton();
             Debug.Log("Swapping to Rewards Panel");
         }
         else
@@ -91,7 +92,7 @@ public class GameUIManager : MonoBehaviour
             UI.transform.GetChild(1).gameObject.SetActive(false);
             Debug.Log("Swapping to Game Panel");
         }
-    }
+    }*/
     public void SwapPanel(int panel) //Superior because you can specify
     {
         switch(panel)
@@ -100,6 +101,7 @@ public class GameUIManager : MonoBehaviour
                 UI.transform.GetChild(0).gameObject.SetActive(false);
                 UI.transform.GetChild(1).gameObject.SetActive(true);
                 ShowingRewards = true;
+                HighlightButton();
                 break;
             case 2: //Game UI - health, wave stuff
                 UI.transform.GetChild(0).gameObject.SetActive(true);
@@ -127,5 +129,4 @@ public class GameUIManager : MonoBehaviour
         return ca;
             
     }
-
 }
