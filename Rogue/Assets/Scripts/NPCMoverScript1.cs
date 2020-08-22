@@ -90,7 +90,7 @@ public class NPCMoverScript1 : MonoBehaviour
     {
         //Debug.Log("Firing at player");
         audioSource.PlayOneShot(audioSource.clip);
-        GameObject projectile = Instantiate(projectilePrefab, firePoint.transform.position, firePoint.transform.rotation);
+        GameObject projectile = Instantiate(projectilePrefab, firePoint.transform.position, WeaponFiringAngle());
         Rigidbody2D rbproj = projectile.GetComponent<Rigidbody2D>();
         projectile.GetComponent<Projectile>().damage = weaponData.damage;
         rbproj.AddForce(firePoint.right * weaponData.speed, ForceMode2D.Impulse);
@@ -163,5 +163,13 @@ public class NPCMoverScript1 : MonoBehaviour
     bool isCurrentlyLookingAtTarget() //So the entity is not just shooting aimlessly
     {
         return true;
+    }
+    Quaternion WeaponFiringAngle() //Adds weapon spread to rotation
+    {
+        Quaternion quat = firePoint.transform.rotation;
+        //Somehow add the spread - weaponData.spread
+
+        Debug.Log(quat.ToString());
+        return quat;
     }
 }
