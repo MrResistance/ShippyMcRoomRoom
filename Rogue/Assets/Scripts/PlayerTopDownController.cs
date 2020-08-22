@@ -18,7 +18,7 @@ public class PlayerTopDownController : MonoBehaviour
     public Vector2 lookdir;
     public float angle,h,v;
 
-    public float movementspeed, movementspeedbonus;
+    public float movementspeed, movementspeedbonus,movementspeedMaximum;
 
     public PlayerManager pm;
     public GameUIManager gm;
@@ -63,7 +63,13 @@ public class PlayerTopDownController : MonoBehaviour
     }
     private float speed()
     {
-        return movementspeed * (movementspeedbonus / 100);
+        float s;
+        s = movementspeed * (movementspeedbonus / 100);
+        if (s > movementspeedMaximum)
+        {
+            return movementspeedMaximum;
+        }
+        return s;
     }
 
     void Look()
