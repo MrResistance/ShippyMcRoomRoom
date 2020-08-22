@@ -66,3 +66,4 @@ crashlytics-build.properties
 
 Rogue/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache
 Rogue/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache
+*.cache
