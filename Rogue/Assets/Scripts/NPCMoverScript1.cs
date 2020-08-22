@@ -24,7 +24,8 @@ public class NPCMoverScript1 : MonoBehaviour
     public float rotationspeed;
     public Transform firePoint; //For firing from
     public float cooldownShooting, maximumShootingDistance, projectileSpeed = 1f;
-    public GameObject projectilePrefab, tHealth;
+    public GameObject projectilePrefab, 
+        tHealth; //text health
     public AudioSource audioSource;
 
     public GameObject ProjectilesGO;
@@ -32,6 +33,7 @@ public class NPCMoverScript1 : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         audioSource = gameObject.GetComponent<AudioSource>();
+
     }
 
     // Update is called once per frame
@@ -40,6 +42,9 @@ public class NPCMoverScript1 : MonoBehaviour
         firePoint = transform.GetChild(0);
         tHealth = transform.GetChild(1).GetChild(0).gameObject;
         StartCoroutine(TargetPlayer());
+        this.gameObject.GetComponent<EntityHealth>().health = enemyData.healthMaximum;
+        this.gameObject.GetComponent<SpriteRenderer>().sprite = enemyData.sprite;
+        rotationspeed = enemyData.speedRotation;
     }
 
     void Update()
