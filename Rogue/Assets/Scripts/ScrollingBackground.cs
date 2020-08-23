@@ -33,11 +33,15 @@ public class ScrollingBackground : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.y < (-height - 20f) && Vertical)
+        /*if (transform.position.y < -height && Vertical)
         {
             Reposition();
         }
         else if (transform.position.x < -width && !Vertical)
+        {
+            Reposition();
+        }*/
+        if (transform.position.y < -85f && Vertical)
         {
             Reposition();
         }
@@ -45,14 +49,19 @@ public class ScrollingBackground : MonoBehaviour
 
     private void Reposition()
     {
-        if (Vertical)
+        /*if (Vertical)
         {
-            Vector2 vector = new Vector2(0f, height * 20f);
+            Vector2 vector = new Vector2(0f, height * 2f);
             transform.position = (Vector2)transform.position + vector;
         }
         else
         {
             Vector2 vector = new Vector2(width * 2f, 0);
+            transform.position = (Vector2)transform.position + vector;
+        }*/
+        if (Vertical)
+        {
+            Vector2 vector = new Vector2(0f, 170f);
             transform.position = (Vector2)transform.position + vector;
         }
     }

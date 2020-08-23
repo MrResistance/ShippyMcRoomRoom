@@ -17,7 +17,7 @@ public class GameUIManager : MonoBehaviour
     public float[] upgradeamount;
     public bool ShowingRewards = false;
     public Button item1;
-    public TextMeshProUGUI item1txt, item2txt, item3txt, upgradeAmountDebug;
+    public TextMeshProUGUI item1txt, item2txt, item3txt, upgradeAmountDebug1, upgradeAmountDebug2, upgradeAmountDebug3;
 
     private void Awake()
     {
@@ -40,7 +40,9 @@ public class GameUIManager : MonoBehaviour
         {
             t_wavenumber.text = "Wave " + number.ToString();
             upgradeamount = new float[] { 5f * (1f + (number / 10f)), 5f * (1f + (number / 10f)), 5f * (1f + (number / 10f)) };
-            upgradeAmountDebug.text = ("Upgrade Amount: " + upgradeamount[0]);
+            upgradeAmountDebug1.text = ("Upgrade Amount[0]: " + upgradeamount[0]);
+            upgradeAmountDebug2.text = ("Upgrade Amount[1]: " + upgradeamount[1]);
+            upgradeAmountDebug3.text = ("Upgrade Amount[2]: " + upgradeamount[2]);
             item1txt.text = ("Movement Speed +" + upgradeamount[0]);
             item2txt.text = ("Attack Speed +" + upgradeamount[1]);
             item3txt.text = ("Attack Damage +" + upgradeamount[2]);

@@ -77,7 +77,6 @@ public class PlayerManager : MonoBehaviour
                     break;
                 case "damage":
                     PlayerGameObject.GetComponent<PlayerWeapon>().permdamagebonus += bonusAmount;
-                    
                     break;
 
             }

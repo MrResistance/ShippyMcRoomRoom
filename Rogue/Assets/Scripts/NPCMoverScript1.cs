@@ -68,7 +68,6 @@ public class NPCMoverScript1 : MonoBehaviour
             }
             else
             {
-               
                 player = GameObject.Find("Player");
             }
             yield return new WaitForSeconds(weaponData.rateoffire);
