@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: BaseBoi
   description: Just your typical enemy
-  sprite: {fileID: 21300000, guid: cf8928d5d24c98241935c1b666ae678c, type: 3}
+  sprite: {fileID: 21300000, guid: f132628bb297954428dc2d151949bdf6, type: 3}
   speedMovement: 0
   speedRotation: 3
   healthMaximum: 100

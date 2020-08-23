@@ -34,12 +34,13 @@ public class GameUIManager : MonoBehaviour
         eventSystem.SetSelectedGameObject(null);
         eventSystem.SetSelectedGameObject(defaultButton);
     }
-    public void ChangeWaveNumber(int number)
+    public void ChangeWaveNumber(int number) //Called when NextWave is called
     {
-        if (number != 0)
+        if (number != 0) //Just for now, until we decide how to implement other stuff
         {
+            float ua = 5f * (1f + (number / 10f));
             t_wavenumber.text = "Wave " + number.ToString();
-            upgradeamount = new float[] { 5f * (1f + (number / 10f)), 5f * (1f + (number / 10f)), 5f * (1f + (number / 10f)) };
+            upgradeamount = new float[] { ua , ua , ua };
             upgradeAmountDebug1.text = ("Upgrade Amount[0]: " + upgradeamount[0]);
             upgradeAmountDebug2.text = ("Upgrade Amount[1]: " + upgradeamount[1]);
             upgradeAmountDebug3.text = ("Upgrade Amount[2]: " + upgradeamount[2]);
@@ -101,5 +102,9 @@ public class GameUIManager : MonoBehaviour
         Debug.Log(ca);
         return ca;
             
+    }
+    public void CalculateRewardShowOnUI()
+    {
+
     }
 }
