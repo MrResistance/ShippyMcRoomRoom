@@ -44,9 +44,7 @@ public class GameUIManager : MonoBehaviour
             upgradeAmountDebug1.text = ("Upgrade Amount[0]: " + upgradeamount[0]);
             upgradeAmountDebug2.text = ("Upgrade Amount[1]: " + upgradeamount[1]);
             upgradeAmountDebug3.text = ("Upgrade Amount[2]: " + upgradeamount[2]);
-            item1txt.text = ("Movement Speed +" + upgradeamount[0]);
-            item2txt.text = ("Attack Speed +" + upgradeamount[1]);
-            item3txt.text = ("Attack Damage +" + upgradeamount[2]);
+            
         }
         else
             t_wavenumber.text = "Boss Level";
@@ -103,8 +101,16 @@ public class GameUIManager : MonoBehaviour
         return ca;
             
     }
-    public void CalculateRewardShowOnUI()
+    public void CalculateRewardShowOnUI(int number) //Basic for now until we add other rewards later
     {
-
+        float ua = 5f * (1f + (number / 10f));
+        upgradeamount = new float[] { ua, ua, ua };
+        UpdateRewardText();
+    }
+    void UpdateRewardText()
+    {
+        item1txt.text = ("Movement Speed +" + upgradeamount[0]);
+        item2txt.text = ("Attack Speed +" + upgradeamount[1]);
+        item3txt.text = ("Attack Damage +" + upgradeamount[2]);
     }
 }
