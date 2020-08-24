@@ -7,7 +7,10 @@ public class EntityHealth : MonoBehaviour
     //What is this?
     //This script is for entity health. This also includes the player.
     //Variables
-    public float health; //VERY BASIC FOR NOW - Later versions will have different stuff
+    public float health; //The main variable of an entity
+    public float healthMaximum; //The starting and maximum health of the entity - not including healthbonus
+    public float healthBonus; //Adds onto the healthMaximum - mainly for the player but we can use later
+    
     public bool isInvunerable = true;
 
     void Start()
@@ -43,6 +46,10 @@ public class EntityHealth : MonoBehaviour
     void DisableInvunerability()
     {
         isInvunerable = false;
+    }
+    public void RestoreHealthToMaximum()
+    {
+        health = healthMaximum + healthBonus;
     }
     //Have its own collision detection
     //If is player
