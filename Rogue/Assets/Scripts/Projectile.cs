@@ -23,7 +23,7 @@ public class Projectile : MonoBehaviour
         transform.localScale = new Vector3(wd.scale,wd.scale,wd.scale);
         this.gameObject.GetComponent<EntityHealth>().health = wd.healthProjectile;
         Rigidbody2D rbproj = this.gameObject.GetComponent<Rigidbody2D>();
-        rbproj.AddForce(firepoint.right * wd.speed, ForceMode2D.Impulse);
+        rbproj.AddForce(this.gameObject.transform.right * wd.speed, ForceMode2D.Impulse);
         if (wd.lifetimeProjectile > 0)
         { 
             Destroy(this.gameObject, wd.lifetimeProjectile);
