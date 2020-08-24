@@ -46,7 +46,7 @@ public class PlayerManager : MonoBehaviour
         //PlayerGameObject = PLAYER;
         gameUIManager.updateHealth(100);
     }
-    public void PlayerHasDied()
+    public void PlayerHasDied() //For deducting lives
     {
         if (remainingLives > 0)
         {
@@ -55,7 +55,7 @@ public class PlayerManager : MonoBehaviour
             Invoke("RespawnPlayer",3f);
         }
     }
-    public void RemoveTempBuffsFromPlayer()
+    public void RemoveTempBuffsFromPlayer() //Used when player dies. Don't want them to have temp buffs when they respawn. Can't be rewarding that
     {
         if (PlayerGameObject != null)
         {
@@ -124,7 +124,7 @@ public class PlayerManager : MonoBehaviour
             }
         }
     }
-    public void RestoreHealthToMaximum()
+    public void RestoreHealthToMaximum() //Commonly used when game is about to go into next round - could make it difficult dependent, so harder difficulties have it as a reward
     {
         PlayerGameObject.GetComponent<EntityHealth>().RestoreHealthToMaximum();
     }
