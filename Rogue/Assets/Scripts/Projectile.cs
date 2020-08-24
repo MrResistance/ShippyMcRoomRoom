@@ -18,6 +18,7 @@ public class Projectile : MonoBehaviour
     }
     private void Start()
     {
+        transform.rotation = CalculateRotationForProjectile();
         sr.sprite = wd.sprite;
         sr.color = wd.colourSprite;
         transform.localScale = new Vector3(wd.scale,wd.scale,wd.scale);
@@ -89,5 +90,15 @@ public class Projectile : MonoBehaviour
         Vector2 dtt;
         dtt = target.transform.position - transform.position;
         return dtt;
+    }
+    Quaternion CalculateRotationForProjectile()
+    {
+        Quaternion quat = transform.rotation;
+        //Somehow add the spread - weaponData.spread
+        float spread = Random.Range(wd.spread * -1, wd.spread);
+        quat *= Quaternion.Euler(new Vector3(0f, 0f, spread));
+        //Debug.Log(quat.ToString());
+        return quat;
+
     }
 }
