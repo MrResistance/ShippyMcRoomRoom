@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public float damage, destroyTimer = 10f;
+    public WeaponData wd;
+    public float damageBonus;
+    public Transform firepoint;
+    public float destroyTimer = 10f;
     public SpriteRenderer sr;
     private BoxCollider2D bc;
     private void Awake()
@@ -14,7 +17,12 @@ public class Projectile : MonoBehaviour
     }
     private void Start()
     {
+        this.gameObject.GetComponent<EntityHealth>().health = wd.healthProjectile;
+        Rigidbody2D rbproj = this.gameObject.GetComponent<Rigidbody2D>();
+        rbproj.AddForce(firepoint.right * wd.speed, ForceMode2D.Impulse);
         Destroy(this.gameObject, destroyTimer);
+        
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -27,7 +35,7 @@ public class Projectile : MonoBehaviour
         if (collision.gameObject.tag.Contains("Projectile"))
         {
             //this.gameObject.GetComponent<EntityHealth>().TakeDamage(damage);
-            collision.gameObject.GetComponent<EntityHealth>().TakeDamage(damage);
+            collision.gameObject.GetComponent<EntityHealth>().TakeDamage(CalculateDamage());
             //Debug.Log("Giving " + CalculateDamange().ToString() + " to " + collision.gameObject.name);
             //Destroy(collision.gameObject);
             //Destroy(this.gameObject);
@@ -35,7 +43,7 @@ public class Projectile : MonoBehaviour
         //Check if enemy
         if (collision.gameObject.tag == ("Player") || collision.gameObject.tag == ("Enemy"))
         {
-            collision.gameObject.GetComponent<EntityHealth>().TakeDamage(damage);
+            collision.gameObject.GetComponent<EntityHealth>().TakeDamage(CalculateDamage());
             sr.enabled = false;
             bc.enabled = false;
             Destroy(this.gameObject, 3);
@@ -46,6 +54,12 @@ public class Projectile : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         
+    }
+    public float CalculateDamage()
+    {
+        float number;
+        number = wd.damage + damageBonus;
+        return number;
     }
 
 }
