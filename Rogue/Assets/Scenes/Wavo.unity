@@ -3545,6 +3545,7 @@ MonoBehaviour:
   defaultButton: {fileID: 0}
   livesPrefab: {fileID: 3949304862589664750, guid: e52a5600c3b63c84ab639fe721f3e14a,
     type: 3}
+  lives: []
   eventSystem: {fileID: 0}
   healthBar: {fileID: 849423340}
   shieldBar: {fileID: 1628118960}
