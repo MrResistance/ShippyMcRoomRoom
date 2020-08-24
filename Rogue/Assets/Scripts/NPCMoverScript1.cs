@@ -21,7 +21,6 @@ public class NPCMoverScript1 : MonoBehaviour
     public float distanceToPlayerfloat;
 
     Rigidbody2D rb;
-    public float rotationspeed;
     public Transform firePoint; //For firing from
     public float maximumShootingDistance, projectileSpeed = 1f;
     public GameObject projectilePrefab, 
@@ -29,6 +28,8 @@ public class NPCMoverScript1 : MonoBehaviour
     public AudioSource audioSource;
 
     public GameObject ProjectilesGO;
+
+    float offsetRateOfFire; //To stop enemies shooting at the same speed
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -46,8 +47,13 @@ public class NPCMoverScript1 : MonoBehaviour
         this.gameObject.GetComponent<EntityHealth>().healthMaximum = enemyData.healthMaximum;
         this.gameObject.GetComponent<SpriteRenderer>().sprite = enemyData.sprite;
         transform.localScale = new Vector3(enemyData.scale, enemyData.scale, enemyData.scale);
-        rotationspeed = enemyData.speedRotation;
         this.GetComponent<AIPath>().maxSpeed = enemyData.speedMovement;
+        float low = (weaponData.rateoffire / 100) * 5f * -1f;
+        float high = (weaponData.rateoffire / 100) * 5f;
+
+
+
+        offsetRateOfFire = Random.RandomRange(low,high);
     }
 
     void Update()
@@ -73,7 +79,7 @@ public class NPCMoverScript1 : MonoBehaviour
             {
                 player = GameObject.Find("Player");
             }
-            yield return new WaitForSeconds(weaponData.rateoffire);
+            yield return new WaitForSeconds(weaponData.rateoffire+ offsetRateOfFire);
         }
     }
     void ShootEnemyOfNPC()
@@ -118,7 +124,7 @@ public class NPCMoverScript1 : MonoBehaviour
             Vector3 angle2 = transform.rotation.eulerAngles;
 
             //Debug.Log("Angle =" + angle.ToString() + ",Angle2 = "+ angle2.ToString());
-            transform.rotation = Quaternion.Slerp(transform.rotation, rot, Time.deltaTime * rotationspeed);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rot, Time.deltaTime * enemyData.speedRotation);
         }
         else
         {
