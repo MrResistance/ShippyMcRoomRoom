@@ -39,8 +39,8 @@ public class PlayerManager : MonoBehaviour
         AddPermBuffToPlayer("attackspeed", perm_attackspeed);
         AddPermBuffToPlayer("damage", perm_damage);
         AddPermBuffToPlayer("health", perm_health);
-        RestoreHealthToMaximum();
         PLAYER.GetComponent<PlayerTopDownController>().debugCanvas = debugCanvas;
+        RestoreHealthToMaximum();
         //PlayerGameObject = PLAYER;
     }
     public void PlayerHasDied()

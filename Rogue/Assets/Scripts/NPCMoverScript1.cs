@@ -44,7 +44,6 @@ public class NPCMoverScript1 : MonoBehaviour
         StartCoroutine(TargetEnemyOfNPC());
         this.gameObject.GetComponent<EntityHealth>().health = enemyData.healthMaximum;
         this.gameObject.GetComponent<EntityHealth>().healthMaximum = enemyData.healthMaximum;
-
         this.gameObject.GetComponent<SpriteRenderer>().sprite = enemyData.sprite;
         transform.localScale = new Vector3(enemyData.scale, enemyData.scale, enemyData.scale);
         rotationspeed = enemyData.speedRotation;
