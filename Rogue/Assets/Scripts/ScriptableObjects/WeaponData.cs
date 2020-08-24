@@ -15,6 +15,7 @@ public class WeaponData : ScriptableObject
     public float range; //How far the projectile travels before it either evaporates or explodes
     public bool isUnlimitedAmmo;
     public int ammo;
+    public int healthProjectile;
 
     //Explosion stuff
     public bool isExplosiveProjectile; //Required to be true for any explosive stuff
@@ -30,5 +31,10 @@ public class WeaponData : ScriptableObject
     public float scatteredprojectilespeed;
     public float scatteredprojectilerange;
     public int scattedprojectiledamage;
+
+    //Piercing
+    public bool canPierce;
+    public int amountCanPierce;
+
 }
 
