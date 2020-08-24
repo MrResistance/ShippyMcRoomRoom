@@ -10,11 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9669b3f1df6e9544b9290d36552d7c82, type: 3}
-<<<<<<< Updated upstream
   m_Name: enemyCannon
-=======
-  m_Name: EnemyCannon
->>>>>>> Stashed changes
   m_EditorClassIdentifier: 
   name: CannonBoi
   description: Just your typical enemy
