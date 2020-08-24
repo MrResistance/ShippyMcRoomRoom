@@ -42,6 +42,7 @@ public class PlayerTopDownController : MonoBehaviour
         movementspeedbonus = 100; //Default start
         pm = transform.parent.GetComponent<PlayerManager>(); //For now, unused
         pm.PlayerGameObject = this.gameObject;
+        pm.RestoreHealthToMaximum();
     }
 
     // Update is called once per frame
