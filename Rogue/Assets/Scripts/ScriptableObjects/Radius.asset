@@ -19,7 +19,7 @@ MonoBehaviour:
   scale: 1.5
   damage: 10
   rateoffire: 1
-  speed: 25
+  speed: 50
   chargetime: 0
   spread: 0
   range: 0
@@ -40,5 +40,5 @@ MonoBehaviour:
   scattedprojectiledamage: 0
   canPierce: 0
   amountCanPierce: 0
-  isTrackingProjectile: 1
-  trackingRotationSpeed: 40
+  isTrackingProjectile: 0
+  trackingRotationSpeed: 50

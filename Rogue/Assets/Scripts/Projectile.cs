@@ -10,22 +10,20 @@ public class Projectile : MonoBehaviour
     public float destroyTimer = 10f;
     public SpriteRenderer sr;
     private BoxCollider2D bc;
-    public Rigidbody2D rb;
     public GameObject target;
     private void Awake()
     {
-        
+        bc = GetComponent<BoxCollider2D>();
+        sr = GetComponent<SpriteRenderer>();
     }
     private void Start()
     {
-        bc = GetComponent<BoxCollider2D>();
-        sr = GetComponent<SpriteRenderer>();
-        rb = this.gameObject.GetComponent<Rigidbody2D>();
         sr.sprite = wd.sprite;
         sr.color = wd.colourSprite;
         transform.localScale = new Vector3(wd.scale,wd.scale,wd.scale);
         this.gameObject.GetComponent<EntityHealth>().health = wd.healthProjectile;
-        rb.AddForce(firepoint.right * wd.speed, ForceMode2D.Impulse);
+        Rigidbody2D rbproj = this.gameObject.GetComponent<Rigidbody2D>();
+        rbproj.AddForce(firepoint.right * wd.speed, ForceMode2D.Impulse);
         if (wd.lifetimeProjectile > 0)
         { 
             Destroy(this.gameObject, wd.lifetimeProjectile);
@@ -84,7 +82,6 @@ public class Projectile : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, rot, Time.deltaTime * wd.trackingRotationSpeed);
         //thust torwards
         yield return new WaitForSeconds(0.1f);
-        
         }
     }
     Vector2 GetDistanceToTarget()
