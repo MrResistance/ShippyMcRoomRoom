@@ -13,6 +13,7 @@ public class PlayerManager : MonoBehaviour
     public float perm_movementspeed;
     public float perm_attackspeed;
     public float perm_damage;
+    public float perm_health;
 
     public GameObject debugCanvas;
 
@@ -37,6 +38,8 @@ public class PlayerManager : MonoBehaviour
         AddPermBuffToPlayer("movement", perm_movementspeed);
         AddPermBuffToPlayer("attackspeed", perm_attackspeed);
         AddPermBuffToPlayer("damage", perm_damage);
+        AddPermBuffToPlayer("health", perm_health);
+        RestoreHealthToMaximum();
         PLAYER.GetComponent<PlayerTopDownController>().debugCanvas = debugCanvas;
         //PlayerGameObject = PLAYER;
     }
@@ -60,6 +63,8 @@ public class PlayerManager : MonoBehaviour
     {
         perm_movementspeed = 0;
         perm_attackspeed = 0;
+        perm_damage = 0;
+        perm_health = 0;
     }
     public void AddPermBuffToPlayer(string bonusType,float bonusAmount) //To be called if either the player needs to be respawned - only adds to Player
     {
@@ -77,6 +82,10 @@ public class PlayerManager : MonoBehaviour
                     break;
                 case "damage":
                     PlayerGameObject.GetComponent<PlayerWeapon>().permdamagebonus += bonusAmount;
+                    break;
+                case "health":
+                    PlayerGameObject.GetComponent<EntityHealth>().healthBonus += bonusAmount;
+                    RestoreHealthToMaximum();
                     break;
 
             }
@@ -102,8 +111,18 @@ public class PlayerManager : MonoBehaviour
                     PlayerGameObject.GetComponent<PlayerWeapon>().permdamagebonus += bonusAmount;
                     perm_damage += bonusAmount; //Saves new bonus damage to PM
                     break;
+                case "health":
+                    PlayerGameObject.GetComponent<EntityHealth>().healthBonus += bonusAmount;
+                    perm_health += bonusAmount; //Saves new bonus damage to PM
+                    RestoreHealthToMaximum();
+                    break;
+
             }
         }
+    }
+    public void RestoreHealthToMaximum()
+    {
+        PlayerGameObject.GetComponent<EntityHealth>().RestoreHealthToMaximum();
     }
 
 }
