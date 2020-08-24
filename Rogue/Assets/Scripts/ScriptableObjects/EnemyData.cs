@@ -11,6 +11,8 @@ public class EnemyData : ScriptableObject
     //sprite
     [PreviewField(75)]
     public Sprite sprite;
+    public Color colourSprite;
+    public float scale; //for 
     //movement
     public float speedMovement;
     public float speedRotation;
