@@ -31,6 +31,7 @@ public class PlayerManager : MonoBehaviour
     {
         Debug.Log("Respawning player.");
         GameObject PLAYER = Instantiate(PlayerPrefab, spawn.position, spawn.rotation);
+        PlayerGameObject = PLAYER;
         PLAYER.name = "Player";
         PLAYER.transform.parent = transform;
         PLAYER.GetComponent<PlayerTopDownController>().movementspeedbonus += perm_movementspeed;
@@ -40,7 +41,7 @@ public class PlayerManager : MonoBehaviour
         AddPermBuffToPlayer("damage", perm_damage);
         AddPermBuffToPlayer("health", perm_health);
         PLAYER.GetComponent<PlayerTopDownController>().debugCanvas = debugCanvas;
-        RestoreHealthToMaximum();
+        
         //PlayerGameObject = PLAYER;
     }
     public void PlayerHasDied()
