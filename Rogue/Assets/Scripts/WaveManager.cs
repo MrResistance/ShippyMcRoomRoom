@@ -12,6 +12,7 @@ public class WaveManager : MonoBehaviour
     public GameObject EnemyPrefab;
     public WeaponData Repeater; //Base weapon
     public List<EnemyData> enemyDataList;
+    public List<WeaponData> weaponDataList;
     public GameObject ProjectilesGO;
 
     public List<GameObject> listEnemies;
@@ -87,9 +88,16 @@ public class WaveManager : MonoBehaviour
         for (int e = 0; e < WaveNumber;e++)
         {
             Vector3 esp = new Vector3(-40f+(e*10), 25f,0f);
-            SpawnEnemy(enemyDataList[0], esp);
+            SpawnEnemy(enemyDataList[0],weaponDataList[0], esp);
         }
-        
+        if (WaveNumber >= 5)
+        {
+            for (int e = 0; e < WaveNumber-4; e++)
+            {
+                Vector3 esp = new Vector3(-40f + (e * 10), -20f, 0f);
+                SpawnEnemy(enemyDataList[1], weaponDataList[1], esp);
+            }
+        }
     }
 
     void ManualSpawnEnemy()
@@ -121,7 +129,7 @@ public class WaveManager : MonoBehaviour
             GameObject.Destroy(child.gameObject);
         }
     }
-    public void SpawnEnemy(EnemyData ed, Vector3 location)
+    public void SpawnEnemy(EnemyData ed, WeaponData wd, Vector3 location)
     {
         Transform EnemySpawn = EnemiesGO.transform;
         GameObject Enemy = Instantiate(EnemyPrefab, location, EnemySpawn.rotation);
@@ -129,7 +137,7 @@ public class WaveManager : MonoBehaviour
         Enemy.transform.parent = EnemiesGO.transform;
         Enemy.GetComponent<NPCMoverScript1>().ProjectilesGO = ProjectilesGO;
         Enemy.GetComponent<NPCMoverScript1>().enemyData = ed;
-        Enemy.GetComponent<NPCMoverScript1>().weaponData = Repeater;
+        Enemy.GetComponent<NPCMoverScript1>().weaponData = wd;
         listEnemies.Add(Enemy);
     }
 }
