@@ -89,12 +89,7 @@ public class WaveManager : MonoBehaviour
             Vector3 esp = new Vector3(-40f+(e*10), 25f,0f);
             SpawnEnemy(enemyDataList[0], esp);
         }
-        foreach (GameObject enemy in listEnemies)
-        {
-            float cds = (float)WaveNumber / 10;
-            enemy.GetComponent<NPCMoverScript1>().cooldownShooting -= Random.Range(cds/10, cds);
-            //Debug.Log(enemy.GetComponent<NPCMoverScript1>().cooldownShooting.ToString());
-        }
+        
     }
 
     void ManualSpawnEnemy()
