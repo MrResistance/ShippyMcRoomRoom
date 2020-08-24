@@ -46,8 +46,6 @@ public class EntityHealth : MonoBehaviour
             Destroy(this.gameObject);
             //Die
             
-                
-            
             //Else
                 //Guess we respawn them
                 //And deduct a life

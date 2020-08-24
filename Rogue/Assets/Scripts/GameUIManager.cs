@@ -10,19 +10,23 @@ public class GameUIManager : MonoBehaviour
 {
     // Start is called before the first frame update
     public TextMeshProUGUI t_wavenumber;
-    public GameObject UI, defaultButton;
+    public GameObject UI, defaultButton, livesPrefab;
+    public GameObject[] lives;
     public EventSystem eventSystem;
     public Slider healthBar, shieldBar;
     public Sprite buttonDefaultSprite;
+    public Transform livesStartPoint;
     public int ItemNumberChosen; //1, 2, or 3
     public string[] upgrades;
     public float[] upgradeamount;
     public bool ShowingRewards = false;
     public Button item1;
+    public PlayerManager pm;
     public TextMeshProUGUI item1txt, item2txt, item3txt, upgradeAmountDebug1, upgradeAmountDebug2, upgradeAmountDebug3;
 
     private void Awake()
     {
+        pm = GetComponent<PlayerManager>();
         healthBar = GameObject.Find("Healthbar").GetComponent<Slider>();
         shieldBar = GameObject.Find("Shieldbar").GetComponent<Slider>();
         eventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
@@ -32,10 +36,22 @@ public class GameUIManager : MonoBehaviour
     {
         upgrades = new string[] { "movement", "attackspeed", "damage" };
         upgradeamount = new float[] { 5f * (1f + (0.1f)), 5f * (1f + (0.1f)), 5f * (1f + (0.1f)) };
+        updateLives(pm.remainingLives);
     }
     public void updateHealth(float health)
     {
         healthBar.value = health;
+    }
+    public void updateLives(float livesRemaining)
+    {
+        foreach (Transform child in livesStartPoint.transform)
+        {
+            GameObject.Destroy(child.gameObject);
+        }
+        for (int i = 0; i < pm.remainingLives; i++)
+        {
+            Instantiate(livesPrefab, new Vector3(livesStartPoint.position.x + (i * 15), livesStartPoint.position.y, livesStartPoint.position.z), livesStartPoint.rotation, GameObject.Find("LivesStartPoint").transform);
+        }
     }
     public void HighlightButton()
     {

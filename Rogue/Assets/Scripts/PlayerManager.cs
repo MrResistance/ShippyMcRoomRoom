@@ -51,6 +51,7 @@ public class PlayerManager : MonoBehaviour
         if (remainingLives > 0)
         {
             remainingLives--;
+            gameUIManager.updateLives(remainingLives);
             Invoke("RespawnPlayer",3f);
         }
     }
