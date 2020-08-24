@@ -599,6 +599,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  healthMaximum: 100
+  healthBonus: 0
   isInvunerable: 1
 --- !u!114 &736251799
 MonoBehaviour:
@@ -645,8 +647,6 @@ MonoBehaviour:
   firePoint: {fileID: 414512572}
   projectilePrefab: {fileID: 992922246480892268, guid: 9d51161f4ab933c48af560a093b95502,
     type: 3}
-  attackspeed: 1
-  projectileSpeed: 50
   permattackspeedbonus: 0
   damage: 10
   permdamagebonus: 0
