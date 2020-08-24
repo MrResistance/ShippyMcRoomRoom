@@ -23,7 +23,7 @@ public class NPCMoverScript1 : MonoBehaviour
     Rigidbody2D rb;
     public float rotationspeed;
     public Transform firePoint; //For firing from
-    public float cooldownShooting, maximumShootingDistance, projectileSpeed = 1f;
+    public float maximumShootingDistance, projectileSpeed = 1f;
     public GameObject projectilePrefab, 
         tHealth; //text health
     public AudioSource audioSource;
