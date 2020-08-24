@@ -13,14 +13,13 @@ public class Projectile : MonoBehaviour
     public GameObject target;
     private void Awake()
     {
-        
+        bc = GetComponent<BoxCollider2D>();
+        sr = GetComponent<SpriteRenderer>();
     }
     private void Start()
     {
-        bc = GetComponent<BoxCollider2D>();
-        sr = GetComponent<SpriteRenderer>();
         sr.sprite = wd.sprite;
-        //sr.color = wd.colourSprite;
+        sr.color = wd.colourSprite;
         transform.localScale = new Vector3(wd.scale,wd.scale,wd.scale);
         this.gameObject.GetComponent<EntityHealth>().health = wd.healthProjectile;
         Rigidbody2D rbproj = this.gameObject.GetComponent<Rigidbody2D>();
