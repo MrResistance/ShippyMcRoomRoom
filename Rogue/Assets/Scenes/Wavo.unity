@@ -2799,6 +2799,10 @@ MonoBehaviour:
   Repeater: {fileID: 11400000, guid: 534a6a0fc4db5ad458167502b4525f50, type: 2}
   enemyDataList:
   - {fileID: 11400000, guid: ed0a3b1cffde6d445aa7760a56cd2ce2, type: 2}
+  - {fileID: 11400000, guid: 76953d45d27b81d4a963fc0c7b1db4bc, type: 2}
+  weaponDataList:
+  - {fileID: 11400000, guid: 534a6a0fc4db5ad458167502b4525f50, type: 2}
+  - {fileID: 11400000, guid: 3b8c69575db6dcd4f8aedf73b1063dc6, type: 2}
   ProjectilesGO: {fileID: 197161493}
   listEnemies:
   - {fileID: 0}
