@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerWeapon : MonoBehaviour
 {
+    //Basic for now, as later on we will want the player to be able to have many weapons
+    public WeaponData wd;
     public Transform firePoint;
     public GameObject projectilePrefab;
     public float attackspeed = 0.5f, projectileSpeed = 1f, permattackspeedbonus;
@@ -35,10 +37,17 @@ public class PlayerWeapon : MonoBehaviour
         audioSource.PlayOneShot(audioSource.clip);
         nextFire = Time.time + CalculateAttackSpeed();
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
-        projectile.GetComponent<Projectile>().damage = CalculateDamage();
+        projectile.layer = 10; //The Player Projectile layer
+        projectile.GetComponent<Projectile>().wd = wd;
+        projectile.GetComponent<Projectile>().damageBonus = permdamagebonus;
+        projectile.GetComponent<Projectile>().firepoint = firePoint;
+        projectile.GetComponent<SpriteRenderer>().color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f), 1f);
+
+        //Projectile now handles its own damage
         //projectile.gameObject.GetComponent<Projectile>().damage = damage + permdamagebonus;
-        Rigidbody2D rbproj = projectile.GetComponent<Rigidbody2D>();
-        rbproj.AddForce(firePoint.right * projectileSpeed, ForceMode2D.Impulse);
+        //Projectile handles its own thrusting
+        //Rigidbody2D rbproj = projectile.GetComponent<Rigidbody2D>();
+        //rbproj.AddForce(firePoint.right * projectileSpeed, ForceMode2D.Impulse);
     }
     public float CalculateAttackSpeed()
     {
