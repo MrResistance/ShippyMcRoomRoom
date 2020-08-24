@@ -3209,6 +3209,7 @@ MonoBehaviour:
   perm_movementspeed: 0
   perm_attackspeed: 0
   perm_damage: 0
+  perm_health: 0
   debugCanvas: {fileID: 463692968}
 --- !u!114 &1327011396
 MonoBehaviour:

@@ -31,6 +31,7 @@ public class PlayerTopDownController : MonoBehaviour
     //Temp buff variables - so they can be wiped when round is over
     private void Awake()
     {
+        debugCanvas = GameObject.Find("Debug");
         gm = GameObject.Find("GameManager").GetComponent<GameUIManager>();
         rb = GetComponent<Rigidbody2D>();
         camera = Camera.main;
