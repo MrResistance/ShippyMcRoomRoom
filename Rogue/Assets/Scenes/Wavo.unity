@@ -2153,7 +2153,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -799.68, y: -460}
+  m_AnchoredPosition: {x: -800, y: -460}
   m_SizeDelta: {x: 249.92807, y: 27.117874}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &849423340
@@ -2200,9 +2200,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
-  m_WholeNumbers: 0
-  m_Value: 1
+  m_MaxValue: 100
+  m_WholeNumbers: 1
+  m_Value: 100
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3592,6 +3592,7 @@ MonoBehaviour:
   PlayerPrefab: {fileID: 1725060067460742854, guid: 208cadb01a18d8d4792f9cad61630164,
     type: 3}
   PlayerGameObject: {fileID: 0}
+  gameUIManager: {fileID: 1327011398}
   remainingLives: 3
   perm_movementspeed: 0
   perm_attackspeed: 0
@@ -3656,6 +3657,8 @@ MonoBehaviour:
   UI: {fileID: 210020410}
   defaultButton: {fileID: 0}
   eventSystem: {fileID: 0}
+  healthBar: {fileID: 849423340}
+  shieldBar: {fileID: 1628118960}
   buttonDefaultSprite: {fileID: 21300000, guid: ee90dd1246d31e341855f6898329f285,
     type: 3}
   ItemNumberChosen: 0
@@ -4359,7 +4362,7 @@ GameObject:
   - component: {fileID: 1628118959}
   - component: {fileID: 1628118960}
   m_Layer: 5
-  m_Name: Healthbar (1)
+  m_Name: Shieldbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4383,7 +4386,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -799.68, y: -493.2}
+  m_AnchoredPosition: {x: -800, y: -500}
   m_SizeDelta: {x: 249.92807, y: 27.117874}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1628118960
@@ -4430,9 +4433,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
-  m_WholeNumbers: 0
-  m_Value: 1
+  m_MaxValue: 100
+  m_WholeNumbers: 1
+  m_Value: 100
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -4746,13 +4749,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 292e5bf3169ca7e45b4c25e2114bd4fc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 459fa4e6f5fd2b342b76b98e58f5a4e4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

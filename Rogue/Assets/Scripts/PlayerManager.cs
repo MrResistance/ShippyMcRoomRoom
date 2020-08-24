@@ -6,6 +6,7 @@ public class PlayerManager : MonoBehaviour
 {
     public GameObject PlayerPrefab;
     public GameObject PlayerGameObject;
+    public GameUIManager gameUIManager;
     Transform spawn; //For initialising new player
     public int remainingLives;
 
@@ -41,8 +42,9 @@ public class PlayerManager : MonoBehaviour
         AddPermBuffToPlayer("damage", perm_damage);
         AddPermBuffToPlayer("health", perm_health);
         PLAYER.GetComponent<PlayerTopDownController>().debugCanvas = debugCanvas;
-        
+
         //PlayerGameObject = PLAYER;
+        gameUIManager.updateHealth(100);
     }
     public void PlayerHasDied()
     {

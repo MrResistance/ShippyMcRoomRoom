@@ -12,6 +12,7 @@ public class GameUIManager : MonoBehaviour
     public TextMeshProUGUI t_wavenumber;
     public GameObject UI, defaultButton;
     public EventSystem eventSystem;
+    public Slider healthBar, shieldBar;
     public Sprite buttonDefaultSprite;
     public int ItemNumberChosen; //1, 2, or 3
     public string[] upgrades;
@@ -22,6 +23,8 @@ public class GameUIManager : MonoBehaviour
 
     private void Awake()
     {
+        healthBar = GameObject.Find("Healthbar").GetComponent<Slider>();
+        shieldBar = GameObject.Find("Shieldbar").GetComponent<Slider>();
         eventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
         defaultButton = GameObject.FindGameObjectWithTag("Default Button");
     }
@@ -29,6 +32,10 @@ public class GameUIManager : MonoBehaviour
     {
         upgrades = new string[] { "movement", "attackspeed", "damage" };
         upgradeamount = new float[] { 5f * (1f + (0.1f)), 5f * (1f + (0.1f)), 5f * (1f + (0.1f)) };
+    }
+    public void updateHealth(float health)
+    {
+        healthBar.value = health;
     }
     public void HighlightButton()
     {

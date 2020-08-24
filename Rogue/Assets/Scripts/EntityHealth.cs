@@ -10,9 +10,15 @@ public class EntityHealth : MonoBehaviour
     public float health; //The main variable of an entity
     public float healthMaximum; //The starting and maximum health of the entity - not including healthbonus
     public float healthBonus; //Adds onto the healthMaximum - mainly for the player but we can use later
-    
+    public GameUIManager gameUIManager;
     public bool isInvunerable = true;
-
+    private void Awake()
+    {
+        if (gameObject.tag == "Player")
+        {
+            gameUIManager = GameObject.Find("GameManager").GetComponent<GameUIManager>();
+        }
+    }
     void Start()
     {
         Invoke("DisableInvunerability", 1.5f);
@@ -21,6 +27,10 @@ public class EntityHealth : MonoBehaviour
     {
         if (isInvunerable != true)
             health -= damage;
+        if (gameObject.tag == "Player")
+        {
+            gameUIManager.updateHealth(health);
+        }
         CheckIfDead();
     }
     public void CheckIfDead()
