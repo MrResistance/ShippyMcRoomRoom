@@ -41,7 +41,7 @@ public class NPCMoverScript1 : MonoBehaviour
     {
         firePoint = transform.GetChild(0);
         tHealth = transform.GetChild(1).GetChild(0).gameObject;
-        StartCoroutine(TargetPlayer());
+        StartCoroutine(TargetEnemyOfNPC());
         this.gameObject.GetComponent<EntityHealth>().health = enemyData.healthMaximum;
         this.gameObject.GetComponent<SpriteRenderer>().sprite = enemyData.sprite;
         transform.localScale = new Vector3(enemyData.scale, enemyData.scale, enemyData.scale);
@@ -51,12 +51,12 @@ public class NPCMoverScript1 : MonoBehaviour
 
     void Update()
     {
-        //Move();
+        //Move(); //Does stuff in A*
         Rotate();
         tHealth.GetComponent<TextMeshProUGUI>().text = GetComponent<EntityHealth>().health.ToString();
     }
 
-    IEnumerator TargetPlayer()
+    IEnumerator TargetEnemyOfNPC()
     {
         while (true)
         {
@@ -65,7 +65,7 @@ public class NPCMoverScript1 : MonoBehaviour
                 GetComponent<AIDestinationSetter>().target = player.transform;
                 if (isCloseEnoughToShoot() && isCurrentlyLookingAtTarget())
                 {
-                    ShootPlayer();
+                    ShootEnemyOfNPC();
                 }
             }
             else
@@ -75,7 +75,7 @@ public class NPCMoverScript1 : MonoBehaviour
             yield return new WaitForSeconds(weaponData.rateoffire);
         }
     }
-    void ShootPlayer()
+    void ShootEnemyOfNPC()
     {
         //Debug.Log("Firing at player");
         audioSource.PlayOneShot(audioSource.clip);
