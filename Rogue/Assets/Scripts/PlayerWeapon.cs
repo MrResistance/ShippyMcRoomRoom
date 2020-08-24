@@ -8,7 +8,7 @@ public class PlayerWeapon : MonoBehaviour
     public WeaponData wd;
     public Transform firePoint;
     public GameObject projectilePrefab;
-    public float attackspeed = 0.5f, projectileSpeed = 1f, permattackspeedbonus;
+    public float permattackspeedbonus;
     public float damage, permdamagebonus;
     private float nextFire = 0.0f;
     public AudioSource audioSource;
@@ -41,7 +41,11 @@ public class PlayerWeapon : MonoBehaviour
         projectile.GetComponent<Projectile>().wd = wd;
         projectile.GetComponent<Projectile>().damageBonus = permdamagebonus;
         projectile.GetComponent<Projectile>().firepoint = firePoint;
-        projectile.GetComponent<SpriteRenderer>().color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f), 1f);
+        if (wd.isTrackingProjectile == true)
+        {
+            projectile.GetComponent<Projectile>().target = GetClosestEnemy();
+        }
+        //projectile.GetComponent<SpriteRenderer>().color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f), 1f);
 
         //Projectile now handles its own damage
         //projectile.gameObject.GetComponent<Projectile>().damage = damage + permdamagebonus;
@@ -52,7 +56,7 @@ public class PlayerWeapon : MonoBehaviour
     public float CalculateAttackSpeed()
     {
         float number;
-        number = attackspeed - (permattackspeedbonus / 100);
+        number = wd.rateoffire - (permattackspeedbonus / 100);
         if (number >= 100)
             number = 100f;
         //Debug.Log("Attack speed = " + number.ToString());
@@ -65,5 +69,18 @@ public class PlayerWeapon : MonoBehaviour
         if (number >= 100)
             number = 100f;
         return number;
+    }
+    GameObject GetClosestEnemy()
+    {
+        GameObject enemy = null;
+        float minDist = Mathf.Infinity;
+        foreach (GameObject ge in gm.GetComponent<WaveManager>().listEnemies)
+        {
+            if (Vector3.Distance(ge.transform.position,transform.position) < minDist)
+            {
+                enemy = ge;
+            }
+        }
+        return enemy;
     }
 }
