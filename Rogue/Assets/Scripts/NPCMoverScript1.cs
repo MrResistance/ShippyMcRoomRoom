@@ -90,11 +90,11 @@ public class NPCMoverScript1 : MonoBehaviour
         //No longer needed as projeectile handles its own thrusting heheh \o/
         //Rigidbody2D rbproj = projectile.GetComponent<Rigidbody2D>();
         projectile.GetComponent<Projectile>().firepoint = firePoint.transform;
-        projectile.layer = 11; //The Player Projectile layer
-        projectile.GetComponent<Projectile>().wd = weaponData;
 
-        //Moved to Projectile
-        //rbproj.AddForce(firePoint.right * weaponData.speed, ForceMode2D.Impulse);
+        //Temp layer specifying - this needs to be changed later should we want to use this script to make friendly NPCs
+        projectile.layer = 11; //The Enemy Projectile layer
+
+        projectile.GetComponent<Projectile>().wd = weaponData;
         projectile.transform.parent = ProjectilesGO.transform;
     }
     void GetDistanceToPlayer()
@@ -149,7 +149,7 @@ public class NPCMoverScript1 : MonoBehaviour
     {
         Quaternion quat = firePoint.transform.rotation;
         //Somehow add the spread - weaponData.spread
-
+        
         //Debug.Log(quat.ToString());
         return quat;
     }
