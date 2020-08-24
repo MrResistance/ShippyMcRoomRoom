@@ -145,11 +145,11 @@ public class NPCMoverScript1 : MonoBehaviour
     {
         return true;
     }
-    Quaternion WeaponFiringAngle() //Adds weapon spread to rotation
+    Quaternion WeaponFiringAngle() //Adds weapon spread to rotation - moved to projectile
     {
         Quaternion quat = firePoint.transform.rotation;
         //Somehow add the spread - weaponData.spread
-        quat *= Quaternion.Euler(new Vector3(0f, 0f, 5f));
+        //quat *= Quaternion.Euler(new Vector3(0f, 0f, 5f));
         //Debug.Log(quat.ToString());
         return quat;
     }
