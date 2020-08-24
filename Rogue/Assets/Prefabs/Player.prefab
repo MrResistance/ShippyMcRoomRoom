@@ -641,8 +641,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0097c54570297148836320d58b2d0b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wd: {fileID: 11400000, guid: c690d3ec5ce65914cac33d0117d659a6, type: 2}
   firePoint: {fileID: 414512572}
-  projectilePrefab: {fileID: 2715077195191800749, guid: 50a77513dfc6c1c48891777dcea4cebb,
+  projectilePrefab: {fileID: 992922246480892268, guid: 9d51161f4ab933c48af560a093b95502,
     type: 3}
   attackspeed: 1
   projectileSpeed: 50
