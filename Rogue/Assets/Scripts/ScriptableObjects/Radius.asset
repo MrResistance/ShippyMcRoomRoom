@@ -12,17 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f89e373badc1fd40aa6cebd87df7aac, type: 3}
   m_Name: Radius
   m_EditorClassIdentifier: 
-  name: 
-  description: 
-  damage: 0
-  rateoffire: 0
-  speed: 0
+  name: Radius
+  description: Player's default weapon
+  sprite: {fileID: 21300000, guid: 0bb0295d7fc901d489c8db5982bfa928, type: 3}
+  colourSprite: {r: 0, g: 1, b: 0.018627405, a: 0}
+  scale: 1.5
+  damage: 10
+  rateoffire: 1
+  speed: 50
   chargetime: 0
   spread: 0
   range: 0
-  isUnlimitedAmmo: 0
+  isUnlimitedAmmo: 1
   ammo: 0
-  healthProjectile: 0
+  healthProjectile: 20
+  lifetimeProjectile: 0
   isExplosiveProjectile: 0
   explosionType: 
   isExplosionOnImpact: 0
@@ -36,3 +40,5 @@ MonoBehaviour:
   scattedprojectiledamage: 0
   canPierce: 0
   amountCanPierce: 0
+  isTrackingProjectile: 0
+  trackingRotationSpeed: 0
