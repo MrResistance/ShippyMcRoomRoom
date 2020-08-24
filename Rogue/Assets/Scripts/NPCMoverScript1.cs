@@ -46,6 +46,7 @@ public class NPCMoverScript1 : MonoBehaviour
         this.gameObject.GetComponent<SpriteRenderer>().sprite = enemyData.sprite;
         transform.localScale = new Vector3(enemyData.scale, enemyData.scale, enemyData.scale);
         rotationspeed = enemyData.speedRotation;
+        this.GetComponent<AIPath>().maxSpeed = enemyData.speedMovement;
     }
 
     void Update()
