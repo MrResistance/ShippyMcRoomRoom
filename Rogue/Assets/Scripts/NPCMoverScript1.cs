@@ -78,9 +78,14 @@ public class NPCMoverScript1 : MonoBehaviour
         //Debug.Log("Firing at player");
         audioSource.PlayOneShot(audioSource.clip);
         GameObject projectile = Instantiate(projectilePrefab, firePoint.transform.position, WeaponFiringAngle());
-        Rigidbody2D rbproj = projectile.GetComponent<Rigidbody2D>();
-        projectile.GetComponent<Projectile>().damage = weaponData.damage;
-        rbproj.AddForce(firePoint.right * weaponData.speed, ForceMode2D.Impulse);
+        //No longer needed as projeectile handles its own thrusting heheh \o/
+        //Rigidbody2D rbproj = projectile.GetComponent<Rigidbody2D>();
+        projectile.GetComponent<Projectile>().firepoint = firePoint.transform;
+        projectile.layer = 11; //The Player Projectile layer
+        projectile.GetComponent<Projectile>().wd = weaponData;
+
+        //Moved to Projectile
+        //rbproj.AddForce(firePoint.right * weaponData.speed, ForceMode2D.Impulse);
         projectile.transform.parent = ProjectilesGO.transform;
     }
     void GetDistanceToPlayer()
