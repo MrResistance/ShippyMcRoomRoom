@@ -64,6 +64,8 @@ public class WaveManager : MonoBehaviour
     {
         //Destroy all projectiles so they don't kill the player
         DestroyAllProjectiles();
+        //Resets health of player back to maximum
+        this.gameObject.GetComponent<PlayerManager>().RestoreHealthToMaximum();
         //Stuff here to give them upgrades and logic to be implemented so NextWave only happens when player has chosen said upgrades
         this.gameObject.GetComponent<PlayerManager>().RemoveTempBuffsFromPlayer();
         this.gameObject.GetComponent<GameUIManager>().CalculateRewardShowOnUI(WaveNumber); //Generates rewards
