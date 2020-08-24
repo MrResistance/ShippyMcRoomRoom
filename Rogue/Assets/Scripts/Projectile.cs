@@ -10,18 +10,29 @@ public class Projectile : MonoBehaviour
     public float destroyTimer = 10f;
     public SpriteRenderer sr;
     private BoxCollider2D bc;
+    public GameObject target;
     private void Awake()
     {
-        bc = GetComponent<BoxCollider2D>();
-        sr = GetComponent<SpriteRenderer>();
+        
     }
     private void Start()
     {
+        bc = GetComponent<BoxCollider2D>();
+        sr = GetComponent<SpriteRenderer>();
+        sr.sprite = wd.sprite;
+        //sr.color = wd.colourSprite;
+        transform.localScale = new Vector3(wd.scale,wd.scale,wd.scale);
         this.gameObject.GetComponent<EntityHealth>().health = wd.healthProjectile;
         Rigidbody2D rbproj = this.gameObject.GetComponent<Rigidbody2D>();
         rbproj.AddForce(firepoint.right * wd.speed, ForceMode2D.Impulse);
-        Destroy(this.gameObject, destroyTimer);
-        
+        if (wd.lifetimeProjectile > 0)
+        { 
+            Destroy(this.gameObject, wd.lifetimeProjectile);
+        }
+        if (wd.isTrackingProjectile == true && target != null)
+        {
+            StartCoroutine(TrackTarget());
+        }
 
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -61,5 +72,23 @@ public class Projectile : MonoBehaviour
         number = wd.damage + damageBonus;
         return number;
     }
-
+    IEnumerator TrackTarget()
+    {
+        //Rotate towards
+        while(true)
+        { 
+        Vector2 DistanceToTarget = GetDistanceToTarget();
+        float angle = Mathf.Atan2(DistanceToTarget.y, DistanceToTarget.x) * Mathf.Rad2Deg - 90f;
+        Quaternion rot = Quaternion.AngleAxis(angle, Vector3.forward);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rot, Time.deltaTime * wd.trackingRotationSpeed);
+        //thust torwards
+        yield return new WaitForSeconds(0.1f);
+        }
+    }
+    Vector2 GetDistanceToTarget()
+    {
+        Vector2 dtt;
+        dtt = target.transform.position - transform.position;
+        return dtt;
+    }
 }
