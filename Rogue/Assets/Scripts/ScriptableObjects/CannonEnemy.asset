@@ -16,7 +16,7 @@ MonoBehaviour:
   description: Just your typical enemy
   sprite: {fileID: 21300000, guid: 593a413ec4e23a04e803cd8efb583f0f, type: 3}
   colourSprite: {r: 1, g: 1, b: 1, a: 1}
-  scale: 0
+  scale: 3
   speedMovement: 0
   speedRotation: 1
   healthMaximum: 200
