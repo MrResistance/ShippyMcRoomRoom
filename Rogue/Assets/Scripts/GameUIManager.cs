@@ -16,6 +16,7 @@ public class GameUIManager : MonoBehaviour
     public Slider healthBar, shieldBar;
     public Sprite buttonDefaultSprite;
     public Transform livesStartPoint;
+    public float livesIconSeparationDistance = 5f;
     public int ItemNumberChosen; //1, 2, or 3
     public string[] upgrades;
     public float[] upgradeamount;
@@ -50,7 +51,7 @@ public class GameUIManager : MonoBehaviour
         }
         for (int i = 0; i < pm.remainingLives; i++)
         {
-            Instantiate(livesPrefab, new Vector3(livesStartPoint.position.x + (i * 15), livesStartPoint.position.y, livesStartPoint.position.z), livesStartPoint.rotation, GameObject.Find("LivesStartPoint").transform);
+            Instantiate(livesPrefab, new Vector3(livesStartPoint.position.x + (i * livesIconSeparationDistance), livesStartPoint.position.y, livesStartPoint.position.z), livesStartPoint.rotation, GameObject.Find("LivesStartPoint").transform);
         }
     }
     public void HighlightButton()
