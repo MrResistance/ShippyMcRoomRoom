@@ -16,7 +16,11 @@ public class EnemyData : ScriptableObject
     //movement
     public float speedMovement;
     public float speedRotation;
-    //other
+    //health
     public float healthMaximum;
+    //shield
+    public bool hasShield = false;
+    public float shieldMaximum;
+    public float shieldRateOfRecharge;
 
 }
