@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 [CreateAssetMenu(fileName = "WeaponData", menuName = "Scriptables/WeaponData")]
 public class WeaponData : ScriptableObject
@@ -9,15 +10,20 @@ public class WeaponData : ScriptableObject
     public string description;
     public Sprite sprite; //For projectile
     public Color colourSprite;
-    public float scale; //for size
+    public float scale = 1; //for size
 
-    public int projectileCount;
+    public int projectileCount = 1;
 
-    public int damage; //Damage of projectile on-impact
-    public float rateoffire;
-    public float speed;
+    public int damage ; //Damage of projectile on-impact
+    public float rateoffire = 1;
+    public float speed = 50;
     public float chargetime; //How long it takes to charge the weapon for it to fire
+
+    //Spread
+    public string spreadType = "none"; //Types: "none", "random", "even"
+    [ShowInInspector,PropertyRange(0,180)]
     public float spread; //Accuracy; 
+
     public float range; //How far the projectile travels before it either evaporates or explodes
     public bool isUnlimitedAmmo;
     public int ammo;
@@ -39,7 +45,7 @@ public class WeaponData : ScriptableObject
     public int scattedprojectiledamage;
 
     //Piercing
-    public bool canPierce;
+    public bool canPierce = false;
     public int amountCanPierce;
 
     //Tracking - for missiles and anything else we want the projectile to track
