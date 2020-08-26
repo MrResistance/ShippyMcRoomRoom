@@ -92,7 +92,7 @@ public class WaveManager : MonoBehaviour
             Vector3 esp = new Vector3(-40f+(e*10), 25f,0f);
             SpawnEnemy(enemyDataList[0],weaponDataList[0], esp);
         }
-        if (WaveNumber >= 5)
+        if (WaveNumber >= 5) //Cannon spawner
         {
             for (int e = 0; e < WaveNumber-4; e++)
             {
