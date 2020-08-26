@@ -70,6 +70,7 @@ public class Projectile : MonoBehaviour
     {
         float number;
         number = wd.damage + damageBonus;
+        number /= wd.projectileCount;
         return number;
     }
     IEnumerator TrackTarget()
@@ -77,12 +78,12 @@ public class Projectile : MonoBehaviour
         //Rotate towards
         while(true)
         { 
-        Vector2 DistanceToTarget = GetDistanceToTarget();
-        float angle = Mathf.Atan2(DistanceToTarget.y, DistanceToTarget.x) * Mathf.Rad2Deg - 90f;
-        Quaternion rot = Quaternion.AngleAxis(angle, Vector3.forward);
-        transform.rotation = Quaternion.Slerp(transform.rotation, rot, Time.deltaTime * wd.trackingRotationSpeed);
-        //thust torwards
-        yield return new WaitForSeconds(0.1f);
+            Vector2 DistanceToTarget = GetDistanceToTarget();
+            float angle = Mathf.Atan2(DistanceToTarget.y, DistanceToTarget.x) * Mathf.Rad2Deg - 90f;
+            Quaternion rot = Quaternion.AngleAxis(angle, Vector3.forward);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rot, Time.deltaTime * wd.trackingRotationSpeed);
+            //thust torwards
+            yield return new WaitForSeconds(0.1f);
         }
     }
     Vector2 GetDistanceToTarget()
@@ -95,9 +96,39 @@ public class Projectile : MonoBehaviour
     {
         Quaternion quat = transform.rotation;
         //Somehow add the spread - weaponData.spread
-        float spread = Random.Range(wd.spread * -1, wd.spread);
-        quat *= Quaternion.Euler(new Vector3(0f, 0f, spread));
-        //Debug.Log(quat.ToString());
+        if (wd.spreadType != "none" )
+        { 
+            if (wd.spreadType == "random")
+            { 
+                float spread = Random.Range(wd.spread * -1, wd.spread); //Get the random number
+                quat *= Quaternion.Euler(new Vector3(0f, 0f, spread));
+            }
+            if (wd.spreadType == "even")
+            {
+                if (wd.projectileCount == 1)
+                {
+                    //doesn't need to be spread because there is only one so
+                    //it goes in the middle
+                }
+                else if (wd.projectileCount % 2 == 0) //dis bitch even and not 1
+                {
+                    //needs to be spread evenly
+                    //e.g if spread = 5, then it would be 3.33 each
+
+                }
+                else //dis bitch odd and not 1
+                {
+                    //means you can have a projectile on each end
+                    //e.g if spread = 5, one would be on -5, on 0, and on 5
+
+                    //take total spread distance
+                    //e.g if 5, that would be 10 degrees, and divide by amount of projectiles to 
+                    //determine where they would be
+
+                }
+                //Do some annoying ass maths
+            }
+        }
         return quat;
 
     }
