@@ -9,11 +9,14 @@ public class NPCMoverScript1 : MonoBehaviour
 {
     // Start is called before the first frame update
     public EnemyData enemyData;
-    public WeaponData weaponData;
-    
-    
-    public Keyframe[] keyframesX;
-    public Keyframe[] keyframesY;
+    public WeaponData wd;
+
+    public int boundaryXmin = -40;
+    public int boundaryXmax = 40;
+    public int boundaryYmin = -25;
+    public int boundaryYmax = 25;
+
+
     float timeElapsed;
     bool isMoving;
     public GameObject player;
@@ -48,8 +51,8 @@ public class NPCMoverScript1 : MonoBehaviour
         this.gameObject.GetComponent<SpriteRenderer>().sprite = enemyData.sprite;
         transform.localScale = new Vector3(enemyData.scale, enemyData.scale, enemyData.scale);
         this.GetComponent<AIPath>().maxSpeed = enemyData.speedMovement;
-        float low = (weaponData.rateoffire / 100) * 5f * -1f;
-        float high = (weaponData.rateoffire / 100) * 5f;
+        float low = (wd.rateoffire / 100) * 5f * -1f;
+        float high = (wd.rateoffire / 100) * 5f;
 
 
 
@@ -70,7 +73,7 @@ public class NPCMoverScript1 : MonoBehaviour
             if (player != null)
             {
                 GetComponent<AIDestinationSetter>().target = player.transform;
-                if (isCloseEnoughToShoot() && isCurrentlyLookingAtTarget())
+                if (CanShoot())
                 {
                     ShootEnemyOfNPC();
                 }
@@ -79,23 +82,22 @@ public class NPCMoverScript1 : MonoBehaviour
             {
                 player = GameObject.Find("Player");
             }
-            yield return new WaitForSeconds(weaponData.rateoffire+ offsetRateOfFire);
+            yield return new WaitForSeconds(wd.rateoffire+ offsetRateOfFire);
         }
     }
     void ShootEnemyOfNPC()
     {
         //Debug.Log("Firing at player");
         audioSource.PlayOneShot(audioSource.clip);
-        GameObject projectile = Instantiate(projectilePrefab, firePoint.transform.position, WeaponFiringAngle());
-        //No longer needed as projeectile handles its own thrusting heheh \o/
-        //Rigidbody2D rbproj = projectile.GetComponent<Rigidbody2D>();
-        projectile.GetComponent<Projectile>().firepoint = firePoint.transform;
-
-        //Temp layer specifying - this needs to be changed later should we want to use this script to make friendly NPCs
-        projectile.layer = 11; //The Enemy Projectile layer
-
-        projectile.GetComponent<Projectile>().wd = weaponData;
-        projectile.transform.parent = ProjectilesGO.transform;
+        for (int p = 0; p < wd.projectileCount; p++)
+        { 
+            GameObject projectile = Instantiate(projectilePrefab, firePoint.transform.position, WeaponFiringAngle());
+            projectile.GetComponent<Projectile>().firepoint = firePoint.transform;
+            //Temp layer specifying - this needs to be changed later should we want to use this script to make friendly NPCs
+            projectile.layer = 11; //The Enemy Projectile layer
+            projectile.GetComponent<Projectile>().wd = wd;
+            projectile.transform.parent = ProjectilesGO.transform;
+        }
     }
     void GetDistanceToPlayer()
     {
@@ -134,7 +136,7 @@ public class NPCMoverScript1 : MonoBehaviour
     }
     bool isCloseEnoughToShoot() //So entity knows it can hit the target
     {
-        if (distanceToPlayerfloat < weaponData.range)
+        if (distanceToPlayerfloat < wd.range)
         { 
             return true;
         }
@@ -145,6 +147,17 @@ public class NPCMoverScript1 : MonoBehaviour
     {
         return true;
     }
+    bool isWithinArenaBoundary()
+    {
+        if (transform.position.x >= boundaryXmin && transform.position.x <= boundaryXmax)
+        {
+            if (transform.position.y >= boundaryYmin && transform.position.y <= boundaryYmax)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
     Quaternion WeaponFiringAngle() //Adds weapon spread to rotation - moved to projectile
     {
         Quaternion quat = firePoint.transform.rotation;
@@ -152,5 +165,19 @@ public class NPCMoverScript1 : MonoBehaviour
         //quat *= Quaternion.Euler(new Vector3(0f, 0f, 5f));
         //Debug.Log(quat.ToString());
         return quat;
+    }
+    bool CanShoot() //Checks to make sure the NPC passes all checks before they can shoot;
+    {
+        if (isCloseEnoughToShoot())
+        {
+            if (isCurrentlyLookingAtTarget())
+            {
+                if (isWithinArenaBoundary())
+                { 
+                return true;
+                }
+            }
+        }
+        return false;
     }
 }
