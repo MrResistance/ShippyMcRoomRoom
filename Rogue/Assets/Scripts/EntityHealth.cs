@@ -12,6 +12,10 @@ public class EntityHealth : MonoBehaviour
     public float healthBonus; //Adds onto the healthMaximum - mainly for the player but we can use later
     public GameUIManager gameUIManager;
     public bool isInvunerable = true;
+
+    //Shields
+    public float shield;
+    public float shieldMaximum;
     private void Awake()
     {
         if (gameObject.tag == "Player")
