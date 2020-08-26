@@ -11,6 +11,8 @@ public class WeaponData : ScriptableObject
     public Color colourSprite;
     public float scale; //for size
 
+    public int projectileCount;
+
     public int damage; //Damage of projectile on-impact
     public float rateoffire;
     public float speed;
