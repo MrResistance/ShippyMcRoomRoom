@@ -601,7 +601,10 @@ MonoBehaviour:
   health: 100
   healthMaximum: 100
   healthBonus: 0
+  gameUIManager: {fileID: 0}
   isInvunerable: 1
+  shield: 0
+  shieldMaximum: 0
 --- !u!114 &736251799
 MonoBehaviour:
   m_ObjectHideFlags: 0
