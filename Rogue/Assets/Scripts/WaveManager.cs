@@ -75,7 +75,6 @@ public class WaveManager : MonoBehaviour
     }
     public void NextWave() //Starts the next wave
     {
-        Debug.Log("Next wave!");
         //Resets health of player back to maximum
         this.gameObject.GetComponent<PlayerManager>().RestoreHealthToMaximum();
         this.gameObject.GetComponent<GameUIManager>().SwapPanel(2);
@@ -111,7 +110,7 @@ public class WaveManager : MonoBehaviour
         //Enemy.GetComponent<NPCMoverScript1>().cooldownShooting -= (WaveNumber / 10);
         Enemy.transform.parent = EnemiesGO.transform;
         Enemy.GetComponent<NPCMoverScript1>().ProjectilesGO = ProjectilesGO;
-        Enemy.GetComponent<NPCMoverScript1>().weaponData = Repeater;
+        Enemy.GetComponent<NPCMoverScript1>().wd = Repeater;
         listEnemies.Add(Enemy);
     }
 
@@ -140,7 +139,7 @@ public class WaveManager : MonoBehaviour
         Enemy.transform.parent = EnemiesGO.transform;
         Enemy.GetComponent<NPCMoverScript1>().ProjectilesGO = ProjectilesGO;
         Enemy.GetComponent<NPCMoverScript1>().enemyData = ed;
-        Enemy.GetComponent<NPCMoverScript1>().weaponData = wd;
+        Enemy.GetComponent<NPCMoverScript1>().wd = wd;
         listEnemies.Add(Enemy);
     }
 }
