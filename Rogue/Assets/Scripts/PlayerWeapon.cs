@@ -36,14 +36,18 @@ public class PlayerWeapon : MonoBehaviour
         //sFX_Player.PlayRandomSound();
         audioSource.PlayOneShot(audioSource.clip);
         nextFire = Time.time + CalculateAttackSpeed();
-        GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
-        projectile.layer = 10; //The Player Projectile layer
-        projectile.GetComponent<Projectile>().wd = wd;
-        projectile.GetComponent<Projectile>().damageBonus = permdamagebonus;
-        projectile.GetComponent<Projectile>().firepoint = firePoint;
-        if (wd.isTrackingProjectile == true)
-        {
-            projectile.GetComponent<Projectile>().target = GetClosestEnemy();
+        //For amount of projectiles
+        for (int p = 0; p < wd.projectileCount; p++)
+            { 
+            GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
+            projectile.layer = 10; //The Player Projectile layer
+            projectile.GetComponent<Projectile>().wd = wd;
+            projectile.GetComponent<Projectile>().damageBonus = permdamagebonus;
+            projectile.GetComponent<Projectile>().firepoint = firePoint;
+            if (wd.isTrackingProjectile == true)
+            {
+                projectile.GetComponent<Projectile>().target = GetClosestEnemy();
+            }
         }
         //projectile.GetComponent<SpriteRenderer>().color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f), 1f);
 
