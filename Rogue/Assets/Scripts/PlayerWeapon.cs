@@ -49,6 +49,7 @@ public class PlayerWeapon : MonoBehaviour
                 projectile.GetComponent<Projectile>().target = GetClosestEnemy();
             }
         }
+
         //projectile.GetComponent<SpriteRenderer>().color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f), 1f);
 
         //Projectile now handles its own damage
