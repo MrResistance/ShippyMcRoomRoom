@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Boundary
   - Default Button
+  - Score
   layers:
   - Default
   - TransparentFX

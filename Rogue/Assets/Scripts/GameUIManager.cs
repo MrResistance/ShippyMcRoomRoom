@@ -5,13 +5,16 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEditor;
+using System.Security.AccessControl;
+using Unity.Mathematics;
 
 public class GameUIManager : MonoBehaviour
 {
     // Start is called before the first frame update
     public TextMeshProUGUI t_wavenumber;
-    public GameObject UI, defaultButton, livesPrefab;
+    public GameObject UI, defaultButton, livesPrefab, pointsText;
     public GameObject[] lives;
+    public GameObject[] scoreTextObjects;
     public EventSystem eventSystem;
     public Slider healthBar, shieldBar;
     public Sprite buttonDefaultSprite;
@@ -76,6 +79,14 @@ public class GameUIManager : MonoBehaviour
             upgradeamount = new float[] { 5 * number, 5 * number, 5 * number };
 
     }
+    public void ClearPointsFromField()
+    {
+        scoreTextObjects = GameObject.FindGameObjectsWithTag("Score");
+        foreach (GameObject score in scoreTextObjects)
+        {
+            GameObject.Destroy(score.gameObject);
+        }
+    }
     public void ConfirmRewardNextWave()
     {
         if (ItemNumberChosen != 0)
@@ -100,6 +111,7 @@ public class GameUIManager : MonoBehaviour
                 UI.transform.GetChild(1).gameObject.SetActive(true);
                 ShowingRewards = true;
                 HighlightButton();
+                ClearPointsFromField();
                 break;
             case 2: //Game UI - health, wave stuff
                 UI.transform.GetChild(0).gameObject.SetActive(true);
@@ -137,5 +149,10 @@ public class GameUIManager : MonoBehaviour
         item1txt.text = ("Movement Speed +" + upgradeamount[0]);
         item2txt.text = ("Attack Speed +" + upgradeamount[1]);
         item3txt.text = ("Attack Damage +" + upgradeamount[2]);
+    }
+    public void PointsForKillingEnemy(Transform enemy, float points)
+    {
+        GameObject pointsClone = Instantiate(pointsText, new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z), new quaternion (0,0,0,0), GameObject.Find("Game HUD").transform);
+        pointsClone.GetComponent<TextMeshProUGUI>().text = ("+" + points);
     }
 }

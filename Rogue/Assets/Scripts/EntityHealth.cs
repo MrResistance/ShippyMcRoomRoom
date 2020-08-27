@@ -12,16 +12,13 @@ public class EntityHealth : MonoBehaviour
     public float healthBonus; //Adds onto the healthMaximum - mainly for the player but we can use later
     public GameUIManager gameUIManager;
     public bool isInvunerable = true;
-
+    public float thisObjectPoints;
     //Shields
     public float shield;
     public float shieldMaximum;
     private void Awake()
     {
-        if (gameObject.tag == "Player")
-        {
-            gameUIManager = GameObject.Find("GameManager").GetComponent<GameUIManager>();
-        }
+        gameUIManager = GameObject.Find("GameManager").GetComponent<GameUIManager>();
     }
     void Start()
     {
@@ -47,7 +44,11 @@ public class EntityHealth : MonoBehaviour
                 transform.parent.gameObject.GetComponent<PlayerManager>().PlayerHasDied();
             }
             //Finally
-            Destroy(this.gameObject);
+            if (gameObject.tag == ("Enemy"))
+            {
+                gameUIManager.PointsForKillingEnemy(gameObject.transform, thisObjectPoints);
+            }
+            Destroy(gameObject);
             //Die
             
             //Else
