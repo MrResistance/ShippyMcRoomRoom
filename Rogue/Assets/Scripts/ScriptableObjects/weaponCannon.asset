@@ -22,6 +22,7 @@ MonoBehaviour:
   rateoffire: 5
   speed: 25
   chargetime: 0
+  spreadType: random
   spread: 20
   range: 250
   isUnlimitedAmmo: 1
