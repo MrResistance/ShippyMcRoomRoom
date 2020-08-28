@@ -16,6 +16,8 @@ public class WaveManager : MonoBehaviour
     public GameObject ProjectilesGO;
 
     public List<GameObject> listEnemies;
+    public List<GameObject> listAlliess;
+
 
     [ShowInInspector, PropertyRange(-50,50)]
     public int ManualSpawnX { get; set;}
@@ -77,10 +79,15 @@ public class WaveManager : MonoBehaviour
     {
         //Resets health of player back to maximum
         this.gameObject.GetComponent<PlayerManager>().RestoreHealthToMaximum();
+        //Hides Reward screen and shows game UI;
         this.gameObject.GetComponent<GameUIManager>().SwapPanel(2);
+        //Increases wave number
         WaveNumber++;
+        //Clears list of anything left
         listEnemies.Clear();
+        //Changes the wave number displayed
         this.gameObject.GetComponent<GameUIManager>().ChangeWaveNumber(WaveNumber);
+        //Spawns enemies for the wave
         SpawnEnemies();
         isWaveChanging = false; 
     }
