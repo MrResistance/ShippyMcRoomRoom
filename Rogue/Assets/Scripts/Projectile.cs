@@ -117,7 +117,15 @@ public class Projectile : MonoBehaviour
                 else if (wd.projectileCount % 2 == 0) //dis bitch even and not 1
                 {
                     //needs to be spread evenly
-                    //e.g if spread = 5, then it would be 3.33 each
+                    float spreadDistance = wd.spread * 2;
+
+                    float angleSpread = spreadDistance / (wd.projectileCount + 1);
+
+                    float totalAngle = wd.spread * -1;
+
+                    totalAngle += (angleSpread * (spreadNumber+1));
+
+                    quat *= Quaternion.Euler(new Vector3(0f, 0f, totalAngle));
 
                 }
                 else //dis bitch odd and not 1
