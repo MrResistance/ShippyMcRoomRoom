@@ -97,6 +97,10 @@ public class NPCMoverScript1 : MonoBehaviour
             projectile.layer = 11; //The Enemy Projectile layer
             projectile.GetComponent<Projectile>().wd = wd;
             projectile.transform.parent = ProjectilesGO.transform;
+            if (wd.spreadType == "even")
+            {
+                projectile.GetComponent<Projectile>().spreadNumber = p;
+            }
         }
     }
     void GetDistanceToPlayer()
