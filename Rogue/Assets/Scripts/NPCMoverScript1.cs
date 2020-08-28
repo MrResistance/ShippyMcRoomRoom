@@ -66,7 +66,7 @@ public class NPCMoverScript1 : MonoBehaviour
         tHealth.GetComponent<TextMeshProUGUI>().text = GetComponent<EntityHealth>().health.ToString("F1");
     }
 
-    IEnumerator TargetEnemyOfNPC()
+    IEnumerator TargetPlayer()
     {
         while (true)
         {
@@ -83,6 +83,25 @@ public class NPCMoverScript1 : MonoBehaviour
                 player = GameObject.Find("Player");
             }
             yield return new WaitForSeconds(wd.rateoffire+ offsetRateOfFire);
+        }
+    }
+    IEnumerator TargetEnemyOfNPC()
+    {
+        while (true)
+        {
+            if (player != null)
+            {
+                GetComponent<AIDestinationSetter>().target = player.transform;
+                if (CanShoot())
+                {
+                    ShootEnemyOfNPC();
+                }
+            }
+            else
+            {
+                player = GameObject.Find("Player");
+            }
+            yield return new WaitForSeconds(wd.rateoffire + offsetRateOfFire);
         }
     }
     void ShootEnemyOfNPC()
