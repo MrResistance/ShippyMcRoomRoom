@@ -63,7 +63,7 @@ public class NPCMoverScript1 : MonoBehaviour
     {
         //Move(); //Does stuff in A*
         Rotate();
-        tHealth.GetComponent<TextMeshProUGUI>().text = GetComponent<EntityHealth>().health.ToString();
+        tHealth.GetComponent<TextMeshProUGUI>().text = GetComponent<EntityHealth>().health.ToString("F1");
     }
 
     IEnumerator TargetEnemyOfNPC()
