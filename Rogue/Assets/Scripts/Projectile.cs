@@ -11,8 +11,6 @@ public class Projectile : MonoBehaviour
     public SpriteRenderer sr;
     private BoxCollider2D bc;
     public GameObject target;
-    //For if weapon has 'even' spread
-    public float spreadNumber;
     private void Awake()
     {
         bc = GetComponent<BoxCollider2D>();
@@ -20,9 +18,7 @@ public class Projectile : MonoBehaviour
     }
     private void Start()
     {
-        //For spread
         transform.rotation = CalculateRotationForProjectile();
-
         sr.sprite = wd.sprite;
         sr.color = wd.colourSprite;
         transform.localScale = new Vector3(wd.scale,wd.scale,wd.scale);
@@ -122,22 +118,12 @@ public class Projectile : MonoBehaviour
                 }
                 else //dis bitch odd and not 1
                 {
-
                     //means you can have a projectile on each end
                     //e.g if spread = 5, one would be on -5, on 0, and on 5
 
                     //take total spread distance
-                    float spreadDistance = wd.spread * 2;
-                    //e.g if 5, that would be 10 degrees, and divide by amount of projectiles (-1) to 
-                    //determine where they would be.
-                    float angleSpread = spreadDistance / (wd.projectileCount - 1);
-                    //New float that has the start spread angle
-                    float totalAngle = wd.spread *-1;
-                    //Times angle spread by the projectile number to get where it would be
-                    //e.g - 0 = -5, 1 = 0, 2 = 5
-                    totalAngle += angleSpread * spreadNumber;
-                    quat *= Quaternion.Euler(new Vector3(0f, 0f, totalAngle));
-                    
+                    //e.g if 5, that would be 10 degrees, and divide by amount of projectiles to 
+                    //determine where they would be
 
                 }
                 //Do some annoying ass maths
