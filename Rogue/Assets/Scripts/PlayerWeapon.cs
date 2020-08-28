@@ -48,10 +48,6 @@ public class PlayerWeapon : MonoBehaviour
             {
                 projectile.GetComponent<Projectile>().target = GetClosestEnemy();
             }
-            if (wd.spreadType == "even")
-            {
-                projectile.GetComponent<Projectile>().spreadNumber = p;
-            }
         }
 
         //projectile.GetComponent<SpriteRenderer>().color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f), 1f);
