@@ -17,7 +17,7 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 0bb0295d7fc901d489c8db5982bfa928, type: 3}
   colourSprite: {r: 1, g: 0.6114951, b: 0, a: 1}
   scale: 0.7
-  projectileCount: 9
+  projectileCount: 8
   damage: 12
   rateoffire: 1
   speed: 70
@@ -28,7 +28,7 @@ MonoBehaviour:
   isUnlimitedAmmo: 1
   ammo: 0
   healthProjectile: 20
-  lifetimeProjectile: 0
+  lifetimeProjectile: 0.6
   isExplosiveProjectile: 0
   explosionType: 
   isExplosionOnImpact: 0
