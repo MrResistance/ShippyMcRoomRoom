@@ -135,6 +135,7 @@ public class WaveManager : MonoBehaviour
     {
         Transform EnemySpawn = EnemiesGO.transform;
         GameObject Enemy = Instantiate(EnemyPrefab, location, EnemySpawn.rotation);
+        Enemy.GetComponent<EntityHealth>().thisObjectPoints = ed.points;
         //Enemy.GetComponent<NPCMoverScript1>().cooldownShooting -= (WaveNumber / 10);
         Enemy.transform.parent = EnemiesGO.transform;
         Enemy.GetComponent<NPCMoverScript1>().ProjectilesGO = ProjectilesGO;

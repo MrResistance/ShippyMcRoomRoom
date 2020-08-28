@@ -22,5 +22,7 @@ public class EnemyData : ScriptableObject
     public bool hasShield = false;
     public float shieldMaximum;
     public float shieldRateOfRecharge;
+    //scoring
+    public float points;
 
 }

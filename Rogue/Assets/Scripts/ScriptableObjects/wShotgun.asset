@@ -18,16 +18,16 @@ MonoBehaviour:
   colourSprite: {r: 1, g: 0.6114951, b: 0, a: 1}
   scale: 0.7
   projectileCount: 8
-  damage: 10
+  damage: 4
   rateoffire: 1
   speed: 70
   chargetime: 0
-  spreadType: random
-  spread: 16.7
+  spreadType: none
+  spread: 15
   range: 0
   isUnlimitedAmmo: 1
   ammo: 0
-  healthProjectile: 1
+  healthProjectile: 20
   lifetimeProjectile: 0
   isExplosiveProjectile: 0
   explosionType: 
