@@ -43,20 +43,7 @@ public class NPCMoverScript1 : MonoBehaviour
     // Update is called once per frame
     private void Start()
     {
-        firePoint = transform.GetChild(0);
-        tHealth = transform.GetChild(1).GetChild(0).gameObject;
-        StartCoroutine(TargetEnemyOfNPC());
-        this.gameObject.GetComponent<EntityHealth>().health = enemyData.healthMaximum;
-        this.gameObject.GetComponent<EntityHealth>().healthMaximum = enemyData.healthMaximum;
-        this.gameObject.GetComponent<SpriteRenderer>().sprite = enemyData.sprite;
-        transform.localScale = new Vector3(enemyData.scale, enemyData.scale, enemyData.scale);
-        this.GetComponent<AIPath>().maxSpeed = enemyData.speedMovement;
-        float low = (wd.rateoffire / 100) * 5f * -1f;
-        float high = (wd.rateoffire / 100) * 5f;
-
-
-
-        offsetRateOfFire = Random.RandomRange(low,high);
+        SetupNPC();
     }
 
     void Update()
@@ -131,6 +118,21 @@ public class NPCMoverScript1 : MonoBehaviour
             //Debug.Log(distanceToPlayerfloat);
         }
     }
+    void SetupNPC()
+    {
+        firePoint = transform.GetChild(0);
+        tHealth = transform.GetChild(1).GetChild(0).gameObject;
+        StartCoroutine(TargetEnemyOfNPC());
+        this.gameObject.GetComponent<EntityHealth>().health = enemyData.healthMaximum;
+        this.gameObject.GetComponent<EntityHealth>().healthMaximum = enemyData.healthMaximum;
+        this.gameObject.GetComponent<SpriteRenderer>().sprite = enemyData.sprite;
+        transform.localScale = new Vector3(enemyData.scale, enemyData.scale, enemyData.scale);
+        this.GetComponent<AIPath>().maxSpeed = enemyData.speedMovement;
+        //Offsets rate of fire for NPC - so it does not shoot at the same time as everything else
+        float low = (wd.rateoffire / 100) * 5f * -1f;
+        float high = (wd.rateoffire / 100) * 5f;
+        offsetRateOfFire = Random.RandomRange(low, high);
+    }
     void Move()
     {
         
@@ -140,11 +142,7 @@ public class NPCMoverScript1 : MonoBehaviour
         GetDistanceToPlayer();
         if (player != null)
         {
-            ////Old
             float angle = Mathf.Atan2(distanceToPlayer.y, distanceToPlayer.x) * Mathf.Rad2Deg - 90f;
-            //rb.rotation = angle;
-
-            //New
             Quaternion rot = Quaternion.AngleAxis(angle, Vector3.forward);
             Vector3 angle2 = transform.rotation.eulerAngles;
 
