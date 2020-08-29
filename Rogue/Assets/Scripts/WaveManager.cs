@@ -163,7 +163,7 @@ public class WaveManager : MonoBehaviour
         //Enemy.GetComponent<NPCMoverScript1>().cooldownShooting -= (WaveNumber / 10);
         if (side == "enemy")
         {
-            NPC.name = "EnemyNPC";
+            NPC.name = "EnemyNPC-" + WaveNumber.ToString();
             NPC.transform.parent = EnemiesGO.transform;
             listEnemies.Add(NPC);
             NPC.tag = "Enemy";
@@ -171,11 +171,12 @@ public class WaveManager : MonoBehaviour
         }
         if (side == "allied")
         {
-            NPC.name = "AlliedNPC";
+            NPC.name = "AlliedNPC-"+WaveNumber.ToString();
             NPC.transform.parent = AlliesGO.transform;
             listAllies.Add(NPC);
             NPC.tag = "Ally";
             NPC.layer = 10;
+            NPC.GetComponent<SpriteRenderer>().color = Color.blue;
         }
         NPC.GetComponent<NPCMoverScript1>().npcSide = side;
         NPC.GetComponent<NPCMoverScript1>().ProjectilesGO = ProjectilesGO; //Specifying where projectiles go
