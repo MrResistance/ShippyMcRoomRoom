@@ -8,15 +8,24 @@ public class WaveManager : MonoBehaviour
     public int remainingEnemies;
     public bool isWaveChanging;
 
-    public GameObject EnemiesGO;
-    public GameObject EnemyPrefab;
-    public WeaponData Repeater; //Base weapon
-    public List<EnemyData> enemyDataList;
-    public List<WeaponData> weaponDataList;
-    public GameObject ProjectilesGO;
 
+    //Parent GameObject for all allies to the player
+    public GameObject AlliesGO;
+    //Parent GameObject for all projectiles
+    public GameObject ProjectilesGO;
+    //Parent GameObject for all Enemies
+    public GameObject EnemiesGO;
+
+    //Prefab for spawning any enemy
+    public GameObject EnemyPrefab;
+    //Types of enemies
+    public List<EnemyData> enemyDataList;
+    //Types of weapons
+    public List<WeaponData> weaponDataList;
+
+    
     public List<GameObject> listEnemies;
-    public List<GameObject> listAlliess;
+    public List<GameObject> listAllies;
 
 
     [ShowInInspector, PropertyRange(-50,50)]
@@ -73,6 +82,7 @@ public class WaveManager : MonoBehaviour
         //If not final wave (which rn we don't necessarily have implemented
         //Hide game HUD, Show Reward Menu
         this.gameObject.GetComponent<GameUIManager>().SwapPanel(1);
+        listEnemies.Clear();
         
     }
     public void NextWave() //Starts the next wave
@@ -88,24 +98,31 @@ public class WaveManager : MonoBehaviour
         //Changes the wave number displayed
         this.gameObject.GetComponent<GameUIManager>().ChangeWaveNumber(WaveNumber);
         //Spawns enemies for the wave
-        SpawnEnemies();
+        SpawnNPCs();
         isWaveChanging = false; 
     }
-    void SpawnEnemies()
+    void SpawnNPCs()
     {
+        //ENEMY STUFF
         Transform EnemySpawn = EnemiesGO.transform;
         for (int e = 0; e < WaveNumber;e++)
         {
             Vector3 esp = new Vector3(-40f+(e*10), 25f,0f);
-            SpawnEnemy(enemyDataList[0],weaponDataList[0], esp);
+            SpawnNPC(enemyDataList[0],weaponDataList[0], esp,"enemy");
         }
         if (WaveNumber >= 5) //Cannon spawner
         {
             for (int e = 0; e < WaveNumber-4; e++)
             {
                 Vector3 esp = new Vector3(-40f + (e * 10), -20f, 0f);
-                SpawnEnemy(enemyDataList[1], weaponDataList[1], esp);
+                SpawnNPC(enemyDataList[1], weaponDataList[1], esp,"enemy");
             }
+        }
+        //ALLIED STUFF - mainly for testing to see if allies vs enemies works
+        for (int e = 0; e < WaveNumber; e++)
+        {
+            Vector3 esp = new Vector3(-40f + (e * 10), -25f, 0f);
+            SpawnNPC(enemyDataList[0], weaponDataList[0], esp,"allied");
         }
     }
 
@@ -117,7 +134,7 @@ public class WaveManager : MonoBehaviour
         //Enemy.GetComponent<NPCMoverScript1>().cooldownShooting -= (WaveNumber / 10);
         Enemy.transform.parent = EnemiesGO.transform;
         Enemy.GetComponent<NPCMoverScript1>().ProjectilesGO = ProjectilesGO;
-        Enemy.GetComponent<NPCMoverScript1>().wd = Repeater;
+        Enemy.GetComponent<NPCMoverScript1>().wd = weaponDataList[0];
         listEnemies.Add(Enemy);
     }
 
@@ -138,16 +155,34 @@ public class WaveManager : MonoBehaviour
             GameObject.Destroy(child.gameObject);
         }
     }
-    public void SpawnEnemy(EnemyData ed, WeaponData wd, Vector3 location)
+    public void SpawnNPC(EnemyData ed, WeaponData wd, Vector3 location,string side)
     {
-        Transform EnemySpawn = EnemiesGO.transform;
-        GameObject Enemy = Instantiate(EnemyPrefab, location, EnemySpawn.rotation);
-        Enemy.GetComponent<EntityHealth>().thisObjectPoints = ed.points;
+        Transform NPCSpawn = EnemiesGO.transform;
+        GameObject NPC = Instantiate(EnemyPrefab, location, NPCSpawn.rotation);
+        NPC.GetComponent<EntityHealth>().thisObjectPoints = ed.points;
         //Enemy.GetComponent<NPCMoverScript1>().cooldownShooting -= (WaveNumber / 10);
-        Enemy.transform.parent = EnemiesGO.transform;
-        Enemy.GetComponent<NPCMoverScript1>().ProjectilesGO = ProjectilesGO;
-        Enemy.GetComponent<NPCMoverScript1>().enemyData = ed;
-        Enemy.GetComponent<NPCMoverScript1>().wd = wd;
-        listEnemies.Add(Enemy);
+        if (side == "enemy")
+        {
+            NPC.name = "EnemyNPC";
+            NPC.transform.parent = EnemiesGO.transform;
+            listEnemies.Add(NPC);
+            NPC.tag = "Enemy";
+            NPC.layer = 11;
+        }
+        if (side == "allied")
+        {
+            NPC.name = "AlliedNPC";
+            NPC.transform.parent = AlliesGO.transform;
+            listAllies.Add(NPC);
+            NPC.tag = "Ally";
+            NPC.layer = 10;
+        }
+        NPC.GetComponent<NPCMoverScript1>().npcSide = side;
+        NPC.GetComponent<NPCMoverScript1>().ProjectilesGO = ProjectilesGO; //Specifying where projectiles go
+        NPC.GetComponent<NPCMoverScript1>().enemyData = ed;
+        NPC.GetComponent<NPCMoverScript1>().wd = wd;
+        NPC.GetComponent<NPCMoverScript1>().wm = this.gameObject.GetComponent<WaveManager>();
+        NPC.GetComponent<NPCMoverScript1>().wavenumberSpawnedIn = WaveNumber;
+
     }
 }
