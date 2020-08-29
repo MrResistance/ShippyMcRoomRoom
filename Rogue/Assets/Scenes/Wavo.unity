@@ -810,7 +810,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &210020410
 GameObject:
@@ -2477,6 +2477,36 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 68.6}
   m_EdgeRadius: 0
+--- !u!1 &1181506827
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1181506828}
+  m_Layer: 0
+  m_Name: Allies
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1181506828
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1181506827}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1195089203
 GameObject:
   m_ObjectHideFlags: 0
@@ -3331,19 +3361,20 @@ MonoBehaviour:
   WaveNumber: 0
   remainingEnemies: 0
   isWaveChanging: 0
+  AlliesGO: {fileID: 1181506827}
+  ProjectilesGO: {fileID: 197161493}
   EnemiesGO: {fileID: 1731576404}
   EnemyPrefab: {fileID: 1363479066365114498, guid: 3cadf8672b6e811499f4f8b85f958fb2,
     type: 3}
-  Repeater: {fileID: 11400000, guid: 534a6a0fc4db5ad458167502b4525f50, type: 2}
   enemyDataList:
   - {fileID: 11400000, guid: ed0a3b1cffde6d445aa7760a56cd2ce2, type: 2}
   - {fileID: 11400000, guid: 76953d45d27b81d4a963fc0c7b1db4bc, type: 2}
   weaponDataList:
   - {fileID: 11400000, guid: 534a6a0fc4db5ad458167502b4525f50, type: 2}
   - {fileID: 11400000, guid: 3b8c69575db6dcd4f8aedf73b1063dc6, type: 2}
-  ProjectilesGO: {fileID: 197161493}
   listEnemies:
   - {fileID: 0}
+  listAllies: []
 --- !u!4 &1327011397
 Transform:
   m_ObjectHideFlags: 0
