@@ -82,8 +82,11 @@ public class NPCMoverScript1 : MonoBehaviour
     void Update()
     {
         //Move(); //Does stuff in A*
-        Rotate();
-        tHealth.GetComponent<TextMeshProUGUI>().text = GetComponent<EntityHealth>().health.ToString("F1");
+        if (wm.isWaveChanging == false)
+        { 
+            Rotate();
+            tHealth.GetComponent<TextMeshProUGUI>().text = GetComponent<EntityHealth>().health.ToString("F1");
+        }
     }
     
     void ShootTarget()
@@ -164,20 +167,6 @@ public class NPCMoverScript1 : MonoBehaviour
         //Debug.Log(quat.ToString());
         return quat;
     }
-    bool CanShoot() //Checks to make sure the NPC passes all checks before they can shoot;
-    {
-        if (isCloseEnoughToShoot())
-        {
-            if (isCurrentlyLookingAtTarget())
-            {
-                if (isWithinArenaBoundary())
-                { 
-                return true;
-                }
-            }
-        }
-        return false;
-    }
     bool npcHasEnemies() //Used to determine whether there is something for the NPC to target
     {
         if (npcSide == "enemy")
@@ -198,7 +187,6 @@ public class NPCMoverScript1 : MonoBehaviour
         distanceToTargetFloat = Mathf.Infinity; //So getting shorter distance will be easier
         return false;
     }
-
     //For getting a target for the NPC
     IEnumerator TargetEnemyOfNPC()
     {
@@ -206,10 +194,11 @@ public class NPCMoverScript1 : MonoBehaviour
         {
             if (npcHasEnemies() && wm.isWaveChanging == false)
             {
+                distanceToTargetFloat = Mathf.Infinity;
                 if (npcSide == "enemy")
                 {
                     //Get closest
-                    foreach (GameObject go in wm.listAllies)
+                    foreach (Transform go in wm.AlliesGO.transform)
                     {
                         if (go != null)
                         { 
@@ -217,7 +206,7 @@ public class NPCMoverScript1 : MonoBehaviour
                             float distanceToGOFloat = Vector2.Distance(go.transform.position, transform.position);
                             if (distanceToGOFloat < distanceToTargetFloat)
                             {
-                                target = go;
+                                target = go.gameObject;
                                 GetComponent<AIDestinationSetter>().target = target.transform; //Moves NPC to target
                             }
                         }
@@ -227,9 +216,11 @@ public class NPCMoverScript1 : MonoBehaviour
                 {
                     //Get closest
                     //Make that the target
-                    foreach (Transform go in wm.EnemiesGO.transform)
+                    
+                    for (int e = 0; e < wm.listEnemies.Count;e++)
                     {
-                        if (go.gameObject != null)
+                        GameObject go = wm.listEnemies[e].gameObject;
+                        if (go != null)
                         {
                             Vector2 distanceToGO = go.transform.position - transform.position;
                             float distanceToGOFloat = Vector2.Distance(go.transform.position, transform.position);
@@ -258,12 +249,32 @@ public class NPCMoverScript1 : MonoBehaviour
     {
         while (true)
         {
-            if (target != null && CanShoot())
+            if (CanShoot())
             {
                 ShootTarget();
             }
             yield return new WaitForSeconds(wd.rateoffire + offsetRateOfFire);
         }
+    }
+    bool CanShoot() //Checks to make sure the NPC passes all checks before they can shoot;
+    {
+        if (wm.isWaveChanging == false)
+        {
+            if (target != null)
+            {
+                if (isCloseEnoughToShoot())
+                {
+                    if (isCurrentlyLookingAtTarget())
+                    {
+                        if (isWithinArenaBoundary())
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
+        return false;
     }
     void GetDistanceToTarget()
     {
