@@ -149,6 +149,8 @@ MonoBehaviour:
   firepoint: {fileID: 0}
   destroyTimer: 10
   sr: {fileID: 8787492111194265383}
+  target: {fileID: 0}
+  spreadNumber: 0
 --- !u!114 &4284059748786032756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,4 +164,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
+  healthMaximum: 0
+  healthBonus: 0
+  gameUIManager: {fileID: 0}
   isInvunerable: 0
+  thisObjectPoints: 0
+  shield: 0
+  shieldMaximum: 0
