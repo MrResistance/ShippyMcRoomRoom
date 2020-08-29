@@ -56,7 +56,7 @@ public class Projectile : MonoBehaviour
             //Destroy(this.gameObject);
         }
         //Check if enemy
-        if (collision.gameObject.tag == ("Player") || collision.gameObject.tag == ("Enemy"))
+        if (collision.gameObject.tag == ("Player") || collision.gameObject.tag == ("Enemy") || collision.gameObject.tag == ("Ally"))
         {
             collision.gameObject.GetComponent<EntityHealth>().TakeDamage(CalculateDamage());
             sr.enabled = false;
