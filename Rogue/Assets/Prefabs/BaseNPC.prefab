@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 4771698639417598943}
   - component: {fileID: 5516542240438094478}
   m_Layer: 9
-  m_Name: BaseEnemy
+  m_Name: BaseNPC
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -150,16 +150,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31991139ade283544bf2d7ef6480c522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  npcSide: 
+  wm: {fileID: 0}
   enemyData: {fileID: 0}
-  weaponData: {fileID: 0}
+  wd: {fileID: 0}
+  boundaryXmin: -49
+  boundaryXmax: 49
+  boundaryYmin: -25
+  boundaryYmax: 25
   player: {fileID: 0}
   distanceToPlayerfloat: 0
-  rotationspeed: 3
+  target: {fileID: 0}
+  distanceToTargetFloat: 0
   firePoint: {fileID: 0}
-  cooldownShooting: 1.5
   maximumShootingDistance: 100
-  projectileSpeed: 15
-  projectilePrefab: {fileID: 7307298747946747930, guid: 6cd14bf44657f6d479f0e4cc098ca4ce,
+  projectilePrefab: {fileID: 992922246480892268, guid: 9d51161f4ab933c48af560a093b95502,
     type: 3}
   tHealth: {fileID: 0}
   audioSource: {fileID: 0}
@@ -177,7 +182,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  healthMaximum: 0
+  healthBonus: 0
+  gameUIManager: {fileID: 0}
   isInvunerable: 1
+  thisObjectPoints: 0
+  shield: 0
+  shieldMaximum: 0
 --- !u!82 &4404935356204379311
 AudioSource:
   m_ObjectHideFlags: 0
