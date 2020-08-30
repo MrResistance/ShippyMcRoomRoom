@@ -19,6 +19,9 @@ public class WeaponData : ScriptableObject
     public float speed = 50;
     public float chargetime; //How long it takes to charge the weapon for it to fire
 
+    public string firePosition = "single"; //"single" - firing from middle-front // "twin" - firing from middle-front offset to left and right //"side" - firing from sides of ship at 90' angle
+
+    [Title("Spread")]
     //Spread
     public string spreadType = "none"; //Types: "none", "random", "even"
     [ShowInInspector,PropertyRange(0,180)]
@@ -29,6 +32,7 @@ public class WeaponData : ScriptableObject
     public int ammo;
     public int healthProjectile;
     public float lifetimeProjectile; //In seconds, how long projectile will last before dying - if 0, it will only die on impact (or leaving combat area)
+    [Title("Explosive")]
     //Explosion stuff
     public bool isExplosiveProjectile; //Required to be true for any explosive stuff
     public string explosionType; //"Throughout" - same damage to the end -- "Degrading" - damage more towards center
@@ -36,6 +40,7 @@ public class WeaponData : ScriptableObject
     public float explosiveradius;
     public int explosivedamage;
 
+    [Title("Scattered projectile")]
     //Scattered projectiles - fireworks
     public bool isScatteredProjectilesOnImpact;
     public string scatteredprojectiletype; //"even" - Always same dispersion -- "random" - they can fly out anywhere
@@ -44,10 +49,12 @@ public class WeaponData : ScriptableObject
     public float scatteredprojectilerange;
     public int scattedprojectiledamage;
 
+    [Title("Piercing")]
     //Piercing
     public bool canPierce = false;
     public int amountCanPierce;
 
+    [Title("Tracking")]
     //Tracking - for missiles and anything else we want the projectile to track
     public bool isTrackingProjectile;
     public float trackingRotationSpeed;
