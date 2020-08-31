@@ -66,8 +66,6 @@ public class PlayerWeapon : MonoBehaviour
     {
         float number;
         number = wd.rateoffire - (permattackspeedbonus / 100);
-        if (number >= 100)
-            number = 100f;
         //Debug.Log("Attack speed = " + number.ToString());
         return number;
     }
