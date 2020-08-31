@@ -43,6 +43,8 @@ public class PlayerTopDownController : MonoBehaviour
         pm = transform.parent.GetComponent<PlayerManager>(); //For now, unused
         pm.PlayerGameObject = this.gameObject;
         pm.RestoreHealthToMaximum();
+        this.gameObject.GetComponent<EntityHealth>().shield = 100;
+        this.gameObject.GetComponent<EntityHealth>().shieldMaximum = 100;
     }
 
     // Update is called once per frame
