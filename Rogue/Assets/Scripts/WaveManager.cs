@@ -119,7 +119,8 @@ public class WaveManager : MonoBehaviour
             }
         }
         //ALLIED STUFF - mainly for testing to see if allies vs enemies works
-        for (int e = 0; e < WaveNumber; e++)
+
+        for (int e = 0; e < WaveNumber-3; e++)
         {
             Vector3 esp = new Vector3(-40f + (e * 10), -25f, 0f);
             SpawnNPC(enemyDataList[0], weaponDataList[0], esp,"allied");
