@@ -46,6 +46,10 @@ public class GameUIManager : MonoBehaviour
     {
         healthBar.value = health;
     }
+    public void updateShield(float shield)
+    {
+        shieldBar.value = shield;
+    }
     public void updateLives(float livesRemaining)
     {
         foreach (Transform child in livesStartPoint.transform)
