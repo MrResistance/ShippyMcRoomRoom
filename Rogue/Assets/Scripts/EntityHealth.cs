@@ -26,11 +26,38 @@ public class EntityHealth : MonoBehaviour
     }
     public void TakeDamage(float damage)
     {
+        float remainderDamageFromShields;
         if (isInvunerable != true)
+            { 
+            if (shield > 0)
+            {
+                if (shield-damage < 0)
+                {
+                    //Get remainder that would have been from shields
+                    remainderDamageFromShields = shield % damage;
+                    //Do damage to shields
+                    shield -= damage;
+                    shield = 0;
+
+                    //Do remaining damage to health
+                    health -= remainderDamageFromShields;
+                }
+                else
+                {
+                    shield -= damage;
+                }
+            
+            }
+            else
+            { 
             health -= damage;
-        if (gameObject.tag == "Player")
-        {
-            gameUIManager.updateHealth(health);
+            }
+            if (gameObject.tag == "Player")
+            {
+                //Update shields
+                gameUIManager.updateHealth(health);
+                gameUIManager.updateShield(shield);
+            }
         }
         CheckIfDead();
     }
