@@ -66,6 +66,9 @@ public class NPCMoverScript1 : MonoBehaviour
         distanceToTargetFloat = Mathf.Infinity;
         this.gameObject.GetComponent<EntityHealth>().health = enemyData.healthMaximum;
         this.gameObject.GetComponent<EntityHealth>().healthMaximum = enemyData.healthMaximum;
+        this.gameObject.GetComponent<EntityHealth>().shield = enemyData.shieldMaximum;
+        this.gameObject.GetComponent<EntityHealth>().shieldMaximum = enemyData.shieldMaximum;
+
         this.gameObject.GetComponent<SpriteRenderer>().sprite = enemyData.sprite;
         transform.localScale = new Vector3(enemyData.scale, enemyData.scale, enemyData.scale);
         this.GetComponent<AIPath>().maxSpeed = enemyData.speedMovement;
@@ -93,6 +96,7 @@ public class NPCMoverScript1 : MonoBehaviour
     {
         //Debug.Log("Firing at player");
         audioSource.PlayOneShot(audioSource.clip);
+
         for (int p = 0; p < wd.projectileCount; p++)
         { 
             GameObject projectile = Instantiate(projectilePrefab, firePoint.transform.position, WeaponFiringAngle());
@@ -171,7 +175,7 @@ public class NPCMoverScript1 : MonoBehaviour
     {
         if (npcSide == "enemy")
         {
-            if (wm.listAllies.Count != 0 && wm.AlliesGO.transform.childCount != 0)
+            if (wm.listAllies.Count != 0)
             {
                 return true;
             }
@@ -198,7 +202,7 @@ public class NPCMoverScript1 : MonoBehaviour
                 if (npcSide == "enemy")
                 {
                     //Get closest
-                    foreach (Transform go in wm.AlliesGO.transform)
+                    foreach (GameObject go in wm.listAllies)
                     {
                         if (go != null)
                         { 
