@@ -12,7 +12,7 @@ public class GameUIManager : MonoBehaviour
 {
     // Start is called before the first frame update
     public TextMeshProUGUI t_wavenumber;
-    public GameObject UI, defaultButton, livesPrefab, pointsText;
+    public GameObject UI, defaultButton, livesPrefab, pointsText, pauseMenu;
     public GameObject[] lives;
     public GameObject[] scoreTextObjects;
     public EventSystem eventSystem;
@@ -23,7 +23,7 @@ public class GameUIManager : MonoBehaviour
     public int ItemNumberChosen; //1, 2, or 3
     public string[] upgrades;
     public float[] upgradeamount;
-    public bool ShowingRewards = false;
+    public bool ShowingRewards = false, isGamePaused = false;
     public Button item1;
     public PlayerManager pm;
     public TextMeshProUGUI item1txt, item2txt, item3txt, upgradeAmountDebug1, upgradeAmountDebug2, upgradeAmountDebug3;
@@ -41,6 +41,49 @@ public class GameUIManager : MonoBehaviour
         upgrades = new string[] { "movement", "attackspeed", "damage" };
         upgradeamount = new float[] { 5f * (1f + (0.1f)), 5f * (1f + (0.1f)), 5f * (1f + (0.1f)) };
         updateLives(pm.remainingLives);
+    }
+    private void Update()
+    {
+        if (Input.GetButtonDown("Start"))
+        {
+            if (isGamePaused)
+            {
+                UnpauseGame();
+            }
+            else
+            {
+                PauseGame();
+            }
+        }
+    }
+    public void PauseGame()
+    {
+        HidePanels();
+        pauseMenu.gameObject.SetActive(true);
+        isGamePaused = true;
+        Time.timeScale = 0.0f;
+    }
+
+    public void UnpauseGame()
+    {
+        ShowPanels();
+        pauseMenu.SetActive(false);
+        isGamePaused = false;
+        Time.timeScale = 1.0f;
+    }
+    public void HidePanels()
+    {
+        foreach (Transform child in GameObject.Find("UI").transform)
+        {
+            child.gameObject.SetActive(false);
+        }
+    }
+    public void ShowPanels()
+    {
+        foreach (Transform child in GameObject.Find("UI").transform)
+        {
+            child.gameObject.SetActive(true);
+        }
     }
     public void updateHealth(float health)
     {
