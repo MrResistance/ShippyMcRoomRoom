@@ -12,7 +12,7 @@ public class GameUIManager : MonoBehaviour
 {
     // Start is called before the first frame update
     public TextMeshProUGUI t_wavenumber;
-    public GameObject UI, defaultButton, livesPrefab, pointsText, pauseMenu;
+    public GameObject UI, defaultButton, livesPrefab, pointsText, pauseMenu, rewardsPanel;
     public GameObject[] lives;
     public GameObject[] scoreTextObjects;
     public EventSystem eventSystem;
@@ -44,7 +44,7 @@ public class GameUIManager : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetButtonDown("Start"))
+        if (Input.GetButtonDown("Start") && !rewardsPanel.activeInHierarchy)
         {
             if (isGamePaused)
             {
@@ -67,6 +67,7 @@ public class GameUIManager : MonoBehaviour
     public void UnpauseGame()
     {
         ShowPanels();
+        rewardsPanel.SetActive(false);
         pauseMenu.SetActive(false);
         isGamePaused = false;
         Time.timeScale = 1.0f;

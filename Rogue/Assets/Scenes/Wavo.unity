@@ -3567,6 +3567,7 @@ MonoBehaviour:
   pointsText: {fileID: 7633689030025392519, guid: c9aeb8d2004588b4abf45f995fcad502,
     type: 3}
   pauseMenu: {fileID: 2014154450}
+  rewardsPanel: {fileID: 982478854}
   lives: []
   scoreTextObjects: []
   eventSystem: {fileID: 0}
