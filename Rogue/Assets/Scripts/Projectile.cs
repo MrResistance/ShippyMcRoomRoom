@@ -80,7 +80,7 @@ public class Projectile : MonoBehaviour
     IEnumerator TrackTarget()
     {
         //Rotate towards
-        while(true)
+        while(target != null)
         { 
             Vector2 DistanceToTarget = GetDistanceToTarget();
             float angle = Mathf.Atan2(DistanceToTarget.y, DistanceToTarget.x) * Mathf.Rad2Deg - 90f;
