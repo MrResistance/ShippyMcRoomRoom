@@ -41,17 +41,19 @@ public class PlayerWeapon : MonoBehaviour
             { 
             GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
             projectile.layer = 10; //The Player Projectile layer
+            projectile.tag = "Player Projectile"; 
             projectile.GetComponent<Projectile>().wd = wd;
             projectile.GetComponent<Projectile>().damageBonus = permdamagebonus;
             projectile.GetComponent<Projectile>().firepoint = firePoint;
-            if (wd.isTrackingProjectile == true)
-            {
-                projectile.GetComponent<Projectile>().target = GetClosestEnemy();
-            }
             //Spread
             if (wd.spreadType == "even")
             {
                 projectile.GetComponent<Projectile>().spreadNumber = p;
+            }
+            //Tracking
+            if (wd.isTrackingProjectile == true)
+            {
+                projectile.GetComponent<Projectile>().target = GetClosestEnemy();
             }
         }
 
