@@ -101,8 +101,9 @@ public class NPCMoverScript1 : MonoBehaviour
         { 
             GameObject projectile = Instantiate(projectilePrefab, firePoint.transform.position, WeaponFiringAngle());
             projectile.GetComponent<Projectile>().firepoint = firePoint.transform;
-            //Temp layer specifying - this needs to be changed later should we want to use this script to make friendly NPCs
-            //projectile.layer = 11; //The Enemy Projectile layer
+            projectile.GetComponent<Projectile>().wd = wd;
+            projectile.transform.parent = ProjectilesGO.transform;
+            //NPC Side stuff - only for NPCs
             if (npcSide == "enemy")
             {
                 projectile.tag = "Enemy Projectile";
@@ -113,11 +114,15 @@ public class NPCMoverScript1 : MonoBehaviour
                 projectile.tag = "Player Projectile";
                 projectile.layer = 10;
             }
-            projectile.GetComponent<Projectile>().wd = wd;
-            projectile.transform.parent = ProjectilesGO.transform;
+            //Spread
             if (wd.spreadType == "even")
             {
                 projectile.GetComponent<Projectile>().spreadNumber = p;
+            }
+            //Targetting
+            if (wd.isTrackingProjectile == true)
+            {
+                projectile.GetComponent<Projectile>().target = target;
             }
         }
     }

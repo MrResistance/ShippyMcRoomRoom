@@ -48,6 +48,7 @@ public class PlayerWeapon : MonoBehaviour
             {
                 projectile.GetComponent<Projectile>().target = GetClosestEnemy();
             }
+            //Spread
             if (wd.spreadType == "even")
             {
                 projectile.GetComponent<Projectile>().spreadNumber = p;
