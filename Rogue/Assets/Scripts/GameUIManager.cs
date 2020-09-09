@@ -154,28 +154,30 @@ public class GameUIManager : MonoBehaviour
             this.gameObject.GetComponent<WaveManager>().NextWave();
         }
     }
+    public void SetPanels(int panelNo)
+    {
+        foreach (Transform child in UI.transform)
+        {
+            child.gameObject.SetActive(false);
+        }
+        UI.transform.GetChild(panelNo).gameObject.SetActive(true);
+    }
     public void SwapPanel(int panel) //Superior because you can specify
     {
         switch(panel)
         {
             case 1: //Reward panel
-                UI.transform.GetChild(0).gameObject.SetActive(false);
-                UI.transform.GetChild(1).gameObject.SetActive(true);
-                UI.transform.GetChild(3).gameObject.SetActive(false);
+                SetPanels(panel);
                 ShowingRewards = true;
                 HighlightButton(defaultButton);
                 ClearPointsFromField();
                 break;
             case 2: //Game UI - health, wave stuff
-                UI.transform.GetChild(0).gameObject.SetActive(true);
-                UI.transform.GetChild(1).gameObject.SetActive(false);
-                UI.transform.GetChild(3).gameObject.SetActive(false);
+                SetPanels(panel);
                 ShowingRewards = false;
                 break;
             case 3: //Pause Menu
-                UI.transform.GetChild(0).gameObject.SetActive(false);
-                UI.transform.GetChild(1).gameObject.SetActive(false);
-                UI.transform.GetChild(3).gameObject.SetActive(true);
+                SetPanels(panel);
                 ShowingRewards = false;
                 HighlightButton(defaultPauseButton);
                 break;
