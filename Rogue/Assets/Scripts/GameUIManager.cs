@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEditor;
+using UnityEngine.SceneManagement;
 using System.Security.AccessControl;
 using Unity.Mathematics;
 
@@ -12,7 +13,7 @@ public class GameUIManager : MonoBehaviour
 {
     // Start is called before the first frame update
     public TextMeshProUGUI t_wavenumber;
-    public GameObject UI, defaultButton, livesPrefab, pointsText, pauseMenu, rewardsPanel;
+    public GameObject UI, defaultButton, defaultPauseButton,livesPrefab, pointsText, pauseMenu, rewardsPanel;
     public GameObject[] lives;
     public GameObject[] scoreTextObjects;
     public EventSystem eventSystem;
@@ -56,35 +57,38 @@ public class GameUIManager : MonoBehaviour
             }
         }
     }
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        if (isGamePaused)
+        {
+            UnpauseGame();
+        }
+    }
+    public void GoToMainMenu()
+    {
+        SceneManager.LoadScene(0);
+        if (isGamePaused)
+        {
+            UnpauseGame();
+        }
+    }
+    public void QuitApplication()
+    {
+        Application.Quit();
+    }
     public void PauseGame()
     {
-        HidePanels();
-        pauseMenu.gameObject.SetActive(true);
+        SwapPanel(3);
         isGamePaused = true;
         Time.timeScale = 0.0f;
     }
 
     public void UnpauseGame()
     {
-        ShowPanels();
-        rewardsPanel.SetActive(false);
-        pauseMenu.SetActive(false);
+        SwapPanel(2);
         isGamePaused = false;
         Time.timeScale = 1.0f;
-    }
-    public void HidePanels()
-    {
-        foreach (Transform child in GameObject.Find("UI").transform)
-        {
-            child.gameObject.SetActive(false);
-        }
-    }
-    public void ShowPanels()
-    {
-        foreach (Transform child in GameObject.Find("UI").transform)
-        {
-            child.gameObject.SetActive(true);
-        }
     }
     public void updateHealth(float health)
     {
@@ -105,10 +109,10 @@ public class GameUIManager : MonoBehaviour
             Instantiate(livesPrefab, new Vector3(livesStartPoint.position.x + (i * livesIconSeparationDistance), livesStartPoint.position.y, livesStartPoint.position.z), livesStartPoint.rotation, GameObject.Find("LivesStartPoint").transform);
         }
     }
-    public void HighlightButton()
+    public void HighlightButton(GameObject button)
     {
         eventSystem.SetSelectedGameObject(null);
-        eventSystem.SetSelectedGameObject(defaultButton);
+        eventSystem.SetSelectedGameObject(button);
     }
     public void ChangeWaveNumber(int number) //Called when NextWave is called
     {
@@ -157,14 +161,23 @@ public class GameUIManager : MonoBehaviour
             case 1: //Reward panel
                 UI.transform.GetChild(0).gameObject.SetActive(false);
                 UI.transform.GetChild(1).gameObject.SetActive(true);
+                UI.transform.GetChild(3).gameObject.SetActive(false);
                 ShowingRewards = true;
-                HighlightButton();
+                HighlightButton(defaultButton);
                 ClearPointsFromField();
                 break;
             case 2: //Game UI - health, wave stuff
                 UI.transform.GetChild(0).gameObject.SetActive(true);
                 UI.transform.GetChild(1).gameObject.SetActive(false);
+                UI.transform.GetChild(3).gameObject.SetActive(false);
                 ShowingRewards = false;
+                break;
+            case 3: //Pause Menu
+                UI.transform.GetChild(0).gameObject.SetActive(false);
+                UI.transform.GetChild(1).gameObject.SetActive(false);
+                UI.transform.GetChild(3).gameObject.SetActive(true);
+                ShowingRewards = false;
+                HighlightButton(defaultPauseButton);
                 break;
         }
     }
