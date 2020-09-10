@@ -164,20 +164,18 @@ public class GameUIManager : MonoBehaviour
     }
     public void SwapPanel(int panel) //Superior because you can specify
     {
-        switch(panel)
+        SetPanels(panel);
+        switch (panel)
         {
             case 1: //Reward panel
-                SetPanels(panel);
                 ShowingRewards = true;
                 HighlightButton(defaultButton);
                 ClearPointsFromField();
                 break;
             case 2: //Game UI - health, wave stuff
-                SetPanels(panel);
                 ShowingRewards = false;
                 break;
             case 3: //Pause Menu
-                SetPanels(panel);
                 ShowingRewards = false;
                 HighlightButton(defaultPauseButton);
                 break;
