@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Player
+  m_Name: ProjectileBase
   m_Shader: {fileID: -6465566751694194690, guid: 6211b4f373292554585c6d986667b897,
     type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
@@ -27,4 +27,4 @@ Material:
     m_Floats:
     - Vector1_675E7EF6: 0.05
     m_Colors:
-    - Color_4E520A7F: {r: 0, g: 0.6415195, b: 1, a: 1}
+    - Color_4E520A7F: {r: 0.7735849, g: 0.44636214, b: 0.003648994, a: 1}

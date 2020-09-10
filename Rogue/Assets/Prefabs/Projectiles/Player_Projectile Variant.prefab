@@ -13,7 +13,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 20
+  healthMaximum: 0
+  healthBonus: 0
+  gameUIManager: {fileID: 0}
   isInvunerable: 0
+  thisObjectPoints: 0
+  shield: 0
+  shieldMaximum: 0
 --- !u!1001 &2912269676706284225
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -112,6 +118,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: f13b0c97ca05b8840aa89fc53f4d16f2,
         type: 3}
+    - target: {fileID: 8787492111194265383, guid: ddfd9038b8f0e8a40a14b97fe7177ae1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ac59d287a03cf2640a8960f493c51ec0, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddfd9038b8f0e8a40a14b97fe7177ae1, type: 3}
 --- !u!1 &2715077195191800749 stripped
