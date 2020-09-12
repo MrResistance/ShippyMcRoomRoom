@@ -19,11 +19,22 @@ public class WeaponData : ScriptableObject
     public float speed = 50;
     public float chargetime; //How long it takes to charge the weapon for it to fire
 
-    public string firePosition = "single"; //"single" - firing from middle-front // "twin" - firing from middle-front offset to left and right //"side" - firing from sides of ship at 90' angle
+    public string firePosition = "single"; //"single" - firing from middle-front // "twin" - firing from middle-front offset to left and right //"side" - firing from sides of ship at 90' angle 
 
     [Title("Spread")]
     //Spread
-    public string spreadType = "none"; //Types: "none", "random", "even"
+    //test
+    [ValueDropdown("spreadValues")]
+    public string spreadType;
+
+    private ValueDropdownList<string> spreadValues = new ValueDropdownList<string>()
+    {
+        {"None","none"},
+        {"Random","random"},
+        {"Even","even"},
+    };
+
+    //public string spreadType = "none"; //Types: "none", "random", "even"
     [ShowInInspector,PropertyRange(0,180)]
     public float spread; //Accuracy; 
 

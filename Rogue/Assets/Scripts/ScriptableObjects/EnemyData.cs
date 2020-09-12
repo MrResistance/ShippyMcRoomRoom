@@ -28,7 +28,7 @@ public class EnemyData : ScriptableObject
     //test
     [ValueDropdown("testValues")]
     public string test;
-
+    
     private ValueDropdownList<string> testValues = new ValueDropdownList<string>()
     {
         {"Test","one"},
