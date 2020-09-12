@@ -187,6 +187,8 @@ MonoBehaviour:
   shieldObj: {fileID: 8679509534166479431}
   shield: 0
   shieldMaximum: 0
+  healthBar: {fileID: 0}
+  shieldBar: {fileID: 0}
 --- !u!114 &736251799
 MonoBehaviour:
   m_ObjectHideFlags: 0
