@@ -150,6 +150,10 @@ public class NPCMoverScript1 : MonoBehaviour
     }
     bool isCloseEnoughToShoot() //So entity knows it can hit the target
     {
+        if (wd.range == 0) //The weapon has no limit therefore it can shoot as far as it wants
+        {
+            return true;
+        }
         if (distanceToTargetFloat < wd.range)
         { 
             return true;
