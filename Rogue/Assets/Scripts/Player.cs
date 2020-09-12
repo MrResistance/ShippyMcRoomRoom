@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     public float h, v, brakeLightIntensity,speed = 5f;
     public Animator vertThrust, diagThrustL, diagThrustR;
     public SpriteRenderer thrustL, thrustR;
+
     // Start is called before the first frame update
     void Start()
     {

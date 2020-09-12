@@ -54,7 +54,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4b742d545d83e4e48ac76919ca99735b, type: 2}
+  - {fileID: 2100000, guid: ccd6569f76108d540aeba0b1e2cde7b3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

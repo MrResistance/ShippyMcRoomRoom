@@ -14,11 +14,12 @@ public class EntityHealth : MonoBehaviour
     public bool isInvunerable = true;
     public float thisObjectPoints;
     //Shields
-    public float shield;
-    public float shieldMaximum;
+    public Shield_Obj shieldObj;
+    public float shield, shieldMaximum;
     private void Awake()
     {
         gameUIManager = GameObject.Find("GameManager").GetComponent<GameUIManager>();
+        shieldObj = GetComponentInChildren<Shield_Obj>();
     }
     void Start()
     {
@@ -27,7 +28,7 @@ public class EntityHealth : MonoBehaviour
     public void TakeDamage(float damage)
     {
         float remainderDamageFromShields;
-        if (isInvunerable != true)
+        if (!isInvunerable)
             { 
             if (shield > 0)
             {
@@ -49,8 +50,12 @@ public class EntityHealth : MonoBehaviour
             
             }
             else
-            { 
-            health -= damage;
+            {
+                if (shieldObj != null && shieldObj.isActiveAndEnabled)
+                {
+                    shieldObj.gameObject.SetActive(false);
+                }
+                health -= damage;
             }
             if (gameObject.tag == "Player")
             {

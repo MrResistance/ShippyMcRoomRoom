@@ -7,10 +7,10 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ProjectileBase
-  m_Shader: {fileID: -6465566751694194690, guid: 6211b4f373292554585c6d986667b897,
+  m_Name: Player_Projectile
+  m_Shader: {fileID: -6465566751694194690, guid: 616495b460b4abc43ba986688f6c385b,
     type: 3}
-  m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
+  m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -25,6 +25,6 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_675E7EF6: 0.05
+    - Vector1_1BD5852F: 0.05
     m_Colors:
-    - Color_4E520A7F: {r: 0.7735849, g: 0.44636214, b: 0.003648994, a: 1}
+    - Color_8EDDF64C: {r: 0, g: 0.22316146, b: 1, a: 1}
