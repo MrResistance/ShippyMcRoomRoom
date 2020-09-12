@@ -66,8 +66,11 @@ public class EntityHealth : MonoBehaviour
                 gameUIManager.updateHealth(health);
                 gameUIManager.updateShield(shield);
             }
-            healthBar.value = health;
-            shieldBar.value = shield;
+            else
+            {
+                healthBar.value = health;
+                shieldBar.value = shield;
+            }
         }
         CheckIfDead();
     }
