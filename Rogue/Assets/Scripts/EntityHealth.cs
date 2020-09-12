@@ -27,6 +27,7 @@ public class EntityHealth : MonoBehaviour
     void Start()
     {
         Invoke("DisableInvunerability", 1.5f);
+        SetMaxOnBars();
         UpdateBars();
     }
     public void TakeDamage(float damage)
@@ -70,6 +71,25 @@ public class EntityHealth : MonoBehaviour
             UpdateBars();
         }
         CheckIfDead();
+    }
+    public void SetMaxOnBars()
+    {
+        if (healthBar != null)
+        {
+            SetMaxHealthBar();
+        }
+        if (shieldBar != null)
+        {
+            SetMaxShieldBar();
+        }
+    }
+    public void SetMaxHealthBar()
+    {
+        healthBar.maxValue = healthMaximum;
+    }
+    public void SetMaxShieldBar()
+    {
+        shieldBar.maxValue = shieldMaximum;
     }
     public void UpdateBars()
     {
