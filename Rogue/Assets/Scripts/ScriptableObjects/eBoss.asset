@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9669b3f1df6e9544b9290d36552d7c82, type: 3}
   m_Name: eBoss
   m_EditorClassIdentifier: 
-  name: CannonBoi
-  description: Just your typical enemy
-  sprite: {fileID: 21300000, guid: 593a413ec4e23a04e803cd8efb583f0f, type: 3}
+  name: Boss
+  description: He big and slow
+  sprite: {fileID: 21300000, guid: 70ba3b32c1be04e48b7d97466c481f38, type: 3}
   colourSprite: {r: 1, g: 1, b: 1, a: 1}
-  scale: 3
-  speedMovement: 0
+  scale: 5
+  speedMovement: 1
   speedRotation: 1
-  healthMaximum: 200
+  healthMaximum: 500
   hasShield: 0
   shieldMaximum: 0
   shieldRateOfRecharge: 0
-  points: 25
+  points: 100

@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -3621,7 +3621,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -131, y: 71.19998}
+  m_AnchoredPosition: {x: -131, y: 71.19995}
   m_SizeDelta: {x: 500, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1299559447
@@ -3807,9 +3807,11 @@ MonoBehaviour:
   enemyDataList:
   - {fileID: 11400000, guid: ed0a3b1cffde6d445aa7760a56cd2ce2, type: 2}
   - {fileID: 11400000, guid: 76953d45d27b81d4a963fc0c7b1db4bc, type: 2}
+  - {fileID: 11400000, guid: 46337f5c3dbeaaf4296b7178150f8180, type: 2}
   weaponDataList:
   - {fileID: 11400000, guid: 534a6a0fc4db5ad458167502b4525f50, type: 2}
   - {fileID: 11400000, guid: 3b8c69575db6dcd4f8aedf73b1063dc6, type: 2}
+  - {fileID: 11400000, guid: 9deef19f56e18084cbdfb5f81dff028d, type: 2}
   listEnemies:
   - {fileID: 0}
   listAllies: []
@@ -5675,7 +5677,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -131, y: 98.49997}
+  m_AnchoredPosition: {x: -131, y: 98.5}
   m_SizeDelta: {x: 500, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2067499986

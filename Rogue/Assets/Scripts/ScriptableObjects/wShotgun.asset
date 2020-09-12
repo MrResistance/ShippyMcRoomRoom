@@ -18,10 +18,11 @@ MonoBehaviour:
   colourSprite: {r: 1, g: 0.6114951, b: 0, a: 1}
   scale: 0.7
   projectileCount: 8
-  damage: 12
+  damage: 100
   rateoffire: 1
   speed: 70
   chargetime: 0
+  firePosition: single
   spreadType: even
   spread: 5
   range: 0
