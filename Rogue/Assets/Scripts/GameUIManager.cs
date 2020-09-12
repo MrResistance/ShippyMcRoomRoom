@@ -195,7 +195,7 @@ public class GameUIManager : MonoBehaviour
     {
         float ca;
         ca = upgradeamount[ItemNumberChosen-1]; //minus 1 because buttons start at 1 and array starts at 0
-        Debug.Log(ca);
+        //Debug.Log(ca);
         return ca;
             
     }
