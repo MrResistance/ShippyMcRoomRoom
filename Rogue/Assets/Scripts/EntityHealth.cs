@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EntityHealth : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class EntityHealth : MonoBehaviour
     //Shields
     public Shield_Obj shieldObj;
     public float shield, shieldMaximum;
+    //UI
+    public Slider healthBar, shieldBar;
     private void Awake()
     {
         gameUIManager = GameObject.Find("GameManager").GetComponent<GameUIManager>();
@@ -63,6 +66,8 @@ public class EntityHealth : MonoBehaviour
                 gameUIManager.updateHealth(health);
                 gameUIManager.updateShield(shield);
             }
+            healthBar.value = health;
+            shieldBar.value = shield;
         }
         CheckIfDead();
     }

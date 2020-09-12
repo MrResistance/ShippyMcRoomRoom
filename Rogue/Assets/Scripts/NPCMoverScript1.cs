@@ -140,7 +140,7 @@ public class NPCMoverScript1 : MonoBehaviour
             
             transform.rotation = Quaternion.Slerp(transform.rotation, rot, Time.deltaTime * enemyData.speedRotation);
 
-            hsCanvas.transform.rotation = Quaternion.Euler(new Vector3(0,0,this.gameObject.transform.rotation.z));
+            hsCanvas.transform.rotation = Quaternion.Euler(new Vector3(0,0,0));
         }
         else
         {
