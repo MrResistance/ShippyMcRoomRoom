@@ -25,4 +25,16 @@ public class EnemyData : ScriptableObject
     //scoring
     public float points;
 
-}
+    //test
+    [ValueDropdown("testValues")]
+    public string test;
+
+    private ValueDropdownList<string> testValues = new ValueDropdownList<string>()
+    {
+        {"Test","one"},
+        {"Test2","two"},
+        {"Test3","three"},
+    };
+
+    }
+
