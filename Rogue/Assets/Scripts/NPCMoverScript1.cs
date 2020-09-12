@@ -78,7 +78,7 @@ public class NPCMoverScript1 : MonoBehaviour
         //Offsets rate of fire for NPC - so it does not shoot at the same time as everything else
         float low = (wd.rateoffire / 100) * 5f * -1f;
         float high = (wd.rateoffire / 100) * 5f;
-        offsetRateOfFire = Random.RandomRange(low, high);
+        offsetRateOfFire = Random.Range(low, high);
         //For getting a target
         StartCoroutine(TargetEnemyOfNPC());
         StartCoroutine(ShootEnemyOfNPC());
