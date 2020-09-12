@@ -70,7 +70,8 @@ public class NPCMoverScript1 : MonoBehaviour
         this.gameObject.GetComponent<EntityHealth>().healthMaximum = enemyData.healthMaximum;
         this.gameObject.GetComponent<EntityHealth>().shield = enemyData.shieldMaximum;
         this.gameObject.GetComponent<EntityHealth>().shieldMaximum = enemyData.shieldMaximum;
-
+        this.gameObject.GetComponent<EntityHealth>().SetMaxOnBars();
+        this.gameObject.GetComponent<EntityHealth>().UpdateBars();
         this.gameObject.GetComponent<SpriteRenderer>().sprite = enemyData.sprite;
         transform.localScale = new Vector3(enemyData.scale, enemyData.scale, enemyData.scale);
         this.GetComponent<AIPath>().maxSpeed = enemyData.speedMovement;

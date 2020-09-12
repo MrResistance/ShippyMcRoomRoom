@@ -27,8 +27,6 @@ public class EntityHealth : MonoBehaviour
     void Start()
     {
         Invoke("DisableInvunerability", 1.5f);
-        SetMaxOnBars();
-        UpdateBars();
     }
     public void TakeDamage(float damage)
     {
