@@ -151,6 +151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcSide: 
   wm: {fileID: 0}
+  hsCanvas: {fileID: 2636845858374594697}
   enemyData: {fileID: 0}
   wd: {fileID: 0}
   boundaryXmin: -49

@@ -10,6 +10,8 @@ public class NPCMoverScript1 : MonoBehaviour
     public string npcSide; //"enemy","allied"
     public WaveManager wm; //For getting the most updated lists of enemies to npc
 
+    public GameObject hsCanvas;
+
     public EnemyData enemyData;
     public WeaponData wd;
 
@@ -137,6 +139,8 @@ public class NPCMoverScript1 : MonoBehaviour
             Vector3 angle2 = transform.rotation.eulerAngles;
             
             transform.rotation = Quaternion.Slerp(transform.rotation, rot, Time.deltaTime * enemyData.speedRotation);
+
+            hsCanvas.transform.rotation = Quaternion.Euler(new Vector3(0,0,this.gameObject.transform.rotation.z));
         }
         else
         {
