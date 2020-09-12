@@ -27,6 +27,7 @@ public class EntityHealth : MonoBehaviour
     void Start()
     {
         Invoke("DisableInvunerability", 1.5f);
+        UpdateBars();
     }
     public void TakeDamage(float damage)
     {
@@ -66,16 +67,28 @@ public class EntityHealth : MonoBehaviour
                 gameUIManager.updateHealth(health);
                 gameUIManager.updateShield(shield);
             }
-            if (healthBar != null)
-            {
-                healthBar.value = health;
-            }
-            if (shieldBar != null)
-            {
-                shieldBar.value = shield;
-            }
+            UpdateBars();
         }
         CheckIfDead();
+    }
+    public void UpdateBars()
+    {
+        if (healthBar != null)
+        {
+            UpdateLocalHealthbar();
+        }
+        if (shieldBar != null)
+        {
+            UpdateLocalShieldbar();
+        }
+    }
+    public void UpdateLocalHealthbar()
+    {
+        healthBar.value = health;
+    }
+    public void UpdateLocalShieldbar()
+    {
+        shieldBar.value = shield;
     }
     public void CheckIfDead()
     {
