@@ -171,13 +171,22 @@ public class GameUIManager : MonoBehaviour
                 ShowingRewards = true;
                 HighlightButton(defaultButton);
                 ClearPointsFromField();
+
+                //Debug UI stays
+                UI.gameObject.transform.GetChild(0).gameObject.SetActive(true);
                 break;
             case 2: //Game UI - health, wave stuff
                 ShowingRewards = false;
+
+                //Debug UI stays
+                UI.gameObject.transform.GetChild(0).gameObject.SetActive(true);
                 break;
             case 3: //Pause Menu
                 ShowingRewards = false;
                 HighlightButton(defaultPauseButton);
+
+                //Debug UI stays
+                UI.gameObject.transform.GetChild(0).gameObject.SetActive(true);
                 break;
         }
     }
