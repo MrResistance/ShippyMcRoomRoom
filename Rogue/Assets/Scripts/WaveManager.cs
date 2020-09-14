@@ -107,7 +107,7 @@ public class WaveManager : MonoBehaviour
         Transform EnemySpawn = EnemiesGO.transform;
         for (int e = 0; e < WaveNumber;e++)
         {
-            Vector3 esp = new Vector3(-40f+(e*10), 25f,0f);
+            Vector3 esp = new Vector3(-40f+(e*10), 40f,0f);
             SpawnNPC(enemyDataList[0],weaponDataList[0], esp,"enemy");
         }
         if (WaveNumber >= 5) //Cannon spawner

@@ -2950,7 +2950,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0, y: 0}
+  m_Offset: {x: 52, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2961,7 +2961,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 68.6}
+  m_Size: {x: 100, y: 65}
   m_EdgeRadius: 0
 --- !u!1 &1181506827
 GameObject:
@@ -3037,7 +3037,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0, y: 0}
+  m_Offset: {x: -0, y: -49}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -3048,7 +3048,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 108, y: 1}
+  m_Size: {x: 110, y: 100}
   m_EdgeRadius: 0
 --- !u!1 &1224325503
 GameObject:
@@ -3237,7 +3237,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   data:
-    dataString: UEsDBBQAAAgIAAAAIezOzpnQagIAABMFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFtVE1z2jAQ/SuMzoWxCQG7t9YhpId8TEgnF1+EtMYaZMkjyQGS4b93JRvs0vpi+e3Xe7srfxGhbA3MabMygj9qDuT7iPgz+TbqjQ9woFut1uITzj7vgrvSO9Hg80qd0IjHPszqCpwR7IfaSu8cIdgoUWhTLfkWMm2dRbig0gKajHY+WiH0NSIHfI1TH3LE03ThT594SqPRCY8MlAPTu54do0kanqRzjyeLJIlvFul0OY4WIbRRTNKqBu519BniaN7lmEeTyD83SfBXKLVz9bKYllLYjidxxzr0IaO1bVAlOnBBUXcgF09uEChBbEvnVQzDn4vCguuoG3q8EwYb2OYlP3Xb1YraXUvxg8rGV7qNp4FVm/TxH/s4DubC6OrhXDeOfA1XCrZ7pUdGrRu0fQjfDaiHTu2p3NGNhPcS1JNeGd0ojkZnGh/aWJje9Z8XaVkJbNfjLdUrsKn/M7xuaF7DKag/ZFJUmzDXWQuspQ4dD6sBBmfzCwmHxbFdCkQ9i98W3uh2uGGd4V4Y69DUqVSe3kY3xruSZeiZV9O4TBsFAe5I16CodMcXTOOuR3hlG5S9stxTf5e64p3tfEWuQgLc+0fRlelF7y/DsqXeP4ItnxsnhYKetDc8YZ8yrVS7YcOenMPWjSkoG4RtG8H/Xi0yS3gyS+bRDAqeLPh8nM4TBuk8BpbcpkVMSdg9oVAnlS8t0a49ODXVJ1e4Z+dfzGhlaB22nRu6X4nPSg8JClXoNTMA6rlNcWEOBqvgxeRLLrBDa3BOqDBw8pUTqdkOeH6pmQepy4MzNO+z5KQWH9p5JCdZ+Knk5EROfwBQSwMEFAAACAgAAAAh7K4RtzxtAAAAeAAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGrVipLLSrOzM9TslIw0TPSMzTVUVBKL0osyCgGihiCOKWZKSB2tJKJRYqFiYWZgUlqWoqFeYqZrqWZRXKqpZlharKFqWWaYaJSLFB9SWVBql9ibipET0BiSUZaZl5KZl66nntRZoo7yGil2FoAUEsBAi0AFAAACAgAAAAh7M7OmdBqAgAAEwUAAAsAJAAAAAAAAAAAAAAAAAAAAGdyYXBoMC5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsBAi0AFAAACAgAAAAh7K4RtzxtAAAAeAAAAAkAJAAAAAAAAAAAAAAAtwIAAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLBQYAAAAAAgACALgAAABvAwAAAAA=
+    dataString: UEsDBBQAAAgIAAAAIezXxVJmUQIAAPYEAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVE1z2jAQ/SuMziVjU0Kgt9YhpAdCJrSTiy+KtMYaZMmjjwDJ8N+7km3skhPivbertx/yJxHK1sCcNisj+FpzID9GJJzJt1FPPsKR7rTaig/oNK+CuzKIaNS8UCc04mkIs7oCZwT7qXYyiBMEvRKFNtWS7yDT1lmECyotIGW0C9EKoc8ROeLPeBFCTnia3IXTB54WyeiMRwbKgemlnTBtZY3KKyZpVQMPlnvxJLnkTRqhwnJaTcjAtJTCtl6IO9Wx1ozW1mMlKOCCYm3RQHrzHYESxK50IeMwfFMUFlxrz9DTvTDYpCYv+aWbzlXU7htv71T6cNNtOomumqTrL/w4jXRhdPXY3ZvGmlwp2P6Fnhi1btDaIXw/sB5bdKByT98kvJagnvTKaK84ks74EOotTO77v5fSshLYvscbq1egr78OqJtjqOEcqz9mUlRvgbqZNsBW6tjxOH4wOJvfaDguh21TIBpc/LXwh+6GW9QSD8JYh1RbpQr23rQ3QUqWsWehGu8ybRREuDVdg6LSnZ4xjbse4RU3uPaKeaDhvbSXt1z3DK5CItzrk+SKetaHy7BsqQ9rsOXGOykU9KYD8YR9yrRSzYYNe9KFbb0pKBuE7bzg/68Wmc75fDqfJVMo+PyOz8aL2ZzBYpYCm98uipSSuHtCYZ1UPjdG2/bg1FSfXOGedZ+R0crQOm47N/SwEh+VHrRcqEJvmQFQmybDxTgYvATfJV9ygQ3agnNCxXmTz5xIzfbA80uiPFa6PDpD8z5LTmrxrl1AcpLF70ZOzuT8D1BLAwQUAAAICAAAACHsrhG3PG0AAAB4AAAACQAkAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAatWKkstKs7Mz1OyUjDRM9IzNNVRUEovSizIKAaKGII4pZkpIHa0kolFioWJhZmBSWpaioV5ipmupZlFcqqlmWFqsoWpZZpholIsUH1JZUGqX2JuKkRPQGJJRlpmXkpmXrqee1FmijvIaKXYWgBQSwECLQAUAAAICAAAACHs18VSZlECAAD2BAAACwAkAAAAAAAAAAAAAAAAAAAAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAICAAAACHsrhG3PG0AAAB4AAAACQAkAAAAAAAAAAAAAACeAgAAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsFBgAAAAACAAIAuAAAAFYDAAAAAA==
     upgradeData: 
     file_cachedStartup: {fileID: 0}
     data_cachedStartup: 
@@ -4098,7 +4098,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0, y: 0}
+  m_Offset: {x: -0, y: 50}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -4109,7 +4109,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 108, y: 1}
+  m_Size: {x: 110, y: 100}
   m_EdgeRadius: 0
 --- !u!4 &1447988039
 Transform:
@@ -4169,7 +4169,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0, y: 0}
+  m_Offset: {x: -51.5, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -4180,7 +4180,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 68.6}
+  m_Size: {x: 100, y: 65}
   m_EdgeRadius: 0
 --- !u!1 &1463385631
 GameObject:
