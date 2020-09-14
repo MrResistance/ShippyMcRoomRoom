@@ -28,17 +28,8 @@ public class EntityHealth : MonoBehaviour
     void Start()
     {
         Invoke("DisableInvunerability", 1.5f);
-        Invoke("StartCheckingShield", 5f);
+        InvokeRepeating("RechargeShield", 1f, 2f);
     }
-
-    public void StartCheckingShield()
-    {
-        if (shieldMaximum != 0)
-        {
-            InvokeRepeating("RechargeShield", 1f, 2f);
-        }
-    }
-
     public void AllowShieldRecharge()
     {
         shieldRechargeAllowed = true;
@@ -46,12 +37,21 @@ public class EntityHealth : MonoBehaviour
 
     public void RechargeShield()
     {
-        Debug.Log("Recharge shield function");
         if (shield < shieldMaximum && shieldRechargeAllowed)
         {
-            Debug.Log("Recharging.");
             shield += shieldRechargeRate;
-            shieldBar.value = shield;
+            if (shield > shieldMaximum)
+            {
+                shield = shieldMaximum;
+            }
+            if (gameObject.tag == ("Player"))
+            {
+                gameUIManager.updateShield(shield);
+            }
+            else if (shieldBar != null)
+            {
+                shieldBar.value = shield;
+            }
         }
     }
     public void TakeDamage(float damage)

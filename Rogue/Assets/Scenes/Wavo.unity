@@ -2247,7 +2247,7 @@ GameObject:
   - component: {fileID: 849423339}
   - component: {fileID: 849423340}
   m_Layer: 5
-  m_Name: Healthbar
+  m_Name: PlayerHealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4768,7 +4768,7 @@ GameObject:
   - component: {fileID: 1628118959}
   - component: {fileID: 1628118960}
   m_Layer: 5
-  m_Name: Shieldbar
+  m_Name: PlayerShieldBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
