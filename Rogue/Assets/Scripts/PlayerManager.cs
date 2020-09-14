@@ -15,6 +15,9 @@ public class PlayerManager : MonoBehaviour
     public float perm_attackspeed;
     public float perm_damage;
     public float perm_health;
+    public float perm_shield;
+    public float perm_shieldRechargeAmount;
+    public float perm_shieldRechargeTime; //Can be deducted from delay - used when takes damage
 
     public GameObject debugCanvas;
 
@@ -71,7 +74,10 @@ public class PlayerManager : MonoBehaviour
         perm_attackspeed = 0;
         perm_damage = 0;
         perm_health = 0;
-    }
+        perm_shield = 0;
+        perm_shieldRechargeAmount = 0;
+        perm_shieldRechargeTime = 0;
+}
     public void AddPermBuffToPlayer(string bonusType,float bonusAmount) //To be called if either the player needs to be respawned - only adds to Player
     {
         if (PlayerGameObject != null)
