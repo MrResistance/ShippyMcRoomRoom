@@ -118,9 +118,9 @@ public class WaveManager : MonoBehaviour
                 SpawnNPC(enemyDataList[1], weaponDataList[1], esp,"enemy");
             }
         }
-        if (WaveNumber >= 2)
+        if (WaveNumber >= 10)
         {
-            Vector3 esp = new Vector3(0, -20f, 0f);
+            Vector3 esp = new Vector3(0, -40f, 0f);
             SpawnNPC(enemyDataList[2], weaponDataList[2], esp, "enemy");
         }
         //ALLIED STUFF - mainly for testing to see if allies vs enemies works
