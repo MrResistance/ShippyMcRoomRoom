@@ -82,7 +82,6 @@ public class PlayerManager : MonoBehaviour
     {
         if (PlayerGameObject != null)
         {
-            //Debug.Log("bonustype:" + bonusType + ",bonus amount:" + bonusAmount.ToString());
             switch (bonusType)
             {
                 //Movement speed

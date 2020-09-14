@@ -20,8 +20,7 @@ MonoBehaviour:
   speedMovement: 1
   speedRotation: 1
   healthMaximum: 500
-  hasShield: 0
   shieldMaximum: 100
-  shieldRateOfRecharge: 0
+  shieldRechargeRate: 10
   points: 100
   test: 

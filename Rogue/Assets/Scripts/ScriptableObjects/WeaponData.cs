@@ -70,5 +70,8 @@ public class WeaponData : ScriptableObject
     public bool isTrackingProjectile;
     public float trackingRotationSpeed;
 
+    [Title("Audio")]
+    public AudioClip weaponSound; 
+
 }
 

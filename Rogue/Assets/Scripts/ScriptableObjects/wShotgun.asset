@@ -18,7 +18,7 @@ MonoBehaviour:
   colourSprite: {r: 1, g: 0.6114951, b: 0, a: 1}
   scale: 0.7
   projectileCount: 8
-  damage: 100
+  damage: 12
   rateoffire: 1
   speed: 70
   chargetime: 0
@@ -45,3 +45,4 @@ MonoBehaviour:
   amountCanPierce: 0
   isTrackingProjectile: 0
   trackingRotationSpeed: 50
+  weaponSound: {fileID: 8300000, guid: 16b0dfe5fa8d17b4db6d12cba48e6fb1, type: 3}

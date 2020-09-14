@@ -19,6 +19,7 @@ public class PlayerWeapon : MonoBehaviour
         //sFX_Player = GameObject.Find("SFX_Player").GetComponent<SFX_Player>();
         gm = GameObject.Find("GameManager").GetComponent<GameUIManager>();
         audioSource = gameObject.GetComponent<AudioSource>();
+        audioSource.clip = wd.weaponSound;
     }
     // Update is called once per frame
     void Update()

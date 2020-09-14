@@ -22,6 +22,7 @@ MonoBehaviour:
   rateoffire: 1
   speed: 40
   chargetime: 0
+  firePosition: single
   spreadType: none
   spread: 0
   range: 0
@@ -44,3 +45,4 @@ MonoBehaviour:
   amountCanPierce: 0
   isTrackingProjectile: 0
   trackingRotationSpeed: 50
+  weaponSound: {fileID: 8300000, guid: 352c2b97a14375843bd05a0a080fc6f9, type: 3}
