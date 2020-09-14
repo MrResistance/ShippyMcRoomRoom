@@ -188,7 +188,7 @@ MonoBehaviour:
   shield: 0
   shieldMaximum: 0
   shieldRechargeDelay: 3
-  shieldRechargeRate: 5
+  shieldRechargeRate: 1
   shieldRechargeAllowed: 1
   healthBar: {fileID: 0}
   shieldBar: {fileID: 0}

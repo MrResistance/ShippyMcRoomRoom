@@ -21,6 +21,6 @@ MonoBehaviour:
   speedRotation: 3
   healthMaximum: 100
   shieldMaximum: 50
-  shieldRateOfRecharge: 0
+  shieldRechargeRate: 1
   points: 10
   test: 
