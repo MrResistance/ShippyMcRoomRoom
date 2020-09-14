@@ -18,6 +18,7 @@ public class Projectile : MonoBehaviour
         bc = GetComponent<BoxCollider2D>();
         sr = GetComponent<SpriteRenderer>();
     }
+
     private void Start()
     {
         //For spread
@@ -39,6 +40,7 @@ public class Projectile : MonoBehaviour
         }
 
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag.Contains("Boundary"))
@@ -66,10 +68,12 @@ public class Projectile : MonoBehaviour
         //sr.enabled = false;
         //Destroy(this.gameObject, 3);
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         
     }
+
     public float CalculateDamage()
     {
         float number;
@@ -77,6 +81,7 @@ public class Projectile : MonoBehaviour
         number /= wd.projectileCount;
         return number;
     }
+
     IEnumerator TrackTarget()
     {
         //Rotate towards
@@ -90,12 +95,14 @@ public class Projectile : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
     }
+
     Vector2 GetDistanceToTarget()
     {
         Vector2 dtt;
         dtt = target.transform.position - transform.position;
         return dtt;
     }
+
     Quaternion CalculateRotationForProjectile()
     {
         Quaternion quat = transform.rotation;
@@ -154,4 +161,5 @@ public class Projectile : MonoBehaviour
         return quat;
 
     }
+
 }
