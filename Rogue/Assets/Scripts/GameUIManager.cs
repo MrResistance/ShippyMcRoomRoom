@@ -32,8 +32,8 @@ public class GameUIManager : MonoBehaviour
     private void Awake()
     {
         pm = GetComponent<PlayerManager>();
-        healthBar = GameObject.Find("Healthbar").GetComponent<Slider>();
-        shieldBar = GameObject.Find("Shieldbar").GetComponent<Slider>();
+        healthBar = GameObject.Find("PlayerHealthBar").GetComponent<Slider>();
+        shieldBar = GameObject.Find("PlayerShieldBar").GetComponent<Slider>();
         eventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
         defaultButton = GameObject.FindGameObjectWithTag("Default Button");
     }
