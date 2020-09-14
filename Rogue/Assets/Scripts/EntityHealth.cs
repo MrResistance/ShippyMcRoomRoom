@@ -16,7 +16,8 @@ public class EntityHealth : MonoBehaviour
     public float thisObjectPoints;
     //Shields
     public Shield_Obj shieldObj;
-    public float shield, shieldMaximum;
+    public float shield, shieldMaximum, shieldRechargeDelay = 3f, shieldRechargeRate = 5f;
+    public bool shieldRechargeAllowed = true;
     //UI
     public Slider healthBar, shieldBar;
     private void Awake()
@@ -27,9 +28,32 @@ public class EntityHealth : MonoBehaviour
     void Start()
     {
         Invoke("DisableInvunerability", 1.5f);
+        if (shieldBar != null)
+        {
+            InvokeRepeating("RechargeShield", 1f, 2f);
+        }
+    }
+
+    public void AllowShieldRecharge()
+    {
+        shieldRechargeAllowed = true;
+    }
+
+    public void RechargeShield()
+    {
+        Debug.Log("Recharge shield function");
+        if (shield < shieldMaximum && shieldRechargeAllowed)
+        {
+            Debug.Log("Recharging.");
+            shield += shieldRechargeRate;
+        }
+        shieldBar.value = shield;
+        Debug.Log("Updating Slider.");
     }
     public void TakeDamage(float damage)
     {
+        shieldRechargeAllowed = false;
+        Invoke("AllowShieldRecharge", shieldRechargeDelay);
         float remainderDamageFromShields;
         if (!isInvunerable)
             { 
