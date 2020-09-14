@@ -16,7 +16,7 @@ public class EntityHealth : MonoBehaviour
     public float thisObjectPoints;
     //Shields
     public Shield_Obj shieldObj;
-    public float shield, shieldMaximum, shieldRechargeDelay = 3f, shieldRechargeRate;
+    public float shield, shieldMaximum, shieldRechargeDelay = 3f, shieldRechargeRate, shieldBonus;
     public bool shieldRechargeAllowed = true;
     //UI
     public Slider healthBar, shieldBar;
@@ -171,6 +171,20 @@ public class EntityHealth : MonoBehaviour
     public void RestoreHealthToMaximum()
     {
         health = healthMaximum + healthBonus;
+        UpdateBars();
+        if (gameObject.tag == ("Player"))
+        {
+            gameUIManager.updateHealth(health);
+        }
+    }
+    public void RestoreShieldToMaximum()
+    {
+        shield = shieldMaximum + shieldBonus;
+        UpdateBars();
+        if (gameObject.tag == ("Player"))
+        {
+            gameUIManager.updateShield(shield);
+        }
     }
     //Have its own collision detection
     //If is player

@@ -13,7 +13,7 @@ public class GameUIManager : MonoBehaviour
 {
     // Start is called before the first frame update
     public TextMeshProUGUI t_wavenumber;
-    public GameObject UI, defaultButton, defaultPauseButton,livesPrefab, pointsText, pauseMenu, rewardsPanel;
+    public GameObject UI, defaultButton, defaultPauseButton,livesPrefab, pointsText, pauseMenu, rewardsPanel, player;
     public GameObject[] lives;
     public GameObject[] scoreTextObjects;
     public EventSystem eventSystem;
@@ -39,6 +39,7 @@ public class GameUIManager : MonoBehaviour
     }
     void Start()
     {
+        player = GameObject.Find("Player");
         upgrades = new string[] { "movement", "attackspeed", "damage" };
         upgradeamount = new float[] { 5f * (1f + (0.1f)), 5f * (1f + (0.1f)), 5f * (1f + (0.1f)) };
         updateLives(pm.remainingLives);
@@ -175,7 +176,8 @@ public class GameUIManager : MonoBehaviour
                 ShowingRewards = true;
                 HighlightButton(defaultButton);
                 ClearPointsFromField();
-
+                player.GetComponent<EntityHealth>().RestoreHealthToMaximum();
+                player.GetComponent<EntityHealth>().RestoreShieldToMaximum();
                 //Debug UI stays
                 UI.gameObject.transform.GetChild(0).gameObject.SetActive(true);
                 break;
