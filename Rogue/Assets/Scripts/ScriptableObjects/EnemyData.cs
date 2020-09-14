@@ -19,7 +19,6 @@ public class EnemyData : ScriptableObject
     //health
     public float healthMaximum;
     //shield
-    public bool hasShield = false;
     public float shieldMaximum;
     public float shieldRateOfRecharge;
     //scoring
