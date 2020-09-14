@@ -45,4 +45,4 @@ MonoBehaviour:
   amountCanPierce: 0
   isTrackingProjectile: 0
   trackingRotationSpeed: 0
-  weaponSound: {fileID: 8300000, guid: 6c1d348f6c4b7ab4bac3e98f7d2f5b2c, type: 3}
+  weaponSound: {fileID: 8300000, guid: 82ea89223b96f314d920ada827f83ec2, type: 3}
