@@ -20,7 +20,7 @@ public class EnemyData : ScriptableObject
     public float healthMaximum;
     //shield
     public float shieldMaximum;
-    public float shieldRateOfRecharge;
+    public float shieldRechargeRate; //Amount of shield that is returned
     //scoring
     public float points;
 
