@@ -225,6 +225,7 @@ public class NPCMoverScript1 : MonoBehaviour
                             if (distanceToGOFloat < distanceToTargetFloat)
                             {
                                 target = go.gameObject;
+                                distanceToTargetFloat = distanceToGOFloat;
                                 GetComponent<AIDestinationSetter>().target = target.transform; //Moves NPC to target
                             }
                         }
