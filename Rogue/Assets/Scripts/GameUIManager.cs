@@ -42,6 +42,10 @@ public class GameUIManager : MonoBehaviour
         upgrades = new string[] { "movement", "attackspeed", "damage" };
         upgradeamount = new float[] { 5f * (1f + (0.1f)), 5f * (1f + (0.1f)), 5f * (1f + (0.1f)) };
         updateLives(pm.remainingLives);
+        if (Input.GetJoystickNames().Length > 0)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
     }
     private void Update()
     {
