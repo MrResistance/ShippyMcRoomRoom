@@ -16,7 +16,7 @@ public class EntityHealth : MonoBehaviour
     public float thisObjectPoints;
     //Shields
     public Shield_Obj shieldObj;
-    public float shield, shieldMaximum, shieldRechargeDelay = 3f, shieldRechargeRate = 5f;
+    public float shield, shieldMaximum, shieldRechargeDelay = 3f, shieldRechargeRate;
     public bool shieldRechargeAllowed = true;
     //UI
     public Slider healthBar, shieldBar;
