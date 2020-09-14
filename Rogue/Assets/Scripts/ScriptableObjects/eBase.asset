@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9669b3f1df6e9544b9290d36552d7c82, type: 3}
-  m_Name: enemyBase
+  m_Name: eBase
   m_EditorClassIdentifier: 
   name: BaseBoi
   description: Just your typical enemy
@@ -20,7 +20,6 @@ MonoBehaviour:
   speedMovement: 3
   speedRotation: 3
   healthMaximum: 100
-  hasShield: 0
   shieldMaximum: 50
   shieldRateOfRecharge: 0
   points: 10

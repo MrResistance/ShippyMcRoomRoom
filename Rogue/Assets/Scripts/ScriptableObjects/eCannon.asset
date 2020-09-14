@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9669b3f1df6e9544b9290d36552d7c82, type: 3}
-  m_Name: EnemyCannon
+  m_Name: eCannon
   m_EditorClassIdentifier: 
   name: CannonBoi
   description: Just your typical enemy
@@ -20,7 +20,6 @@ MonoBehaviour:
   speedMovement: 0
   speedRotation: 1
   healthMaximum: 200
-  hasShield: 0
   shieldMaximum: 0
   shieldRateOfRecharge: 0
   points: 25

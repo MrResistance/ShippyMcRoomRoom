@@ -28,7 +28,12 @@ public class EntityHealth : MonoBehaviour
     void Start()
     {
         Invoke("DisableInvunerability", 1.5f);
-        if (shieldBar != null)
+        Invoke("StartCheckingShield", 5f);
+    }
+
+    public void StartCheckingShield()
+    {
+        if (shieldMaximum != 0)
         {
             InvokeRepeating("RechargeShield", 1f, 2f);
         }
@@ -46,9 +51,8 @@ public class EntityHealth : MonoBehaviour
         {
             Debug.Log("Recharging.");
             shield += shieldRechargeRate;
+            shieldBar.value = shield;
         }
-        shieldBar.value = shield;
-        Debug.Log("Updating Slider.");
     }
     public void TakeDamage(float damage)
     {
