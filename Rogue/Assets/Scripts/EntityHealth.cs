@@ -12,7 +12,7 @@ public class EntityHealth : MonoBehaviour
     public float healthMaximum; //The starting and maximum health of the entity - not including healthbonus
     public float healthBonus; //Adds onto the healthMaximum - mainly for the player but we can use later
     public GameUIManager gameUIManager;
-    public bool isInvunerable = true;
+    public bool isInvunerable = true, isDying = false;
     public float thisObjectPoints;
     public GameObject explosionPrefab;
     //Shields
@@ -165,9 +165,13 @@ public class EntityHealth : MonoBehaviour
             //Finally
             if (gameObject.tag == ("Enemy"))
             {
-                gameUIManager.PointsForKillingEnemy(gameObject.transform, thisObjectPoints);
-                GameObject explosionClone = Instantiate(explosionPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
-                explosionClone.transform.localScale = new Vector3(this.gameObject.transform.lossyScale.x + 17.5f, this.gameObject.transform.lossyScale.y + 17.5f, 1f);
+                if (!isDying)
+                {
+                    isDying = true;
+                    gameUIManager.PointsForKillingEnemy(gameObject.transform, thisObjectPoints);
+                    GameObject explosionClone = Instantiate(explosionPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
+                    explosionClone.transform.localScale = new Vector3(this.gameObject.transform.lossyScale.x + 17.5f, this.gameObject.transform.lossyScale.y + 17.5f, 1f);
+                } 
             }
             Destroy(gameObject);
             //Die
