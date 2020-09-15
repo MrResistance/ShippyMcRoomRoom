@@ -213,7 +213,7 @@ public class NPCMoverScript1 : MonoBehaviour
     {
         while (true)
         {
-            if (npcHasEnemies() && wm.isWaveChanging == false)
+            if (npcHasEnemies() && wm.isWaveChanging == false && isWithinArenaBoundary()) //Has enemies and is within boundary
             {
                 distanceToTargetFloat = Mathf.Infinity;
                 if (npcSide == "enemy")
@@ -249,6 +249,7 @@ public class NPCMoverScript1 : MonoBehaviour
                             if (distanceToGOFloat < distanceToTargetFloat)
                             {
                                 target = go.gameObject;
+                                distanceToTargetFloat = distanceToGOFloat;
                                 GetComponent<AIDestinationSetter>().target = target.transform; //Moves NPC to target
                             }
                         }
@@ -257,6 +258,14 @@ public class NPCMoverScript1 : MonoBehaviour
                 if (target != null)
                 GetComponent<AIDestinationSetter>().target = target.transform; //Moves NPC to target
                 yield return new WaitForSeconds(wd.rateoffire * 3); //Ensures that the target is shot at least 3 times before switching
+            }
+            else if (npcHasEnemies() && wm.isWaveChanging == false && isWithinArenaBoundary() == false)
+            {
+                //Move towards center 
+                GetComponent<AIDestinationSetter>().target = wm.transform;
+                target = wm.gameObject;
+                yield return new WaitForSeconds(0.5f);
+
             }
             else //No enemies for NPC available
             {
