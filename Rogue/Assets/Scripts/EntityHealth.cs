@@ -32,6 +32,16 @@ public class EntityHealth : MonoBehaviour
         //InvokeRepeating("RechargeShield", 1f, 2f);
         StartCoroutine(RechargeShield());
     }
+
+    public void MoveHealthBarUI()
+    {
+        if (shieldBar != null)
+        {
+            shieldBar.gameObject.SetActive(false);
+            healthBar.gameObject.transform.localPosition = new Vector3(shieldBar.gameObject.transform.localPosition.x, shieldBar.gameObject.transform.localPosition.y, shieldBar.gameObject.transform.localPosition.z);
+        }
+    }
+
     public void AllowShieldRecharge()
     {
         shieldRechargeAllowed = true;

@@ -167,6 +167,10 @@ public class WaveManager : MonoBehaviour
         GameObject NPC = Instantiate(EnemyPrefab, location, NPCSpawn.rotation);
         NPC.GetComponent<EntityHealth>().thisObjectPoints = ed.points;
         NPC.GetComponent<EntityHealth>().explosionPrefab = ed.explosionPrefab;
+        if (ed.shieldMaximum == 0)
+        {
+            NPC.GetComponent<EntityHealth>().MoveHealthBarUI();
+        }
         //Enemy.GetComponent<NPCMoverScript1>().cooldownShooting -= (WaveNumber / 10);
         if (side == "enemy")
         {

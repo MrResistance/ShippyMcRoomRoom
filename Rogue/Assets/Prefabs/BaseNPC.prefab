@@ -134,11 +134,13 @@ MonoBehaviour:
   gameUIManager: {fileID: 0}
   isInvunerable: 1
   thisObjectPoints: 0
+  explosionPrefab: {fileID: 0}
   shieldObj: {fileID: 4574328676446667425}
   shield: 0
   shieldMaximum: 0
   shieldRechargeDelay: 3
   shieldRechargeRate: 0
+  shieldBonus: 0
   shieldRechargeAllowed: 1
   healthBar: {fileID: 2748980268605220544}
   shieldBar: {fileID: 4867717238895038561}
@@ -637,7 +639,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0.1481}
+  m_AnchoredPosition: {x: 0, y: 0.1481018}
   m_SizeDelta: {x: 0, y: -0.29623222}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1458827146490657370
@@ -937,7 +939,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 3.22}
+  m_AnchoredPosition: {x: 0, y: 3.25}
   m_SizeDelta: {x: 5, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2748980268605220544
