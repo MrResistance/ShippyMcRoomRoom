@@ -10,13 +10,14 @@ public class Projectile : MonoBehaviour
     public float destroyTimer = 10f;
     public SpriteRenderer sr;
     private BoxCollider2D bc;
-    public GameObject target;
+    public GameObject target, pointLight;
     //For if weapon has 'even' spread
     public float spreadNumber;
     private void Awake()
     {
         bc = GetComponent<BoxCollider2D>();
         sr = GetComponent<SpriteRenderer>();
+        pointLight = transform.GetChild(0).gameObject;
     }
 
     private void Start()
@@ -53,6 +54,7 @@ public class Projectile : MonoBehaviour
         {
             //this.gameObject.GetComponent<EntityHealth>().TakeDamage(damage);
             collision.gameObject.GetComponent<EntityHealth>().TakeDamage(CalculateDamage());
+            pointLight.SetActive(false);
             //Debug.Log("Giving " + CalculateDamange().ToString() + " to " + collision.gameObject.name);
             //Destroy(collision.gameObject);
             //Destroy(this.gameObject);
@@ -61,6 +63,7 @@ public class Projectile : MonoBehaviour
         if (collision.gameObject.tag == ("Player") || collision.gameObject.tag == ("Enemy") || collision.gameObject.tag == ("Ally"))
         {
             collision.gameObject.GetComponent<EntityHealth>().TakeDamage(CalculateDamage());
+            pointLight.SetActive(false);
             sr.enabled = false;
             bc.enabled = false;
             Destroy(this.gameObject, 3);
