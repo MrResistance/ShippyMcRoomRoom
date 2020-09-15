@@ -19,7 +19,7 @@ MonoBehaviour:
   scale: 1
   speedMovement: 3
   speedRotation: 3
-  healthMaximum: 100
+  healthMaximum: 50
   shieldMaximum: 50
   shieldRechargeRate: 1
   points: 10

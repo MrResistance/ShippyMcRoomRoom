@@ -16,7 +16,7 @@ MonoBehaviour:
   description: Bog-standard for starter enemy
   sprite: {fileID: 21300000, guid: 0bb0295d7fc901d489c8db5982bfa928, type: 3}
   colourSprite: {r: 0, g: 0.762342, b: 1, a: 1}
-  scale: 1.5
+  scale: 0.75
   projectileCount: 1
   damage: 5
   rateoffire: 1.5
