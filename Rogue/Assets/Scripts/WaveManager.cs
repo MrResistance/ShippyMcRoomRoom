@@ -166,6 +166,7 @@ public class WaveManager : MonoBehaviour
         Transform NPCSpawn = EnemiesGO.transform;
         GameObject NPC = Instantiate(EnemyPrefab, location, NPCSpawn.rotation);
         NPC.GetComponent<EntityHealth>().thisObjectPoints = ed.points;
+        NPC.GetComponent<EntityHealth>().explosionPrefab = ed.explosionPrefab;
         //Enemy.GetComponent<NPCMoverScript1>().cooldownShooting -= (WaveNumber / 10);
         if (side == "enemy")
         {

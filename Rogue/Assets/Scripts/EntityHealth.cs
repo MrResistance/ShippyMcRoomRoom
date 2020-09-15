@@ -14,6 +14,7 @@ public class EntityHealth : MonoBehaviour
     public GameUIManager gameUIManager;
     public bool isInvunerable = true;
     public float thisObjectPoints;
+    public GameObject explosionPrefab;
     //Shields
     public Shield_Obj shieldObj;
     public float shield, shieldMaximum, shieldRechargeDelay = 3f, shieldRechargeRate, shieldBonus;
@@ -155,6 +156,8 @@ public class EntityHealth : MonoBehaviour
             if (gameObject.tag == ("Enemy"))
             {
                 gameUIManager.PointsForKillingEnemy(gameObject.transform, thisObjectPoints);
+                GameObject explosionClone = Instantiate(explosionPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
+                explosionClone.transform.localScale = new Vector3(this.gameObject.transform.lossyScale.x + 17.5f, this.gameObject.transform.lossyScale.y + 17.5f, 1f);
             }
             Destroy(gameObject);
             //Die

@@ -35,5 +35,7 @@ public class EnemyData : ScriptableObject
         {"Test3","three"},
     };
 
+    public GameObject explosionPrefab;
+
     }
 

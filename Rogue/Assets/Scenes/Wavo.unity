@@ -3903,6 +3903,7 @@ MonoBehaviour:
     type: 3}
   pauseMenu: {fileID: 2014154450}
   rewardsPanel: {fileID: 982478854}
+  player: {fileID: 0}
   lives: []
   scoreTextObjects: []
   eventSystem: {fileID: 0}

@@ -24,3 +24,5 @@ MonoBehaviour:
   shieldRechargeRate: 1
   points: 10
   test: 
+  explosionPrefab: {fileID: 5501650767091938667, guid: d8b01894962c7734e8d9ce19aad1d634,
+    type: 3}

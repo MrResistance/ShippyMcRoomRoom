@@ -21,6 +21,8 @@ MonoBehaviour:
   speedRotation: 1
   healthMaximum: 200
   shieldMaximum: 0
-  shieldRateOfRecharge: 0
+  shieldRechargeRate: 0
   points: 25
   test: two
+  explosionPrefab: {fileID: 5501650767091938667, guid: d8b01894962c7734e8d9ce19aad1d634,
+    type: 3}
