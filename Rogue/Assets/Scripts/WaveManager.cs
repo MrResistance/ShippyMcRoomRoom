@@ -99,7 +99,8 @@ public class WaveManager : MonoBehaviour
         this.gameObject.GetComponent<GameUIManager>().ChangeWaveNumber(WaveNumber);
         //Spawns enemies for the wave
         SpawnNPCs();
-        isWaveChanging = false; 
+        this.gameObject.GetComponent<GameUIManager>().ShowWaveNumberUI();
+        isWaveChanging = false;
     }
     void SpawnNPCs()
     {
