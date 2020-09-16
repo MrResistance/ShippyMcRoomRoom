@@ -20,7 +20,7 @@ public class GameUIManager : MonoBehaviour
     public Slider healthBar, shieldBar;
     public Sprite buttonDefaultSprite;
     public Transform livesStartPoint;
-    public Animator waveNumberAnim;
+    public Animator waveNumberAnim, waveCompleteAnim;
     public float livesIconSeparationDistance = 5f;
     public int ItemNumberChosen; //1, 2, or 3
     public string[] upgrades;
@@ -64,6 +64,27 @@ public class GameUIManager : MonoBehaviour
         }
     }
 
+    public void ShowWaveCompleteUI()
+    {
+        waveCompleteAnim.SetBool("Appear", true);
+        waveCompleteAnim.SetBool("Disappear", false);
+        waveCompleteAnim.SetBool("Idle", false);
+        Invoke("HideWaveCompleteUI", 2f);
+    }
+
+    public void HideWaveCompleteUI()
+    {
+        waveCompleteAnim.SetBool("Appear", false);
+        waveCompleteAnim.SetBool("Disappear", true);
+        waveCompleteAnim.SetBool("Idle", false);
+        Invoke("IdleWaveCompleteUI", 1f);
+    }
+    public void IdleWaveCompleteUI()
+    {
+        waveCompleteAnim.SetBool("Appear", false);
+        waveCompleteAnim.SetBool("Disappear", false);
+        waveCompleteAnim.SetBool("Idle", true);
+    }
     public void ShowWaveNumberUI()
     {
         waveNumberAnim.SetBool("In", true);

@@ -56,7 +56,6 @@ public class WaveManager : MonoBehaviour
     {
         
     }
-
     IEnumerator WaveUpdate()
     {
         while (true)
@@ -65,14 +64,16 @@ public class WaveManager : MonoBehaviour
             if (remainingEnemies == 0 && isWaveChanging == false)
             {
                 isWaveChanging = true;
-                EndWave();
+                StartCoroutine(EndWave());
                 
             }
             yield return new WaitForSeconds(0.5f);
         }
     }
-    void EndWave()
+    IEnumerator EndWave()
     {
+        this.gameObject.GetComponent<GameUIManager>().ShowWaveCompleteUI();
+        yield return new WaitForSecondsRealtime(2f);
         //Destroy all projectiles so they don't kill the player
         DestroyAllProjectiles();
         
