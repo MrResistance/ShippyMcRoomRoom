@@ -237,6 +237,7 @@ public class GameUIManager : MonoBehaviour
 
                 //Debug UI stays
                 UI.gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                UI.gameObject.transform.GetChild(2).gameObject.SetActive(true);
                 break;
         }
     }
