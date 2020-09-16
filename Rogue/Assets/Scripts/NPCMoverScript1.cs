@@ -180,6 +180,17 @@ public class NPCMoverScript1 : MonoBehaviour
         }
         return false;
     }
+    bool isWithinArenaBoundary(GameObject go) //For checking other GOs
+    {
+        if (go.transform.position.x >= boundaryXmin && go.transform.position.x <= boundaryXmax)
+        {
+            if (go.transform.position.y >= boundaryYmin && go.transform.position.y <= boundaryYmax)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
     Quaternion WeaponFiringAngle() //Adds weapon spread to rotation - moved to projectile
     {
         Quaternion quat = firePoint.transform.rotation;
@@ -221,7 +232,7 @@ public class NPCMoverScript1 : MonoBehaviour
                     //Get closest
                     foreach (GameObject go in wm.listAllies)
                     {
-                        if (go != null)
+                        if (go != null && isWithinArenaBoundary(go) == true)
                         { 
                             Vector2 distanceToGO = go.transform.position - transform.position;
                             float distanceToGOFloat = Vector2.Distance(go.transform.position, transform.position);
@@ -232,7 +243,9 @@ public class NPCMoverScript1 : MonoBehaviour
                                 GetComponent<AIDestinationSetter>().target = target.transform; //Moves NPC to target
                             }
                         }
+                        
                     }
+                    
                 }
                 else if (npcSide == "allied")
                 {
@@ -242,7 +255,7 @@ public class NPCMoverScript1 : MonoBehaviour
                     for (int e = 0; e < wm.listEnemies.Count;e++)
                     {
                         GameObject go = wm.listEnemies[e].gameObject;
-                        if (go != null)
+                        if (go != null && isWithinArenaBoundary(go) == true)
                         {
                             Vector2 distanceToGO = go.transform.position - transform.position;
                             float distanceToGOFloat = Vector2.Distance(go.transform.position, transform.position);
@@ -253,12 +266,22 @@ public class NPCMoverScript1 : MonoBehaviour
                                 GetComponent<AIDestinationSetter>().target = target.transform; //Moves NPC to target
                             }
                         }
+                        
                     }
+                    
                 }
-                if (target != null)
-                GetComponent<AIDestinationSetter>().target = target.transform; //Moves NPC to target
+                if (target != null) //Acquired target from above
+                {
+                    GetComponent<AIDestinationSetter>().target = target.transform;
+                }
+                if (target == null) //For whatever reason couldn't pick a target
+                {
+                    GetComponent<AIDestinationSetter>().target = wm.transform;
+                    target = wm.gameObject;
+                }
                 yield return new WaitForSeconds(wd.rateoffire * 3); //Ensures that the target is shot at least 3 times before switching
             }
+            //Enemies exist but NPC isn't in the boundary
             else if (npcHasEnemies() && wm.isWaveChanging == false && isWithinArenaBoundary() == false)
             {
                 //Move towards center 
@@ -270,6 +293,7 @@ public class NPCMoverScript1 : MonoBehaviour
             else //No enemies for NPC available
             {
                 //Guess no target.
+                //Just wait
                 yield return new WaitForSeconds(1f); //Waits one second before trying again
             }
             
