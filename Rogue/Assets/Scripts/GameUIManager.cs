@@ -64,6 +64,8 @@ public class GameUIManager : MonoBehaviour
         }
     }
 
+    //UI for the 'Wave Complete' and 'Wave Number' items in Game HUD
+    //They work in three stages, appearing, disappearing and idle (invisible/off screen)
     public void ShowWaveCompleteUI()
     {
         waveCompleteAnim.SetBool("Appear", true);
