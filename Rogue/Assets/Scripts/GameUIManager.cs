@@ -21,14 +21,14 @@ public class GameUIManager : MonoBehaviour
     public Sprite buttonDefaultSprite;
     public Transform livesStartPoint;
     public Animator waveNumberAnim, waveCompleteAnim;
-    public float livesIconSeparationDistance = 5f;
+    public float livesIconSeparationDistance = 5f, playerCurrentScore = 0f;
     public int ItemNumberChosen; //1, 2, or 3
     public string[] upgrades;
     public float[] upgradeamount;
     public bool ShowingRewards = false, isGamePaused = false;
     public Button item1;
     public PlayerManager pm;
-    public TextMeshProUGUI item1txt, item2txt, item3txt, upgradeAmountDebug1, upgradeAmountDebug2, upgradeAmountDebug3;
+    public TextMeshProUGUI hiScoreTxt, item1txt, item2txt, item3txt, upgradeAmountDebug1, upgradeAmountDebug2, upgradeAmountDebug3;
 
     private void Awake()
     {
@@ -44,6 +44,7 @@ public class GameUIManager : MonoBehaviour
         upgrades = new string[] { "movement", "attackspeed", "damage" };
         upgradeamount = new float[] { 5f * (1f + (0.1f)), 5f * (1f + (0.1f)), 5f * (1f + (0.1f)) };
         updateLives(pm.remainingLives);
+        UpdateHiScore(0f);
         if (Input.GetJoystickNames().Length > 0)
         {
             Cursor.lockState = CursorLockMode.Locked;
@@ -63,7 +64,11 @@ public class GameUIManager : MonoBehaviour
             }
         }
     }
-
+    public void UpdateHiScore(float score)
+    {
+        playerCurrentScore += score;
+        hiScoreTxt.text = ("Hi score: " + playerCurrentScore);
+    }
     //UI for the 'Wave Complete' and 'Wave Number' items in Game HUD
     //They work in three stages, appearing, disappearing and idle (invisible/off screen)
     public void ShowWaveCompleteUI()

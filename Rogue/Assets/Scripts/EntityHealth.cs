@@ -179,6 +179,7 @@ public class EntityHealth : MonoBehaviour
             {
                 isDying = true;
                 gameUIManager.PointsForKillingEnemy(gameObject.transform, thisObjectPoints);
+                gameUIManager.UpdateHiScore(thisObjectPoints);
             }
         }
         if (!gameObject.tag.Contains("Projectile"))
