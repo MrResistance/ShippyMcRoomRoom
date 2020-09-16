@@ -32,11 +32,11 @@ MonoBehaviour:
   ammo: 0
   healthProjectile: 20
   lifetimeProjectile: 0.6
-  isExplosiveProjectile: 0
-  explosionType: 
+  explosionType: none
   isExplosionOnImpact: 0
   explosiveradius: 0
   explosivedamage: 0
+  prefabExplosive: {fileID: 0}
   isScatteredProjectilesOnImpact: 0
   scatteredprojectiletype: 
   scatteredprojectilecount: 0

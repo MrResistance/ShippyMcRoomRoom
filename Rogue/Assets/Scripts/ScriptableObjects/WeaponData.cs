@@ -45,13 +45,14 @@ public class WeaponData : ScriptableObject
     public int ammo;
     public int healthProjectile;
     public float lifetimeProjectile; //In seconds, how long projectile will last before dying - if 0, it will only die on impact (or leaving combat area)
+
     [Title("Explosive")]
     //Explosion stuff
-    public bool isExplosiveProjectile; //Required to be true for any explosive stuff
-    public string explosionType; //"Throughout" - same damage to the end -- "Degrading" - damage more towards center
+    public string explosionType = "none"; //"none" , "Throughout" - same damage to the end -- "Degrading" - damage more towards center
     public bool isExplosionOnImpact;
     public float explosiveradius;
     public int explosivedamage;
+    public GameObject prefabExplosive;
 
     [Title("Scattered projectile")]
     //Scattered projectiles - fireworks

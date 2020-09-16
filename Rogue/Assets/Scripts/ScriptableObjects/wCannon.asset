@@ -19,6 +19,8 @@ MonoBehaviour:
   scale: 1.5
   projectileCount: 3
   damage: 15
+  d_healthMultiplier: 1
+  d_shieldMultiplier: 1
   rateoffire: 5
   speed: 25
   chargetime: 0
@@ -30,11 +32,11 @@ MonoBehaviour:
   ammo: 0
   healthProjectile: 5
   lifetimeProjectile: 0
-  isExplosiveProjectile: 0
-  explosionType: 
+  explosionType: none
   isExplosionOnImpact: 0
   explosiveradius: 0
   explosivedamage: 0
+  prefabExplosive: {fileID: 0}
   isScatteredProjectilesOnImpact: 0
   scatteredprojectiletype: 
   scatteredprojectilecount: 0
