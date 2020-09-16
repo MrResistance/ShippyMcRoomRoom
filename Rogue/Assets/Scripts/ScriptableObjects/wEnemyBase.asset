@@ -19,6 +19,8 @@ MonoBehaviour:
   scale: 0.75
   projectileCount: 1
   damage: 5
+  d_healthMultiplier: 1
+  d_shieldMultiplier: 1.5
   rateoffire: 1.5
   speed: 25
   chargetime: 0
