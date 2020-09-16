@@ -25,15 +25,15 @@ public class EnemyData : ScriptableObject
     public float points;
 
     //test
-    [ValueDropdown("testValues")]
-    public string test;
+    //[ValueDropdown("testValues")]
+    //public string test;
     
-    private ValueDropdownList<string> testValues = new ValueDropdownList<string>()
+    /*private ValueDropdownList<string> testValues = new ValueDropdownList<string>()
     {
         {"Test","one"},
         {"Test2","two"},
         {"Test3","three"},
-    };
+    };*/
 
     public GameObject explosionPrefab;
 
