@@ -258,7 +258,8 @@ MonoBehaviour:
   isInvunerable: 1
   isDying: 0
   thisObjectPoints: 0
-  explosionPrefab: {fileID: 0}
+  explosionPrefab: {fileID: 5501650767091938667, guid: d8b01894962c7734e8d9ce19aad1d634,
+    type: 3}
   shieldObj: {fileID: 8679509534166479431}
   shield: 0
   shieldMaximum: 0
