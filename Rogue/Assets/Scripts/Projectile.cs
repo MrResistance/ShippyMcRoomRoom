@@ -53,7 +53,7 @@ public class Projectile : MonoBehaviour
         if (collision.gameObject.tag.Contains("Projectile"))
         {
             //this.gameObject.GetComponent<EntityHealth>().TakeDamage(damage);
-            collision.gameObject.GetComponent<EntityHealth>().TakeDamage(CalculateDamage());
+            collision.gameObject.GetComponent<EntityHealth>().TakeDamage(CalculateDamage(),wd);
             pointLight.SetActive(false);
             //Debug.Log("Giving " + CalculateDamange().ToString() + " to " + collision.gameObject.name);
             //Destroy(collision.gameObject);
@@ -62,7 +62,7 @@ public class Projectile : MonoBehaviour
         //Check if enemy
         if (collision.gameObject.tag == ("Player") || collision.gameObject.tag == ("Enemy") || collision.gameObject.tag == ("Ally"))
         {
-            collision.gameObject.GetComponent<EntityHealth>().TakeDamage(CalculateDamage());
+            collision.gameObject.GetComponent<EntityHealth>().TakeDamage(CalculateDamage(), wd);
             pointLight.SetActive(false);
             sr.enabled = false;
             bc.enabled = false;
