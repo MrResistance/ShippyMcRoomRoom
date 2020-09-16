@@ -70,8 +70,12 @@ public class EntityHealth : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
     }
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage, WeaponData wd)
     {
+        //temps
+        float dShield = damage * wd.d_shieldMultiplier;
+        float dHealth = damage * wd.d_healthMultiplier;
+        //
         CancelInvoke("AllowShieldRecharge");
         shieldRechargeAllowed = false;
         Invoke("AllowShieldRecharge", shieldRechargeDelay);
@@ -80,12 +84,12 @@ public class EntityHealth : MonoBehaviour
             { 
             if (shield > 0)
             {
-                if (shield-damage < 0)
+                if (shield- dShield < 0)
                 {
                     //Get remainder that would have been from shields
-                    remainderDamageFromShields = shield % damage;
+                    remainderDamageFromShields = shield % dShield;
                     //Do damage to shields
-                    shield -= damage;
+                    shield -= dShield;
                     shield = 0;
 
                     //Do remaining damage to health
@@ -93,7 +97,7 @@ public class EntityHealth : MonoBehaviour
                 }
                 else
                 {
-                    shield -= damage;
+                    shield -= dShield;
                 }
             
             }
@@ -103,7 +107,7 @@ public class EntityHealth : MonoBehaviour
                 {
                     shieldObj.gameObject.SetActive(false);
                 }
-                health -= damage;
+                health -= dHealth;
             }
             if (gameObject.tag == "Player")
             {
