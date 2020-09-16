@@ -13,8 +13,10 @@ public class WeaponData : ScriptableObject
     public float scale = 1; //for size
 
     public int projectileCount = 1;
-
-    public int damage ; //Damage of projectile on-impact
+    //Projectile damage
+    public float damage ; //Damage of projectile on-impact
+    public float d_healthMultiplier = 1; //How much more/less damage done to health
+    public float d_shieldMultiplier = 1; //How much more/less damange done to shields
     public float rateoffire = 1;
     public float speed = 50;
     public float chargetime; //How long it takes to charge the weapon for it to fire
