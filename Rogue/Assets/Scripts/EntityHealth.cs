@@ -171,14 +171,17 @@ public class EntityHealth : MonoBehaviour
                     gameUIManager.PointsForKillingEnemy(gameObject.transform, thisObjectPoints);
                 } 
             }
-            GameObject explosionClone = Instantiate(explosionPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
-            explosionClone.transform.localScale = new Vector3(this.gameObject.transform.lossyScale.x + 17.5f, this.gameObject.transform.lossyScale.y + 17.5f, 1f);
+            if (!gameObject.tag.Contains("Projectile"))
+            {
+                GameObject explosionClone = Instantiate(explosionPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
+                explosionClone.transform.localScale = new Vector3(this.gameObject.transform.lossyScale.x + 17.5f, this.gameObject.transform.lossyScale.y + 17.5f, 1f);
+            }
             Destroy(gameObject);
             //Die
-            
+
             //Else
-                //Guess we respawn them
-                //And deduct a life
+            //Guess we respawn them
+            //And deduct a life
         }
     }
     void DisableInvunerability()
