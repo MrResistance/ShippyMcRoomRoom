@@ -157,33 +157,39 @@ public class EntityHealth : MonoBehaviour
     {
         if (health <= 0)
         {
+            Die();
             //If player
-            if (gameObject.tag == ("Player"))
-            { 
-                transform.parent.gameObject.GetComponent<PlayerManager>().PlayerHasDied();
-            }
-            //Finally
-            if (gameObject.tag == ("Enemy"))
-            {
-                if (!isDying)
-                {
-                    isDying = true;
-                    gameUIManager.PointsForKillingEnemy(gameObject.transform, thisObjectPoints);
-                } 
-            }
-            if (!gameObject.tag.Contains("Projectile"))
-            {
-                GameObject explosionClone = Instantiate(explosionPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
-                explosionClone.transform.localScale = new Vector3(this.gameObject.transform.lossyScale.x + 17.5f, this.gameObject.transform.lossyScale.y + 17.5f, 1f);
-            }
-            Destroy(gameObject);
-            //Die
-
-            //Else
-            //Guess we respawn them
-            //And deduct a life
+            
         }
     }
+    public void Die()
+    {
+        if (gameObject.tag == ("Player"))
+        {
+            transform.parent.gameObject.GetComponent<PlayerManager>().PlayerHasDied();
+        }
+        //Finally
+        if (gameObject.tag == ("Enemy"))
+        {
+            if (!isDying)
+            {
+                isDying = true;
+                gameUIManager.PointsForKillingEnemy(gameObject.transform, thisObjectPoints);
+            }
+        }
+        if (!gameObject.tag.Contains("Projectile"))
+        {
+            GameObject explosionClone = Instantiate(explosionPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
+            explosionClone.transform.localScale = new Vector3(this.gameObject.transform.lossyScale.x + 17.5f, this.gameObject.transform.lossyScale.y + 17.5f, 1f);
+        }
+        Destroy(gameObject);
+        //Die
+
+        //Else
+        //Guess we respawn them
+        //And deduct a life
+    }
+
     void DisableInvunerability()
     {
         isInvunerable = false;
