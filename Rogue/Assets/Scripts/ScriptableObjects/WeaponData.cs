@@ -14,14 +14,17 @@ public class WeaponData : ScriptableObject
 
     public int projectileCount = 1;
     //Projectile damage
-    public float damage ; //Damage of projectile on-impact
+    public float damage = 10; //Damage of projectile on-impact
     public float d_healthMultiplier = 1; //How much more/less damage done to health
     public float d_shieldMultiplier = 1; //How much more/less damange done to shields
     public float rateoffire = 1;
     public float speed = 50;
-    public float chargetime; //How long it takes to charge the weapon for it to fire
+    public float chargetime = 0; //How long it takes to charge the weapon for it to fire
 
     public string firePosition = "single"; //"single" - firing from middle-front // "twin" - firing from middle-front offset to left and right //"side" - firing from sides of ship at 90' angle 
+
+    public int healthProjectile = 10;
+    public float lifetimeProjectile = 3; //In seconds, how long projectile will last before dying - if 0, it will only die on impact (or leaving combat area)
 
     [Title("Spread")]
     //Spread
@@ -43,8 +46,7 @@ public class WeaponData : ScriptableObject
     public float range; //How far the projectile travels before it either evaporates or explodes
     public bool isUnlimitedAmmo;
     public int ammo;
-    public int healthProjectile;
-    public float lifetimeProjectile; //In seconds, how long projectile will last before dying - if 0, it will only die on impact (or leaving combat area)
+    
 
     [Title("Explosive")]
     //Explosion stuff
