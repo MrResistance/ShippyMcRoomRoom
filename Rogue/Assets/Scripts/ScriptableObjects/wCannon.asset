@@ -25,13 +25,13 @@ MonoBehaviour:
   speed: 25
   chargetime: 0
   firePosition: single
+  healthProjectile: 5
+  lifetimeProjectile: 0
   spreadType: random
   spread: 20
   range: 250
   isUnlimitedAmmo: 1
   ammo: 0
-  healthProjectile: 5
-  lifetimeProjectile: 0
   explosionType: none
   isExplosionOnImpact: 0
   explosiveradius: 0
