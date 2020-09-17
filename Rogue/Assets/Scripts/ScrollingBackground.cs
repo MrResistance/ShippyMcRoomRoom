@@ -46,7 +46,17 @@ public class ScrollingBackground : MonoBehaviour
             Reposition();
         }
     }
-
+    public void ChangeBgSpeed(float newSpeed)
+    {
+        if (Vertical)
+        {
+            rb.velocity = new Vector2(0f, newSpeed);
+        }
+        else
+        {
+            rb.velocity = new Vector2(newSpeed, 0f);
+        }
+    }
     private void Reposition()
     {
         /*if (Vertical)
