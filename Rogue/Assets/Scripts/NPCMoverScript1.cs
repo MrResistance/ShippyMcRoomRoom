@@ -302,6 +302,7 @@ public class NPCMoverScript1 : MonoBehaviour
     //For shooting the target
     IEnumerator ShootEnemyOfNPC()
     {
+        yield return new WaitForSeconds(Random.Range(2f,3f));
         while (true)
         {
             if (CanShoot())
@@ -323,7 +324,10 @@ public class NPCMoverScript1 : MonoBehaviour
                     {
                         if (isWithinArenaBoundary())
                         {
+                            if (target != wm.transform)
+                            { 
                             return true;
+                            }
                         }
                     }
                 }
