@@ -89,13 +89,11 @@ public class Projectile : MonoBehaviour
     {
         //Rotate towards
         while(target != null)
-        { 
-            Vector2 DistanceToTarget = GetDistanceToTarget();
-            float angle = Mathf.Atan2(DistanceToTarget.y, DistanceToTarget.x) * Mathf.Rad2Deg - 90f;
-            Quaternion rot = Quaternion.AngleAxis(angle, Vector3.forward);
-            transform.rotation = Quaternion.Slerp(transform.rotation, rot, Time.deltaTime * wd.trackingRotationSpeed);
-            //thust torwards
-            yield return new WaitForSeconds(0.1f);
+        {
+            Vector3 tpos = target.transform.position;
+            Vector3 tposflat = new Vector3(0, 0, tpos.z);
+            transform.LookAt(tposflat);
+            yield return new WaitForSeconds(Time.deltaTime);
         }
     }
 
