@@ -75,6 +75,7 @@ public class WaveManager : MonoBehaviour
         //Changed to a corountine so we can display the 'wave complete' UI before moving onto rewards :) 
         //Add a sound effect here for completing the wave
         this.gameObject.GetComponent<GameUIManager>().ShowWaveCompleteUI();
+        this.gameObject.GetComponent<GameUIManager>().ClearField();
         yield return new WaitForSecondsRealtime(2f);
         //Destroy all projectiles so they don't kill the player
         DestroyAllProjectiles();

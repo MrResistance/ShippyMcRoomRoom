@@ -10,7 +10,9 @@ public class Projectile : MonoBehaviour
     public float destroyTimer = 10f;
     public SpriteRenderer sr;
     private BoxCollider2D bc;
+    private Rigidbody2D rbproj;
     public GameObject target, pointLight;
+    private bool allowedToGo = false;
     //For if weapon has 'even' spread
     public float spreadNumber;
     private void Awake()
@@ -22,24 +24,47 @@ public class Projectile : MonoBehaviour
 
     private void Start()
     {
+        transform.parent = GameObject.Find("Projectiles").transform;
         //For spread
         transform.rotation = CalculateRotationForProjectile();
-
         sr.sprite = wd.sprite;
         sr.color = wd.colourSprite;
         transform.localScale = new Vector3(wd.scale,wd.scale,wd.scale);
-        this.gameObject.GetComponent<EntityHealth>().health = wd.healthProjectile;
-        Rigidbody2D rbproj = this.gameObject.GetComponent<Rigidbody2D>();
-        rbproj.AddForce(this.gameObject.transform.right * wd.speed, ForceMode2D.Impulse);
+        GetComponent<EntityHealth>().health = wd.healthProjectile;
+        rbproj = GetComponent<Rigidbody2D>();
+        rbproj.AddForce(transform.up * wd.speed, ForceMode2D.Impulse);
+        //if (wd.name == "Missile")
+        //{
+        //    StartCoroutine(HomingMissile());
+        //}
         if (wd.lifetimeProjectile > 0)
         { 
             Destroy(this.gameObject, wd.lifetimeProjectile);
         }
         if (wd.isTrackingProjectile == true && target != null)
         {
-            StartCoroutine(TrackTarget());
+           //StartCoroutine(TrackTarget());
         }
 
+    }
+    private IEnumerator HomingMissile()
+    {
+        GetComponent<Rigidbody2D>().gravityScale = 2f;
+        yield return new WaitForSeconds(1f);
+        GetComponent<Rigidbody2D>().velocity.Set(0, 0);
+        GetComponent<Rigidbody2D>().gravityScale = 0f;
+        allowedToGo = true;
+    }
+    private void FixedUpdate()
+    {
+        if (wd.name == "Missile" && target != null)
+        {
+            Vector2 direction = (Vector2)target.transform.position - gameObject.GetComponent<Rigidbody2D>().position;
+            direction.Normalize();
+            float rotateAmount = Vector3.Cross(direction, transform.up).z;
+            rbproj.angularVelocity = rotateAmount * wd.trackingRotationSpeed;
+            rbproj.velocity = transform.up * wd.speed;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -91,7 +116,7 @@ public class Projectile : MonoBehaviour
         while(target != null)
         {
             Vector3 tpos = target.transform.position;
-            Vector3 tposflat = new Vector3(0, 0, tpos.z);
+            Vector3 tposflat = new Vector3(0, 0, -tpos.z);
             transform.LookAt(tposflat);
             yield return new WaitForSeconds(Time.deltaTime);
         }
