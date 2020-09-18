@@ -12,10 +12,12 @@ public class Projectile : MonoBehaviour
     private BoxCollider2D bc;
     private Rigidbody2D rb;
     public GameObject target, pointLight;
+    public AudioSource audioSource;
     //For if weapon has 'even' spread
     public float spreadNumber;
     private void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
         bc = GetComponent<BoxCollider2D>();
         sr = GetComponent<SpriteRenderer>();
         pointLight = transform.GetChild(0).gameObject;
@@ -23,27 +25,46 @@ public class Projectile : MonoBehaviour
 
     private void Start()
     {
+        //Play launch sfx
+        if (wd.name == "Missile")
+        {
+            StartCoroutine(DelaySound());
+        }
+        else
+        {
+            audioSource.PlayOneShot(wd.launchSound);
+        }    
+        //Puts all projectiles under the 'Projectile' empty in the inspector, helpful for debugging
         transform.parent = GameObject.Find("Projectiles").transform;
         //For spread
         transform.rotation = CalculateRotationForProjectile();
+        //Sets the correct sprite and colour
         sr.sprite = wd.sprite;
         sr.color = wd.colourSprite;
+        //Sets correct scale
         transform.localScale = new Vector3(wd.scale,wd.scale,wd.scale);
+        //Sets health and rigidbody
         GetComponent<EntityHealth>().health = wd.healthProjectile;
         rb = GetComponent<Rigidbody2D>();
+        //If this weapon is a homing missile, start the tracking code
         if (wd.name == "Missile")
         {
             StartCoroutine(HomingMissile());
         }
-        else if(wd.name != "Missile")
+        else if(wd.name != "Missile") //If not, then just give the standard straight-line force
         {
             rb.AddForce(transform.up * wd.speed, ForceMode2D.Impulse);
         }
-        if (wd.lifetimeProjectile > 0)
+        if (wd.lifetimeProjectile > 0) //Destroy the projectile after amount of time set in WeaponData
         { 
             Destroy(this.gameObject, wd.lifetimeProjectile);
         }
 
+    }
+    private IEnumerator DelaySound()
+    {
+        yield return new WaitForSeconds(0.75f);
+        audioSource.PlayOneShot(wd.launchSound);
     }
     private IEnumerator HomingMissile()
     {
@@ -56,6 +77,13 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //If this projectile is a missle, spawn an explosion on any collision
+        if (wd.name == "Missile")
+        {
+            GameObject explosionClone = Instantiate(wd.prefabExplosive, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
+            explosionClone.transform.localScale = new Vector3(this.gameObject.transform.lossyScale.x + 17.5f, this.gameObject.transform.lossyScale.y + 17.5f, 1f);
+            //audioSource.PlayOneShot(wd.impactSound);
+        }
         if (collision.gameObject.tag.Contains("Boundary"))
         {
             Destroy(this.gameObject);

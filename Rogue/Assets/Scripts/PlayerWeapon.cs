@@ -11,15 +11,12 @@ public class PlayerWeapon : MonoBehaviour
     public float permattackspeedbonus;
     public float damage, permdamagebonus;
     private float nextFire = 0.0f;
-    public AudioSource audioSource;
     public SFX_Player sFX_Player;
     public GameUIManager gm;
     private void Awake()
     {
         //sFX_Player = GameObject.Find("SFX_Player").GetComponent<SFX_Player>();
         gm = GameObject.Find("GameManager").GetComponent<GameUIManager>();
-        audioSource = gameObject.GetComponent<AudioSource>();
-        audioSource.clip = wd.weaponSound;
     }
     // Update is called once per frame
     void Update()
@@ -35,7 +32,6 @@ public class PlayerWeapon : MonoBehaviour
     void FireWeapon()
     {
         //sFX_Player.PlayRandomSound();
-        audioSource.PlayOneShot(audioSource.clip);
         nextFire = Time.time + CalculateAttackSpeed();
         //For amount of projectiles
         for (int p = 0; p < wd.projectileCount; p++)

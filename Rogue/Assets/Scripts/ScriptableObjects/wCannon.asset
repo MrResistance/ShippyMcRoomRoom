@@ -47,4 +47,5 @@ MonoBehaviour:
   amountCanPierce: 0
   isTrackingProjectile: 0
   trackingRotationSpeed: 0
-  weaponSound: {fileID: 8300000, guid: 82ea89223b96f314d920ada827f83ec2, type: 3}
+  launchSound: {fileID: 8300000, guid: 82ea89223b96f314d920ada827f83ec2, type: 3}
+  impactSound: {fileID: 0}

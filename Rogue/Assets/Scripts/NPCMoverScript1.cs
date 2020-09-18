@@ -83,7 +83,7 @@ public class NPCMoverScript1 : MonoBehaviour
         //For getting a target
         StartCoroutine(TargetEnemyOfNPC());
         StartCoroutine(ShootEnemyOfNPC());
-        audioSource.clip = wd.weaponSound;
+        audioSource.clip = wd.launchSound;
 
 
     }

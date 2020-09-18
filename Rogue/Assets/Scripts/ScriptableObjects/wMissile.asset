@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: wMissile
   m_EditorClassIdentifier: 
   name: Missile
-  description: Player's default weapon
+  description: Sssssssss-BOOM!
   sprite: {fileID: 21300000, guid: ff422642072006f43a012b681f4f51c0, type: 3}
   colourSprite: {r: 1, g: 1, b: 1, a: 1}
   scale: 1
@@ -25,7 +25,7 @@ MonoBehaviour:
   speed: 40
   chargetime: 0
   firePosition: single
-  healthProjectile: 20
+  healthProjectile: 1
   lifetimeProjectile: 0
   spreadType: none
   spread: 0
@@ -36,7 +36,7 @@ MonoBehaviour:
   isExplosionOnImpact: 0
   explosiveradius: 0
   explosivedamage: 0
-  prefabExplosive: {fileID: 5501650767091938667, guid: d8b01894962c7734e8d9ce19aad1d634,
+  prefabExplosive: {fileID: 6678137918194488091, guid: da093903cab3e9d499960147c2d111bc,
     type: 3}
   isScatteredProjectilesOnImpact: 0
   scatteredprojectiletype: 
@@ -48,4 +48,5 @@ MonoBehaviour:
   amountCanPierce: 0
   isTrackingProjectile: 1
   trackingRotationSpeed: 50
-  weaponSound: {fileID: 8300000, guid: 352c2b97a14375843bd05a0a080fc6f9, type: 3}
+  launchSound: {fileID: 8300000, guid: 7dc3bc4166eb26c4aa3684e0a439c0bc, type: 3}
+  impactSound: {fileID: 8300000, guid: 02c43a862dbc9504b9793790a9e6ecce, type: 3}

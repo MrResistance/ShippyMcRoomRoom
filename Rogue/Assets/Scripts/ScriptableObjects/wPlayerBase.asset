@@ -25,13 +25,13 @@ MonoBehaviour:
   speed: 40
   chargetime: 0
   firePosition: single
+  healthProjectile: 20
+  lifetimeProjectile: 0
   spreadType: none
   spread: 0
   range: 0
   isUnlimitedAmmo: 1
   ammo: 0
-  healthProjectile: 20
-  lifetimeProjectile: 0
   explosionType: none
   isExplosionOnImpact: 0
   explosiveradius: 0
@@ -47,4 +47,5 @@ MonoBehaviour:
   amountCanPierce: 0
   isTrackingProjectile: 0
   trackingRotationSpeed: 50
-  weaponSound: {fileID: 8300000, guid: 352c2b97a14375843bd05a0a080fc6f9, type: 3}
+  launchSound: {fileID: 8300000, guid: b09f2edfed40d34489ac67bbb45b78c5, type: 3}
+  impactSound: {fileID: 0}

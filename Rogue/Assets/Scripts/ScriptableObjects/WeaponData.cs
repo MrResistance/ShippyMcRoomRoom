@@ -76,7 +76,8 @@ public class WeaponData : ScriptableObject
     public float trackingRotationSpeed;
 
     [Title("Audio")]
-    public AudioClip weaponSound; 
+    public AudioClip launchSound;
+    public AudioClip impactSound;
 
 }
 
