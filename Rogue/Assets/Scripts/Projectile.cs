@@ -10,9 +10,8 @@ public class Projectile : MonoBehaviour
     public float destroyTimer = 10f;
     public SpriteRenderer sr;
     private BoxCollider2D bc;
-    private Rigidbody2D rbproj;
+    private Rigidbody2D rb;
     public GameObject target, pointLight;
-    private bool allowedToGo = false;
     //For if weapon has 'even' spread
     public float spreadNumber;
     private void Awake()
@@ -31,40 +30,28 @@ public class Projectile : MonoBehaviour
         sr.color = wd.colourSprite;
         transform.localScale = new Vector3(wd.scale,wd.scale,wd.scale);
         GetComponent<EntityHealth>().health = wd.healthProjectile;
-        rbproj = GetComponent<Rigidbody2D>();
-        rbproj.AddForce(transform.up * wd.speed, ForceMode2D.Impulse);
-        //if (wd.name == "Missile")
-        //{
-        //    StartCoroutine(HomingMissile());
-        //}
+        rb = GetComponent<Rigidbody2D>();
+        if (wd.name == "Missile")
+        {
+            StartCoroutine(HomingMissile());
+        }
+        else if(wd.name != "Missile")
+        {
+            rb.AddForce(transform.up * wd.speed, ForceMode2D.Impulse);
+        }
         if (wd.lifetimeProjectile > 0)
         { 
             Destroy(this.gameObject, wd.lifetimeProjectile);
-        }
-        if (wd.isTrackingProjectile == true && target != null)
-        {
-           //StartCoroutine(TrackTarget());
         }
 
     }
     private IEnumerator HomingMissile()
     {
-        GetComponent<Rigidbody2D>().gravityScale = 2f;
+        rb.gravityScale = 2f;
         yield return new WaitForSeconds(1f);
-        GetComponent<Rigidbody2D>().velocity.Set(0, 0);
-        GetComponent<Rigidbody2D>().gravityScale = 0f;
-        allowedToGo = true;
-    }
-    private void FixedUpdate()
-    {
-        if (wd.name == "Missile" && target != null)
-        {
-            Vector2 direction = (Vector2)target.transform.position - gameObject.GetComponent<Rigidbody2D>().position;
-            direction.Normalize();
-            float rotateAmount = Vector3.Cross(direction, transform.up).z;
-            rbproj.angularVelocity = rotateAmount * wd.trackingRotationSpeed;
-            rbproj.velocity = transform.up * wd.speed;
-        }
+        rb.velocity.Set(0, 0);
+        rb.gravityScale = 0f;
+        StartCoroutine(TrackTarget());
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -97,11 +84,6 @@ public class Projectile : MonoBehaviour
         //Destroy(this.gameObject, 3);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        
-    }
-
     public float CalculateDamage()
     {
         float number;
@@ -115,9 +97,12 @@ public class Projectile : MonoBehaviour
         //Rotate towards
         while(target != null)
         {
-            Vector3 tpos = target.transform.position;
-            Vector3 tposflat = new Vector3(0, 0, -tpos.z);
-            transform.LookAt(tposflat);
+            Debug.Log("Allowed to go!");
+            Vector3 direction = (target.transform.position - transform.position).normalized;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            Quaternion rotatetoTarget = Quaternion.AngleAxis(angle - 90f, Vector3.forward);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotatetoTarget, Time.deltaTime * wd.trackingRotationSpeed);
+            rb.velocity = new Vector2(direction.x * wd.speed, direction.y * wd.speed);
             yield return new WaitForSeconds(Time.deltaTime);
         }
     }
