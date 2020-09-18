@@ -41,10 +41,10 @@ public class PlayerTopDownController : MonoBehaviour
     {
         movementspeedbonus = 100; //Default start
         pm = transform.parent.GetComponent<PlayerManager>(); //For now, unused
-        pm.PlayerGameObject = this.gameObject;
+        pm.PlayerGameObject = gameObject;
         pm.RestoreHealthToMaximum();
-        this.gameObject.GetComponent<EntityHealth>().shield = 100;
-        this.gameObject.GetComponent<EntityHealth>().shieldMaximum = 100;
+        gameObject.GetComponent<EntityHealth>().shield = 100;
+        gameObject.GetComponent<EntityHealth>().shieldMaximum = 100;
     }
 
     // Update is called once per frame
@@ -58,7 +58,7 @@ public class PlayerTopDownController : MonoBehaviour
         }
         else
         {
-            this.transform.position = new Vector2(0, 0);
+            transform.position = new Vector2(0, 0);
         }
         if (debugCanvas.activeSelf == true)
         {
@@ -122,9 +122,9 @@ public class PlayerTopDownController : MonoBehaviour
     void UpdateDebugText()
     {
         //Movement
-        debugCanvas.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = "Movement: D="+movementspeed.ToString()+"/B="+movementspeedbonus.ToString()+"/T="+speed().ToString();
-        debugCanvas.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>().text = "Damage: D=" + this.gameObject.GetComponent<PlayerWeapon>().wd.damage + "/B=" + this.gameObject.GetComponent<PlayerWeapon>().permdamagebonus + "/T=" + this.gameObject.GetComponent<PlayerWeapon>().CalculateDamage();
-        debugCanvas.transform.GetChild(2).gameObject.GetComponent<TextMeshProUGUI>().text = "AttackSpeed: D=" + this.gameObject.GetComponent<PlayerWeapon>().wd.rateoffire + "/B=" + this.gameObject.GetComponent<PlayerWeapon>().permattackspeedbonus + "/T=" + this.gameObject.GetComponent<PlayerWeapon>().CalculateAttackSpeed();
+        debugCanvas.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = "Movement: D=" + movementspeed.ToString()+"/B="+movementspeedbonus.ToString() + "/T="+speed().ToString();
+        debugCanvas.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>().text = "Damage: D=" + gameObject.GetComponent<PlayerWeapon>().wd.damage + "/B=" + gameObject.GetComponent<PlayerWeapon>().permdamagebonus + "/T=" + gameObject.GetComponent<PlayerWeapon>().CalculateDamage();
+        debugCanvas.transform.GetChild(2).gameObject.GetComponent<TextMeshProUGUI>().text = "AttackSpeed: D=" + gameObject.GetComponent<PlayerWeapon>().wd.rateoffire + "/B=" + gameObject.GetComponent<PlayerWeapon>().permattackspeedbonus + "/T=" + gameObject.GetComponent<PlayerWeapon>().CalculateAttackSpeed();
 
     }
 }

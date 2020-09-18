@@ -15,6 +15,7 @@ public class EntityHealth : MonoBehaviour
     public bool isInvunerable = true, isDying = false;
     public float thisObjectPoints;
     public GameObject explosionPrefab;
+    public AudioSource audioSource;
     //Shields
     public Shield_Obj shieldObj;
     public float shield, shieldMaximum, shieldRechargeDelay = 3f, shieldRechargeRate, shieldBonus;
@@ -171,6 +172,7 @@ public class EntityHealth : MonoBehaviour
         if (gameObject.tag == ("Player"))
         {
             transform.parent.gameObject.GetComponent<PlayerManager>().PlayerHasDied();
+
         }
         //Finally
         if (gameObject.tag == ("Enemy"))

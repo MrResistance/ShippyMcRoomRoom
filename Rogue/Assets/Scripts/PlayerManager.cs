@@ -7,6 +7,7 @@ public class PlayerManager : MonoBehaviour
     public GameObject PlayerPrefab;
     public GameObject PlayerGameObject;
     public GameUIManager gameUIManager;
+    public AudioSource audioSource;
     Transform spawn; //For initialising new player
     public int remainingLives;
 
@@ -53,6 +54,7 @@ public class PlayerManager : MonoBehaviour
     }
     public void PlayerHasDied() //For deducting lives
     {
+        audioSource.PlayOneShot(audioSource.clip);
         if (remainingLives > 0)
         {
             remainingLives--;
