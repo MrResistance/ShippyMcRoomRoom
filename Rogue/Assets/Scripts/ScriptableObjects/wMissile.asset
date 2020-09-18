@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f89e373badc1fd40aa6cebd87df7aac, type: 3}
-  m_Name: wPlayerBase
+  m_Name: wMissile
   m_EditorClassIdentifier: 
   name: Radius
   description: Player's default weapon
-  sprite: {fileID: 21300000, guid: 0bb0295d7fc901d489c8db5982bfa928, type: 3}
-  colourSprite: {r: 0, g: 1, b: 0.018627405, a: 1}
-  scale: 1.5
+  sprite: {fileID: 21300000, guid: ff422642072006f43a012b681f4f51c0, type: 3}
+  colourSprite: {r: 0.4528302, g: 0, b: 0.040631924, a: 1}
+  scale: 1
   projectileCount: 1
   damage: 10
   d_healthMultiplier: 1
@@ -25,13 +25,13 @@ MonoBehaviour:
   speed: 40
   chargetime: 0
   firePosition: single
+  healthProjectile: 20
+  lifetimeProjectile: 0
   spreadType: none
   spread: 0
   range: 0
   isUnlimitedAmmo: 1
   ammo: 0
-  healthProjectile: 20
-  lifetimeProjectile: 0
   explosionType: none
   isExplosionOnImpact: 0
   explosiveradius: 0
@@ -45,6 +45,6 @@ MonoBehaviour:
   scattedprojectiledamage: 0
   canPierce: 0
   amountCanPierce: 0
-  isTrackingProjectile: 0
+  isTrackingProjectile: 1
   trackingRotationSpeed: 50
   weaponSound: {fileID: 8300000, guid: 352c2b97a14375843bd05a0a080fc6f9, type: 3}
