@@ -10,6 +10,7 @@ public class Projectile : MonoBehaviour
     public float destroyTimer = 10f;
     public SpriteRenderer sr;
     private BoxCollider2D bc;
+    private Rigidbody2D rbproj;
     public GameObject target, pointLight;
     private bool allowedToGo = false;
     //For if weapon has 'even' spread
@@ -31,7 +32,7 @@ public class Projectile : MonoBehaviour
         sr.color = wd.colourSprite;
         transform.localScale = new Vector3(wd.scale,wd.scale,wd.scale);
         this.gameObject.GetComponent<EntityHealth>().health = wd.healthProjectile;
-        Rigidbody2D rbproj = this.gameObject.GetComponent<Rigidbody2D>();
+        rbproj = this.gameObject.GetComponent<Rigidbody2D>();
         rbproj.AddForce(this.gameObject.transform.right * wd.speed, ForceMode2D.Impulse);
         if (wd.name == "Missile")
         {
@@ -41,16 +42,18 @@ public class Projectile : MonoBehaviour
         { 
             Destroy(this.gameObject, wd.lifetimeProjectile);
         }
-        if (wd.isTrackingProjectile == true && target != null)
-        {
-            StartCoroutine(TrackTarget());
-        }
+        //if (wd.isTrackingProjectile == true && target != null)
+        //{
+        //    StartCoroutine(TrackTarget());
+        //}
 
     }
     private IEnumerator HomingMissile()
     {
+        GetComponent<Rigidbody2D>().gravityScale = 2f;
         yield return new WaitForSeconds(1f);
-        gameObject.GetComponent<Rigidbody2D>().velocity.Set(0, 0);
+        GetComponent<Rigidbody2D>().velocity.Set(0, 0);
+        GetComponent<Rigidbody2D>().gravityScale = 0f;
         allowedToGo = true;
     }
     private void FixedUpdate()
@@ -108,7 +111,7 @@ public class Projectile : MonoBehaviour
         return number;
     }
 
-    IEnumerator TrackTarget()
+    /*IEnumerator TrackTarget()
     {
         //Rotate towards
         while(target != null)
@@ -118,7 +121,7 @@ public class Projectile : MonoBehaviour
             transform.LookAt(tposflat);
             yield return new WaitForSeconds(Time.deltaTime);
         }
-    }
+    }*/
 
     Vector2 GetDistanceToTarget()
     {

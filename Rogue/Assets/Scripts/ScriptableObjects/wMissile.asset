@@ -11,7 +11,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f89e373badc1fd40aa6cebd87df7aac, type: 3}
   m_Name: wMissile
-  m_EditorClassIdentifier:
+  m_EditorClassIdentifier: 
   name: Missile
   description: Ssssssssssss-BOOM
   sprite: {fileID: 21300000, guid: ff422642072006f43a012b681f4f51c0, type: 3}
@@ -27,7 +27,7 @@ MonoBehaviour:
   firePosition: single
   healthProjectile: 10
   lifetimeProjectile: 10
-  spreadType:
+  spreadType: none
   spread: 0
   range: 0
   isUnlimitedAmmo: 0
@@ -39,7 +39,7 @@ MonoBehaviour:
   prefabExplosive: {fileID: 5501650767091938667, guid: d8b01894962c7734e8d9ce19aad1d634,
     type: 3}
   isScatteredProjectilesOnImpact: 0
-  scatteredprojectiletype:
+  scatteredprojectiletype: 
   scatteredprojectilecount: 0
   scatteredprojectilespeed: 0
   scatteredprojectilerange: 0
