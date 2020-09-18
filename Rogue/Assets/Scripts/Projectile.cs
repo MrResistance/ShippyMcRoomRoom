@@ -11,6 +11,7 @@ public class Projectile : MonoBehaviour
     public SpriteRenderer sr;
     private BoxCollider2D bc;
     public GameObject target, pointLight;
+    private bool allowedToGo = false;
     //For if weapon has 'even' spread
     public float spreadNumber;
     private void Awake()
@@ -22,6 +23,7 @@ public class Projectile : MonoBehaviour
 
     private void Start()
     {
+        transform.parent = GameObject.Find("Projectiles").transform;
         //For spread
         transform.rotation = CalculateRotationForProjectile();
 
@@ -31,6 +33,10 @@ public class Projectile : MonoBehaviour
         this.gameObject.GetComponent<EntityHealth>().health = wd.healthProjectile;
         Rigidbody2D rbproj = this.gameObject.GetComponent<Rigidbody2D>();
         rbproj.AddForce(this.gameObject.transform.right * wd.speed, ForceMode2D.Impulse);
+        if (wd.name == "Missile")
+        {
+            StartCoroutine(HomingMissile());
+        }
         if (wd.lifetimeProjectile > 0)
         { 
             Destroy(this.gameObject, wd.lifetimeProjectile);
@@ -40,6 +46,23 @@ public class Projectile : MonoBehaviour
             StartCoroutine(TrackTarget());
         }
 
+    }
+    private IEnumerator HomingMissile()
+    {
+        yield return new WaitForSeconds(1f);
+        gameObject.GetComponent<Rigidbody2D>().velocity.Set(0, 0);
+        allowedToGo = true;
+    }
+    private void FixedUpdate()
+    {
+        if (allowedToGo)
+        {
+            Vector2 direction = (Vector2)target.transform.position - gameObject.GetComponent<Rigidbody2D>().position;
+            direction.Normalize();
+            float rotateAmount = Vector3.Cross(direction, transform.up).z;
+            gameObject.GetComponent<Rigidbody2D>().angularVelocity = rotateAmount * wd.trackingRotationSpeed;
+            gameObject.GetComponent<Rigidbody2D>().velocity = transform.up * wd.speed;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

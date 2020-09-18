@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f89e373badc1fd40aa6cebd87df7aac, type: 3}
+  m_Name: wMissile
+  m_EditorClassIdentifier: 
+  name: Missile
+  description: Ssssssssssss-BOOM
+  sprite: {fileID: 21300000, guid: ff422642072006f43a012b681f4f51c0, type: 3}
+  colourSprite: {r: 1, g: 1, b: 1, a: 1}
+  scale: 1
+  projectileCount: 1
+  damage: 50
+  d_healthMultiplier: 1
+  d_shieldMultiplier: 1
+  rateoffire: 1
+  speed: 10
+  chargetime: 0
+  firePosition: single
+  healthProjectile: 10
+  lifetimeProjectile: 10
+  spreadType: 
+  spread: 0
+  range: 0
+  isUnlimitedAmmo: 0
+  ammo: 0
+  explosionType: none
+  isExplosionOnImpact: 1
+  explosiveradius: 10
+  explosivedamage: 25
+  prefabExplosive: {fileID: 5501650767091938667, guid: d8b01894962c7734e8d9ce19aad1d634,
+    type: 3}
+  isScatteredProjectilesOnImpact: 0
+  scatteredprojectiletype: 
+  scatteredprojectilecount: 0
+  scatteredprojectilespeed: 0
+  scatteredprojectilerange: 0
+  scattedprojectiledamage: 0
+  canPierce: 0
+  amountCanPierce: 0
+  isTrackingProjectile: 1
+  trackingRotationSpeed: 50
+  weaponSound: {fileID: 8300000, guid: b9294db87eaa0cb4abac1dc1f2569d75, type: 3}

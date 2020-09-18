@@ -14,6 +14,7 @@ public class GameUIManager : MonoBehaviour
     // Start is called before the first frame update
     public TextMeshProUGUI t_wavenumber;
     public GameObject UI, defaultButton, defaultPauseButton,livesPrefab, pointsText, pauseMenu, rewardsPanel, player;
+    public GameObject[] projectileObjects;
     public GameObject[] lives;
     public GameObject[] scoreTextObjects;
     public EventSystem eventSystem;
@@ -185,12 +186,12 @@ public class GameUIManager : MonoBehaviour
             upgradeamount = new float[] { 5 * number, 5 * number, 5 * number };
 
     }
-    public void ClearPointsFromField()
+    public void ClearField()
     {
         scoreTextObjects = GameObject.FindGameObjectsWithTag("Score");
         foreach (GameObject score in scoreTextObjects)
         {
-            GameObject.Destroy(score.gameObject);
+            GameObject.Destroy(score);
         }
     }
     public void ConfirmRewardNextWave()
@@ -224,7 +225,6 @@ public class GameUIManager : MonoBehaviour
             case 1: //Reward panel
                 ShowingRewards = true;
                 HighlightButton(defaultButton);
-                ClearPointsFromField();
                 player.GetComponent<EntityHealth>().RestoreHealthToMaximum();
                 player.GetComponent<EntityHealth>().RestoreShieldToMaximum();
                 //Debug UI stays
