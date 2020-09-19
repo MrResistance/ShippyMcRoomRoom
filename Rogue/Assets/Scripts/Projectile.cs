@@ -127,25 +127,25 @@ public class Projectile : MonoBehaviour
             {
                 if (tag.Contains("Enemy"))
                 {
-                    GameObject enemy = null;
-                    float minDist = Mathf.Infinity;
+                    float minDist = 100000;
                     foreach (GameObject ge in wm.listAllies)
                     {
-                        if (Vector3.Distance(ge.transform.position, transform.position) < minDist)
+                        if (Vector3.Distance(ge.transform.position, transform.position) < minDist && ge.GetComponent<NPCMoverScript1>().isWithinArenaBoundary())
                         {
-                            enemy = ge;
+                            target = ge;
+                            minDist = Vector3.Distance(ge.transform.position, transform.position);
                         }
                     }
                 }
                 if (tag.Contains("Player"))
                 {
-                    GameObject enemy = null;
-                    float minDist = Mathf.Infinity;
+                    float minDist = 100000;
                     foreach (GameObject ge in wm.listEnemies)
                     {
-                        if (Vector3.Distance(ge.transform.position, transform.position) < minDist)
+                        if (Vector3.Distance(ge.transform.position, transform.position) < minDist && ge.GetComponent<NPCMoverScript1>().isWithinArenaBoundary())
                         {
-                            enemy = ge;
+                            target = ge;
+                            minDist = Vector3.Distance(ge.transform.position, transform.position);
                         }
                     }
                 }
