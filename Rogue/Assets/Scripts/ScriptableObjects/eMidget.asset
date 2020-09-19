@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9669b3f1df6e9544b9290d36552d7c82, type: 3}
+  m_Name: eMidget
+  m_EditorClassIdentifier: 
+  name: Midget enemy
+  description: Smol
+  sprite: {fileID: 21300000, guid: b2a49b9ae1795984fb322e2551f32b3c, type: 3}
+  colourSprite: {r: 1, g: 1, b: 1, a: 1}
+  scale: 0.4
+  speedMovement: 6
+  speedRotation: 3
+  healthMaximum: 25
+  shieldMaximum: 0
+  shieldRechargeRate: 1
+  points: 2
+  explosionPrefab: {fileID: 5501650767091938667, guid: d8b01894962c7734e8d9ce19aad1d634,
+    type: 3}
