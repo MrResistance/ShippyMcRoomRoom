@@ -17,7 +17,7 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 0bb0295d7fc901d489c8db5982bfa928, type: 3}
   colourSprite: {r: 1, g: 0, b: 0.018810749, a: 1}
   scale: 0.7
-  projectileCount: 16
+  projectileCount: 17
   damage: 300
   d_healthMultiplier: 2
   d_shieldMultiplier: 1
@@ -27,11 +27,13 @@ MonoBehaviour:
   firePosition: single
   healthProjectile: 20
   lifetimeProjectile: 3
+  isUnlimitedAmmo: 1
+  ammoMax: 0
+  isWeaponLifeless: 1
+  lifetimeWeapon: 0
   spreadType: even
   spread: 180
   range: 50
-  isUnlimitedAmmo: 1
-  ammo: 0
   explosionType: none
   isExplosionOnImpact: 0
   explosiveradius: 0
@@ -43,9 +45,11 @@ MonoBehaviour:
   scatteredprojectilespeed: 0
   scatteredprojectilerange: 0
   scattedprojectiledamage: 0
-  canPierce: 0
+  canPierce: 1
   amountCanPierce: 0
   isTrackingProjectile: 0
   trackingRotationSpeed: 50
+  hasHomingDelay: 0
   launchSound: {fileID: 8300000, guid: c79c11a413001b04d9864671fe854b0a, type: 3}
   impactSound: {fileID: 0}
+  uiSprite: {fileID: 0}

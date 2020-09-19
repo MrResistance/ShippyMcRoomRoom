@@ -187,7 +187,7 @@ public class WaveManager : MonoBehaviour
         //Enemy.GetComponent<NPCMoverScript1>().cooldownShooting -= (WaveNumber / 10);
         if (side == "enemy")
         {
-            NPC.name = "EnemyNPC-" + WaveNumber.ToString();
+            NPC.name = "E:"+ed.name +"-W:"+WaveNumber.ToString();
             NPC.transform.parent = EnemiesGO.transform;
             listEnemies.Add(NPC);
             NPC.tag = "Enemy";
@@ -195,7 +195,7 @@ public class WaveManager : MonoBehaviour
         }
         if (side == "allied")
         {
-            NPC.name = "AlliedNPC-"+WaveNumber.ToString();
+            NPC.name = "A:"+ed.name+"-W:"+WaveNumber.ToString();
             NPC.transform.parent = AlliesGO.transform;
             listAllies.Add(NPC);
             NPC.tag = "Ally";

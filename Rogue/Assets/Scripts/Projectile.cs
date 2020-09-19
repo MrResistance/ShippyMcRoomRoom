@@ -40,7 +40,7 @@ public class Projectile : MonoBehaviour
     {
         //Play launch sfx
         gameObject.name = wd.name;
-        if (wd.name == "Missile")
+        if (wd.name == "Missile") //For the missile sound
         {
             StartCoroutine(DelaySound(0.75f,wd.launchSound));
         }
@@ -62,9 +62,16 @@ public class Projectile : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         wm = GameObject.Find("GameManager").GetComponent<WaveManager>();
         //If this weapon is a homing missile, start the tracking code
-        if (wd.name == "Missile")
-        {
-            StartCoroutine(HomingMissile());
+        if (wd.isTrackingProjectile)
+        { 
+            if (wd.hasHomingDelay)
+            {
+                StartCoroutine(HomingMissile());
+            }
+            else
+            {
+                StartCoroutine(TrackTarget());
+            }
         }
         else if(wd.name != "Missile") //If not, then just give the standard straight-line force
         {
@@ -103,9 +110,12 @@ public class Projectile : MonoBehaviour
         {
             collision.gameObject.GetComponent<EntityHealth>().TakeDamage(CalculateDamage(), wd);
             pointLight.SetActive(false);
-            sr.enabled = false;
-            bc.enabled = false;
-            Destroy(this.gameObject, 3);
+            if (!wd.canPierce)
+            {
+                sr.enabled = false;
+                bc.enabled = false;
+                Destroy(this.gameObject, 3);
+            }
         }
 
     }

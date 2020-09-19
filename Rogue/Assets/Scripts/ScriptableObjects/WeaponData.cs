@@ -26,6 +26,12 @@ public class WeaponData : ScriptableObject
     public int healthProjectile = 10;
     public float lifetimeProjectile = 3; //In seconds, how long projectile will last before dying - if 0, it will only die on impact (or leaving combat area)
 
+    [Title("Ammo and weapon lifetime")]
+    public bool isUnlimitedAmmo = true;
+    public int ammoMax;
+    public bool isWeaponLifeless = true;
+    public float lifetimeWeapon;
+
     [Title("Spread")]
     //Spread
     //test
@@ -44,8 +50,7 @@ public class WeaponData : ScriptableObject
     public float spread; //Accuracy; 
 
     public float range; //How far the projectile travels before it either evaporates or explodes
-    public bool isUnlimitedAmmo;
-    public int ammo;
+    
     
 
     [Title("Explosive")]
@@ -81,10 +86,12 @@ public class WeaponData : ScriptableObject
     //Tracking - for missiles and anything else we want the projectile to track
     public bool isTrackingProjectile;
     public float trackingRotationSpeed;
-
+    public bool hasHomingDelay = false; //If true, the projectile waits for the rateoffire time before setting off - used on missiles
     [Title("Audio")]
     public AudioClip launchSound;
     public AudioClip impactSound;
 
+    [Title("UI")]
+    public Sprite uiSprite; //NOT YET USED - TO BE USED INSTEAD OF USING THE PROJECTILE SPRITE FOR DISPLAY wea-PON
 }
 
