@@ -130,7 +130,7 @@ public class Projectile : MonoBehaviour
                     float minDist = 100000;
                     foreach (GameObject ge in wm.listAllies)
                     {
-                        if (Vector3.Distance(ge.transform.position, transform.position) < minDist)
+                        if (Vector3.Distance(ge.transform.position, transform.position) < minDist && ge.GetComponent<NPCMoverScript1>().isWithinArenaBoundary())
                         {
                             target = ge;
                             minDist = Vector3.Distance(ge.transform.position, transform.position);
@@ -142,7 +142,7 @@ public class Projectile : MonoBehaviour
                     float minDist = 100000;
                     foreach (GameObject ge in wm.listEnemies)
                     {
-                        if (Vector3.Distance(ge.transform.position, transform.position) < minDist)
+                        if (Vector3.Distance(ge.transform.position, transform.position) < minDist && ge.GetComponent<NPCMoverScript1>().isWithinArenaBoundary())
                         {
                             target = ge;
                             minDist = Vector3.Distance(ge.transform.position, transform.position);

@@ -84,9 +84,10 @@ public class PlayerWeapon : MonoBehaviour
         float minDist = Mathf.Infinity;
         foreach (GameObject ge in gm.GetComponent<WaveManager>().listEnemies)
         {
-            if (Vector3.Distance(ge.transform.position,transform.position) < minDist)
+            if (Vector3.Distance(ge.transform.position,transform.position) < minDist && ge.GetComponent<NPCMoverScript1>().isWithinArenaBoundary())
             {
                 enemy = ge;
+                minDist = Vector3.Distance(ge.transform.position, transform.position);
             }
         }
         return enemy;
