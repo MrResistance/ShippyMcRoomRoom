@@ -316,6 +316,8 @@ MonoBehaviour:
   permattackspeedbonus: 0
   damage: 10
   permdamagebonus: 0
+  dpadX: 0
+  dpadY: 0
   previousWeaponIndex: 0
   currentWeaponIndex: 0
   nextWeaponIndex: 0
@@ -325,6 +327,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 078c834606302734e8688d6fabf3d902, type: 2}
   - {fileID: 11400000, guid: c690d3ec5ce65914cac33d0117d659a6, type: 2}
   - {fileID: 11400000, guid: 3af879d3058eda74eb277b0852023077, type: 2}
+  - {fileID: 11400000, guid: 9deef19f56e18084cbdfb5f81dff028d, type: 2}
 --- !u!114 &736251806
 MonoBehaviour:
   m_ObjectHideFlags: 0
