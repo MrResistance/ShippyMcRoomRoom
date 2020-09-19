@@ -130,7 +130,8 @@ public class Projectile : MonoBehaviour
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             Quaternion rotatetoTarget = Quaternion.AngleAxis(angle - 90f, Vector3.forward);
             transform.rotation = Quaternion.Slerp(transform.rotation, rotatetoTarget, Time.deltaTime * wd.trackingRotationSpeed);
-            rb.velocity = new Vector2(direction.x * wd.speed, direction.y * wd.speed);
+            //rb.velocity = new Vector2(direction.x * wd.speed, direction.y * wd.speed);
+            rb.velocity = transform.up * wd.speed;
             yield return new WaitForSeconds(Time.deltaTime);
         }
     }
