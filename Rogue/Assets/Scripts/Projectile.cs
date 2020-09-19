@@ -18,6 +18,7 @@ public class Projectile : MonoBehaviour
     //For if weapon has 'even' spread
     public float spreadNumber;
     GameObject owner;
+    WaveManager wm;
 
     //Missile-based
     bool isWarmingUp = false;
@@ -59,6 +60,7 @@ public class Projectile : MonoBehaviour
         //Sets health and rigidbody
         GetComponent<EntityHealth>().health = wd.healthProjectile;
         rb = GetComponent<Rigidbody2D>();
+        wm = GameObject.Find("GameManager").GetComponent<WaveManager>();
         //If this weapon is a homing missile, start the tracking code
         if (wd.name == "Missile")
         {
@@ -72,6 +74,7 @@ public class Projectile : MonoBehaviour
         {
             Invoke("LifetimeDestroy", wd.lifetimeProjectile);
         }
+
 
     }
     
@@ -118,15 +121,44 @@ public class Projectile : MonoBehaviour
     IEnumerator TrackTarget()
     {
         //Rotate towards
-        while(target != null)
+        while(true)
         {
-            Debug.Log("Allowed to go!");
-            Vector3 direction = (target.transform.position - transform.position).normalized;
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            Quaternion rotatetoTarget = Quaternion.AngleAxis(angle - 90f, Vector3.forward);
-            transform.rotation = Quaternion.Slerp(transform.rotation, rotatetoTarget, Time.deltaTime * wd.trackingRotationSpeed);
-            //rb.velocity = new Vector2(direction.x * wd.speed, direction.y * wd.speed);
-            rb.velocity = transform.up * wd.speed;
+            if (target == null)
+            {
+                if (tag.Contains("Enemy"))
+                {
+                    GameObject enemy = null;
+                    float minDist = Mathf.Infinity;
+                    foreach (GameObject ge in wm.listAllies)
+                    {
+                        if (Vector3.Distance(ge.transform.position, transform.position) < minDist)
+                        {
+                            enemy = ge;
+                        }
+                    }
+                }
+                if (tag.Contains("Player"))
+                {
+                    GameObject enemy = null;
+                    float minDist = Mathf.Infinity;
+                    foreach (GameObject ge in wm.listEnemies)
+                    {
+                        if (Vector3.Distance(ge.transform.position, transform.position) < minDist)
+                        {
+                            enemy = ge;
+                        }
+                    }
+                }
+            }
+            if (target != null)
+            { 
+                Vector3 direction = (target.transform.position - transform.position).normalized;
+                float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+                Quaternion rotatetoTarget = Quaternion.AngleAxis(angle - 90f, Vector3.forward);
+                transform.rotation = Quaternion.Slerp(transform.rotation, rotatetoTarget, Time.deltaTime * wd.trackingRotationSpeed);
+                //rb.velocity = new Vector2(direction.x * wd.speed, direction.y * wd.speed);
+                rb.velocity = transform.up * wd.speed;
+            }
             yield return new WaitForSeconds(Time.deltaTime);
         }
     }
@@ -222,7 +254,7 @@ public class Projectile : MonoBehaviour
         isWarmingUp = true;
         StartCoroutine(HoldingPositionOfOwner());
         //rb.gravityScale = 2f;
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(wd.rateoffire);
         isWarmingUp = false;
         rb.velocity.Set(0, 0);
         rb.gravityScale = 0f;
