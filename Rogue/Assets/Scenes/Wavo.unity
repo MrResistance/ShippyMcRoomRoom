@@ -1449,7 +1449,7 @@ MonoBehaviour:
   m_Intensity: 0.5
   m_LightVolumeOpacity: 0
   m_ApplyToSortingLayers: 00000000
-  m_LightCookieSprite: {fileID: 21300000, guid: 6c80c09c2c95ab4489c2dad81ec07889,
+  m_LightCookieSprite: {fileID: 21300000, guid: 1931e51c877b59c4db523835f2ff3c22,
     type: 3}
   m_UseNormalMap: 0
   m_LightOrder: 0
@@ -2811,7 +2811,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6c80c09c2c95ab4489c2dad81ec07889, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f13b0c97ca05b8840aa89fc53f4d16f2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5895,13 +5895,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1568907622}
-  m_LocalRotation: {x: 0, y: 0, z: 0.38268343, w: 0.92387956}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 268841940}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1568907624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5918,10 +5918,10 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.5
+  m_Intensity: 1
   m_LightVolumeOpacity: 0
   m_ApplyToSortingLayers: 00000000
-  m_LightCookieSprite: {fileID: 21300000, guid: 6c80c09c2c95ab4489c2dad81ec07889,
+  m_LightCookieSprite: {fileID: 21300000, guid: 4d0fbb835ae19cb48ae41b0e4af31f16,
     type: 3}
   m_UseNormalMap: 0
   m_LightOrder: 0
@@ -6719,7 +6719,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6c80c09c2c95ab4489c2dad81ec07889, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1931e51c877b59c4db523835f2ff3c22, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -7071,13 +7071,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1994360009}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.38268343, w: 0.92387956}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_Children: []
   m_Father: {fileID: 268841940}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
 --- !u!114 &1994360011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7097,7 +7097,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeOpacity: 0
   m_ApplyToSortingLayers: 00000000
-  m_LightCookieSprite: {fileID: 21300000, guid: 4d0fbb835ae19cb48ae41b0e4af31f16,
+  m_LightCookieSprite: {fileID: 21300000, guid: f13b0c97ca05b8840aa89fc53f4d16f2,
     type: 3}
   m_UseNormalMap: 0
   m_LightOrder: 0
