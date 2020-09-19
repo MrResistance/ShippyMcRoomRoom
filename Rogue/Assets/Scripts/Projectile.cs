@@ -26,6 +26,7 @@ public class Projectile : MonoBehaviour
     private void Start()
     {
         //Play launch sfx
+        gameObject.name = wd.name;
         if (wd.name == "Missile")
         {
             StartCoroutine(DelaySound());
@@ -56,8 +57,8 @@ public class Projectile : MonoBehaviour
             rb.AddForce(transform.up * wd.speed, ForceMode2D.Impulse);
         }
         if (wd.lifetimeProjectile > 0) //Destroy the projectile after amount of time set in WeaponData
-        { 
-            Destroy(gameObject, wd.lifetimeProjectile);
+        {
+            Invoke("LifetimeDestroy", wd.lifetimeProjectile);
         }
 
     }
@@ -78,10 +79,12 @@ public class Projectile : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //If this projectile is a missle, spawn an explosion on any collision
-        if (wd.name == "Missile")
+        if (wd.explosionType != "none")
+            {
+                CauseExplosion();
+            }
         {
-            GameObject explosionClone = Instantiate(wd.prefabExplosive, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
-            explosionClone.transform.localScale = new Vector3(gameObject.transform.lossyScale.x + 17.5f, gameObject.transform.lossyScale.y + 17.5f, 1f);
+            CauseExplosion();
             //audioSource.PlayOneShot(wd.impactSound);
         }
         if (collision.gameObject.tag.Contains("Boundary"))
@@ -200,6 +203,19 @@ public class Projectile : MonoBehaviour
         }
         return quat;
 
+    }
+    void LifetimeDestroy()
+    {
+        if (wd.explosionType != "none")
+        { 
+            CauseExplosion();
+        }
+        GetComponent<EntityHealth>().Die();
+    }
+    void CauseExplosion()
+    {
+        GameObject explosionClone = Instantiate(wd.prefabExplosive, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
+        explosionClone.transform.localScale = new Vector3(gameObject.transform.lossyScale.x + 17.5f, gameObject.transform.lossyScale.y + 17.5f, 1f);
     }
 
 }
