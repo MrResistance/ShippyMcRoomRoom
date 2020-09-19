@@ -170,7 +170,7 @@ public class NPCMoverScript1 : MonoBehaviour
     {
         return true;
     }
-    bool isWithinArenaBoundary()
+    public bool isWithinArenaBoundary()
     {
         if (transform.position.x >= boundaryXmin && transform.position.x <= boundaryXmax)
         {
