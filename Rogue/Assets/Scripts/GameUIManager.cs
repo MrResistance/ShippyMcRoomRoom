@@ -72,18 +72,24 @@ public class GameUIManager : MonoBehaviour
             }
         }
     }
-    public void UpdateWeaponUI(int weaponIndex)
+    public void UpdateWeaponUI(WeaponData wd)
     {
-        currentWeapon.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = weaponSelectSprites[weaponIndex];
+        currentWeapon.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = wd.sprite;
+        currentWeapon.transform.GetChild(0).GetComponent<SpriteRenderer>().color = wd.colourSprite;
+
         //current = currentWeapon.transform.GetChild(1).GetComponent<Light2D>().; //= weaponSelectSprites[weaponIndex];
     }
-    public void UpdatePreviousWeaponUI(int weaponIndex)
+    public void UpdatePreviousWeaponUI(WeaponData wd)
     {
-        previousWeapon.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = weaponSelectSprites[weaponIndex];
+        previousWeapon.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = wd.sprite;
+        previousWeapon.transform.GetChild(0).GetComponent<SpriteRenderer>().color = wd.colourSprite;
+
     }
-    public void UpdateNextWeaponUI(int weaponIndex)
+    public void UpdateNextWeaponUI(WeaponData wd)
     {
-        nextWeapon.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = weaponSelectSprites[weaponIndex];
+        nextWeapon.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = wd.sprite;
+        nextWeapon.transform.GetChild(0).GetComponent<SpriteRenderer>().color = wd.colourSprite;
+
     }
     public void UpdateHiScore(float score)
     {
