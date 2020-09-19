@@ -81,12 +81,9 @@ public class Projectile : MonoBehaviour
         //If this projectile is a missle, spawn an explosion on any collision
         if (wd.explosionType != "none")
             {
-                CauseExplosion();
+                //CauseExplosion();
             }
-        {
-            CauseExplosion();
-            //audioSource.PlayOneShot(wd.impactSound);
-        }
+        
         if (collision.gameObject.tag.Contains("Boundary"))
         {
             Destroy(gameObject);
