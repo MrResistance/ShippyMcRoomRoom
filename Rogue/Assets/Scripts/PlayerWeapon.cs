@@ -42,6 +42,7 @@ public class PlayerWeapon : MonoBehaviour
             projectile.GetComponent<Projectile>().wd = wd;
             projectile.GetComponent<Projectile>().damageBonus = permdamagebonus;
             projectile.GetComponent<Projectile>().firepoint = firePoint;
+            projectile.GetComponent<Projectile>().SetParent(this.gameObject);
             //Spread
             if (wd.spreadType == "even")
             {

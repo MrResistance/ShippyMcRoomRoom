@@ -108,6 +108,7 @@ public class NPCMoverScript1 : MonoBehaviour
             GameObject projectile = Instantiate(projectilePrefab, firePoint.transform.position, WeaponFiringAngle());
             projectile.GetComponent<Projectile>().firepoint = firePoint.transform;
             projectile.GetComponent<Projectile>().wd = wd;
+            projectile.GetComponent<Projectile>().SetParent(this.gameObject);
             projectile.transform.parent = ProjectilesGO.transform;
             //NPC Side stuff - only for NPCs
             if (npcSide == "enemy")
