@@ -12,6 +12,7 @@ public class EntityHealth : MonoBehaviour
     public float healthMaximum; //The starting and maximum health of the entity - not including healthbonus
     public float healthBonus; //Adds onto the healthMaximum - mainly for the player but we can use later
     public GameUIManager gameUIManager;
+    public WaveManager wm;
     public bool isInvunerable = true, isDying = false;
     public float thisObjectPoints;
     public GameObject explosionPrefab;
@@ -24,6 +25,7 @@ public class EntityHealth : MonoBehaviour
     private void Awake()
     {
         gameUIManager = GameObject.Find("GameManager").GetComponent<GameUIManager>();
+        wm = GameObject.Find("GameManager").GetComponent<WaveManager>();
         shieldObj = GetComponentInChildren<Shield_Obj>();
     }
     void Start()
@@ -162,8 +164,6 @@ public class EntityHealth : MonoBehaviour
         if (health <= 0)
         {
             Die();
-            //If player
-            
         }
     }
     public void Die()
@@ -180,7 +180,14 @@ public class EntityHealth : MonoBehaviour
                 isDying = true;
                 gameUIManager.PointsForKillingEnemy(gameObject.transform, thisObjectPoints);
                 gameUIManager.UpdateHiScore(thisObjectPoints);
+                wm.listEnemies.Remove(this.gameObject);
+
+
             }
+        }
+        if (gameObject.tag == "allied")
+        {
+            wm.listAllies.Remove(this.gameObject);
         }
         if (!gameObject.tag.Contains("Projectile"))
         {
@@ -188,11 +195,6 @@ public class EntityHealth : MonoBehaviour
             explosionClone.transform.localScale = new Vector3(this.gameObject.transform.lossyScale.x + 17.5f, this.gameObject.transform.lossyScale.y + 17.5f, 1f);
         }
         Destroy(gameObject);
-        //Die
-
-        //Else
-        //Guess we respawn them
-        //And deduct a life
     }
 
     void DisableInvunerability()
