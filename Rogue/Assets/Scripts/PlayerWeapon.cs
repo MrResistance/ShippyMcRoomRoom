@@ -69,7 +69,7 @@ public class PlayerWeapon : MonoBehaviour
     }
     public void GoToPreviousWeapon()
     {
-        if ((currentWeaponIndex) -1 <= 0)
+        if ((currentWeaponIndex - 1) < 0)
         {
             ChangeWeapon(weaponDataList.Count - 1);
         }
