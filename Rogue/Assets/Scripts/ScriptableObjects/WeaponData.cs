@@ -24,7 +24,10 @@ public class WeaponData : ScriptableObject
     public string firePosition = "single"; //"single" - firing from middle-front // "twin" - firing from middle-front offset to left and right //"side" - firing from sides of ship at 90' angle 
 
     public int healthProjectile = 10;
+
     public float lifetimeProjectile = 3; //In seconds, how long projectile will last before dying - if 0, it will only die on impact (or leaving combat area)
+    [MinMaxSlider(-1, 1)]
+    public Vector2 lifetimeMinMaxMultiplier = new Vector2(0, 0);
 
     [Title("Ammo and weapon lifetime")]
     public bool isUnlimitedAmmo = true;
