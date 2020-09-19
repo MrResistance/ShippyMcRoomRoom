@@ -50,7 +50,14 @@ public class WeaponData : ScriptableObject
 
     [Title("Explosive")]
     //Explosion stuff
+    [ValueDropdown("explosionTypes")]
     public string explosionType = "none"; //"none" , "Throughout" - same damage to the end -- "Degrading" - damage more towards center
+    private ValueDropdownList<string> explosionTypes = new ValueDropdownList<string>()
+    {
+        {"None","none"},
+        {"Throughout","throughout"},
+        {"Degrading","degrading"},
+    };
     public bool isExplosionOnImpact;
     public float explosiveradius;
     public int explosivedamage;

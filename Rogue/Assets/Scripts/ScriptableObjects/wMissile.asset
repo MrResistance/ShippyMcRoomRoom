@@ -18,24 +18,24 @@ MonoBehaviour:
   colourSprite: {r: 1, g: 1, b: 1, a: 1}
   scale: 1
   projectileCount: 1
-  damage: 10
-  d_healthMultiplier: 1
+  damage: 25
+  d_healthMultiplier: 3
   d_shieldMultiplier: 1
   rateoffire: 1
-  speed: 40
+  speed: 10
   chargetime: 0
   firePosition: single
-  healthProjectile: 1
-  lifetimeProjectile: 0
+  healthProjectile: 100
+  lifetimeProjectile: 4
   spreadType: none
   spread: 0
   range: 0
   isUnlimitedAmmo: 1
   ammo: 0
-  explosionType: none
+  explosionType: throughout
   isExplosionOnImpact: 0
-  explosiveradius: 0
-  explosivedamage: 0
+  explosiveradius: 5
+  explosivedamage: 25
   prefabExplosive: {fileID: 6678137918194488091, guid: da093903cab3e9d499960147c2d111bc,
     type: 3}
   isScatteredProjectilesOnImpact: 0
@@ -47,6 +47,6 @@ MonoBehaviour:
   canPierce: 0
   amountCanPierce: 0
   isTrackingProjectile: 1
-  trackingRotationSpeed: 50
+  trackingRotationSpeed: 1.5
   launchSound: {fileID: 8300000, guid: 7dc3bc4166eb26c4aa3684e0a439c0bc, type: 3}
   impactSound: {fileID: 8300000, guid: 02c43a862dbc9504b9793790a9e6ecce, type: 3}
