@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Diagnostics;
 
 public class PlayerWeapon : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class PlayerWeapon : MonoBehaviour
     public SFX_Player sFX_Player;
     public GameUIManager gm;
     public List<WeaponData> weaponDataList;
+    private Stopwatch stopwatch;
     private void Awake()
     {
         //sFX_Player = GameObject.Find("SFX_Player").GetComponent<SFX_Player>();
@@ -23,6 +25,7 @@ public class PlayerWeapon : MonoBehaviour
     }
     private void Start()
     {
+        stopwatch = new Stopwatch();
         ChangeWeapon(0);
     }
     // Update is called once per frame
@@ -38,14 +41,17 @@ public class PlayerWeapon : MonoBehaviour
             }
             if (!gm.isGamePaused)
             {
-                if (dpadY > 0 && Time.time > nextChangeWeaponInput)
+                if (dpadY > 0 && stopwatch.ElapsedMilliseconds > 500)
                 {
                     GoToNextWeapon();
+                    stopwatch.Reset();
                 }
-                else if (dpadY < 0 && Time.time > nextChangeWeaponInput)
+                else if (dpadY < 0 && stopwatch.ElapsedMilliseconds > 500)
                 {
                     GoToPreviousWeapon();
+                    stopwatch.Reset();
                 }
+                stopwatch.Start();
             }
         }
     }
