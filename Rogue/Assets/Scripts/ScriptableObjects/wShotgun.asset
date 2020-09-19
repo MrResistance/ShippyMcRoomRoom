@@ -26,7 +26,8 @@ MonoBehaviour:
   chargetime: 0
   firePosition: single
   healthProjectile: 20
-  lifetimeProjectile: 0.6
+  lifetimeProjectile: 1
+  lifetimeMinMaxMultiplier: {x: -1, y: 1}
   isUnlimitedAmmo: 1
   ammoMax: 0
   isWeaponLifeless: 1
@@ -47,7 +48,7 @@ MonoBehaviour:
   scattedprojectiledamage: 0
   canPierce: 0
   amountCanPierce: 0
-  isTrackingProjectile: 1
+  isTrackingProjectile: 0
   trackingRotationSpeed: 0.2
   hasHomingDelay: 0
   launchSound: {fileID: 8300000, guid: fc234f3fecb3eb54aa0a8663411d4aa4, type: 3}
