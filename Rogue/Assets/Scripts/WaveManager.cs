@@ -76,7 +76,7 @@ public class WaveManager : MonoBehaviour
         //Add a sound effect here for completing the wave
         gameObject.GetComponent<GameUIManager>().ShowWaveCompleteUI();
         gameObject.GetComponent<GameUIManager>().ClearField();
-        yield return new WaitForSecondsRealtime(2f);
+        yield return new WaitForSeconds(3f);
         //Destroy all projectiles so they don't kill the player
         DestroyAllProjectiles();
         

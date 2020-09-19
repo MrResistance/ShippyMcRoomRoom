@@ -12,7 +12,7 @@ using Unity.Mathematics;
 public class GameUIManager : MonoBehaviour
 {
     // Start is called before the first frame update
-    public TextMeshProUGUI t_wavenumber;
+    public TextMeshProUGUI t_wavenumber, t_waveNumberPauseMenu;
     public GameObject UI, defaultButton, defaultPauseButton,livesPrefab, pointsText, pauseMenu, rewardsPanel, player;
     public GameObject[] projectileObjects;
     public GameObject[] lives;
@@ -49,6 +49,7 @@ public class GameUIManager : MonoBehaviour
         if (Input.GetJoystickNames().Length > 0)
         {
             Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
     }
     private void Update()
@@ -74,42 +75,11 @@ public class GameUIManager : MonoBehaviour
     //They work in three stages, appearing, disappearing and idle (invisible/off screen)
     public void ShowWaveCompleteUI()
     {
-        waveCompleteAnim.SetBool("Appear", true);
-        waveCompleteAnim.SetBool("Disappear", false);
-        waveCompleteAnim.SetBool("Idle", false);
-        Invoke("HideWaveCompleteUI", 2f);
-    }
-
-    public void HideWaveCompleteUI()
-    {
-        waveCompleteAnim.SetBool("Appear", false);
-        waveCompleteAnim.SetBool("Disappear", true);
-        waveCompleteAnim.SetBool("Idle", false);
-        Invoke("IdleWaveCompleteUI", 1f);
-    }
-    public void IdleWaveCompleteUI()
-    {
-        waveCompleteAnim.SetBool("Appear", false);
-        waveCompleteAnim.SetBool("Disappear", false);
-        waveCompleteAnim.SetBool("Idle", true);
+        waveCompleteAnim.SetTrigger("Go");
     }
     public void ShowWaveNumberUI()
     {
-        waveNumberAnim.SetBool("In", true);
-        waveNumberAnim.SetBool("Out", false);
-        Invoke("HideWaveNumberUI", 3f);
-    }
-
-    public void HideWaveNumberUI()
-    {
-        waveNumberAnim.SetBool("In", false);
-        waveNumberAnim.SetBool("Out", true);
-        Invoke("IdleWaveNumberUI", 1f);
-    }
-    public void IdleWaveNumberUI()
-    {
-        waveNumberAnim.SetBool("In", false);
-        waveNumberAnim.SetBool("Out", false);
+        waveNumberAnim.SetTrigger("Go");
     }
 
     public void RestartLevel()
@@ -175,6 +145,7 @@ public class GameUIManager : MonoBehaviour
         {
             float ua = 5f * (1f + (number / 10f));
             t_wavenumber.text = "Wave " + number.ToString();
+            t_waveNumberPauseMenu.text = "Wave " + number.ToString();
             upgradeamount = new float[] { ua , ua , ua };
             upgradeAmountDebug1.text = ("Upgrade Amount[0]: " + upgradeamount[0]);
             upgradeAmountDebug2.text = ("Upgrade Amount[1]: " + upgradeamount[1]);
