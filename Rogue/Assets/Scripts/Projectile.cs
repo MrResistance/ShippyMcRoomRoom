@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+
+    //Variables
     public WeaponData wd;
     public float damageBonus;
     public Transform firepoint;
@@ -15,6 +17,16 @@ public class Projectile : MonoBehaviour
     public AudioSource audioSource;
     //For if weapon has 'even' spread
     public float spreadNumber;
+    GameObject owner;
+
+    //Missile-based
+    bool isWarmingUp = false;
+   
+    /// <summary>
+    /// ///////////////////// METHODS //////////////////////////////////////////////
+    /// </summary>
+    
+    //7am, waking up in the morning
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
@@ -29,7 +41,7 @@ public class Projectile : MonoBehaviour
         gameObject.name = wd.name;
         if (wd.name == "Missile")
         {
-            StartCoroutine(DelaySound());
+            StartCoroutine(DelaySound(0.75f,wd.launchSound));
         }
         else
         {
@@ -62,20 +74,8 @@ public class Projectile : MonoBehaviour
         }
 
     }
-    private IEnumerator DelaySound()
-    {
-        yield return new WaitForSeconds(0.75f);
-        audioSource.PlayOneShot(wd.launchSound);
-    }
-    private IEnumerator HomingMissile()
-    {
-        rb.gravityScale = 2f;
-        yield return new WaitForSeconds(1f);
-        rb.velocity.Set(0, 0);
-        rb.gravityScale = 0f;
-        StartCoroutine(TrackTarget());
-    }
-
+    
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //If this projectile is a missle, spawn an explosion on any collision
@@ -92,12 +92,8 @@ public class Projectile : MonoBehaviour
         //Check if hitting another projectile
         if (collision.gameObject.tag.Contains("Projectile"))
         {
-            //this.gameObject.GetComponent<EntityHealth>().TakeDamage(damage);
             collision.gameObject.GetComponent<EntityHealth>().TakeDamage(CalculateDamage(),wd);
             pointLight.SetActive(false);
-            //Debug.Log("Giving " + CalculateDamange().ToString() + " to " + collision.gameObject.name);
-            //Destroy(collision.gameObject);
-            //Destroy(this.gameObject);
         }
         //Check if enemy
         if (collision.gameObject.tag == ("Player") || collision.gameObject.tag == ("Enemy") || collision.gameObject.tag == ("Ally"))
@@ -108,8 +104,7 @@ public class Projectile : MonoBehaviour
             bc.enabled = false;
             Destroy(this.gameObject, 3);
         }
-        //sr.enabled = false;
-        //Destroy(this.gameObject, 3);
+
     }
 
     public float CalculateDamage()
@@ -201,6 +196,7 @@ public class Projectile : MonoBehaviour
         return quat;
 
     }
+
     void LifetimeDestroy()
     {
         if (wd.explosionType != "none")
@@ -213,6 +209,38 @@ public class Projectile : MonoBehaviour
     {
         GameObject explosionClone = Instantiate(wd.prefabExplosive, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
         explosionClone.transform.localScale = new Vector3(gameObject.transform.lossyScale.x + 17.5f, gameObject.transform.lossyScale.y + 17.5f, 1f);
+    }
+    //To delay 
+    private IEnumerator DelaySound(float delayTime, AudioClip sound)
+    {
+        yield return new WaitForSeconds(delayTime);
+        audioSource.PlayOneShot(sound);
+    }
+
+    private IEnumerator HomingMissile()
+    {
+        isWarmingUp = true;
+        StartCoroutine(HoldingPositionOfOwner());
+        //rb.gravityScale = 2f;
+        yield return new WaitForSeconds(1.5f);
+        isWarmingUp = false;
+        rb.velocity.Set(0, 0);
+        rb.gravityScale = 0f;
+        StartCoroutine(TrackTarget());
+    }
+    public void SetParent(GameObject go)
+    {
+        owner = go;
+    }
+
+    private IEnumerator HoldingPositionOfOwner()
+    {
+        while (isWarmingUp)
+        {
+            transform.position = owner.transform.position;
+            transform.rotation = owner.transform.rotation;
+            yield return new WaitForSeconds(Time.deltaTime);
+        }
     }
 
 }
