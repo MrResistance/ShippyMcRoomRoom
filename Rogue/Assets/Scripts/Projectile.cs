@@ -57,7 +57,7 @@ public class Projectile : MonoBehaviour
         }
         if (wd.lifetimeProjectile > 0) //Destroy the projectile after amount of time set in WeaponData
         { 
-            Destroy(this.gameObject, wd.lifetimeProjectile);
+            Destroy(gameObject, wd.lifetimeProjectile);
         }
 
     }
@@ -81,12 +81,12 @@ public class Projectile : MonoBehaviour
         if (wd.name == "Missile")
         {
             GameObject explosionClone = Instantiate(wd.prefabExplosive, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
-            explosionClone.transform.localScale = new Vector3(this.gameObject.transform.lossyScale.x + 17.5f, this.gameObject.transform.lossyScale.y + 17.5f, 1f);
+            explosionClone.transform.localScale = new Vector3(gameObject.transform.lossyScale.x + 17.5f, gameObject.transform.lossyScale.y + 17.5f, 1f);
             //audioSource.PlayOneShot(wd.impactSound);
         }
         if (collision.gameObject.tag.Contains("Boundary"))
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
 
         //Check if hitting another projectile

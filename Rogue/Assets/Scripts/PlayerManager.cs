@@ -50,7 +50,7 @@ public class PlayerManager : MonoBehaviour
         //PlayerGameObject = PLAYER;
         gameUIManager.updateHealth(100);
         //Adds player to allies list - thing NPCs look at for potential enemies
-        this.gameObject.GetComponent<WaveManager>().listAllies.Add(PLAYER);
+        gameObject.GetComponent<WaveManager>().listAllies.Add(PLAYER);
     }
     public void PlayerHasDied() //For deducting lives
     {

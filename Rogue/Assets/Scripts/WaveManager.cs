@@ -74,36 +74,36 @@ public class WaveManager : MonoBehaviour
     {
         //Changed to a corountine so we can display the 'wave complete' UI before moving onto rewards :) 
         //Add a sound effect here for completing the wave
-        this.gameObject.GetComponent<GameUIManager>().ShowWaveCompleteUI();
-        this.gameObject.GetComponent<GameUIManager>().ClearField();
+        gameObject.GetComponent<GameUIManager>().ShowWaveCompleteUI();
+        gameObject.GetComponent<GameUIManager>().ClearField();
         yield return new WaitForSecondsRealtime(2f);
         //Destroy all projectiles so they don't kill the player
         DestroyAllProjectiles();
         
         //Stuff here to give them upgrades and logic to be implemented so NextWave only happens when player has chosen said upgrades
-        this.gameObject.GetComponent<PlayerManager>().RemoveTempBuffsFromPlayer();
-        this.gameObject.GetComponent<GameUIManager>().CalculateRewardShowOnUI(WaveNumber); //Generates rewards
+        gameObject.GetComponent<PlayerManager>().RemoveTempBuffsFromPlayer();
+        gameObject.GetComponent<GameUIManager>().CalculateRewardShowOnUI(WaveNumber); //Generates rewards
         //If not final wave (which rn we don't necessarily have implemented
         //Hide game HUD, Show Reward Menu
-        this.gameObject.GetComponent<GameUIManager>().SwapPanel(1);
+        gameObject.GetComponent<GameUIManager>().SwapPanel(1);
         listEnemies.Clear();
         
     }
     public void NextWave() //Starts the next wave
     {
         //Resets health of player back to maximum
-        this.gameObject.GetComponent<PlayerManager>().RestoreHealthToMaximum();
+        gameObject.GetComponent<PlayerManager>().RestoreHealthToMaximum();
         //Hides Reward screen and shows game UI;
-        this.gameObject.GetComponent<GameUIManager>().SwapPanel(2);
+        gameObject.GetComponent<GameUIManager>().SwapPanel(2);
         //Increases wave number
         WaveNumber++;
         //Clears list of anything left
         listEnemies.Clear();
         //Changes the wave number displayed
-        this.gameObject.GetComponent<GameUIManager>().ChangeWaveNumber(WaveNumber);
+        gameObject.GetComponent<GameUIManager>().ChangeWaveNumber(WaveNumber);
         //Spawns enemies for the wave
         SpawnNPCs();
-        this.gameObject.GetComponent<GameUIManager>().ShowWaveNumberUI();
+        gameObject.GetComponent<GameUIManager>().ShowWaveNumberUI();
         isWaveChanging = false;
     }
     void SpawnNPCs()
@@ -157,7 +157,7 @@ public class WaveManager : MonoBehaviour
     public void Reset() //When player dies (ono), this will reset the game
     {
         WaveNumber = 0;
-        this.gameObject.GetComponent<PlayerManager>().RemovePermBuffs();
+        gameObject.GetComponent<PlayerManager>().RemovePermBuffs();
     }
     void DestroyAllProjectiles()
     {
@@ -198,7 +198,7 @@ public class WaveManager : MonoBehaviour
         NPC.GetComponent<NPCMoverScript1>().ProjectilesGO = ProjectilesGO; //Specifying where projectiles go
         NPC.GetComponent<NPCMoverScript1>().enemyData = ed;
         NPC.GetComponent<NPCMoverScript1>().wd = wd;
-        NPC.GetComponent<NPCMoverScript1>().wm = this.gameObject.GetComponent<WaveManager>();
+        NPC.GetComponent<NPCMoverScript1>().wm = gameObject.GetComponent<WaveManager>();
         NPC.GetComponent<NPCMoverScript1>().wavenumberSpawnedIn = WaveNumber;
 
     }

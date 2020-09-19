@@ -10,7 +10,7 @@ public class ScorePrefab : MonoBehaviour
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
-        Destroy(this.gameObject, destroyTime);
+        Destroy(gameObject, destroyTime);
     }
 
     // Update is called once per frame

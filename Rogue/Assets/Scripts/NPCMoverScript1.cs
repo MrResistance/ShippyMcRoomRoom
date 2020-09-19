@@ -66,16 +66,16 @@ public class NPCMoverScript1 : MonoBehaviour
         firePoint = transform.GetChild(0);
         tHealth = transform.GetChild(1).GetChild(0).gameObject;
         distanceToTargetFloat = Mathf.Infinity;
-        this.gameObject.GetComponent<EntityHealth>().health = enemyData.healthMaximum;
-        this.gameObject.GetComponent<EntityHealth>().healthMaximum = enemyData.healthMaximum;
-        this.gameObject.GetComponent<EntityHealth>().shield = enemyData.shieldMaximum;
-        this.gameObject.GetComponent<EntityHealth>().shieldMaximum = enemyData.shieldMaximum;
-        this.gameObject.GetComponent<EntityHealth>().shieldRechargeRate = enemyData.shieldRechargeRate;
-        this.gameObject.GetComponent<EntityHealth>().SetMaxOnBars();
-        this.gameObject.GetComponent<EntityHealth>().UpdateBars();
-        this.gameObject.GetComponent<SpriteRenderer>().sprite = enemyData.sprite;
+        gameObject.GetComponent<EntityHealth>().health = enemyData.healthMaximum;
+        gameObject.GetComponent<EntityHealth>().healthMaximum = enemyData.healthMaximum;
+        gameObject.GetComponent<EntityHealth>().shield = enemyData.shieldMaximum;
+        gameObject.GetComponent<EntityHealth>().shieldMaximum = enemyData.shieldMaximum;
+        gameObject.GetComponent<EntityHealth>().shieldRechargeRate = enemyData.shieldRechargeRate;
+        gameObject.GetComponent<EntityHealth>().SetMaxOnBars();
+        gameObject.GetComponent<EntityHealth>().UpdateBars();
+        gameObject.GetComponent<SpriteRenderer>().sprite = enemyData.sprite;
         transform.localScale = new Vector3(enemyData.scale, enemyData.scale, enemyData.scale);
-        this.GetComponent<AIPath>().maxSpeed = enemyData.speedMovement;
+        GetComponent<AIPath>().maxSpeed = enemyData.speedMovement;
         //Offsets rate of fire for NPC - so it does not shoot at the same time as everything else
         float low = (wd.rateoffire / 100) * 5f * -1f;
         float high = (wd.rateoffire / 100) * 5f;
