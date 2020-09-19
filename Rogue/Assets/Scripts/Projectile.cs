@@ -73,7 +73,7 @@ public class Projectile : MonoBehaviour
                 StartCoroutine(TrackTarget());
             }
         }
-        else if(wd.name != "Missile") //If not, then just give the standard straight-line force
+        else if(!wd.isTrackingProjectile) //If not, then just give the standard straight-line force
         {
             rb.AddForce(transform.up * wd.speed, ForceMode2D.Impulse);
         }
