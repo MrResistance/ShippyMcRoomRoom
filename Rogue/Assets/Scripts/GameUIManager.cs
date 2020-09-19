@@ -177,7 +177,7 @@ public class GameUIManager : MonoBehaviour
             ItemNumberChosen = 0;
 
             //Start next round
-            this.gameObject.GetComponent<WaveManager>().NextWave();
+            gameObject.GetComponent<WaveManager>().NextWave();
         }
     }
     public void SetPanels(int panelNo)
