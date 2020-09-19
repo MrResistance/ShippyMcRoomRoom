@@ -18,7 +18,7 @@ MonoBehaviour:
   colourSprite: {r: 1, g: 1, b: 1, a: 1}
   scale: 1
   projectileCount: 1
-  damage: 25
+  damage: 20
   d_healthMultiplier: 3
   d_shieldMultiplier: 1
   rateoffire: 1
@@ -26,7 +26,7 @@ MonoBehaviour:
   chargetime: 0
   firePosition: single
   healthProjectile: 100
-  lifetimeProjectile: 4
+  lifetimeProjectile: 12
   spreadType: none
   spread: 0
   range: 0
