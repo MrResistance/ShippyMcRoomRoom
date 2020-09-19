@@ -209,7 +209,6 @@ GameObject:
   - component: {fileID: 736251799}
   - component: {fileID: 736251805}
   - component: {fileID: 736251806}
-  - component: {fileID: 1725060067460742849}
   - component: {fileID: 1725060067460742853}
   - component: {fileID: 1725060067460742850}
   - component: {fileID: 1725060067460742851}
@@ -254,6 +253,7 @@ MonoBehaviour:
   healthMaximum: 100
   healthBonus: 0
   gameUIManager: {fileID: 0}
+  wm: {fileID: 0}
   isInvunerable: 1
   isDying: 0
   thisObjectPoints: 0
@@ -316,8 +316,15 @@ MonoBehaviour:
   permattackspeedbonus: 0
   damage: 10
   permdamagebonus: 0
+  previousWeaponIndex: 0
+  currentWeaponIndex: 0
+  nextWeaponIndex: 0
   sFX_Player: {fileID: 0}
   gm: {fileID: 0}
+  weaponDataList:
+  - {fileID: 11400000, guid: 078c834606302734e8688d6fabf3d902, type: 2}
+  - {fileID: 11400000, guid: c690d3ec5ce65914cac33d0117d659a6, type: 2}
+  - {fileID: 11400000, guid: 3af879d3058eda74eb277b0852023077, type: 2}
 --- !u!114 &736251806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -362,30 +369,6 @@ MonoBehaviour:
     m_RotationOrder: 4
   curveTime: 0
   transform: {fileID: 0}
---- !u!114 &1725060067460742849
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1725060067460742854}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 468faf30e79543a4894b02af9990f556, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  brakeL: {fileID: 0}
-  brakeR: {fileID: 0}
-  engineLight: {fileID: 0}
-  h: 0
-  v: 0
-  brakeLightIntensity: 10
-  speed: 7.5
-  vertThrust: {fileID: 0}
-  diagThrustL: {fileID: 0}
-  diagThrustR: {fileID: 0}
-  thrustL: {fileID: 0}
-  thrustR: {fileID: 0}
 --- !u!212 &1725060067460742853
 SpriteRenderer:
   m_ObjectHideFlags: 0

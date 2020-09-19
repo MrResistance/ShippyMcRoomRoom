@@ -10,24 +10,91 @@ public class PlayerWeapon : MonoBehaviour
     public GameObject projectilePrefab;
     public float permattackspeedbonus;
     public float damage, permdamagebonus;
-    private float nextFire = 0.0f;
+    public float dpadX, dpadY;
+    private float nextFire = 0.0f, nextChangeWeaponInput = 0.0f;
+    public int previousWeaponIndex, currentWeaponIndex, nextWeaponIndex;
     public SFX_Player sFX_Player;
     public GameUIManager gm;
+    public List<WeaponData> weaponDataList;
     private void Awake()
     {
         //sFX_Player = GameObject.Find("SFX_Player").GetComponent<SFX_Player>();
         gm = GameObject.Find("GameManager").GetComponent<GameUIManager>();
     }
+    private void Start()
+    {
+        ChangeWeapon(0);
+    }
     // Update is called once per frame
     void Update()
     {
+        dpadX = Input.GetAxis("Dpad X");
+        dpadY = Input.GetAxis("Dpad Y");
         if (!gm.ShowingRewards)
         {
             if (Input.GetAxis("ControllerTriggers") > 0 && Time.time > nextFire)
             {
                 FireWeapon();
             }
+            if (!gm.isGamePaused)
+            {
+                if (dpadY > 0 && Time.time > nextChangeWeaponInput)
+                {
+                    GoToNextWeapon();
+                }
+                else if (dpadY < 0 && Time.time > nextChangeWeaponInput)
+                {
+                    GoToPreviousWeapon();
+                }
+            }
         }
+    }
+
+    public void GoToNextWeapon()
+    {
+        if ((currentWeaponIndex) + 1 >= weaponDataList.Count)
+        {
+            ChangeWeapon(0);
+        }
+        else
+        {
+            ChangeWeapon(currentWeaponIndex + 1);
+        }
+    }
+    public void GoToPreviousWeapon()
+    {
+        if ((currentWeaponIndex) -1 <= 0)
+        {
+            ChangeWeapon(weaponDataList.Count - 1);
+        }
+        else
+        {
+            ChangeWeapon(currentWeaponIndex - 1);
+        }
+    }
+    public void ChangeWeapon(int WeaponIndex)
+    {
+        currentWeaponIndex = WeaponIndex;
+        if ((currentWeaponIndex - 1) < 0)
+        {
+            previousWeaponIndex = weaponDataList.Count - 1;
+        }
+        else
+        {
+            previousWeaponIndex = currentWeaponIndex - 1;
+        }
+        if ((currentWeaponIndex + 1) >= weaponDataList.Count)
+        {
+            nextWeaponIndex = 0;
+        }
+        else
+        {
+            nextWeaponIndex = currentWeaponIndex + 1;
+        }
+        wd = weaponDataList[currentWeaponIndex];
+        gm.UpdatePreviousWeaponUI(previousWeaponIndex);
+        gm.UpdateWeaponUI(currentWeaponIndex);
+        gm.UpdateNextWeaponUI(nextWeaponIndex);
     }
     void FireWeapon()
     {

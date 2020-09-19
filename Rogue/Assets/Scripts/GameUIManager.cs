@@ -8,15 +8,19 @@ using UnityEditor;
 using UnityEngine.SceneManagement;
 using System.Security.AccessControl;
 using Unity.Mathematics;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class GameUIManager : MonoBehaviour
 {
     // Start is called before the first frame update
+    public Light2D current, next, previous;
     public TextMeshProUGUI t_wavenumber, t_waveNumberPauseMenu;
     public GameObject UI, defaultButton, defaultPauseButton,livesPrefab, pointsText, pauseMenu, rewardsPanel, player;
+    public GameObject  previousWeapon, currentWeapon, nextWeapon;
     public GameObject[] projectileObjects;
     public GameObject[] lives;
     public GameObject[] scoreTextObjects;
+    public Sprite[] weaponSelectSprites;
     public EventSystem eventSystem;
     public Slider healthBar, shieldBar;
     public Sprite buttonDefaultSprite;
@@ -29,6 +33,7 @@ public class GameUIManager : MonoBehaviour
     public bool ShowingRewards = false, isGamePaused = false;
     public Button item1;
     public PlayerManager pm;
+    public PlayerWeapon pw;
     public TextMeshProUGUI hiScoreTxt, item1txt, item2txt, item3txt, upgradeAmountDebug1, upgradeAmountDebug2, upgradeAmountDebug3;
 
     private void Awake()
@@ -42,6 +47,7 @@ public class GameUIManager : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("Player");
+        pw = player.GetComponent<PlayerWeapon>();
         upgrades = new string[] { "movement", "attackspeed", "damage" };
         upgradeamount = new float[] { 5f * (1f + (0.1f)), 5f * (1f + (0.1f)), 5f * (1f + (0.1f)) };
         updateLives(pm.remainingLives);
@@ -65,6 +71,19 @@ public class GameUIManager : MonoBehaviour
                 PauseGame();
             }
         }
+    }
+    public void UpdateWeaponUI(int weaponIndex)
+    {
+        currentWeapon.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = weaponSelectSprites[weaponIndex];
+        //current = currentWeapon.transform.GetChild(1).GetComponent<Light2D>().; //= weaponSelectSprites[weaponIndex];
+    }
+    public void UpdatePreviousWeaponUI(int weaponIndex)
+    {
+        previousWeapon.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = weaponSelectSprites[weaponIndex];
+    }
+    public void UpdateNextWeaponUI(int weaponIndex)
+    {
+        nextWeapon.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = weaponSelectSprites[weaponIndex];
     }
     public void UpdateHiScore(float score)
     {

@@ -47,7 +47,7 @@ public class WaveManager : MonoBehaviour
     void StartWave()
     {
         //Spawns player
-        this.gameObject.GetComponent<PlayerManager>().RespawnPlayer();
+        gameObject.GetComponent<PlayerManager>().RespawnPlayer();
         NextWave();
     }
 
