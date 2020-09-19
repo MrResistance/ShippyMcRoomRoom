@@ -98,9 +98,9 @@ public class PlayerWeapon : MonoBehaviour
             nextWeaponIndex = currentWeaponIndex + 1;
         }
         wd = weaponDataList[currentWeaponIndex];
-        gm.UpdatePreviousWeaponUI(previousWeaponIndex);
-        gm.UpdateWeaponUI(currentWeaponIndex);
-        gm.UpdateNextWeaponUI(nextWeaponIndex);
+        gm.UpdatePreviousWeaponUI(weaponDataList[previousWeaponIndex]);
+        gm.UpdateWeaponUI(weaponDataList[currentWeaponIndex]);
+        gm.UpdateNextWeaponUI(weaponDataList[nextWeaponIndex]);
     }
     void FireWeapon()
     {
