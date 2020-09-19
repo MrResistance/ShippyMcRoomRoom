@@ -79,7 +79,16 @@ public class Projectile : MonoBehaviour
         }
         if (wd.lifetimeProjectile > 0) //Destroy the projectile after amount of time set in WeaponData
         {
-            Invoke("LifetimeDestroy", wd.lifetimeProjectile);
+            if (wd.lifetimeMinMaxMultiplier == new Vector2(0, 0))
+            {
+                Invoke("LifetimeDestroy", wd.lifetimeProjectile);
+            }
+            else //Adds the minimum and maximum time
+            {
+                float min = wd.lifetimeProjectile + (wd.lifetimeProjectile * wd.lifetimeMinMaxMultiplier.x);
+                float max = wd.lifetimeProjectile + (wd.lifetimeProjectile * wd.lifetimeMinMaxMultiplier.y);
+                Invoke("LifetimeDestroy", Random.Range(min, max));
+            }
         }
 
 
