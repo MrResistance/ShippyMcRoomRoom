@@ -94,7 +94,6 @@ public class Projectile : MonoBehaviour
 
     }
     
-    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //If this projectile is a missle, spawn an explosion on any collision
@@ -119,10 +118,16 @@ public class Projectile : MonoBehaviour
         {
             collision.gameObject.GetComponent<EntityHealth>().TakeDamage(CalculateDamage(), wd);
             pointLight.SetActive(false);
-            if (!wd.canPierce)
+            if (!wd.canPierce) //If cannot pierce
             {
                 sr.enabled = false;
                 bc.enabled = false;
+                //If can explode
+                if (wd.explosionType != "none")
+                {
+                    CauseExplosion();
+                }
+
                 Destroy(this.gameObject, 3);
             }
         }
@@ -260,6 +265,30 @@ public class Projectile : MonoBehaviour
     {
         GameObject explosionClone = Instantiate(wd.prefabExplosive, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
         explosionClone.transform.localScale = new Vector3(gameObject.transform.lossyScale.x + 17.5f, gameObject.transform.lossyScale.y + 17.5f, 1f);
+        CircleCollider2D cc = GetComponent<CircleCollider2D>();
+        cc.enabled = true;
+        cc.radius = wd.explosiveradius;
+        var hits = Physics2D.OverlapCircleAll(transform.position, wd.explosiveradius);
+        foreach (var objs in hits)
+        {
+            Debug.Log("Explosion has hit: "+objs.name);
+            //Check tag of projectile to determine who to damage
+            if (tag.Contains("Player")) //Damage enemies
+            {
+                if (objs.tag.Contains("Enemy"))
+                {
+                    objs.GetComponent<EntityHealth>().TakeDamage(wd.explosivedamage, wd);
+                }
+            }
+            if (tag.Contains("Enemy")) //Damage allies
+            {
+                if (objs.tag.Contains("Player") || objs.tag.Contains("Ally"))
+                {
+                    objs.GetComponent<EntityHealth>().TakeDamage(wd.explosivedamage,wd);
+                }
+            }
+        }
+
     }
     //To delay 
     private IEnumerator DelaySound(float delayTime, AudioClip sound)
