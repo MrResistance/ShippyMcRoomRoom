@@ -18,7 +18,7 @@ MonoBehaviour:
   colourSprite: {r: 1, g: 1, b: 1, a: 1}
   scale: 1
   projectileCount: 1
-  damage: 20
+  damage: 1
   d_healthMultiplier: 3
   d_shieldMultiplier: 1
   rateoffire: 1
@@ -27,7 +27,7 @@ MonoBehaviour:
   firePosition: single
   healthProjectile: 100
   lifetimeProjectile: 12
-  lifetimeMinMaxMultiplier: {x: 0.013826489, y: 0.013826489}
+  lifetimeMinMaxMultiplier: {x: 0, y: 0}
   isUnlimitedAmmo: 1
   ammoMax: 0
   isWeaponLifeless: 1
@@ -37,7 +37,7 @@ MonoBehaviour:
   range: 0
   explosionType: throughout
   isExplosionOnImpact: 0
-  explosiveradius: 5
+  explosiveradius: 4
   explosivedamage: 25
   prefabExplosive: {fileID: 6678137918194488091, guid: da093903cab3e9d499960147c2d111bc,
     type: 3}
