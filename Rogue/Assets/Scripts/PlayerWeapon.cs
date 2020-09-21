@@ -35,8 +35,9 @@ public class PlayerWeapon : MonoBehaviour
         dpadY = Input.GetAxis("Dpad Y");
         if (!gm.ShowingRewards)
         {
-            if (Input.GetAxis("ControllerTriggers") > 0 && Time.time > nextFire)
+            if (Input.GetAxis("ControllerTriggers") > 0 || Input.GetAxis("Fire1") > 0)
             {
+                if (Time.time > nextFire)
                 FireWeapon();
             }
             if (!gm.isGamePaused)
