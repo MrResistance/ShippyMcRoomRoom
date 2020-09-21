@@ -277,14 +277,14 @@ public class Projectile : MonoBehaviour
             {
                 if (objs.tag.Contains("Enemy"))
                 {
-                    objs.GetComponent<EntityHealth>().TakeDamage(wd.explosivedamage, wd);
+                    objs.GetComponent<EntityHealth>().TakeDamage(wd.explosivedamage+ damageBonus, wd);
                 }
             }
             if (tag.Contains("Enemy")) //Damage allies
             {
                 if (objs.tag.Contains("Player") || objs.tag.Contains("Ally"))
                 {
-                    objs.GetComponent<EntityHealth>().TakeDamage(wd.explosivedamage,wd);
+                    objs.GetComponent<EntityHealth>().TakeDamage(wd.explosivedamage+ damageBonus, wd);
                 }
             }
         }
