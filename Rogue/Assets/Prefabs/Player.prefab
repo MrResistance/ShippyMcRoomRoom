@@ -281,7 +281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDirectionalMovement: 0
-  isControllerEnabled: 1
+  isControllerEnabled: 0
   rb: {fileID: 0}
   camera: {fileID: 0}
   mouseposition: {x: 0, y: 0}
