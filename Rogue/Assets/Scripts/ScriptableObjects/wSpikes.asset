@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Spikes
   description: Another weapon
   sprite: {fileID: 21300000, guid: 0bb0295d7fc901d489c8db5982bfa928, type: 3}
-  colourSprite: {r: 1, g: 0, b: 0.018810749, a: 1}
+  colourSprite: {r: 1, g: 0, b: 0, a: 1}
   scale: 0.7
   projectileCount: 17
   damage: 300
@@ -27,6 +27,7 @@ MonoBehaviour:
   firePosition: single
   healthProjectile: 20
   lifetimeProjectile: 3
+  lifetimeMinMaxMultiplier: {x: 0, y: 0}
   isUnlimitedAmmo: 1
   ammoMax: 0
   isWeaponLifeless: 1
