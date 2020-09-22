@@ -19,6 +19,7 @@ public class PlayerWeapon : MonoBehaviour
     public GameUIManager gm;
     public List<WeaponData> weaponDataList;
     private Stopwatch stopwatch;
+    public bool Up, Down;
     private void Awake()
     {
         //sFX_Player = GameObject.Find("SFX_Player").GetComponent<SFX_Player>();
@@ -47,12 +48,14 @@ public class PlayerWeapon : MonoBehaviour
                 if (dpadY < 0 && stopwatch.ElapsedMilliseconds > 500)
                 {
                     //UP
+                    Up = true;
                     GoToNextWeapon();
                     stopwatch.Reset();
                 }
                 else if (dpadY > 0 && stopwatch.ElapsedMilliseconds > 500)
                 {
                     //DOWN
+                    Down = true;
                     GoToPreviousWeapon();
                     stopwatch.Reset();
                 }
@@ -71,7 +74,6 @@ public class PlayerWeapon : MonoBehaviour
         {
             ChangeWeapon(currentWeaponIndex + 1);
         }
-        weaponSelectAnim.SetTrigger("Up");
     }
     public void GoToPreviousWeapon()
     {
@@ -83,7 +85,6 @@ public class PlayerWeapon : MonoBehaviour
         {
             ChangeWeapon(currentWeaponIndex - 1);
         }
-        weaponSelectAnim.SetTrigger("Down");
     }
     public void ChangeWeapon(int WeaponIndex)
     {
@@ -105,11 +106,19 @@ public class PlayerWeapon : MonoBehaviour
             nextWeaponIndex = currentWeaponIndex + 1;
         }
         wd = weaponDataList[currentWeaponIndex];
-        gm.UpdatePreviousWeaponBackupUI(weaponDataList[previousWeaponIndex]);
         gm.UpdatePreviousWeaponUI(weaponDataList[previousWeaponIndex]);
         gm.UpdateWeaponUI(weaponDataList[currentWeaponIndex]);
         gm.UpdateNextWeaponUI(weaponDataList[nextWeaponIndex]);
-        gm.UpdateNextWeaponBackupUI(weaponDataList[nextWeaponIndex]);
+        if (Up)
+        {
+            weaponSelectAnim.SetTrigger("Up");
+        }
+        else if (Down)
+        {
+            weaponSelectAnim.SetTrigger("Down");
+        }
+        Up = false;
+        Down = false;
     }
     void FireWeapon()
     {

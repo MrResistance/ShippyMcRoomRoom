@@ -80,20 +80,10 @@ public class GameUIManager : MonoBehaviour
         previousWeapon.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = wd.sprite;
         previousWeapon.transform.GetChild(0).GetComponent<SpriteRenderer>().color = wd.colourSprite;
     }
-    public void UpdatePreviousWeaponBackupUI(WeaponData wd)
-    {
-        previousWeaponBackup.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = wd.sprite;
-        previousWeaponBackup.transform.GetChild(0).GetComponent<SpriteRenderer>().color = wd.colourSprite;
-    }
     public void UpdateNextWeaponUI(WeaponData wd)
     {
         nextWeapon.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = wd.sprite;
         nextWeapon.transform.GetChild(0).GetComponent<SpriteRenderer>().color = wd.colourSprite;
-    }
-    public void UpdateNextWeaponBackupUI(WeaponData wd)
-    {
-        nextWeaponBackup.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = wd.sprite;
-        nextWeaponBackup.transform.GetChild(0).GetComponent<SpriteRenderer>().color = wd.colourSprite;
     }
     public void UpdateHiScore(float score)
     {
