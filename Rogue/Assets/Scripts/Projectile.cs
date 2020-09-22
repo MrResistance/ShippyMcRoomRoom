@@ -110,7 +110,7 @@ public class Projectile : MonoBehaviour
         //Check if hitting another projectile
         if (collision.gameObject.tag.Contains("Projectile"))
         {
-            collision.gameObject.GetComponent<EntityHealth>().TakeDamage(CalculateDamage(),wd);
+            collision.gameObject.GetComponent<EntityHealth>().TakeDamage(CalculateDamage()*wd.d_projectileMultiplier,wd);
             pointLight.SetActive(false);
         }
         //Check if enemy
