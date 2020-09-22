@@ -325,7 +325,7 @@ public class NPCMoverScript1 : MonoBehaviour
                     {
                         if (isWithinArenaBoundary())
                         {
-                            if (target != wm.transform)
+                            if (target != wm.gameObject)
                             { 
                             return true;
                             }
