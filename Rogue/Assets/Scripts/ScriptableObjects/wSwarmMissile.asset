@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f89e373badc1fd40aa6cebd87df7aac, type: 3}
-  m_Name: wMissile
+  m_Name: wSwarmMissile
   m_EditorClassIdentifier: 
-  name: Missile
-  description: Sssssssss-BOOM!
+  name: Swarm Missiles
+  description: sssssssssssssssssssss
   sprite: {fileID: 21300000, guid: ff422642072006f43a012b681f4f51c0, type: 3}
   colourSprite: {r: 1, g: 1, b: 1, a: 1}
-  scale: 1
+  scale: 0.4
   projectileCount: 1
   damage: 1
   d_healthMultiplier: 3
   d_shieldMultiplier: 1
-  rateoffire: 1
-  speed: 10
+  rateoffire: 0.4
+  speed: 12
   chargetime: 0
   firePosition: single
-  healthProjectile: 100
+  healthProjectile: 1
   lifetimeProjectile: 12
   lifetimeMinMaxMultiplier: {x: 0, y: 0}
   isUnlimitedAmmo: 1
@@ -37,8 +37,8 @@ MonoBehaviour:
   range: 0
   explosionType: throughout
   isExplosionOnImpact: 0
-  explosiveradius: 4
-  explosivedamage: 25
+  explosiveradius: 1
+  explosivedamage: 8
   prefabExplosive: {fileID: 6678137918194488091, guid: da093903cab3e9d499960147c2d111bc,
     type: 3}
   isScatteredProjectilesOnImpact: 0
@@ -50,7 +50,7 @@ MonoBehaviour:
   canPierce: 0
   amountCanPierce: 0
   isTrackingProjectile: 1
-  trackingRotationSpeed: 1.5
+  trackingRotationSpeed: 4
   hasHomingDelay: 1
   launchSound: {fileID: 8300000, guid: 7dc3bc4166eb26c4aa3684e0a439c0bc, type: 3}
   impactSound: {fileID: 8300000, guid: 02c43a862dbc9504b9793790a9e6ecce, type: 3}

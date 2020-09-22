@@ -5364,11 +5364,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 76953d45d27b81d4a963fc0c7b1db4bc, type: 2}
   - {fileID: 11400000, guid: 46337f5c3dbeaaf4296b7178150f8180, type: 2}
   - {fileID: 11400000, guid: 7d2abdd3ed0af124885234facdd5a266, type: 2}
+  - {fileID: 11400000, guid: 732c3dbc300e140458c70dcb47a5c716, type: 2}
   weaponDataList:
   - {fileID: 11400000, guid: 534a6a0fc4db5ad458167502b4525f50, type: 2}
   - {fileID: 11400000, guid: 3b8c69575db6dcd4f8aedf73b1063dc6, type: 2}
   - {fileID: 11400000, guid: 9deef19f56e18084cbdfb5f81dff028d, type: 2}
   - {fileID: 11400000, guid: 666eec25ce55a6a41b9e6fb41a2e83fd, type: 2}
+  - {fileID: 11400000, guid: 684cb09c6d0c1324d82d662b2164b0ef, type: 2}
   listEnemies:
   - {fileID: 0}
   listAllies: []

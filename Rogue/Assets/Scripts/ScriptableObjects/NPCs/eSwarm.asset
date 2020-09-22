@@ -16,8 +16,8 @@ MonoBehaviour:
   description: Fires missiles
   sprite: {fileID: 21300000, guid: 33a1fe73294a94c4b99cfbf80b200905, type: 3}
   colourSprite: {r: 1, g: 1, b: 1, a: 1}
-  scale: 1
-  speedMovement: 3
+  scale: 0.8
+  speedMovement: 2.1
   speedRotation: 3
   healthMaximum: 50
   shieldMaximum: 50
