@@ -120,14 +120,14 @@ public class Projectile : MonoBehaviour
             pointLight.SetActive(false);
             if (!wd.canPierce) //If cannot pierce
             {
-                sr.enabled = false;
-                bc.enabled = false;
+                
                 //If can explode
                 if (wd.explosionType != "none")
                 {
                     CauseExplosion();
                 }
-
+                sr.enabled = false;
+                bc.enabled = false;
                 Destroy(this.gameObject, 3);
             }
         }
@@ -182,6 +182,18 @@ public class Projectile : MonoBehaviour
                 transform.rotation = Quaternion.Slerp(transform.rotation, rotatetoTarget, Time.deltaTime * wd.trackingRotationSpeed);
                 //rb.velocity = new Vector2(direction.x * wd.speed, direction.y * wd.speed);
                 rb.velocity = transform.up * wd.speed;
+            }
+            if (target == null)
+            {
+                if (wd.explosionType != "none")
+                {
+                    //CauseExplosion();
+                    //DestroySelf(0);
+                }
+                else
+                {
+                    //DestroySelf(0);
+                }
             }
             yield return new WaitForSeconds(Time.deltaTime);
         }
@@ -322,5 +334,10 @@ public class Projectile : MonoBehaviour
             yield return new WaitForSeconds(Time.deltaTime);
         }
     }
-
+    void DestroySelf(float delay)
+    {
+        sr.enabled = false;
+        bc.enabled = false;
+        Destroy(this.gameObject, delay);
+    }
 }
