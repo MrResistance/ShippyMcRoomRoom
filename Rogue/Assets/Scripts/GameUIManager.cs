@@ -7,12 +7,13 @@ using UnityEngine.EventSystems;
 using UnityEditor;
 using UnityEngine.SceneManagement;
 using System.Security.AccessControl;
+using System.Diagnostics;
 using Unity.Mathematics;
 
 public class GameUIManager : MonoBehaviour
 {
     // Start is called before the first frame update
-    public TextMeshProUGUI t_wavenumber, t_waveNumberPauseMenu;
+    public TextMeshProUGUI t_wavenumber, t_waveNumberPauseMenu, t_SpeedrunnerClock;
     public GameObject UI, defaultButton, defaultPauseButton,livesPrefab, pointsText, pauseMenu, rewardsPanel, player;
     public GameObject  previousWeaponBackup, previousWeapon, currentWeapon, nextWeapon, nextWeaponBackup;
     public GameObject[] projectileObjects;
@@ -33,7 +34,7 @@ public class GameUIManager : MonoBehaviour
     public PlayerManager pm;
     public PlayerWeapon pw;
     public TextMeshProUGUI hiScoreTxt, item1txt, item2txt, item3txt, upgradeAmountDebug1, upgradeAmountDebug2, upgradeAmountDebug3;
-
+    private Stopwatch speedrunnerStopwatch;
     private void Awake()
     {
         pm = GetComponent<PlayerManager>();
@@ -44,6 +45,8 @@ public class GameUIManager : MonoBehaviour
     }
     void Start()
     {
+        speedrunnerStopwatch = new Stopwatch();
+        speedrunnerStopwatch.Start();
         player = GameObject.Find("Player");
         pw = player.GetComponent<PlayerWeapon>();
         upgrades = new string[] { "movement", "attackspeed", "damage" };
@@ -58,6 +61,22 @@ public class GameUIManager : MonoBehaviour
     }
     private void Update()
     {
+        if (!isGamePaused && !rewardsPanel.activeInHierarchy)
+        {
+            if (!speedrunnerStopwatch.IsRunning)
+            {
+                speedrunnerStopwatch.Start();
+            }
+            t_SpeedrunnerClock.text = speedrunnerStopwatch.Elapsed.ToString("mm' : 'ss' : 'ff");
+            
+        }
+        else
+        {
+            if (speedrunnerStopwatch.IsRunning)
+            {
+                speedrunnerStopwatch.Stop();
+            }
+        }
         if (Input.GetButtonDown("Start") && !rewardsPanel.activeInHierarchy)
         {
             if (isGamePaused)
