@@ -67,7 +67,7 @@ public class GameUIManager : MonoBehaviour
             {
                 speedrunnerStopwatch.Start();
             }
-            t_SpeedrunnerClock.text = speedrunnerStopwatch.Elapsed.ToString("mm' : 'ss' : 'ff");
+            t_SpeedrunnerClock.text = speedrunnerStopwatch.Elapsed.ToString("mm' : 'ss' . 'ff");
             
         }
         else
@@ -238,6 +238,8 @@ public class GameUIManager : MonoBehaviour
                 player.GetComponent<EntityHealth>().RestoreShieldToMaximum();
                 //Debug UI stays
                 UI.gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                //Player can see health/shields/lives when paused
+                UI.gameObject.transform.GetChild(2).gameObject.SetActive(true);
                 break;
             case 2: //Game UI - health, wave stuff
                 ShowingRewards = false;
