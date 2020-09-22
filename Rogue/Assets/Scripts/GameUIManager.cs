@@ -89,6 +89,17 @@ public class GameUIManager : MonoBehaviour
             }
         }
     }
+    public void ShowHideSpeedrunnerClock()
+    {
+        if (t_SpeedrunnerClock.GetComponent<TextMeshProUGUI>().fontSize != 36f)
+        {
+            t_SpeedrunnerClock.GetComponent<TextMeshProUGUI>().fontSize = 36f;
+        }
+        else if (t_SpeedrunnerClock.GetComponent<TextMeshProUGUI>().fontSize == 36f)
+        {
+            t_SpeedrunnerClock.GetComponent<TextMeshProUGUI>().fontSize = 0f;
+        }
+    }
     public void UpdateWeaponUI(WeaponData wd)
     {
         currentWeapon.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = wd.sprite;
