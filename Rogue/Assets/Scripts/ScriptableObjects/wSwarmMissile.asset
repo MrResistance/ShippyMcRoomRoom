@@ -19,9 +19,10 @@ MonoBehaviour:
   scale: 0.4
   projectileCount: 1
   damage: 1
-  d_healthMultiplier: 3
-  d_shieldMultiplier: 1
-  rateoffire: 0.4
+  d_healthMultiplier: 1.5
+  d_shieldMultiplier: 0.7
+  d_projectileMultiplier: 1
+  rateoffire: 0.5
   speed: 12
   chargetime: 0
   firePosition: single
@@ -38,7 +39,7 @@ MonoBehaviour:
   explosionType: throughout
   isExplosionOnImpact: 0
   explosiveradius: 1
-  explosivedamage: 8
+  explosivedamage: 6
   prefabExplosive: {fileID: 6678137918194488091, guid: da093903cab3e9d499960147c2d111bc,
     type: 3}
   isScatteredProjectilesOnImpact: 0
