@@ -281,7 +281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDirectionalMovement: 0
-  isControllerEnabled: 0
+  isControllerEnabled: 1
   rb: {fileID: 0}
   camera: {fileID: 0}
   mouseposition: {x: 0, y: 0}
@@ -313,6 +313,7 @@ MonoBehaviour:
   firePoint: {fileID: 414512572}
   projectilePrefab: {fileID: 992922246480892268, guid: 9d51161f4ab933c48af560a093b95502,
     type: 3}
+  weaponSelectAnim: {fileID: 0}
   permattackspeedbonus: 0
   damage: 10
   permdamagebonus: 0

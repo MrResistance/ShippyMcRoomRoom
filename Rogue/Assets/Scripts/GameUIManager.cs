@@ -8,15 +8,13 @@ using UnityEditor;
 using UnityEngine.SceneManagement;
 using System.Security.AccessControl;
 using Unity.Mathematics;
-using UnityEngine.Experimental.Rendering.Universal;
 
 public class GameUIManager : MonoBehaviour
 {
     // Start is called before the first frame update
-    public Light2D current, next, previous;
     public TextMeshProUGUI t_wavenumber, t_waveNumberPauseMenu;
     public GameObject UI, defaultButton, defaultPauseButton,livesPrefab, pointsText, pauseMenu, rewardsPanel, player;
-    public GameObject  previousWeapon, currentWeapon, nextWeapon;
+    public GameObject  previousWeaponBackup, previousWeapon, currentWeapon, nextWeapon, nextWeaponBackup;
     public GameObject[] projectileObjects;
     public GameObject[] lives;
     public GameObject[] scoreTextObjects;
@@ -76,20 +74,26 @@ public class GameUIManager : MonoBehaviour
     {
         currentWeapon.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = wd.sprite;
         currentWeapon.transform.GetChild(0).GetComponent<SpriteRenderer>().color = wd.colourSprite;
-
-        //current = currentWeapon.transform.GetChild(1).GetComponent<Light2D>().; //= weaponSelectSprites[weaponIndex];
     }
     public void UpdatePreviousWeaponUI(WeaponData wd)
     {
         previousWeapon.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = wd.sprite;
         previousWeapon.transform.GetChild(0).GetComponent<SpriteRenderer>().color = wd.colourSprite;
-
+    }
+    public void UpdatePreviousWeaponBackupUI(WeaponData wd)
+    {
+        previousWeaponBackup.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = wd.sprite;
+        previousWeaponBackup.transform.GetChild(0).GetComponent<SpriteRenderer>().color = wd.colourSprite;
     }
     public void UpdateNextWeaponUI(WeaponData wd)
     {
         nextWeapon.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = wd.sprite;
         nextWeapon.transform.GetChild(0).GetComponent<SpriteRenderer>().color = wd.colourSprite;
-
+    }
+    public void UpdateNextWeaponBackupUI(WeaponData wd)
+    {
+        nextWeaponBackup.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = wd.sprite;
+        nextWeaponBackup.transform.GetChild(0).GetComponent<SpriteRenderer>().color = wd.colourSprite;
     }
     public void UpdateHiScore(float score)
     {

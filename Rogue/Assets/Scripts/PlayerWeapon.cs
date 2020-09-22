@@ -9,6 +9,7 @@ public class PlayerWeapon : MonoBehaviour
     public WeaponData wd;
     public Transform firePoint;
     public GameObject projectilePrefab;
+    public Animator weaponSelectAnim;
     public float permattackspeedbonus;
     public float damage, permdamagebonus;
     public float dpadX, dpadY;
@@ -22,6 +23,7 @@ public class PlayerWeapon : MonoBehaviour
     {
         //sFX_Player = GameObject.Find("SFX_Player").GetComponent<SFX_Player>();
         gm = GameObject.Find("GameManager").GetComponent<GameUIManager>();
+        weaponSelectAnim = GameObject.Find("Weapons").GetComponent<Animator>();
     }
     private void Start()
     {
@@ -44,11 +46,13 @@ public class PlayerWeapon : MonoBehaviour
             {
                 if (dpadY < 0 && stopwatch.ElapsedMilliseconds > 500)
                 {
+                    //UP
                     GoToNextWeapon();
                     stopwatch.Reset();
                 }
                 else if (dpadY > 0 && stopwatch.ElapsedMilliseconds > 500)
                 {
+                    //DOWN
                     GoToPreviousWeapon();
                     stopwatch.Reset();
                 }
@@ -67,6 +71,7 @@ public class PlayerWeapon : MonoBehaviour
         {
             ChangeWeapon(currentWeaponIndex + 1);
         }
+        weaponSelectAnim.SetTrigger("Up");
     }
     public void GoToPreviousWeapon()
     {
@@ -78,6 +83,7 @@ public class PlayerWeapon : MonoBehaviour
         {
             ChangeWeapon(currentWeaponIndex - 1);
         }
+        weaponSelectAnim.SetTrigger("Down");
     }
     public void ChangeWeapon(int WeaponIndex)
     {
@@ -99,9 +105,11 @@ public class PlayerWeapon : MonoBehaviour
             nextWeaponIndex = currentWeaponIndex + 1;
         }
         wd = weaponDataList[currentWeaponIndex];
+        gm.UpdatePreviousWeaponBackupUI(weaponDataList[previousWeaponIndex]);
         gm.UpdatePreviousWeaponUI(weaponDataList[previousWeaponIndex]);
         gm.UpdateWeaponUI(weaponDataList[currentWeaponIndex]);
         gm.UpdateNextWeaponUI(weaponDataList[nextWeaponIndex]);
+        gm.UpdateNextWeaponBackupUI(weaponDataList[nextWeaponIndex]);
     }
     void FireWeapon()
     {
