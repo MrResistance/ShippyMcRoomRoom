@@ -27,7 +27,7 @@ MonoBehaviour:
   chargetime: 0
   firePosition: single
   healthProjectile: 1
-  lifetimeProjectile: 12
+  lifetimeProjectile: 2.5
   lifetimeMinMaxMultiplier: {x: 0, y: 0}
   isUnlimitedAmmo: 1
   ammoMax: 0
