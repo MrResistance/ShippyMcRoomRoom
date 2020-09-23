@@ -35,7 +35,11 @@ public class WeaponData : ScriptableObject
     public int ammoMax;
     public bool isWeaponLifeless = true;
     public float lifetimeWeapon;
-
+    public int roundsMax = 0; //Mainly for NPCs - how many rounds can be fired before a cooldown is enacted
+    public float roundsCooldown = 0;
+    /// <summary>
+    /// //////////////////////////////
+    /// </summary>
     [Title("Spread")]
     //Spread
     //test
@@ -56,7 +60,9 @@ public class WeaponData : ScriptableObject
     public float range; //How far the projectile travels before it either evaporates or explodes
     
     
-
+    /// <summary>
+    /// //////////////////////////////////
+    /// </summary>
     [Title("Explosive")]
     //Explosion stuff
     [ValueDropdown("explosionTypes")]
