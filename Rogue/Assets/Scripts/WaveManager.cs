@@ -82,8 +82,8 @@ public class WaveManager : MonoBehaviour
         gameObject.GetComponent<GameUIManager>().ClearField();
         yield return new WaitForSeconds(3f);
         //Destroy all projectiles so they don't kill the player
-        DestroyAllProjectiles();
-        
+        DestroyAllProjectiles(); //Stops the player dying on Wave Complete
+        UpdateAllyShields(); //So the player does not need to wait
         //Stuff here to give them upgrades and logic to be implemented so NextWave only happens when player has chosen said upgrades
         gameObject.GetComponent<PlayerManager>().RemoveTempBuffsFromPlayer();
         gameObject.GetComponent<GameUIManager>().CalculateRewardShowOnUI(WaveNumber); //Generates rewards
@@ -167,6 +167,15 @@ public class WaveManager : MonoBehaviour
         Enemy.GetComponent<NPCMoverScript1>().ProjectilesGO = ProjectilesGO;
         Enemy.GetComponent<NPCMoverScript1>().wd = weaponDataList[0];
         listEnemies.Add(Enemy);
+    }
+
+    void UpdateAllyShields()
+    {
+        foreach (GameObject go in listAllies)
+        {
+            go.GetComponent<EntityHealth>().shield = go.GetComponent<EntityHealth>().shieldMaximum;
+
+        }
     }
 
     void CountEnemies()
