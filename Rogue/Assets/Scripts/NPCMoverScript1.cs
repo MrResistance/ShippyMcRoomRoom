@@ -303,14 +303,50 @@ public class NPCMoverScript1 : MonoBehaviour
     //For shooting the target
     IEnumerator ShootEnemyOfNPC()
     {
-        yield return new WaitForSeconds(Random.Range(2f,3f));
+        //Stops NPC firing immediately after spawning
+        bool isLimitedAmmoInClip = false;
+        int wRounds = 0;
+        if (wd.roundsCooldown > 0)
+        {
+            wRounds = wd.roundsMax;
+            isLimitedAmmoInClip = true;
+        }
+        yield return new WaitForSeconds(Random.Range(2f,3f)); 
         while (true)
         {
             if (CanShoot())
             {
-                ShootTarget();
+                //Showing warming up
+                //if (wd.chargetime > 0)
+                //WarmUpWeapon();
+                yield return new WaitForSeconds(wd.chargetime);
+
+                if (CanShoot()) //To ensure NPC can still fire
+                {
+                    ShootTarget();
+                    //Deduct from clip if has limited rounds
+                    if (isLimitedAmmoInClip) //Rounds are limited
+                    {
+                        wRounds -= 1;
+                    }
+                }
             }
-            yield return new WaitForSeconds(wd.rateoffire + offsetRateOfFire);
+            if (isLimitedAmmoInClip) //Rounds are limited
+            {
+                if (wRounds == 0) //Reload
+                {
+                    wRounds = wd.roundsMax;
+                    yield return new WaitForSeconds(wd.roundsCooldown);
+                }
+                else //Wait to fire again
+                {
+                    yield return new WaitForSeconds(wd.rateoffire + offsetRateOfFire);
+                }
+            }
+            else //Wait to fire again
+            { 
+                yield return new WaitForSeconds(wd.rateoffire + offsetRateOfFire);
+            }
         }
     }
     bool CanShoot() //Checks to make sure the NPC passes all checks before they can shoot;
