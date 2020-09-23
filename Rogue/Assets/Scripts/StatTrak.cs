@@ -10,9 +10,11 @@ public class StatTrak : MonoBehaviour
     public string timeTakenToCompleteWave;
     public TextMeshProUGUI[] statTextObjects;
     public string[] statTextStrings;
+    public Animator anim;
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<Animator>();
         StartCoroutine(LogStats());
     }
     public IEnumerator LogStats()
@@ -29,6 +31,14 @@ public class StatTrak : MonoBehaviour
             statTextStrings[7] = ("You took " + timeTakenToCompleteWave + " to complete the wave!");
             yield return new WaitForEndOfFrame();
         }
+    }
+    public void StartShowing()
+    {
+        anim.SetBool("Going", true);
+    }
+    public void StopShowing()
+    {
+        anim.SetBool("Going", false);
     }
     public void UpdateTextObjects()
     {

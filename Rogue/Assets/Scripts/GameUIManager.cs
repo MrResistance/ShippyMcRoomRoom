@@ -36,7 +36,7 @@ public class GameUIManager : MonoBehaviour
     public WaveManager wm;
     public StatTrak statTrak;
     public TextMeshProUGUI hiScoreTxt, item1txt, item2txt, item3txt, upgradeAmountDebug1, upgradeAmountDebug2, upgradeAmountDebug3;
-    private Stopwatch speedrunnerStopwatch;
+    public Stopwatch speedrunnerStopwatch;
     private void Awake()
     {
         wm = GetComponent<WaveManager>();
@@ -130,9 +130,11 @@ public class GameUIManager : MonoBehaviour
     }
     //UI for the 'Wave Complete' and 'Wave Number' items in Game HUD
     //They work in three stages, appearing, disappearing and idle (invisible/off screen)
-    public void ShowWaveCompleteUI()
+    public IEnumerator ShowWaveCompleteUI()
     {
         waveCompleteAnim.SetTrigger("Go");
+        yield return new WaitForSeconds(2);
+        statTrak.StartShowing();
     }
     public void ShowWaveNumberUI()
     {
