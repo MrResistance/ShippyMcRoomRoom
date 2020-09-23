@@ -33,6 +33,8 @@ MonoBehaviour:
   ammoMax: 0
   isWeaponLifeless: 1
   lifetimeWeapon: 0
+  roundsMax: 60
+  roundsCooldown: 10
   spreadType: random
   spread: 5
   range: 0
