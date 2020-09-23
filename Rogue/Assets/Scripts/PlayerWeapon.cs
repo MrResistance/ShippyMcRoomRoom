@@ -20,8 +20,10 @@ public class PlayerWeapon : MonoBehaviour
     public List<WeaponData> weaponDataList;
     private Stopwatch stopwatch;
     public bool Up, Down;
+    public StatTrak statTrak;
     private void Awake()
     {
+        statTrak = GameObject.Find("StatTrak").GetComponent<StatTrak>();
         //sFX_Player = GameObject.Find("SFX_Player").GetComponent<SFX_Player>();
         gm = GameObject.Find("GameManager").GetComponent<GameUIManager>();
         weaponSelectAnim = GameObject.Find("Weapons").GetComponent<Animator>();
@@ -122,6 +124,7 @@ public class PlayerWeapon : MonoBehaviour
     }
     void FireWeapon()
     {
+        statTrak.playerShotsFired++;
         //sFX_Player.PlayRandomSound();
         nextFire = Time.time + CalculateAttackSpeed();
         //For amount of projectiles

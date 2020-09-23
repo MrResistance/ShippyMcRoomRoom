@@ -15,6 +15,8 @@ public class WaveManager : MonoBehaviour
     public GameObject ProjectilesGO;
     //Parent GameObject for all Enemies
     public GameObject EnemiesGO;
+    //For Wave Complete stats
+    public GameObject statTrak;
 
     //Prefab for spawning any enemy
     public GameObject EnemyPrefab;
@@ -32,7 +34,7 @@ public class WaveManager : MonoBehaviour
     public int ManualSpawnX { get; set;}
     [ShowInInspector, PropertyRange(-31, 31)]
     public int ManualSpawnY { get; set; }
-
+    public bool waveComplete = false;
 
     [Button("Spawn Enemy")]
     private void SpawnEnemyButton()
@@ -63,7 +65,9 @@ public class WaveManager : MonoBehaviour
             CountEnemies();
             if (remainingEnemies == 0 && isWaveChanging == false)
             {
+                waveComplete = true;
                 isWaveChanging = true;
+                statTrak.GetComponent<StatTrak>().BeginShowingStats();
                 StartCoroutine(EndWave());
                 
             }
@@ -76,7 +80,7 @@ public class WaveManager : MonoBehaviour
         //Add a sound effect here for completing the wave
         gameObject.GetComponent<GameUIManager>().ShowWaveCompleteUI();
         gameObject.GetComponent<GameUIManager>().ClearField();
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(20f);
         //Destroy all projectiles so they don't kill the player
         DestroyAllProjectiles();
         
@@ -91,6 +95,7 @@ public class WaveManager : MonoBehaviour
     }
     public void NextWave() //Starts the next wave
     {
+        waveComplete = false;
         //Resets health of player back to maximum
         gameObject.GetComponent<PlayerManager>().RestoreHealthToMaximum();
         //Hides Reward screen and shows game UI;

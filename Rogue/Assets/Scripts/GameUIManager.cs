@@ -33,10 +33,14 @@ public class GameUIManager : MonoBehaviour
     public Button item1;
     public PlayerManager pm;
     public PlayerWeapon pw;
+    public WaveManager wm;
+    public StatTrak statTrak;
     public TextMeshProUGUI hiScoreTxt, item1txt, item2txt, item3txt, upgradeAmountDebug1, upgradeAmountDebug2, upgradeAmountDebug3;
     private Stopwatch speedrunnerStopwatch;
     private void Awake()
     {
+        wm = GetComponent<WaveManager>();
+        statTrak = GameObject.Find("StatTrak").GetComponent<StatTrak>();
         pm = GetComponent<PlayerManager>();
         healthBar = GameObject.Find("PlayerHealthBar").GetComponent<Slider>();
         shieldBar = GameObject.Find("PlayerShieldBar").GetComponent<Slider>();
@@ -76,6 +80,10 @@ public class GameUIManager : MonoBehaviour
             {
                 speedrunnerStopwatch.Stop();
             }
+        }
+        if (!wm.waveComplete)
+        {
+            statTrak.timeTakenToCompleteWave = speedrunnerStopwatch.Elapsed.TotalSeconds;
         }
         if (Input.GetButtonDown("Start") && !rewardsPanel.activeInHierarchy)
         {

@@ -13,6 +13,7 @@ public class EntityHealth : MonoBehaviour
     public float healthBonus; //Adds onto the healthMaximum - mainly for the player but we can use later
     public GameUIManager gameUIManager;
     public WaveManager wm;
+    public StatTrak statTrak;
     public bool isInvunerable = true, isDying = false;
     public float thisObjectPoints;
     public GameObject explosionPrefab;
@@ -24,6 +25,7 @@ public class EntityHealth : MonoBehaviour
     public Slider healthBar, shieldBar;
     private void Awake()
     {
+        statTrak = GameObject.Find("StatTrak").GetComponent<StatTrak>();
         gameUIManager = GameObject.Find("GameManager").GetComponent<GameUIManager>();
         wm = GameObject.Find("GameManager").GetComponent<WaveManager>();
         shieldObj = GetComponentInChildren<Shield_Obj>();
@@ -101,7 +103,6 @@ public class EntityHealth : MonoBehaviour
                 {
                     shield -= dShield;
                 }
-            
             }
             else
             {
@@ -114,8 +115,15 @@ public class EntityHealth : MonoBehaviour
             if (gameObject.tag == "Player")
             {
                 //Update shields
+                statTrak.damageTaken += damage;
+                statTrak.timesPlayerWasHit++;
                 gameUIManager.updateHealth(health);
                 gameUIManager.updateShield(shield);
+            }
+            else if (gameObject.tag == "Enemy")
+            {
+                statTrak.playerShotsHit++;
+                statTrak.damageGiven += Mathf.Round(damage);
             }
             UpdateBars();
         }

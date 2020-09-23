@@ -15,6 +15,7 @@ public class Projectile : MonoBehaviour
     private Rigidbody2D rb;
     public GameObject target, pointLight;
     public AudioSource audioSource;
+    public StatTrak statTrak;
     //For if weapon has 'even' spread
     public float spreadNumber;
     GameObject owner;
@@ -30,6 +31,7 @@ public class Projectile : MonoBehaviour
     //7am, waking up in the morning
     private void Awake()
     {
+        statTrak = GameObject.Find("StatTrak").GetComponent<StatTrak>();
         audioSource = GetComponent<AudioSource>();
         bc = GetComponent<BoxCollider2D>();
         sr = GetComponent<SpriteRenderer>();
@@ -104,6 +106,10 @@ public class Projectile : MonoBehaviour
         
         if (collision.gameObject.tag.Contains("Boundary"))
         {
+            if (gameObject.tag.Contains("Player"))
+            {
+                statTrak.playerShotsMissed++;
+            }
             Destroy(gameObject);
         }
 
@@ -270,6 +276,10 @@ public class Projectile : MonoBehaviour
         if (wd.explosionType != "none")
         { 
             CauseExplosion();
+        }
+        if (gameObject.tag.Contains("Player"))
+        {
+            statTrak.playerShotsMissed++;
         }
         GetComponent<EntityHealth>().Die();
     }
