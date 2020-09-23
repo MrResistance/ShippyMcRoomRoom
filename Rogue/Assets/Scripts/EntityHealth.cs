@@ -189,8 +189,6 @@ public class EntityHealth : MonoBehaviour
                 gameUIManager.PointsForKillingEnemy(gameObject.transform, thisObjectPoints);
                 gameUIManager.UpdateHiScore(thisObjectPoints);
                 wm.listEnemies.Remove(this.gameObject);
-
-
             }
         }
         if (gameObject.tag == "allied")

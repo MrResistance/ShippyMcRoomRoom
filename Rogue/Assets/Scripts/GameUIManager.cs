@@ -83,7 +83,7 @@ public class GameUIManager : MonoBehaviour
         }
         if (!wm.waveComplete)
         {
-            statTrak.timeTakenToCompleteWave = speedrunnerStopwatch.Elapsed.TotalSeconds;
+            statTrak.timeTakenToCompleteWave = speedrunnerStopwatch.Elapsed.ToString("mm' : 'ss' . 'ff");
         }
         if (Input.GetButtonDown("Start") && !rewardsPanel.activeInHierarchy)
         {

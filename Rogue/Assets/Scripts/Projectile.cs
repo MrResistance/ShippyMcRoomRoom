@@ -277,10 +277,6 @@ public class Projectile : MonoBehaviour
         { 
             CauseExplosion();
         }
-        if (gameObject.tag.Contains("Player"))
-        {
-            statTrak.playerShotsMissed++;
-        }
         GetComponent<EntityHealth>().Die();
     }
     void CauseExplosion()

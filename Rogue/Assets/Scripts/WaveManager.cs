@@ -67,7 +67,7 @@ public class WaveManager : MonoBehaviour
             {
                 waveComplete = true;
                 isWaveChanging = true;
-                statTrak.GetComponent<StatTrak>().BeginShowingStats();
+                statTrak.GetComponent<StatTrak>().UpdateTextObjects();
                 StartCoroutine(EndWave());
                 
             }
@@ -80,7 +80,7 @@ public class WaveManager : MonoBehaviour
         //Add a sound effect here for completing the wave
         gameObject.GetComponent<GameUIManager>().ShowWaveCompleteUI();
         gameObject.GetComponent<GameUIManager>().ClearField();
-        yield return new WaitForSeconds(20f);
+        yield return new WaitForSeconds(3f);
         //Destroy all projectiles so they don't kill the player
         DestroyAllProjectiles();
         
