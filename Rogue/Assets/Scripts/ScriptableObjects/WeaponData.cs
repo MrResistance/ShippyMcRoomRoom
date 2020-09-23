@@ -38,7 +38,7 @@ public class WeaponData : ScriptableObject
     public int roundsMax = 0; //Mainly for NPCs - how many rounds can be fired before a cooldown is enacted
     public float roundsCooldown = 0;
     /// <summary>
-    /// //////////////////////////////
+    /// ///////////////////////////////
     /// </summary>
     [Title("Spread")]
     //Spread
