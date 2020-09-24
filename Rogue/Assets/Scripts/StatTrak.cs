@@ -34,11 +34,11 @@ public class StatTrak : MonoBehaviour
     }
     public void StartShowing()
     {
-        anim.SetBool("Going", true);
+        anim.SetTrigger("Go");
     }
     public void StopShowing()
     {
-        anim.SetBool("Going", false);
+        anim.SetTrigger("Stop");
     }
     public void UpdateTextObjects()
     {

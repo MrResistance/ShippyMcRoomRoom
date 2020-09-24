@@ -129,12 +129,15 @@ public class GameUIManager : MonoBehaviour
         hiScoreTxt.text = ("Hi score: " + playerCurrentScore);
     }
     //UI for the 'Wave Complete' and 'Wave Number' items in Game HUD
-    //They work in three stages, appearing, disappearing and idle (invisible/off screen)
-    public IEnumerator ShowWaveCompleteUI()
+    public void ShowWaveCompleteUI()
     {
         waveCompleteAnim.SetTrigger("Go");
-        yield return new WaitForSeconds(2);
         statTrak.StartShowing();
+    }
+    public void HideWaveCompleteUI()
+    {
+        waveCompleteAnim.SetTrigger("Stop");
+        statTrak.StopShowing();
     }
     public void ShowWaveNumberUI()
     {
