@@ -145,6 +145,7 @@ public class NPCMoverScript1 : MonoBehaviour
             
             transform.rotation = Quaternion.Slerp(transform.rotation, rot, Time.deltaTime * enemyData.speedRotation);
 
+            //Health and shield canvas rotation
             hsCanvas.transform.rotation = Quaternion.Euler(new Vector3(0,0,0));
         }
         else
@@ -153,34 +154,7 @@ public class NPCMoverScript1 : MonoBehaviour
             //rb.rotation = 0;
         }
     }
-    bool isCloseEnoughToShoot() //So entity knows it can hit the target
-    {
-        if (wd.range == 0) //The weapon has no limit therefore it can shoot as far as it wants
-        {
-            return true;
-        }
-        if (distanceToTargetFloat < wd.range)
-        { 
-            return true;
-        }
-        return false;
-
-    }
-    bool isCurrentlyLookingAtTarget() //So the entity is not just shooting aimlessly
-    {
-        return true;
-    }
-    public bool isWithinArenaBoundary()
-    {
-        if (transform.position.x >= boundaryXmin && transform.position.x <= boundaryXmax)
-        {
-            if (transform.position.y >= boundaryYmin && transform.position.y <= boundaryYmax)
-            {
-                return true;
-            }
-        }
-        return false;
-    }
+    
     bool isWithinArenaBoundary(GameObject go) //For checking other GOs
     {
         if (go.transform.position.x >= boundaryXmin && go.transform.position.x <= boundaryXmax)
@@ -372,6 +346,37 @@ public class NPCMoverScript1 : MonoBehaviour
         }
         return false;
     }
+    //Used in CanShoot and other things
+    bool isCloseEnoughToShoot() //So entity knows it can hit the target
+    {
+        if (wd.range == 0) //The weapon has no limit therefore it can shoot as far as it wants
+        {
+            return true;
+        }
+        if (distanceToTargetFloat < wd.range)
+        {
+            return true;
+        }
+        return false;
+
+    }
+    bool isCurrentlyLookingAtTarget() //So the entity is not just shooting aimlessly
+    {
+        return true;
+    }
+    public bool isWithinArenaBoundary()
+    {
+        if (transform.position.x >= boundaryXmin && transform.position.x <= boundaryXmax)
+        {
+            if (transform.position.y >= boundaryYmin && transform.position.y <= boundaryYmax)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    //End of used in CanShoot
+
     void GetDistanceToTarget()
     {
         distanceToTarget = target.transform.position - transform.position;
