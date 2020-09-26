@@ -1024,7 +1024,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!224 &210020414
 RectTransform:
@@ -6524,7 +6524,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bae3bdbae3f51d44bae60cb6d912ee7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WaveNumber: 0
+  WaveNumber: 10
   remainingEnemies: 0
   isWaveChanging: 0
   AlliesGO: {fileID: 1181506827}
@@ -6548,6 +6548,8 @@ MonoBehaviour:
   listEnemies:
   - {fileID: 0}
   listAllies: []
+  listPassiveAbilities:
+  - {fileID: 8483778409858256009, guid: 7dc53def3c9b69042ab6d4ca50cb8bd5, type: 3}
   waveComplete: 0
 --- !u!4 &1327011397
 Transform:
