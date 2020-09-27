@@ -282,7 +282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDirectionalMovement: 0
-  isControllerEnabled: 1
+  isControllerEnabled: 0
   rb: {fileID: 0}
   camera: {fileID: 0}
   mouseposition: {x: 0, y: 0}
@@ -348,7 +348,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   side: 
   isSelected: 0
+  isAbilityReady: 1
   abilityCooldown: 0
+  abilityTimeRemaining: 0
   curveX:
     serializedVersion: 2
     m_Curve:
@@ -374,6 +376,18 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   curveY:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  curveHealth:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  curveShield:
     serializedVersion: 2
     m_Curve: []
     m_PreInfinity: 2

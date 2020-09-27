@@ -31,7 +31,7 @@ public class Projectile : MonoBehaviour
     //7am, waking up in the morning
     private void Awake()
     {
-        statTrak = GameObject.Find("StatTrak").GetComponent<StatTrak>();
+        
         audioSource = GetComponent<AudioSource>();
         bc = GetComponent<BoxCollider2D>();
         sr = GetComponent<SpriteRenderer>();
@@ -40,6 +40,7 @@ public class Projectile : MonoBehaviour
 
     private void Start()
     {
+        statTrak = GameObject.Find("StatTrak").GetComponent<StatTrak>();
         //Play launch sfx
         gameObject.name = wd.name;
         if (wd.name == "Missile") //For the missile sound
