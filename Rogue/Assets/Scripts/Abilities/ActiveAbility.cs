@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ActiveAbility : EntityAbility
 {
-
+    
     public bool isSelected = false;
 
     public bool isAbilityReady = true;
@@ -36,4 +36,6 @@ public class ActiveAbility : EntityAbility
         isAbilityReady = true;
         abilityTimeRemaining = 0;
     }
+
+
 }
