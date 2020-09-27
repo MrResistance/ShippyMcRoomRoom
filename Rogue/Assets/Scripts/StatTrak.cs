@@ -14,7 +14,6 @@ public class StatTrak : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        anim = GetComponent<Animator>();
         StartCoroutine(LogStats());
     }
     public IEnumerator LogStats()
@@ -31,14 +30,6 @@ public class StatTrak : MonoBehaviour
             statTextStrings[7] = ("You took " + timeTakenToCompleteWave + " to complete the wave!");
             yield return new WaitForEndOfFrame();
         }
-    }
-    public void StartShowing()
-    {
-        anim.SetTrigger("Go");
-    }
-    public void StopShowing()
-    {
-        anim.SetTrigger("Stop");
     }
     public void UpdateTextObjects()
     {

@@ -24,7 +24,7 @@ public class GameUIManager : MonoBehaviour
     public Slider healthBar, shieldBar;
     public Sprite buttonDefaultSprite;
     public Transform livesStartPoint;
-    public Animator waveNumberAnim, waveCompleteAnim;
+    public Animator waveNumberAnim;
     public float livesIconSeparationDistance = 5f, playerCurrentScore = 0f;
     public int ItemNumberChosen; //1, 2, or 3
     public string[] upgrades;
@@ -127,17 +127,6 @@ public class GameUIManager : MonoBehaviour
     {
         playerCurrentScore += score;
         hiScoreTxt.text = ("Hi score: " + playerCurrentScore);
-    }
-    //UI for the 'Wave Complete' and 'Wave Number' items in Game HUD
-    public void ShowWaveCompleteUI()
-    {
-        waveCompleteAnim.SetTrigger("Go");
-        statTrak.StartShowing();
-    }
-    public void HideWaveCompleteUI()
-    {
-        waveCompleteAnim.SetTrigger("Stop");
-        statTrak.StopShowing();
     }
     public void ShowWaveNumberUI()
     {

@@ -79,10 +79,11 @@ public class WaveManager : MonoBehaviour
     {
         //Changed to a corountine so we can display the 'wave complete' UI before moving onto rewards :) 
         //Add a sound effect here for completing the wave
-        gameObject.GetComponent<GameUIManager>().ShowWaveCompleteUI();
         gameObject.GetComponent<GameUIManager>().ClearField();
-        yield return new WaitForSeconds(20f);
-        gameObject.GetComponent<GameUIManager>().HideWaveCompleteUI();
+        statTrak.GetComponent<StatTrak>().anim.SetTrigger("Go");
+        yield return new WaitForSeconds(15f);
+        statTrak.GetComponent<StatTrak>().anim.SetTrigger("Stop");
+        yield return new WaitForSeconds(10f);
         //statTrak.GetComponent<StatTrak>().anim.SetTrigger("Stop");
         //Destroy all projectiles so they don't kill the player
         DestroyAllProjectiles(); //Stops the player dying on Wave Complete
