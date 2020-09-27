@@ -30,10 +30,14 @@ public class TimeWarp : ActiveAbility
     {
         if (Input.GetKeyDown("space"))
         {
-            if (isSelected && isAbilityReady)
+            if (isSelected && isAbilityReady && owner == "player")
             { 
                 Timewarp();
             }
+        }
+        if (owner == "npc")
+        {
+
         }
     }
 
