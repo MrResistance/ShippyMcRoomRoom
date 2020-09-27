@@ -7,6 +7,7 @@ public class EntityAbility : MonoBehaviour
     //Variables
     public string side;
 
+    public string owner; //"npc","player"
 
     protected virtual void Start()
     {
@@ -15,21 +16,21 @@ public class EntityAbility : MonoBehaviour
         GetSide();
     }
 
-    
-    void Update()
-    {
-        
-    }
-
     void GetSide()
     {
-        if (transform.parent.gameObject.GetComponent<PlayerTopDownController>() != null)
+        if (transform.parent.gameObject.GetComponent<PlayerTopDownController>() != null) //Player
         {
             side = "allied";
+            owner = "player";
         }
-        if (transform.parent.gameObject.GetComponent<NPCMoverScript1>() != null)
+        if (transform.parent.gameObject.GetComponent<NPCMoverScript1>() != null) //NPC
         {
             side = transform.parent.gameObject.GetComponent<NPCMoverScript1>().npcSide;
+            owner = "npc";
         }
+    }
+    void GetOwner()
+    {
+
     }
 }
