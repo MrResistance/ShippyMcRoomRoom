@@ -55,11 +55,12 @@ public class MiniTurret : PassiveAbility
             Vector3 angles2 = transform.rotation.eulerAngles;
             //transform.localRotation = Quaternion.Slerp(transform.rotation, rot, Time.deltaTime * 10f);
 
+            //transform.localRotation = WeaponFiringAngle();
             transform.localRotation = rot;
             //transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 0));
             //transform.rotation = Quaternion.Euler(angles2);
 
-            
+
         }
     }
     void GetDistanceToTarget()
