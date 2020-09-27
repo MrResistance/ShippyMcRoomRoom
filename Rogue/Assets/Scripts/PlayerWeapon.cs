@@ -47,14 +47,14 @@ public class PlayerWeapon : MonoBehaviour
             }
             if (!gm.isGamePaused)
             {
-                if (dpadY < 0 && stopwatch.ElapsedMilliseconds > 500)
+                if ((dpadY < 0 || Input.mouseScrollDelta.y < 0)&& stopwatch.ElapsedMilliseconds > 500)
                 {
                     //UP
                     Up = true;
                     GoToNextWeapon();
                     stopwatch.Reset();
                 }
-                else if (dpadY > 0 && stopwatch.ElapsedMilliseconds > 500)
+                else if ((dpadY > 0 || Input.mouseScrollDelta.y > 0) && stopwatch.ElapsedMilliseconds > 500)
                 {
                     //DOWN
                     Down = true;

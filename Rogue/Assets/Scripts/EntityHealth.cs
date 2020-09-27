@@ -25,13 +25,14 @@ public class EntityHealth : MonoBehaviour
     public Slider healthBar, shieldBar;
     private void Awake()
     {
-        statTrak = GameObject.Find("StatTrak").GetComponent<StatTrak>();
+        
         gameUIManager = GameObject.Find("GameManager").GetComponent<GameUIManager>();
         wm = GameObject.Find("GameManager").GetComponent<WaveManager>();
         shieldObj = GetComponentInChildren<Shield_Obj>();
     }
     void Start()
     {
+        statTrak = GameObject.Find("StatTrak").GetComponent<StatTrak>();
         Invoke("DisableInvunerability", 1.5f);
         //InvokeRepeating("RechargeShield", 1f, 2f);
         StartCoroutine(RechargeShield());

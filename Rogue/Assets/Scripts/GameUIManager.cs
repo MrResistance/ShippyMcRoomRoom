@@ -57,11 +57,7 @@ public class GameUIManager : MonoBehaviour
         upgradeamount = new float[] { 5f * (1f + (0.1f)), 5f * (1f + (0.1f)), 5f * (1f + (0.1f)) };
         updateLives(pm.remainingLives);
         UpdateHiScore(0f);
-        if (Input.GetJoystickNames().Length > 0)
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
+        //StartCoroutine(CheckForControllers());
     }
     private void Update()
     {
@@ -95,6 +91,23 @@ public class GameUIManager : MonoBehaviour
             {
                 PauseGame();
             }
+        }
+    }
+    public IEnumerator CheckForControllers()
+    {
+        while (true)
+        {
+            if (Input.GetJoystickNames().Length > 0)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
+            else if (Input.GetJoystickNames().Length == 0)
+            {
+                Cursor.lockState = CursorLockMode.Confined;
+                Cursor.visible = true;
+            }
+            yield return new WaitForEndOfFrame();
         }
     }
     public void ShowHideSpeedrunnerClock()

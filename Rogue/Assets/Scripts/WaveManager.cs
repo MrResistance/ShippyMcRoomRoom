@@ -182,8 +182,10 @@ public class WaveManager : MonoBehaviour
     {
         foreach (GameObject go in listAllies)
         {
-            go.GetComponent<EntityHealth>().shield = go.GetComponent<EntityHealth>().shieldMaximum;
-
+            if (go != null)
+            {
+                go.GetComponent<EntityHealth>().shield = go.GetComponent<EntityHealth>().shieldMaximum;
+            }
         }
     }
 
