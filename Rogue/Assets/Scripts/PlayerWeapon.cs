@@ -17,6 +17,7 @@ public class PlayerWeapon : MonoBehaviour
     public int previousWeaponIndex, currentWeaponIndex, nextWeaponIndex;
     public SFX_Player sFX_Player;
     public GameUIManager gm;
+    public PlayerTopDownController pdtc;
     public List<WeaponData> weaponDataList;
     private Stopwatch stopwatch;
     public bool Up, Down;
@@ -27,6 +28,7 @@ public class PlayerWeapon : MonoBehaviour
         //sFX_Player = GameObject.Find("SFX_Player").GetComponent<SFX_Player>();
         gm = GameObject.Find("GameManager").GetComponent<GameUIManager>();
         weaponSelectAnim = GameObject.Find("Weapons").GetComponent<Animator>();
+        pdtc = GetComponent<PlayerTopDownController>();
     }
     private void Start()
     {
@@ -176,12 +178,21 @@ public class PlayerWeapon : MonoBehaviour
     {
         GameObject enemy = null;
         float minDist = Mathf.Infinity;
+        Vector3 TargetLocation;
+        if (pdtc.isControllerEnabled)
+        {
+            TargetLocation = transform.position;
+        }
+        else
+        {
+            TargetLocation = pdtc.mouseposition;
+        }
         foreach (GameObject ge in gm.GetComponent<WaveManager>().listEnemies)
         {
-            if (Vector3.Distance(ge.transform.position,transform.position) < minDist && ge.GetComponent<NPCMoverScript1>().isWithinArenaBoundary())
+            if (Vector3.Distance(ge.transform.position, TargetLocation) < minDist && ge.GetComponent<NPCMoverScript1>().isWithinArenaBoundary())
             {
                 enemy = ge;
-                minDist = Vector3.Distance(ge.transform.position, transform.position);
+                minDist = Vector3.Distance(ge.transform.position, TargetLocation);
             }
         }
         return enemy;
