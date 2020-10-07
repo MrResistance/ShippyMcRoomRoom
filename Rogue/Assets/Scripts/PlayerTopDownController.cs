@@ -45,12 +45,12 @@ public class PlayerTopDownController : MonoBehaviour
         pm.RestoreHealthToMaximum();
         gameObject.GetComponent<EntityHealth>().shield = 100;
         gameObject.GetComponent<EntityHealth>().shieldMaximum = 100;
+        StartCoroutine(CheckForInputs());
     }
 
     // Update is called once per frame
     void Update()
     {
-
         if (!gm.ShowingRewards)
         {
             Look();
@@ -60,9 +60,29 @@ public class PlayerTopDownController : MonoBehaviour
         {
             transform.position = new Vector2(0, 0);
         }
-        if (debugCanvas.activeSelf == true)
+        if (debugCanvas != null && debugCanvas.activeSelf == true)
         {
             UpdateDebugText();
+        }
+    }
+    private IEnumerator CheckForInputs()
+    {
+        while (true)
+        {
+            for (int i = 0; i < 20; i++)
+            {
+                if (Input.GetKeyDown("joystick 1 button " + i))
+                {
+                    isControllerEnabled = true;
+                    print("CONTROLLER ANYKEY");
+                }
+                if (Input.anyKey && !Input.GetKeyDown("joystick 1 button " + i))
+                {
+                    isControllerEnabled = false;
+                    print("KEYBOARD/MOUSE ANYKEY");
+                }
+            }
+            yield return new WaitForEndOfFrame();
         }
     }
     private float speed()
